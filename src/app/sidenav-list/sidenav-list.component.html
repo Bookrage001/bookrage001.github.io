@@ -1,0 +1,20 @@
+<mat-nav-list style="padding: 20px;">
+
+
+    <mat-list-item>
+        <h3 matLine> MAT LINE </h3>
+        <p matLine>
+            <span> content </span>
+            <span class="demo-2"> -- content </span>
+        </p>
+    </mat-list-item>
+    <a mat-list-item routerLink="." (click)="onSidenavClose()">Home</a>
+    <a mat-list-item routerLink="products" (click)="onSidenavClose()">Products</a>
+    <!-- <mat-tree>
+        <mat-tree-node> parent node </mat-tree-node>
+        <mat-tree-node> -- child node1 </mat-tree-node>
+        <mat-tree-node> -- child node2 </mat-tree-node>
+    </mat-tree> -->
+
+    <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
+</mat-nav-list>
