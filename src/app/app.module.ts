@@ -8,15 +8,20 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { PoductsComponent } from './poducts/poducts.component';
-import { BciiCicComponent } from './poducts/bcii-cic/bcii-cic.component';
+import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CalenderComponent } from './dashboard/calender/calender.component';
 
 const routes: Routes = [
   { path: 'home', component: AboutMeComponent },
   {
     path: 'products', component: PoductsComponent, children: [
-      { path: 'cic', component: BciiCicComponent },
+      { path: 'life-mystree', component: LifeMystreeGameComponent },
     ]
   },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
@@ -25,7 +30,11 @@ const routes: Routes = [
     AboutMeComponent,
     SidenavListComponent,
     PoductsComponent,
-    BciiCicComponent,
+    LifeMystreeGameComponent,
+    DashboardComponent,
+    MinecraftComponent,
+    PageNotFoundComponent,
+    CalenderComponent,
 
   ],
   imports: [

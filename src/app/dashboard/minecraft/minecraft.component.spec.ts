@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BciiCicComponent } from './bcii-cic.component';
+import { MinecraftComponent } from './minecraft.component';
 
-describe('BciiCicComponent', () => {
-  let component: BciiCicComponent;
-  let fixture: ComponentFixture<BciiCicComponent>;
+describe('MinecraftComponent', () => {
+  let component: MinecraftComponent;
+  let fixture: ComponentFixture<MinecraftComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BciiCicComponent ]
+      declarations: [ MinecraftComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BciiCicComponent);
+    fixture = TestBed.createComponent(MinecraftComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
