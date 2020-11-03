@@ -118,7 +118,7 @@ module.exports = "<a routerLink=\"life-mystree\">\n    LifeLongHobbies Group\n</
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-nav-list style=\"padding: 20px;\">\n\n\n    <mat-list-item>\n        <h3 matLine> MAT LINE </h3>\n        <p matLine>\n            <span> content </span>\n            <span class=\"demo-2\"> -- content </span>\n        </p>\n    </mat-list-item>\n    <a mat-list-item routerLink=\".\" (click)=\"onSidenavClose()\">Home</a>\n    <a mat-list-item routerLink=\"products\" (click)=\"onSidenavClose()\">Products</a>\n    <!-- <mat-tree>\n        <mat-tree-node> parent node </mat-tree-node>\n        <mat-tree-node> -- child node1 </mat-tree-node>\n        <mat-tree-node> -- child node2 </mat-tree-node>\n    </mat-tree> -->\n\n    <!-- <a mat-list-item routerLink=\".\" *ngFor=\"let nav of fillerNav\">{{nav}}</a> -->\n</mat-nav-list>"
+module.exports = "<mat-nav-list style=\"padding: 20px;\">\n\n\n    <mat-list-item>\n        <h3 matLine> MAT LINE </h3>\n        <p matLine>\n            <span> content </span>\n            <span class=\"demo-2\"> -- content </span>\n        </p>\n    </mat-list-item>\n    <a mat-list-item routerLink=\".\" (click)=\"onSidenavClose()\">Home</a>\n    <a mat-list-item routerLink=\"products\" (click)=\"onSidenavClose()\">Products</a>\n    <a mat-list-item routerLink=\"dashboard\" (click)=\"onSidenavClose()\">Dashboard</a>\n    <!-- <mat-tree>\n        <mat-tree-node> parent node </mat-tree-node>\n        <mat-tree-node> -- child node1 </mat-tree-node>\n        <mat-tree-node> -- child node2 </mat-tree-node>\n    </mat-tree> -->\n\n    <!-- <a mat-list-item routerLink=\".\" *ngFor=\"let nav of fillerNav\">{{nav}}</a> -->\n</mat-nav-list>"
 
 /***/ }),
 
