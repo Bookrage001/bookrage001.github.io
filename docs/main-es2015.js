@@ -41,18 +41,62 @@ module.exports = "<p>about-me works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\">\r\n\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n        <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n            <mat-icon>menu</mat-icon>\r\n        </button>\r\n        <h1 class=\"example-app-name\">{{title}}</h1>\r\n    </mat-toolbar>\r\n\r\n\r\n\r\n    <mat-sidenav-container class=\"example-sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\" style=\"position: fixed;\r\n    height: 100%;\r\n    min-height: 100%;\r\n    width: 100%;\r\n    min-width: 100%;\">\r\n\r\n        <mat-sidenav #sidenav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\"\r\n            fixedTopGap=\"56\">\r\n\r\n\r\n\r\n            <app-sidenav-list (sidenavClose)=\"sidenav.close()\">\r\n\r\n            </app-sidenav-list>\r\n\r\n        </mat-sidenav>\r\n\r\n        <mat-sidenav-content>\r\n            <div style=\"  display: flex;\r\n            justify-content: center;\">\r\n                <div style=\"padding:10%; background-color:#dadada;margin-top: 30px; min-width: 50%;\">\r\n\r\n                    <router-outlet></router-outlet>\r\n                </div>\r\n\r\n            </div>\r\n            <!-- <p *ngFor=\"let content of fillerContent\">{{content}}</p> -->\r\n        </mat-sidenav-content>\r\n    </mat-sidenav-container>\r\n</div>"
+module.exports = "<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\">\r\n\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n        <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n            <mat-icon>menu</mat-icon>\r\n        </button>\r\n        <h1 class=\"example-app-name\">{{title}}</h1>\r\n    </mat-toolbar>\r\n\r\n\r\n\r\n    <mat-sidenav-container class=\"example-sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\" style=\"position: fixed;\r\n    height: 100%;\r\n    min-height: 100%;\r\n    width: 100%;\r\n    min-width: 100%;\">\r\n\r\n        <mat-sidenav #sidenav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\"\r\n            fixedTopGap=\"56\">\r\n\r\n\r\n\r\n            <app-sidenav-list (sidenavClose)=\"sidenav.close()\">\r\n\r\n            </app-sidenav-list>\r\n\r\n        </mat-sidenav>\r\n\r\n        <mat-sidenav-content>\r\n            <div style=\"  display: flex;\r\n            justify-content: center;\">\r\n                <div style=\" background-color:#dadada;margin-top: 30px; min-width: 60%; padding: 30px; max-width: 90%;\">\r\n\r\n                    <router-outlet></router-outlet>\r\n                </div>\r\n\r\n            </div>\r\n            <!-- <p *ngFor=\"let content of fillerContent\">{{content}}</p> -->\r\n        </mat-sidenav-content>\r\n    </mat-sidenav-container>\r\n</div>"
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/poducts/bcii-cic/bcii-cic.component.html":
-/*!************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/poducts/bcii-cic/bcii-cic.component.html ***!
-  \************************************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/dashboard/calender/calender.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/dashboard/calender/calender.component.html ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>bcii-cic works!</p>\n"
+module.exports = "<iframe\n    src=\"https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Australia%2FSydney&amp;src=Y2FsZWIuYXJkZXJuQGdtYWlsLmNvbQ&amp;src=aTZrYjhwNjRnc2NoY2RmZ2Voa3VlM28yN2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YmRia3ByZTZnMG1raW01MWpzYmNpcGRycmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=aDhhcW0zMDdhZmp2b3VhODV0ZjBrZHNvc29AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=OXI0bGViOXVnZG42NWloZmQxZzAyZTMzcHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ODFxYm5ndGRlYnJ0cTE2bDlocG50Yjg0ZG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=N243NnVvbHI3cm9nbm02Y2Mxdmc5M2NqNG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=NHRoeXJiY2lpLmNhbGVuZGFyQGdtYWlsLmNvbQ&amp;src=OHUxdWs5NWpoZTk5YXMxMGFoZ3IwdjB0OWdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y3JlZG8ub3JnLmF1X2xhdHJ1Z240MG5sdW44ZG5mNzduYzhiN240QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=Y3JlZG8ub3JnLmF1XzVhazQ4MDVpcW5odjFvZWc2Y2plY3FwODI0QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=ZmRhdWdhb2QwZGc3a2owdXIxZ29scmdpdjFiamh0Y2pAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=cGYxMGtjODZuY2h1a3U1aDUxdnVmZGxmZm5mcjVmMm1AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=ZW4uY2hyaXN0aWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=dGthZ3RrcnVoZHMxa3YzNzdsNHUyNjRpZmpmcmgxN2tAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=Mzdpam9zMWY2YXRmbGI0bnNiY28yOXNoNm1jZnYzZWVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=ZmFtaWx5MDIzMjMzMTUyMjU4ODE4Mjc3NDFAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4uYXVzdHJhbGlhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=b3Vzc3ByMmZpN21kbjY4MmJ0NDA1cmx0YWtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=cWdlNzEya3I2NG1tZzZsMmVlMWFxOXBtY3U5bGhtY3VAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=NDZzYWswZ3ZydnZqZzFzc3FtbjIybnM2NXBpMGZkaHBAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=dDAycWlwN2M5c2x1NDU4cHM2NGx2cmV2bDljNWZnYWxAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=YzIybG5saG51c2Q5Z3FxNmhnbzdrZWpudGdrZGhjZXVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=aHR0bDFtNm9xY3FpNnFzdmFxaXEyb3RkMWEyaXFvdWZAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23795548&amp;color=%23F6BF26&amp;color=%23F4511E&amp;color=%23D50000&amp;color=%23E67C73&amp;color=%23EF6C00&amp;color=%23795548&amp;color=%23D81B60&amp;color=%239E69AF&amp;color=%23EF6C00&amp;color=%23C0CA33&amp;color=%237CB342&amp;color=%234285F4&amp;color=%239E69AF&amp;color=%230B8043&amp;color=%23C0CA33&amp;color=%23E4C441&amp;color=%23D50000&amp;color=%23616161&amp;color=%23009688&amp;color=%23E67C73&amp;color=%234285F4&amp;color=%238E24AA&amp;color=%234285F4&amp;color=%23AD1457&amp;showTitle=0&amp;showNav=1&amp;showPrint=0&amp;showTabs=1&amp;showTz=1&amp;showCalendars=0\"\n    style=\"border:solid 1px #777\" width=\"800\" height=\"600\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/dashboard/dashboard.component.html":
+/*!******************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/dashboard/dashboard.component.html ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>dashboard works!</h1>\n<p>\n    This will be a dashboard showing a range of information from if a server is up to my calender to for ease of use to\n    make bookings\n</p>\n<app-calender>\n\n</app-calender>\n<app-minecraft>\n\n</app-minecraft>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/dashboard/minecraft/minecraft.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/dashboard/minecraft/minecraft.component.html ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>One of the components on the dashboard to get a minecraft servers current status</p>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/page-not-found/page-not-found.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/page-not-found/page-not-found.component.html ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>page-not-found works!</p>\n<div>\n\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/poducts/life-mystree-game/life-mystree-game.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/poducts/life-mystree-game/life-mystree-game.component.html ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<head>\r\n    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>\r\n</head>\r\n\r\n<div style=\"text-align: center;\">\r\n\r\n    <h1>Life is a Mystree</h1>\r\n</div>\r\n\r\n<div fx>\r\n    <p>\r\n        Our creators decided to make a board game that could help people through the most stressful time of their lives\r\n        -\r\n        when the netflix skip intro button starts playing and you scramble to press it before it disappears and the\r\n        whole\r\n        intro starts – I've received word that that’s not it, the actual most stressful time is:\r\n    </p>\r\n    <p>\r\n        The end of university and the start of the rest of your life.\r\n    </p>\r\n    <p>\r\n        And that’s where [Life is a Mystree] comes in. With a board that looks like a tree and cards that look like\r\n        cards,\r\n        this board game is for all of you who feel like you need a sense of direction, or want to explore the weird and\r\n        fascinating ways in which life works.\r\n    </p>\r\n    <p>\r\n        We start off with our players receiving three value cards each. This could be anything from \"accepting my lot”\r\n        to\r\n        “freedom”, “equality” to “social power”. They move around the board, picking up cards according to the colour of\r\n        the\r\n        tile they land on and must choose what to keep based on those three values mentioned earlier.\r\n    </p>\r\n</div>\r\n\r\n\r\n<div>\r\n    <p>\r\n        <b>\r\n            Play Online here:\r\n        </b>\r\n    </p>\r\n    <iframe width=\"680\" height=\"340\" frameborder=\"0\" allowtransparency=\"true\" scrolling=\"no\"\r\n        src=\"https://tabletopia.com/workshop/widget/life-is-a-mystree-nzpph3/680x340\"></iframe>\r\n</div>\r\n\r\n<div>\r\n    <h3>Contact us</h3>\r\n    <p>\r\n        Register your interest\r\n        <a href=\"mailto:0a067e82.student.uts.edu.au@apac.teams.ms\">here</a>\r\n    </p>\r\n</div>"
 
 /***/ }),
 
@@ -63,7 +107,7 @@ module.exports = "<p>bcii-cic works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<a routerLink=\"cic\">LifeLongHobbies\n</a>"
+module.exports = "<a routerLink=\"life-mystree\">\n    LifeLongHobbies Group\n</a>\n\n<div>\n    <hr />\n    <router-outlet>\n    </router-outlet>\n</div>"
 
 /***/ }),
 
@@ -194,7 +238,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _sidenav_list_sidenav_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./sidenav-list/sidenav-list.component */ "./src/app/sidenav-list/sidenav-list.component.ts");
 /* harmony import */ var _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./poducts/poducts.component */ "./src/app/poducts/poducts.component.ts");
-/* harmony import */ var _poducts_bcii_cic_bcii_cic_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./poducts/bcii-cic/bcii-cic.component */ "./src/app/poducts/bcii-cic/bcii-cic.component.ts");
+/* harmony import */ var _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./poducts/life-mystree-game/life-mystree-game.component */ "./src/app/poducts/life-mystree-game/life-mystree-game.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _dashboard_minecraft_minecraft_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dashboard/minecraft/minecraft.component */ "./src/app/dashboard/minecraft/minecraft.component.ts");
+/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var _dashboard_calender_calender_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboard/calender/calender.component */ "./src/app/dashboard/calender/calender.component.ts");
+
+
+
+
 
 
 
@@ -210,9 +262,10 @@ const routes = [
     { path: 'home', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"] },
     {
         path: 'products', component: _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__["PoductsComponent"], children: [
-            { path: 'cic', component: _poducts_bcii_cic_bcii_cic_component__WEBPACK_IMPORTED_MODULE_10__["BciiCicComponent"] },
+            { path: 'life-mystree', component: _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_10__["LifeMystreeGameComponent"] },
         ]
     },
+    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"] },
 ];
 let AppModule = class AppModule {
 };
@@ -223,7 +276,11 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"],
             _sidenav_list_sidenav_list_component__WEBPACK_IMPORTED_MODULE_8__["SidenavListComponent"],
             _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__["PoductsComponent"],
-            _poducts_bcii_cic_bcii_cic_component__WEBPACK_IMPORTED_MODULE_10__["BciiCicComponent"],
+            _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_10__["LifeMystreeGameComponent"],
+            _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"],
+            _dashboard_minecraft_minecraft_component__WEBPACK_IMPORTED_MODULE_12__["MinecraftComponent"],
+            _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_13__["PageNotFoundComponent"],
+            _dashboard_calender_calender_component__WEBPACK_IMPORTED_MODULE_14__["CalenderComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -244,43 +301,211 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/poducts/bcii-cic/bcii-cic.component.scss":
-/*!**********************************************************!*\
-  !*** ./src/app/poducts/bcii-cic/bcii-cic.component.scss ***!
-  \**********************************************************/
+/***/ "./src/app/dashboard/calender/calender.component.scss":
+/*!************************************************************!*\
+  !*** ./src/app/dashboard/calender/calender.component.scss ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BvZHVjdHMvYmNpaS1jaWMvYmNpaS1jaWMuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9jYWxlbmRlci9jYWxlbmRlci5jb21wb25lbnQuc2NzcyJ9 */"
 
 /***/ }),
 
-/***/ "./src/app/poducts/bcii-cic/bcii-cic.component.ts":
-/*!********************************************************!*\
-  !*** ./src/app/poducts/bcii-cic/bcii-cic.component.ts ***!
-  \********************************************************/
-/*! exports provided: BciiCicComponent */
+/***/ "./src/app/dashboard/calender/calender.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/dashboard/calender/calender.component.ts ***!
+  \**********************************************************/
+/*! exports provided: CalenderComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BciiCicComponent", function() { return BciiCicComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalenderComponent", function() { return CalenderComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 
 
-let BciiCicComponent = class BciiCicComponent {
+let CalenderComponent = class CalenderComponent {
     constructor() { }
     ngOnInit() {
     }
 };
-BciiCicComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+CalenderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-bcii-cic',
-        template: __webpack_require__(/*! raw-loader!./bcii-cic.component.html */ "./node_modules/raw-loader/index.js!./src/app/poducts/bcii-cic/bcii-cic.component.html"),
-        styles: [__webpack_require__(/*! ./bcii-cic.component.scss */ "./src/app/poducts/bcii-cic/bcii-cic.component.scss")]
+        selector: 'app-calender',
+        template: __webpack_require__(/*! raw-loader!./calender.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/calender/calender.component.html"),
+        styles: [__webpack_require__(/*! ./calender.component.scss */ "./src/app/dashboard/calender/calender.component.scss")]
     })
-], BciiCicComponent);
+], CalenderComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard/dashboard.component.scss":
+/*!****************************************************!*\
+  !*** ./src/app/dashboard/dashboard.component.scss ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/dashboard.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/dashboard/dashboard.component.ts ***!
+  \**************************************************/
+/*! exports provided: DashboardComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let DashboardComponent = class DashboardComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-dashboard',
+        template: __webpack_require__(/*! raw-loader!./dashboard.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/dashboard.component.html"),
+        styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./src/app/dashboard/dashboard.component.scss")]
+    })
+], DashboardComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard/minecraft/minecraft.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/dashboard/minecraft/minecraft.component.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9taW5lY3JhZnQvbWluZWNyYWZ0LmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/minecraft/minecraft.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/dashboard/minecraft/minecraft.component.ts ***!
+  \************************************************************/
+/*! exports provided: MinecraftComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MinecraftComponent", function() { return MinecraftComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let MinecraftComponent = class MinecraftComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+MinecraftComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-minecraft',
+        template: __webpack_require__(/*! raw-loader!./minecraft.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/minecraft/minecraft.component.html"),
+        styles: [__webpack_require__(/*! ./minecraft.component.scss */ "./src/app/dashboard/minecraft/minecraft.component.scss")]
+    })
+], MinecraftComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/page-not-found/page-not-found.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/page-not-found/page-not-found.component.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2Utbm90LWZvdW5kL3BhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/page-not-found/page-not-found.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/page-not-found/page-not-found.component.ts ***!
+  \************************************************************/
+/*! exports provided: PageNotFoundComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PageNotFoundComponent", function() { return PageNotFoundComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let PageNotFoundComponent = class PageNotFoundComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+PageNotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-page-not-found',
+        template: __webpack_require__(/*! raw-loader!./page-not-found.component.html */ "./node_modules/raw-loader/index.js!./src/app/page-not-found/page-not-found.component.html"),
+        styles: [__webpack_require__(/*! ./page-not-found.component.scss */ "./src/app/page-not-found/page-not-found.component.scss")]
+    })
+], PageNotFoundComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/poducts/life-mystree-game/life-mystree-game.component.scss":
+/*!****************************************************************************!*\
+  !*** ./src/app/poducts/life-mystree-game/life-mystree-game.component.scss ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BvZHVjdHMvbGlmZS1teXN0cmVlLWdhbWUvbGlmZS1teXN0cmVlLWdhbWUuY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/poducts/life-mystree-game/life-mystree-game.component.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/poducts/life-mystree-game/life-mystree-game.component.ts ***!
+  \**************************************************************************/
+/*! exports provided: LifeMystreeGameComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LifeMystreeGameComponent", function() { return LifeMystreeGameComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let LifeMystreeGameComponent = class LifeMystreeGameComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+LifeMystreeGameComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-life-mystree-game',
+        template: __webpack_require__(/*! raw-loader!./life-mystree-game.component.html */ "./node_modules/raw-loader/index.js!./src/app/poducts/life-mystree-game/life-mystree-game.component.html"),
+        styles: [__webpack_require__(/*! ./life-mystree-game.component.scss */ "./src/app/poducts/life-mystree-game/life-mystree-game.component.scss")]
+    })
+], LifeMystreeGameComponent);
 
 
 
