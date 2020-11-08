@@ -299,7 +299,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTreeModule"],
         ],
         providers: [],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"]]
     })
 ], AppModule);
 

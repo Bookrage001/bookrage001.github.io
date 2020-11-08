@@ -48,7 +48,8 @@ const routes: Routes = [
     MatTreeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 
 
