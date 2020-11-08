@@ -164,6 +164,54 @@ AboutMeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/app-routing.module.ts":
+/*!***************************************!*\
+  !*** ./src/app/app-routing.module.ts ***!
+  \***************************************/
+/*! exports provided: AppRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./poducts/life-mystree-game/life-mystree-game.component */ "./src/app/poducts/life-mystree-game/life-mystree-game.component.ts");
+/* harmony import */ var _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./poducts/poducts.component */ "./src/app/poducts/poducts.component.ts");
+
+
+
+
+
+
+
+const routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__["AboutMeComponent"] },
+    {
+        path: 'products', component: _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_6__["PoductsComponent"], children: [
+            { path: 'life-mystree', component: _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_5__["LifeMystreeGameComponent"] },
+        ]
+    },
+    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"] },
+    { path: '**', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_3__["AboutMeComponent"] }
+];
+let AppRoutingModule = class AppRoutingModule {
+};
+AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })
+], AppRoutingModule);
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.scss":
 /*!************************************!*\
   !*** ./src/app/app.component.scss ***!
@@ -231,11 +279,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-/* harmony import */ var _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./about-me/about-me.component */ "./src/app/about-me/about-me.component.ts");
 /* harmony import */ var _sidenav_list_sidenav_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./sidenav-list/sidenav-list.component */ "./src/app/sidenav-list/sidenav-list.component.ts");
 /* harmony import */ var _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./poducts/poducts.component */ "./src/app/poducts/poducts.component.ts");
 /* harmony import */ var _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./poducts/life-mystree-game/life-mystree-game.component */ "./src/app/poducts/life-mystree-game/life-mystree-game.component.ts");
@@ -258,30 +306,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"] },
-    {
-        path: 'products', component: _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__["PoductsComponent"], children: [
-            { path: 'life-mystree', component: _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_10__["LifeMystreeGameComponent"] },
-        ]
-    },
-    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"] },
-    { path: '**', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"] }
-];
 let AppModule = class AppModule {
-    constructor(router) {
-        this.router = router;
-    }
 };
-AppModule.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }
-];
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-            _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"],
+            _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+            _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_7__["AboutMeComponent"],
             _sidenav_list_sidenav_list_component__WEBPACK_IMPORTED_MODULE_8__["SidenavListComponent"],
             _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__["PoductsComponent"],
             _poducts_life_mystree_game_life_mystree_game_component__WEBPACK_IMPORTED_MODULE_10__["LifeMystreeGameComponent"],
@@ -292,17 +323,16 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(routes),
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSidenavModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatListModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTreeModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatListModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatToolbarModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatIconModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTreeModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
         ],
         providers: [],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
     })
 ], AppModule);
 
