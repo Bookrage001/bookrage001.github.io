@@ -262,6 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"] },
     {
         path: 'products', component: _poducts_poducts_component__WEBPACK_IMPORTED_MODULE_9__["PoductsComponent"], children: [
@@ -269,6 +270,7 @@ var routes = [
         ]
     },
     { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"] },
+    { path: '**', component: _about_me_about_me_component__WEBPACK_IMPORTED_MODULE_6__["AboutMeComponent"] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule(router) {

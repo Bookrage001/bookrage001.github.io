@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CalenderComponent } from './dashboard/calender/calender.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: AboutMeComponent },
   {
     path: 'products', component: PoductsComponent, children: [
@@ -22,6 +23,7 @@ const routes: Routes = [
     ]
   },
   { path: 'dashboard', component: DashboardComponent },
+  { path: '**', component: AboutMeComponent }
 ];
 
 @NgModule({
