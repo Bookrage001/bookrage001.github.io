@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDrawer, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, MatTreeModule } from '@angular/material';
 import { AboutMeComponent } from './about-me/about-me.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { PoductsComponent } from './poducts/poducts.component';
 import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
@@ -52,4 +52,8 @@ const routes: Routes = [
 })
 
 
-export class AppModule { }
+export class AppModule {
+  constructor(private router: Router){
+
+  }
+}
