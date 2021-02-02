@@ -3,6 +3,7 @@
 # Bookrage001
 
 [Visit Bookrage001.com](https:// Bookrage001.com)
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
 
