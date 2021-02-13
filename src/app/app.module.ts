@@ -5,7 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDrawer, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, MatTreeModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTreeModule } from '@angular/material/tree';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { PoductsComponent } from './poducts/poducts.component';
