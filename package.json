@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "update": "ng update @angular/core@8 @angular/cli@8",
     "build:prod": "ng build --prod --base-href /  "
   },
   "private": true,
@@ -17,7 +18,6 @@
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
-    "@angular/flex-layout": "^11.0.0-beta.33",
     "@angular/forms": "~8.2.0",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.0",
@@ -49,6 +49,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "^4.1.5"
+    "typescript": "~3.4.0"
   }
 }
