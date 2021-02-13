@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CalenderComponent } from './dashboard/calender/calender.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CalenderComponent } from './dashboard/calender/calender.component';
     MatIconModule,
     MatTreeModule,
     AppRoutingModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
