@@ -1,6 +1,7 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
     <mat-toolbar color="primary" class="example-toolbar">
+        <!-- <button mat-icon-button> -->
         <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
@@ -9,16 +10,11 @@
 
 
 
-    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" style="position: fixed;
-    height: 100%;
-    min-height: 100%;
-    width: 100%;
-    min-width: 100%;">
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+        style="flex: 0 0 100%;">
 
         <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
             fixedTopGap="56">
-
-
 
             <app-sidenav-list (sidenavClose)="sidenav.close()">
 
@@ -35,7 +31,6 @@
                 </div>
 
             </div>
-            <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
