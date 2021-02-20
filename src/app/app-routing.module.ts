@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GamesComponent } from './games/games.component';
+import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
 import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
 import { PoductsComponent } from './poducts/poducts.component';
+import { ToolsComponent } from './tools/tools.component';
 
 
 const routes: Routes = [
@@ -15,6 +18,12 @@ const routes: Routes = [
     ]
   },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'tools', component: ToolsComponent },
+  {
+    path: 'games', component: GamesComponent, children: [
+      { path: 'tickTackToe', component: TickTackToeComponent },
+    ]
+  },
   { path: '**', component: AboutMeComponent }
 ];
 

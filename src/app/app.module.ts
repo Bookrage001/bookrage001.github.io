@@ -19,6 +19,11 @@ import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CalenderComponent } from './dashboard/calender/calender.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ToolsComponent } from './tools/tools.component';
+import { GamesComponent } from './games/games.component';
+import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
+import { BinaryToDecimalComponent } from './tools/binary-to-decimal/binary-to-decimal.component';
+import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/farenheight-to-celsius.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -32,6 +37,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MinecraftComponent,
     PageNotFoundComponent,
     CalenderComponent,
+    ToolsComponent,
+    GamesComponent,
+    TickTackToeComponent,
+    BinaryToDecimalComponent,
+    FarenheightToCelsiusComponent,
 
   ],
   imports: [

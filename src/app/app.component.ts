@@ -11,7 +11,7 @@ import { ChangeDetectorRef, Component, OnDestroy, ViewChild } from '@angular/cor
 export class AppComponent {
 
 
-  title = 'bookrage001';
+  title = 'Bookrage001';
   mobileQuery: MediaQueryList;
 
 

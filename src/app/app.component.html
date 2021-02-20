@@ -5,12 +5,12 @@
         <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        <h1 class="example-app-name">{{title}}</h1>
+        <h1 class="example-app-name">&nbsp;{{title}}</h1>
     </mat-toolbar>
 
 
 
-    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    <mat-sidenav-container fullscreen id="container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
         style="flex: 0 0 100%;">
 
         <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
