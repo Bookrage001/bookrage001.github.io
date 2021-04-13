@@ -1,5 +1,48 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
 img {
   max-width: 100%;
-  height: auto;
-  max-height: 300px;
+  max-height: 100%;
+}
+
+.image {
+  width: 20%;
+}
+
+.content {
+  width: 80%;
+}
+
+.pair {
+  display: flex;
+}
+
+.pair .element {
+  padding: 2%;
+  width: 50%;
+}
+
+@media (max-width: 400px) {
+  .pair {
+    display: block;
+    .element {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  .heading {
+    display: block;
+    .image {
+      width: 100%;
+      margin: 0 0 10px 0;
+      max-width: 100%;
+    }
+    .content {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
 }
