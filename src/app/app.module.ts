@@ -24,6 +24,7 @@ import { GamesComponent } from './games/games.component';
 import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
 import { BinaryToDecimalComponent } from './tools/binary-to-decimal/binary-to-decimal.component';
 import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/farenheight-to-celsius.component';
+import { WeekComponent } from './dashboard/calender/week/week.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/fa
     TickTackToeComponent,
     BinaryToDecimalComponent,
     FarenheightToCelsiusComponent,
+    WeekComponent,
 
   ],
   imports: [
