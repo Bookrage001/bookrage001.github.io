@@ -24,7 +24,9 @@ import { GamesComponent } from './games/games.component';
 import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
 import { BinaryToDecimalComponent } from './tools/binary-to-decimal/binary-to-decimal.component';
 import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/farenheight-to-celsius.component';
-import { WeekComponent } from './dashboard/calender/week/week.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -43,8 +45,6 @@ import { WeekComponent } from './dashboard/calender/week/week.component';
     TickTackToeComponent,
     BinaryToDecimalComponent,
     FarenheightToCelsiusComponent,
-    WeekComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -56,6 +56,11 @@ import { WeekComponent } from './dashboard/calender/week/week.component';
     MatTreeModule,
     AppRoutingModule,
     FlexLayoutModule,
+    HttpClientModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

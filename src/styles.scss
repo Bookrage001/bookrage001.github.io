@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+.content {
+  width: 80%;
+}
+
+.btn {
+  padding: 10px;
+  background-color: red;
+}
+
+.menu {
+  margin: 0;
+  display: flex;
+  /* Works well with 100% width  */
+  width: 32.05em;
+  font-size: 1.5em;
+  padding: 0 2.85em;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgColorMenu);
+}
