@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GamesComponent } from './games/games.component';
 import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
@@ -13,6 +14,13 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: AboutMeComponent },
   {
+    path: 'about-me', component: AboutMeComponent, children: [
+      { path: 'problem-solving', component: ProblemSolvingComponent },
+      // LEADERSHIP
+    ]
+  },
+  { path: 'problem-solving', component: ProblemSolvingComponent },
+  {
     path: 'products', component: PoductsComponent, children: [
       { path: 'life-mystree', component: LifeMystreeGameComponent },
     ]
@@ -24,7 +32,7 @@ const routes: Routes = [
       { path: 'tickTackToe', component: TickTackToeComponent },
     ]
   },
-  { path: '**', component: AboutMeComponent }
+  // { path: '**', component: AboutMeComponent }
 ];
 
 @NgModule({
