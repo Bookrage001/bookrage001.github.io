@@ -1,0 +1,15 @@
+<div>
+  <hr />
+
+  <h1>Professional Experience</h1>
+
+  <div *ngFor="let job of jobs">
+    <div>
+      <b>{{job.data.role}}</b> <br />
+
+      {{job.data.company}}: {{job.data.startMonth}} {{job.data.startYear}} - {{job.data.endMonth}} {{job.data.endYear}}
+
+      <p>{{job.data.description}}</p>
+    </div>
+  </div>
+</div>

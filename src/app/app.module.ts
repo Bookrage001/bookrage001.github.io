@@ -25,6 +25,8 @@ import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.compon
 import { BinaryToDecimalComponent } from './tools/binary-to-decimal/binary-to-decimal.component';
 import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/farenheight-to-celsius.component';
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
+import { JobsComponent } from './about-me/jobs/jobs.component';
+import { JobService } from './about-me/jobs/jobs.service';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -44,6 +46,7 @@ import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solv
     BinaryToDecimalComponent,
     FarenheightToCelsiusComponent,
     ProblemSolvingComponent,
+    JobsComponent,
 
   ],
   imports: [
@@ -57,7 +60,7 @@ import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solv
     AppRoutingModule,
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [JobService],
   bootstrap: [AppComponent],
 })
 
