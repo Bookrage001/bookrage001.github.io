@@ -1,27 +1,59 @@
-<div fxLayoutGap="30px" class="heading">
-  <div class="image">
+<div>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>settings</mat-icon>
+  </button>
 
-    <!-- Profile Photo (left)-->
-    <img src="./assets/img/profile.jpg" alt="Caleb Ardern">
-  </div>
+  <mat-sidenav-container id="container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" style="flex: 0 0 100%;">
 
-  <div class="content">
-    <!-- Details (Right) -->
-    <h1>
-      Caleb Ardern
-    </h1>
-    <h2> Software Developer</h2>
-    <!-- <p><b>Mobile:</b> TBC</p>
+    <!-- ------------------------ -->
+
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <app-skills (sidenavClose)="sidenav.close()"></app-skills>
+    </mat-sidenav>
+    <!-- ------------------------ -->
+    <mat-sidenav-content>
+      <div style=" display: flex; justify-content: center;">
+        <div style=" margin-top: 30px; min-width: 60%; padding: 30px; max-width: 90%;">
+
+
+        </div>
+
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>
+
+
+<div class="pair">
+  <div fxLayoutGap="30px" class="heading">
+    <div class="image">
+
+      <!-- Profile Photo (left)-->
+      <img src="./assets/img/profile.jpg" alt="Caleb Ardern">
+    </div>
+
+    <div class="content">
+      <!-- Details (Right) -->
+      <h1>
+        Caleb Ardern
+      </h1>
+      <h2> Software Developer</h2>
+      <!-- <p><b>Mobile:</b> TBC</p>
             <p><b>Email:</b> TBC</p>
             <p><b>Linkedin:</b> TBC</p> -->
-    <p>
-      <a href="https://www.linkedin.com/in/calebgardern/">Linkedin</a> |
-      <a href="https://github.com/Bookrage001">Github</a>
-    </p>
-    <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-    </p>
+      <p>
+        <a href="https://www.linkedin.com/in/calebgardern/">Linkedin</a> |
+        <a href="https://github.com/Bookrage001">Github</a>
+      </p>
+      <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+      </p>
+    </div>
   </div>
 </div>
+
 
 <div class="pair">
   <div class="element">
