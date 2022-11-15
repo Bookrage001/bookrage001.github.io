@@ -27,6 +27,8 @@ import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/fa
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { JobsComponent } from './about-me/jobs/jobs.component';
 import { JobService } from './about-me/jobs/jobs.service';
+import { BlogComponent } from './blog/blog.component';
+import { IntroductionComponent } from './blog/introduction/introduction.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -47,6 +49,8 @@ import { JobService } from './about-me/jobs/jobs.service';
     FarenheightToCelsiusComponent,
     ProblemSolvingComponent,
     JobsComponent,
+    BlogComponent,
+    IntroductionComponent,
 
   ],
   imports: [
