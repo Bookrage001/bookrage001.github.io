@@ -32,6 +32,7 @@ import { IntroductionComponent } from './blog/introduction/introduction.componen
 import { DocumentationComponent } from './documentation/documentation.component';
 import { ComponentsComponent } from './components/components.component';
 import { LineGraphComponent } from './Components/line-graph/line-graph.component';
+import { BigonotationComponent } from './Documentation/bigonotation/bigonotation.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -57,6 +58,7 @@ import { LineGraphComponent } from './Components/line-graph/line-graph.component
     DocumentationComponent,
     ComponentsComponent,
     LineGraphComponent,
+    BigonotationComponent,
 
   ],
   imports: [

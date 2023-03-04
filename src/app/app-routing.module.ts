@@ -9,6 +9,7 @@ import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.compon
 import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
 import { PoductsComponent } from './poducts/poducts.component';
 import { ToolsComponent } from './tools/tools.component';
+import { DocumentationComponent } from './documentation/documentation.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'tickTackToe', component: TickTackToeComponent },
     ]
   },
+  {path: 'documentation', component: DocumentationComponent}
   // { path: '**', component: AboutMeComponent }
 ];
 
