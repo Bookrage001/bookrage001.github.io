@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class JobItem {\n  constructor(data) {\n    this.data = data;\n  }\n\n}\n/*\r\nNeeds the following data\r\n\r\nTitle\r\nCompany\r\n\r\nStart Month\r\nStart Year\r\n\r\nEnd Month\r\nEnd Year\r\n\r\nDescription\r\n\r\nMetadata\r\n  - TAGS (Skills included ie Information Technology)\r\n\r\n*/","map":null,"metadata":{},"sourceType":"module"}
