@@ -29,6 +29,9 @@ import { JobsComponent } from './about-me/jobs/jobs.component';
 import { JobService } from './about-me/jobs/jobs.service';
 import { BlogComponent } from './blog/blog.component';
 import { IntroductionComponent } from './blog/introduction/introduction.component';
+import { DocumentationComponent } from './documentation/documentation.component';
+import { ComponentsComponent } from './components/components.component';
+import { LineGraphComponent } from './Components/line-graph/line-graph.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -51,6 +54,9 @@ import { IntroductionComponent } from './blog/introduction/introduction.componen
     JobsComponent,
     BlogComponent,
     IntroductionComponent,
+    DocumentationComponent,
+    ComponentsComponent,
+    LineGraphComponent,
 
   ],
   imports: [

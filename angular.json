@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "bookrage001"
+  "defaultProject": "bookrage001",
+  "cli": {
+    "analytics": "c09f3a6b-55d8-45db-a576-4ec737eb9a64"
+  }
 }
