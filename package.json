@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check",
+    "start": "ng serve ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "upload": "aws s3 cp ./docs/ s3://bookrage001.com --recursive",
     "e2e": "ng e2e",
     "update": "ng update",
-    "build:prod": "ng build --prod --base-href /  "
+    "build:prod": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {

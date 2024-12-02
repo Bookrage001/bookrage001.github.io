@@ -7,7 +7,10 @@
     <div>
       <b>{{job.data.role}}</b> <br />
 
+
+
       {{job.data.company}}: {{job.data.startMonth}} {{job.data.startYear}} - {{job.data.endMonth}} {{job.data.endYear}}
+      <span *ngIf="job.data.endMonth == undefined && job.data.endYear == undefined">Present</span>
 
       <p>{{job.data.description}}</p>
       <!-- <mat-divider></mat-divider> -->
