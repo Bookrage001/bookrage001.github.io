@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { AboutMeComponent } from './about-me/about-me.component';
@@ -34,6 +34,7 @@ import { ComponentsComponent } from './components/components.component';
 import { LineGraphComponent } from './Components/line-graph/line-graph.component';
 import { BigonotationComponent } from './Documentation/bigonotation/bigonotation.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
