@@ -1,22 +1,22 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { JobItem } from './job-item';
-import { JobService } from './jobs.service';
+import { JobService } from '../../services/job.service';
+import { JobComponent } from './job.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
+  styleUrls: ['./jobs.component.scss'],
+  standalone: true,
+  imports: [CommonModule]
 })
-export class JobsComponent implements OnInit {
-  jobs: JobItem[] = [];
+export class JobsComponent {
+  jobs$: Observable<JobComponent[]>;
 
-  constructor(
-    private jobservice: JobService
-  ) { }
-
-  ngOnInit() {
-    this.jobs = this.jobservice.getAds();
+  constructor(private jobservice: JobService) {
+    this.jobs$ = this.jobservice.getAds();
   }
-
 }
 

@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import * as echarts from 'echarts';
+
 
 @Component({
   selector: 'app-line-graph',
   templateUrl: './line-graph.component.html',
-  styleUrls: ['./line-graph.component.scss']
+  styleUrls: ['./line-graph.component.scss'],
+  standalone: true
 })
 export class LineGraphComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    var myChart = echarts.init(document.getElementById('echarts-Demo'));
-
+  async ngOnInit(): Promise<void> {
+    const echartsModule = await import('echarts');
+    const echarts = echartsModule.default;
+    const myChart = echarts.init(document.getElementById('echarts-Demo'));
     // Draw the chart
     myChart.setOption({
       title: {

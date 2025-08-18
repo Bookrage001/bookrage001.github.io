@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+// import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
+import { MatListModule } from '@angular/material/list';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
@@ -26,18 +27,27 @@ import { BinaryToDecimalComponent } from './tools/binary-to-decimal/binary-to-de
 import { FarenheightToCelsiusComponent } from './tools/farenheight-to-celsius/farenheight-to-celsius.component';
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { JobsComponent } from './about-me/jobs/jobs.component';
-import { JobService } from './about-me/jobs/jobs.service';
 import { BlogComponent } from './blog/blog.component';
 import { IntroductionComponent } from './blog/introduction/introduction.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { ComponentsComponent } from './components/components.component';
-import { LineGraphComponent } from './Components/line-graph/line-graph.component';
-import { BigonotationComponent } from './Documentation/bigonotation/bigonotation.component';
+import { LineGraphComponent } from './components/line-graph/line-graph.component';
+import { BigonotationComponent } from './documentation/bigonotation/bigonotation.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTreeModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    RouterModule,
     AboutMeComponent,
     SidenavListComponent,
     PoductsComponent,
@@ -59,21 +69,10 @@ import { BigonotationComponent } from './Documentation/bigonotation/bigonotation
     ComponentsComponent,
     LineGraphComponent,
     BigonotationComponent,
-
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatTreeModule,
-    AppRoutingModule,
-    FlexLayoutModule,
   ],
   providers: [JobService],
-  bootstrap: [AppComponent],
+  // bootstrap: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
 

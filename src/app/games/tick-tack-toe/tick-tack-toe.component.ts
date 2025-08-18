@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-tick-tack-toe',
   templateUrl: './tick-tack-toe.component.html',
-  styleUrls: ['./tick-tack-toe.component.scss']
+  styleUrls: ['./tick-tack-toe.component.scss'],
+  standalone: true
 })
 export class TickTackToeComponent implements OnInit {
 

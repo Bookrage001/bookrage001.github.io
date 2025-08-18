@@ -12,9 +12,8 @@ import { ToolsComponent } from './tools/tools.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 
 
-const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: AboutMeComponent },
+export const routes: Routes = [
+  { path: '', component: AboutMeComponent },
   {
     path: 'about-me', component: AboutMeComponent, children: [
       { path: 'problem-solving', component: ProblemSolvingComponent },
