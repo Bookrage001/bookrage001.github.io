@@ -21,7 +21,7 @@
     "@angular/core": "^16.2.12",
     "@angular/flex-layout": "^11.0.0-beta.33",
     "@angular/forms": "^16.2.12",
-    "@angular/material": "^11.2.0",
+    "@angular/material": "^12.2.13",
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
