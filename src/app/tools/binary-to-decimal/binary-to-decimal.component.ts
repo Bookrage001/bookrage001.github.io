@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-binary-to-decimal',
@@ -6,11 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./binary-to-decimal.component.scss'],
   standalone: true
 })
-export class BinaryToDecimalComponent implements OnInit {
+export class BinaryToDecimalComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

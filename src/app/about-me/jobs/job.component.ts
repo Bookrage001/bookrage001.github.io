@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+// ...existing code...
 
 export interface JobComponent {
   role: string,

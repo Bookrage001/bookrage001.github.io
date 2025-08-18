@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-life-mystree-game',
@@ -6,11 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./life-mystree-game.component.scss'],
   standalone: true
 })
-export class LifeMystreeGameComponent implements OnInit {
+export class LifeMystreeGameComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

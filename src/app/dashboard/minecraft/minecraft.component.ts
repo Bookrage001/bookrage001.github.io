@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-minecraft',
@@ -7,14 +7,9 @@ import { Component, OnInit } from '@angular/core';
   standalone: true
 })
 
-export class MinecraftComponent implements OnInit {
+export class MinecraftComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
-
 
 
 }

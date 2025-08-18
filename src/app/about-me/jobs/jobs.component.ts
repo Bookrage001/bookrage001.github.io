@@ -1,6 +1,5 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { JobItem } from './job-item';
 import { JobService } from '../../services/job.service';
 import { JobComponent } from './job.component';
 import { Observable } from 'rxjs';
@@ -15,7 +14,9 @@ import { Observable } from 'rxjs';
 export class JobsComponent {
   jobs$: Observable<JobComponent[]>;
 
-  constructor(private jobservice: JobService) {
+  private jobservice = inject(JobService);
+
+  constructor() {
     this.jobs$ = this.jobservice.getAds();
   }
 }

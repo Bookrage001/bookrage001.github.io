@@ -1,4 +1,3 @@
-import { Type } from '@angular/core';
 import { JobComponent } from './job.component';
 
 export class JobItem {

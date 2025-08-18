@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { AboutMeComponent } from './about-me/about-me.component';
@@ -70,7 +70,7 @@ import { BigonotationComponent } from './documentation/bigonotation/bigonotation
     LineGraphComponent,
     BigonotationComponent,
   ],
-  providers: [JobService],
+  // providers: [],
   // bootstrap: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

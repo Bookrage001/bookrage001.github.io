@@ -1,4 +1,4 @@
-import { Directive, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 
 import { JobItem } from './job-item';

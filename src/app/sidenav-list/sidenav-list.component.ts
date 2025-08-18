@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
@@ -12,16 +12,13 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ]
 })
-export class SidenavListComponent implements OnInit {
+export class SidenavListComponent {
   @Output() sidenavClose = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
   public onSidenavClose = () => {
     this.sidenavClose.emit();
-  };
+  }
 
 }

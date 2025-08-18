@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { JobsComponent } from './jobs/jobs.component';
@@ -14,11 +14,7 @@ import { JobsComponent } from './jobs/jobs.component';
     JobsComponent
   ]
 })
-export class AboutMeComponent implements OnInit {
+export class AboutMeComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

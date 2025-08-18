@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CalenderComponent } from './calender/calender.component';
 import { MinecraftComponent } from './minecraft/minecraft.component';
 
@@ -12,11 +12,7 @@ import { MinecraftComponent } from './minecraft/minecraft.component';
     MinecraftComponent
   ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

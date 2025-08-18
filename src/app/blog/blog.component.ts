@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,11 +10,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ]
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tick-tack-toe',
@@ -6,18 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tick-tack-toe.component.scss'],
   standalone: true
 })
-export class TickTackToeComponent implements OnInit {
+export class TickTackToeComponent {
 
-  constructor() { }
-
-
-  ngOnInit(): void {
-  }
   turn = 1;
 
-
+  constructor() { }
   public select(location) {
-    var thisElement = document.getElementById(location);
+    const thisElement = document.getElementById(location);
     if (thisElement.innerHTML != "O" && thisElement.innerHTML != "X") {
       if (this.turn % 2 == 1) {
         thisElement.innerHTML = "X";
@@ -31,9 +26,9 @@ export class TickTackToeComponent implements OnInit {
   }
 
   public RESET() {
-    var i = 0;
+    let i = 0;
     do {
-      var x = document.getElementsByClassName("Nice");
+      const x = document.getElementsByClassName("Nice");
       x[i].innerHTML = " ";
       // x[i].innerHTML.disabled = false;
       i++;

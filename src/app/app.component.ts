@@ -1,6 +1,6 @@
 
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, ViewChild, inject } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 
@@ -25,7 +25,7 @@ import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
     SidenavListComponent
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
 
   title = 'Bookrage001';
@@ -35,10 +35,12 @@ export class AppComponent {
 
   private _mobileQueryListener: () => void;
 
+  private changeDetectorRef = inject(ChangeDetectorRef);
+  private media = inject(MediaMatcher);
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+  constructor() {
+    this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
