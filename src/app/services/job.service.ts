@@ -22,8 +22,8 @@ export class JobService {
           'Revised and improved UX across the stack and products to make tools more intuitive and effective for users, reflecting a user centred mindset.',
           'Contributed to automation scripts and infrastructure improvements to support the team and operations with more reliable and efficient tools.'
         ],
-        tags: ['Software Development', 'Full Stack Development', 'Systems Integration', 'Security', 'Leadership', 'Project Delivery', 'Continuous Improvement', 'Problem Solving', 'Stakeholder Management', 'User-Centered Design'],
-        techTags: ['Microservices', 'Distributed Systems', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Infrastructure as Code', 'Scripting']
+        tags: ['Full Stack Development', 'Security', 'Leadership', 'Project Delivery', 'Problem Solving', 'Stakeholder Management', 'User-Centered Design', 'Communication', 'End User Support', 'Design Thinking'],
+        techTags: ['C#', '.NET', 'Desktop Application', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Scripting', 'Jira', 'Microsoft 365']
       }),
       new JobItem({
         role: 'Software Engineer', company: 'OptimalSlope Ltd', startDate: new Date('2022-11-01'), endDate: new Date('2023-04-01'),  description:
@@ -32,7 +32,7 @@ export class JobService {
           'Focused on practical problem solving where technical choices directly improved user capability.',
           'Helped shape design and functionality across the stack to turn ideas into useful tools.'
         ],
-        tags: ['Software Development', 'Problem Solving', 'Project Delivery', 'Solution Design'],
+        tags: ['Full Stack Development', 'Problem Solving', 'Project Delivery'],
         techTags: ['C#', '.NET', 'Desktop Application']
       }),
       new JobItem(
@@ -43,7 +43,7 @@ export class JobService {
               'Balanced changing requests with operational constraints, strengthening my adaptability and decision making.',
               'Supported reception and activity leadership teams with a service-first, people-focused mindset.'
             ],
-          tags: ['Operations', 'Leadership', 'Customer Service', 'Communication', 'Problem Solving', 'Stakeholder Management', 'Service Delivery', 'Coordination'],
+          tags: ['Operations', 'Leadership', 'Customer Service', 'Communication', 'Problem Solving', 'Stakeholder Management'],
           techTags: []
         }
       ),
@@ -55,7 +55,7 @@ export class JobService {
               'Developed confidence in communication, facilitation, and real-time problem solving.',
               'Partnered closely with accompanying adults to align expectations and deliver a better overall experience.'
             ],
-          tags: ['Leadership', 'Communication', 'Customer Service', 'Teamwork', 'Problem Solving', 'Facilitation', 'Adaptability', 'Stakeholder Management'],
+          tags: ['Leadership', 'Communication', 'Customer Service', 'Teamwork', 'Problem Solving', 'Stakeholder Management'],
           techTags: []
         }
       ),
@@ -68,8 +68,8 @@ export class JobService {
               'Supported a VPN rollout to strengthen access and trust across the organization.',
               'Developed ideas through scripting and prototyping to find practical solutions to technical and operational challenges.',
             ],
-          tags: ['Software Development', 'Automation', 'Security', 'Project Delivery', 'Continuous Improvement', 'Problem Solving', 'IT Support', 'Communication'],
-          techTags: ['C#', '.NET', 'VPN', 'Scripting', 'Networking']
+          tags: ['Full Stack Development', 'Automation', 'Security', 'Project Delivery', 'Continuous Improvement', 'Problem Solving', 'End User Support', 'Communication'],
+          techTags: ['C#', '.NET', 'VPN', 'Scripting', 'Networking', 'Jira']
         }
       ),
       new JobItem(
@@ -80,8 +80,8 @@ export class JobService {
               'Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents.',
               'Strengthened foundations that helped others focus on teaching and learning.'
             ],
-          tags: ['IT Support', 'Customer Service', 'Problem Solving', 'Continuous Improvement', 'Communication'],
-          techTags: ['Jira', 'Active Directory', 'Microsoft 365', 'Jamf', 'PowerShell', 'macOS', 'Windows', 'Scripting']
+          tags: ['End User Support', 'Customer Service', 'Problem Solving', 'Continuous Improvement', 'Communication'],
+          techTags: ['Jira', 'Active Directory', 'Microsoft 365', 'Jamf', 'Scripting']
         }
       ),
       new JobItem(
@@ -92,7 +92,7 @@ export class JobService {
               'Developed a strong motivation for interdisciplinary collaboration, innovation, and systems thinking.',
               'Built habits of reflection and learning that continue to guide day-to-day decisions.'
             ],
-          tags: ['Innovation', 'Systems Thinking', 'Design Thinking', 'Research', 'Interdisciplinary Collaboration', 'Problem Solving', 'Communication'],
+          tags: [ 'Design Thinking', 'Problem Solving', 'Communication', 'User-Centered Design', "Leadership", 'StakeHolder Management'],
           techTags: []
         }
       ),
@@ -104,8 +104,8 @@ export class JobService {
               'Improved client outcomes through automation, deployment workflows, and infrastructure implementation.',
               'Used initiative and self-directed learning to solve unfamiliar problems and keep momentum on critical work.',
             ],
-          tags: ['Software Development', 'Frontend Development', 'Full Stack Development', 'Automation', 'DevOps', 'Project Delivery', 'Continuous Improvement', 'Problem Solving'],
-          techTags: ['AWS', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Infrastructure as Code', 'CloudFormation', 'SAML', 'OAuth', 'OpenID Connect', 'AWS Cognito', 'AWS Lambda', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail']
+          tags: ['Full Stack Development', 'Automation', 'Project Delivery', 'Continuous Improvement', 'Problem Solving', 'User-Centered Design'],
+          techTags: ['AWS', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Infrastructure as Code', 'CloudFormation', 'SAML', 'OAuth', 'OpenID Connect', 'AWS Cognito', 'AWS Lambda', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail', 'Jira']
         }
       ),
       new JobItem(
@@ -117,8 +117,8 @@ export class JobService {
               'Adapted to changing responsibilities, reinforcing values of contribution, teamwork, and stewardship.',
               'Contributed to internal tooling and automation to support operations and reduce manual work for volunteers'
             ],
-          tags: ['Operations', 'IT Support', 'Customer Service', 'Teamwork', 'Problem Solving'],
-          techTags: ['AV Systems', 'FreePBX', '3CX', 'Docker', 'Network Hardware', 'Telecom Hardware', 'Scripting']
+          tags: ['Operations', 'End User Support', 'Customer Service', 'Teamwork', 'Problem Solving'],
+          techTags: ['AV Systems', 'FreePBX', '3CX', 'Docker', 'Networking', 'Telecom Hardware', 'Scripting', 'Infrastructure as Code', 'Jira']
         }
       ),
       new JobItem(
@@ -129,8 +129,8 @@ export class JobService {
               'Delivered dependable execution on detailed technical tasks where consistency and quality mattered.',
               'Built early foundations in hands-on IT operations, teamwork, and customer-focused delivery.'
             ],
-          tags: ['Operations', 'Hardware Deployment', 'Quality Assurance', 'Teamwork'],
-          techTags: ['Cisco', 'Avaya', 'Nortel', 'Network Hardware', 'Telecom Hardware']
+          tags: ['Operations', 'Teamwork'],
+          techTags: ['Avaya', 'Nortel', 'Networking', 'Telecom Hardware']
         }
       ),
     ]);

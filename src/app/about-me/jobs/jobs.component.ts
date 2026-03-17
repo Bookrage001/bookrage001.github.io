@@ -95,15 +95,19 @@ export class JobsComponent {
   }
 
   get shouldShowTags(): boolean {
-    return this.showTags || this.hasActiveFilters;
+    return this.showTags || this.hasSelectedSkillFilters;
   }
 
   get shouldShowTechTags(): boolean {
-    return this.showTechTags || this.hasActiveFilters;
+    return this.showTechTags || this.hasSelectedTechFilters;
   }
 
-  private get hasActiveFilters(): boolean {
-    return this.selectedTags.length > 0 || this.selectedTechTags.length > 0;
+  private get hasSelectedSkillFilters(): boolean {
+    return this.selectedTags.length > 0;
+  }
+
+  private get hasSelectedTechFilters(): boolean {
+    return this.selectedTechTags.length > 0;
   }
 
   private applyFilters(): void {
