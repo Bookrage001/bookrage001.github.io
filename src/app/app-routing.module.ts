@@ -10,7 +10,6 @@ import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystr
 import { PoductsComponent } from './poducts/poducts.component';
 import { ToolsComponent } from './tools/tools.component';
 import { DocumentationComponent } from './documentation/documentation.component';
-import { AuthComponent } from './auth.component';
 
 
 export const routes: Routes = [
@@ -21,7 +20,6 @@ export const routes: Routes = [
       // LEADERSHIP
     ]
   },
-  { path: 'auth', component: AuthComponent },
   { path: 'problem-solving', component: ProblemSolvingComponent },
   { path: 'blog', component: BlogComponent },
   {
