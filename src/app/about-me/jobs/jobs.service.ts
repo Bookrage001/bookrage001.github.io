@@ -7,6 +7,19 @@ import { JobItem } from './job-item';
 export class JobService {
   getAds() {
     return [
+      new JobItem({
+        role: 'Software Engineer', company: 'Windracers', startMonth: "May", startYear: "2023",  description:
+        `
+        Creative leader in the Mission Software Team. Where my role was to develop and maintain a range of micro-services. This included integrating these services into the Distributed Control Application.
+        Building on the existing code base I was instrumental in improving the security and software development practices of the business.
+        I stepped into a wide variety of roles including: Managing IT, Fire Warden and First Aid Officer.
+        What I enjoy most about my current role is gathering the requirements from the end users and delivering this to them.
+        `
+      }),
+      new JobItem({
+        role: 'Software Engineer', company: 'OptimalSlope Ltd', startMonth: "November", startYear: "2022", endMonth: "April", endYear: "2023",  description:
+        `Developing a new C# desktop application to improve the capability to create optimal slope walls for mining. contributed to design and functionality of the full stack application.`
+      }),
       new JobItem(
         {
           role: 'Programme Coordinator', company: 'PGL Travel LTD', startMonth: "July", startYear: "2022", endMonth: "September", endYear: "2022", description:

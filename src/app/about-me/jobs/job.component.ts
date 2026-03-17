@@ -6,7 +6,7 @@ export interface JobComponent {
   startMonth?: string,
   startYear: string,
   endMonth?: string,
-  endYear: string,
+  endYear?: string,
   description: string,
   tags?: Array<string>;
 }
