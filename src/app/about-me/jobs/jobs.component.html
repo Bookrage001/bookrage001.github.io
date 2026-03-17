@@ -3,18 +3,23 @@
 
   <div class="title-row">
     <h1>Professional Experience</h1>
-    <button mat-stroked-button type="button" (click)="toggleFilters()">
-      {{ filtersVisible ? 'Hide Filters' : 'Show Filters' }}
-    </button>
+    <div class="resume-actions no-print">
+      <button mat-stroked-button type="button" (click)="toggleFilters()">
+        {{ filtersVisible ? 'Hide Filters' : 'Show Filters' }}
+      </button>
+      <button mat-flat-button color="primary" type="button" (click)="printResume()">
+        Print Resume
+      </button>
+    </div>
   </div>
 
-  <div class="display-toggles">
+  <div class="display-toggles no-print">
     <div class="display-toggles-header">
       <span class="display-toggles-title">Display Options</span>
       <span class="display-toggles-subtitle">Choose what extra details appear in each role.</span>
     </div>
 
-    <div class="display-toggle-options" role="group" aria-label="Display options">
+    <div class="display-toggle-options " role="group" aria-label="Display options">
       <mat-checkbox class="show-tags-toggle" [checked]="showTags" (change)="showTags = !showTags">
         Skill Tags
       </mat-checkbox>
@@ -25,7 +30,7 @@
     </div>
   </div>
 
-  <div class="filter-panel" *ngIf="filtersVisible">
+  <div class="filter-panel no-print" *ngIf="filtersVisible">
     <div class="filter-header">
       <span>Filters</span>
       <button mat-stroked-button type="button" (click)="clearAllFilters()" [disabled]="selectedTags.length === 0 && selectedTechTags.length === 0">Clear All</button>
@@ -42,6 +47,7 @@
           class="filter-chip"
           *ngFor="let tag of tags$ | async"
           [selected]="isTagSelected(tag)"
+          [class.filter-chip-selected]="isTagSelected(tag)"
           (click)="onTagChange(tag)"
         >
           {{tag}}
@@ -60,6 +66,7 @@
           class="filter-chip"
           *ngFor="let tag of techTags$ | async"
           [selected]="isTechTagSelected(tag)"
+          [class.filter-chip-selected]="isTechTagSelected(tag)"
           (click)="onTechTagChange(tag)"
         >
           {{tag}}
@@ -75,13 +82,13 @@
       {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
 
       <div class="tag-list" *ngIf="shouldShowTags && job.data.tags?.length">
-        <span class="tag-chip" *ngFor="let tag of job.data.tags">{{tag}}</span>
+        <span class="tag-chip" [class.tag-chip-selected]="isTagSelected(tag)" *ngFor="let tag of job.data.tags">{{tag}}</span>
       </div>
 
       <div class="tech-tag-block" *ngIf="shouldShowTechTags && job.data.techTags?.length">
         <span class="tech-tag-label">Tech:</span>
         <div class="tag-list tech-tag-list">
-          <span class="tag-chip tech-tag-chip" *ngFor="let techTag of job.data.techTags">{{techTag}}</span>
+          <span class="tag-chip tech-tag-chip" [class.tech-tag-chip-selected]="isTechTagSelected(techTag)" *ngFor="let techTag of job.data.techTags">{{techTag}}</span>
         </div>
       </div>
 

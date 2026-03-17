@@ -90,6 +90,10 @@ export class JobsComponent {
     this.jobs$ = this.allJobs$;
   }
 
+  printResume(): void {
+    window.print();
+  }
+
   get shouldShowTags(): boolean {
     return this.showTags || this.hasActiveFilters;
   }

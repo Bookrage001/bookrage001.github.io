@@ -28,3 +28,35 @@ body {
         top: 56px !important;
     }
 }
+
+@media print {
+    .example-toolbar,
+    mat-sidenav {
+        display: none !important;
+    }
+
+    .container,
+    #container,
+    mat-sidenav-container,
+    mat-sidenav-content,
+    .mat-drawer-content {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    #container {
+        position: static !important;
+        top: 0 !important;
+    }
+
+    mat-sidenav-content > div,
+    mat-sidenav-content > div > div {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        background: transparent !important;
+    }
+}

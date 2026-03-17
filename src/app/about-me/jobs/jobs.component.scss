@@ -9,6 +9,12 @@
 	}
 }
 
+.resume-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
 .filter-panel {
 	margin: 0.9rem 0 1rem;
 	padding: 0.75rem;
@@ -93,6 +99,13 @@
 	--mdc-chip-container-height: 24px;
 }
 
+.filter-chip.filter-chip-selected {
+	--mdc-chip-elevated-container-color: #1f3a63;
+	--mdc-chip-flat-selected-container-color: #1f3a63;
+	--mdc-chip-label-text-color: #ffffff;
+	--mdc-chip-with-icon-icon-color: #ffffff;
+}
+
 .tag-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -126,8 +139,32 @@
 	color: #2f3a48;
 }
 
+.tag-chip-selected {
+	background: #e7f0ff;
+	border-color: #6f95d9;
+	color: #15335d;
+	font-weight: 600;
+}
+
 .tech-tag-chip {
 	background: #eef4ff;
 	border-color: #c9d8f5;
 	color: #24406b;
+}
+
+.tech-tag-chip.tech-tag-chip-selected {
+	background: #dceaff;
+	border-color: #6f95d9;
+	color: #15335d;
+	font-weight: 600;
+}
+
+@media print {
+	.no-print {
+		display: none !important;
+	}
+
+	hr {
+		display: none;
+	}
 }
