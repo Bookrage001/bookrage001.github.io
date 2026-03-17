@@ -13,8 +13,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
-import { PoductsComponent } from './poducts/poducts.component';
-import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
+import { ProductsComponent } from './products/products.component';
+import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -50,7 +50,7 @@ import { BigonotationComponent } from './documentation/bigonotation/bigonotation
     RouterModule,
     AboutMeComponent,
     SidenavListComponent,
-    PoductsComponent,
+    ProductsComponent,
     LifeMystreeGameComponent,
     DashboardComponent,
     MinecraftComponent,

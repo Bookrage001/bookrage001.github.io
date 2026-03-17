@@ -6,8 +6,8 @@ import { BlogComponent } from './blog/blog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GamesComponent } from './games/games.component';
 import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
-import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
-import { PoductsComponent } from './poducts/poducts.component';
+import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
+import { ProductsComponent } from './products/products.component';
 import { ToolsComponent } from './tools/tools.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 
@@ -23,7 +23,7 @@ export const routes: Routes = [
   { path: 'problem-solving', component: ProblemSolvingComponent },
   { path: 'blog', component: BlogComponent },
   {
-    path: 'products', component: PoductsComponent, children: [
+    path: 'products', component: ProductsComponent, children: [
       { path: 'life-mystree', component: LifeMystreeGameComponent },
     ]
   },
