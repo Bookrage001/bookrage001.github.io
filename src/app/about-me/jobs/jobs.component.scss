@@ -40,6 +40,22 @@
 	margin: 0.35rem 0 0.5rem;
 }
 
+.tech-tag-block {
+	margin: 0.15rem 0 0.35rem;
+}
+
+.tech-tag-label {
+	display: inline-block;
+	font-size: 0.72rem;
+	font-weight: 600;
+	color: #5d6877;
+	margin-bottom: 0.2rem;
+}
+
+.tech-tag-list {
+	margin-top: 0.2rem;
+}
+
 .tag-chip {
 	font-size: 0.7rem;
 	line-height: 1.2;
@@ -48,4 +64,10 @@
 	border: 1px solid #cfd4dc;
 	background: #f5f7fa;
 	color: #2f3a48;
+}
+
+.tech-tag-chip {
+	background: #eef4ff;
+	border-color: #c9d8f5;
+	color: #24406b;
 }

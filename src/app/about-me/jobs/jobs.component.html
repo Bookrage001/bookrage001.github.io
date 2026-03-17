@@ -31,6 +31,13 @@
         <span class="tag-chip" *ngFor="let tag of job.data.tags">{{tag}}</span>
       </div>
 
+      <div class="tech-tag-block" *ngIf="job.data.techTags?.length">
+        <span class="tech-tag-label">Tech:</span>
+        <div class="tag-list tech-tag-list">
+          <span class="tag-chip tech-tag-chip" *ngFor="let techTag of job.data.techTags">{{techTag}}</span>
+        </div>
+      </div>
+
       <ul>
         <li *ngFor="let description of job.data.description">{{description}}</li>
       </ul>

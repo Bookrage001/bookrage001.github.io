@@ -16,9 +16,12 @@ export class JobService {
           'Led mission software work with a focus on outcomes that matter to operators and teams on the ground.',
           'Built and integrated microservices into the Distributed Control Application to deliver reliable real-world impact.',
           'Improved security and development practices because quality and trust are core values in my engineering approach.',
-          'Stepped into broader responsibilities to support the whole team, not just the codebase.'
+          'Stepped into broader responsibilities to support the whole team, not just the codebase.',
+          'Contributed to a culture of continuous improvement through regular reflection and open communication.',
+          'Revised and improved UX across the stack to make tools more intuitive and effective for users, reflecting a user centred mindset.'
         ],
-        tags: ['Microservices', 'System Integration', 'Security', 'Software Engineering', 'Cross-Functional Leadership']
+        tags: ['Software Development', 'Full Stack Development', 'Security', 'Leadership', 'Project Delivery', 'Continuous Improvement', 'Problem Solving'],
+        techTags: ['Microservices', 'Distributed Systems', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Infrastructure as Code']
       }),
       new JobItem({
         role: 'Software Engineer', company: 'OptimalSlope Ltd', startDate: new Date('2022-11-01'), endDate: new Date('2023-04-01'),  description:
@@ -27,7 +30,8 @@ export class JobService {
           'Focused on practical problem solving where technical choices directly improved user capability.',
           'Helped shape design and functionality across the stack to turn ideas into useful tools.'
         ],
-        tags: ['C#', '.NET', 'Desktop Application Development', 'Product Design', 'Problem Solving']
+        tags: ['Software Development', 'C#', '.NET', 'Problem Solving', 'Project Delivery'],
+        techTags: ['C#', '.NET', 'Desktop Application']
       }),
       new JobItem(
         {
@@ -37,7 +41,8 @@ export class JobService {
               'Balanced changing requests with operational constraints, strengthening my adaptability and decision making.',
               'Supported reception and activity leadership teams with a service-first, people-focused mindset.'
             ],
-          tags: ['Programme Coordination', 'Operations Management', 'Stakeholder Communication', 'Team Leadership', 'Customer Service']
+          tags: ['Operations', 'Leadership', 'Customer Service', 'Communication', 'Problem Solving'],
+          techTags: []
         }
       ),
       new JobItem(
@@ -48,18 +53,20 @@ export class JobService {
               'Developed confidence in communication, facilitation, and real-time problem solving.',
               'Partnered closely with accompanying adults to align expectations and deliver a better overall experience.'
             ],
-          tags: ['Facilitation', 'Group Leadership', 'Communication', 'Problem Solving', 'Risk Awareness']
+          tags: ['Leadership', 'Communication', 'Customer Service', 'Teamwork', 'Problem Solving'],
+          techTags: []
         }
       ),
       new JobItem(
         {
-          role: 'Technology associate', company: 'Commonwealth Bank of Australia', startDate: new Date('2021-06-01'), endDate: new Date('2022-01-01'), description:
+          role: 'Technology Associate', company: 'Commonwealth Bank of Australia', startDate: new Date('2021-06-01'), endDate: new Date('2022-01-01'), description:
             [
               'Delivered C# .NET solutions with a focus on secure, reliable outcomes for workplace technology.',
               'Supported a VPN rollout to strengthen access and trust across the organization.',
               'Built tools to improve engineering workflows, reflecting a motivation to make teams more effective.'
             ],
-          tags: ['C#', '.NET', 'VPN', 'Enterprise IT', 'Workflow Automation']
+          tags: ['Software Development', 'C#', '.NET', 'Automation', 'Security', 'Project Delivery', 'Continuous Improvement', 'Problem Solving'],
+          techTags: ['C#', '.NET', 'VPN']
         }
       ),
       new JobItem(
@@ -70,7 +77,8 @@ export class JobService {
               'Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents.',
               'Strengthened foundations that helped others focus on teaching and learning.'
             ],
-          tags: ['Service Desk', 'IT Support', 'Workflow Analysis', 'Troubleshooting', 'User Support']
+          tags: ['IT Support', 'Customer Service', 'Problem Solving', 'Continuous Improvement', 'Communication'],
+          techTags: ['Jira', 'Active Directory', 'Microsoft 365', 'Jamf', 'PowerShell', 'MacOS', 'Windows']
         }
       ),
       new JobItem(
@@ -81,7 +89,8 @@ export class JobService {
               'Developed a strong motivation for interdisciplinary collaboration, innovation, and systems thinking.',
               'Built habits of reflection and learning that continue to guide day-to-day decisions.'
             ],
-          tags: ['Innovation', 'Systems Thinking', 'Human-Centered Design', 'Collaboration', 'Critical Thinking']
+          tags: ['Innovation', 'Systems Thinking', 'Design Thinking', 'Research', 'Interdisciplinary Collaboration', 'Problem Solving', 'Communication'],
+          techTags: []
         }
       ),
       new JobItem(
@@ -90,9 +99,10 @@ export class JobService {
             [
               'Delivered full-stack solutions across AWS, Node.js, TypeScript, and Angular with strong ownership from design to delivery.',
               'Improved client outcomes through automation, deployment workflows, and infrastructure implementation.',
-              'Used initiative and self-directed learning to solve unfamiliar problems and keep momentum on critical work.'
+              'Used initiative and self-directed learning to solve unfamiliar problems and keep momentum on critical work.',
             ],
-          tags: ['AWS', 'Node.js', 'TypeScript', 'Angular', 'Full-Stack Development', 'DevOps']
+          tags: ['Software Development', 'Frontend Development', 'Full Stack Development', 'Automation', 'DevOps', 'Project Delivery', 'Continuous Improvement', 'Problem Solving'],
+          techTags: ['AWS', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Infrastructure as Code', 'CloudFormation', 'SAML', 'OAuth', 'OpenID Connect', 'AWS Cognito', 'AWS Lambda', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail']
         }
       ),
       new JobItem(
@@ -100,10 +110,11 @@ export class JobService {
           role: 'Volunteer / Casual', company: 'Ev Church', startDate: new Date('2016-01-01'), endDate: new Date('2022-12-31'), description:
             [
               'Served in flexible technical and production roles to support community events and operations.',
-              'Contributed across IT, AV, and electrical needs with a consistent service and reliability mindset.',
+              'Contributed across IT, Audio Visual, and electrical needs with a consistent service and reliability mindset.',
               'Adapted to changing responsibilities, reinforcing values of contribution, teamwork, and stewardship.'
             ],
-          tags: ['AV Support', 'IT Operations', 'Electrical Support', 'Event Production', 'Teamwork']
+          tags: ['Operations', 'IT Support', 'Customer Service', 'Teamwork', 'Problem Solving'],
+          techTags: ['Audio Visual', 'FreePBX', '3CX', 'Docker', '3CX', 'Network Hardware', 'Telecom Hardware']
         }
       ),
       new JobItem(
@@ -114,7 +125,8 @@ export class JobService {
               'Delivered dependable execution on detailed technical tasks where consistency and quality mattered.',
               'Built early foundations in hands-on IT operations, teamwork, and customer-focused delivery.'
             ],
-          tags: ['Telecommunications', 'Hardware Deployment', 'Device Refurbishment', 'IT Operations', 'Quality Assurance']
+          tags: ['Operations', 'Hardware Deployment', 'Quality Assurance', 'Teamwork'],
+          techTags: ['Cisco', 'Avaya', 'Nortel', 'Network Hardware', 'Telecom Hardware']
         }
       ),
     ]);
