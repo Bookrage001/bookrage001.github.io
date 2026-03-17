@@ -13,11 +13,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { Amplify} from 'aws-amplify';
+import awsExports from './aws-exports.js';
 
 if (environment.production) {
   enableProdMode();
 }
-
+Amplify.configure(awsExports);
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
