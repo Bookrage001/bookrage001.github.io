@@ -5,7 +5,7 @@
 
   <div *ngFor="let job of jobs$ | async">
     <div>
-      <b>{{job.role}}</b> <br />
+      <b>{{job.data.role}}</b> <br />
 
       {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
 

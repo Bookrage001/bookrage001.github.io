@@ -11,7 +11,7 @@ export class JobService {
   getAds() :Observable<JobItem[]> {
     return of([
       new JobItem({
-        role: 'Software Engineer', company: 'Windracers', startDate: new Date('2023-05-01'),  description:
+        role: 'Software Engineer', company: 'Windracers', startDate: new Date('2023-05-01'), endDate: new Date('2026-01-31'), description:
         `
         Creative leader in the Mission Software Team. Where my role was to develop and maintain a range of micro-services. This included integrating these services into the Distributed Control Application.
         Building on the existing code base I was instrumental in improving the security and software development practices of the business.
@@ -70,13 +70,8 @@ export class JobService {
             to work on a Full stack of development on AWS. This included the use of Node.js using typescript and the
             angular stack. The work I completed included both front end development and backend. Through both of these
             opportunities I was tasked to update and design different aspects of the application. I have also had the
-            opportunity to talk to my managers about different initiatives that we could implement in the workplace.`
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Software Developer', company: 'Assertiv Pty Ltd', startDate: new Date('2018-01-01'), endDate: new Date('2021-12-31'), description:
-            `Working independently to complete a wide variety of tasks using my research skills and technical skills.
+            opportunity to talk to my managers about different initiatives that we could implement in the workplace.
+            Working independently to complete a wide variety of tasks using my research skills and technical skills.
             This included learning and using yaml to automate the deployment of a client's environment. Deployment and
             integration of containers into foreign clients environments. Designing and implementation of the internal
             infrastructure at Assertiv.`
@@ -84,19 +79,7 @@ export class JobService {
       ),
       new JobItem(
         {
-          role: 'Volunteer', company: 'Ev Church', startDate: new Date('2016-01-01'), endDate: new Date('2022-12-31'), description:
-            `Assisting with the management of electrical needs of a medium business, customer service, assistance with
-            general IT implementation of FreePBX and 3cx Deployment and ongoing maintenance. I am a valuable production
-            personnel. My role continuously changes and has included controlling projectors, laying cables, managing
-            lights and to manage and assist in other areas of production. This includes managing electrical needs while
-            organising and leasing with other businesses for events.
-            I have also assisted in the running of a range of different activities for a wide range of children In a
-            wide range of roles.`
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Casual', company: 'Ev Church', startDate: new Date('2016-01-01'), endDate: new Date('2022-12-31'), description:
+          role: 'Volunteer / Casual', company: 'Ev Church', startDate: new Date('2016-01-01'), endDate: new Date('2022-12-31'), description:
             `Assisting with the management of electrical needs of a medium business, customer service, assistance with
             general IT implementation of FreePBX and 3cx Deployment and ongoing maintenance. I am a valuable production
             personnel. My role continuously changes and has included controlling projectors, laying cables, managing
