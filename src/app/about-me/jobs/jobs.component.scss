@@ -1,0 +1,51 @@
+.filter-row {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	flex-direction: column;
+	margin: 0.75rem 0 1rem;
+
+	span {
+		font-size: 0.9rem;
+	}
+
+}
+
+.filter-header {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.filter-state {
+	font-size: 0.78rem;
+	color: #5d6877;
+}
+
+.filter-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+}
+
+.filter-chip {
+	--mdc-chip-label-text-size: 0.72rem;
+	--mdc-chip-container-height: 24px;
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	margin: 0.35rem 0 0.5rem;
+}
+
+.tag-chip {
+	font-size: 0.7rem;
+	line-height: 1.2;
+	padding: 0.1rem 0.35rem;
+	border-radius: 999px;
+	border: 1px solid #cfd4dc;
+	background: #f5f7fa;
+	color: #2f3a48;
+}
