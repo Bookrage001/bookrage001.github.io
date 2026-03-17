@@ -5,13 +5,14 @@ import { Observable, map } from 'rxjs';
 import { JobItem } from './job-item';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatChipsModule, MatButtonModule]
+  imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent {
   allJobs$: Observable<JobItem[]>;
@@ -21,6 +22,8 @@ export class JobsComponent {
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
   filtersVisible = false;
+  showTags = false;
+  showTechTags = false;
 
   private jobservice = inject(JobService);
 
@@ -85,6 +88,18 @@ export class JobsComponent {
     this.selectedTags = [];
     this.selectedTechTags = [];
     this.jobs$ = this.allJobs$;
+  }
+
+  get shouldShowTags(): boolean {
+    return this.showTags || this.hasActiveFilters;
+  }
+
+  get shouldShowTechTags(): boolean {
+    return this.showTechTags || this.hasActiveFilters;
+  }
+
+  private get hasActiveFilters(): boolean {
+    return this.selectedTags.length > 0 || this.selectedTechTags.length > 0;
   }
 
   private applyFilters(): void {

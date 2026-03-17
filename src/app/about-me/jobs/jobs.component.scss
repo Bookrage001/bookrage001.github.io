@@ -41,6 +41,47 @@
 	color: #5d6877;
 }
 
+.display-toggles {
+	margin: 0.5rem 0 0.35rem;
+	padding: 0.35rem 0;
+	border-bottom: 1px solid #e2e6ec;
+}
+
+.display-toggles-header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	margin-bottom: 0.35rem;
+}
+
+.display-toggles-title {
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: #4a5565;
+}
+
+.display-toggles-subtitle {
+	font-size: 0.78rem;
+	color: #5d6877;
+}
+
+.display-toggle-options {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6rem 1.1rem;
+}
+
+.show-tags-toggle {
+	display: inline-flex;
+	align-items: center;
+	font-size: 0.84rem;
+	font-weight: 500;
+	color: #2f3a48;
+}
+
 .filter-chips {
 	display: flex;
 	flex-wrap: wrap;
