@@ -1,24 +1,54 @@
 <div>
   <hr />
 
-  <h1>Professional Experience</h1>
+  <div class="title-row">
+    <h1>Professional Experience</h1>
+    <button mat-stroked-button type="button" (click)="toggleFilters()">
+      {{ filtersVisible ? 'Hide Filters' : 'Show Filters' }}
+    </button>
+  </div>
 
-  <div class="filter-row">
+  <div class="filter-panel" *ngIf="filtersVisible">
     <div class="filter-header">
-      <span>Filter by skill:</span>
-      <button mat-stroked-button type="button" (click)="clearTagFilter()" [disabled]="selectedTags.length === 0">Clear</button>
+      <span>Filters</span>
+      <button mat-stroked-button type="button" (click)="clearAllFilters()" [disabled]="selectedTags.length === 0 && selectedTechTags.length === 0">Clear All</button>
     </div>
-    <span class="filter-state" *ngIf="selectedTags.length === 0">All skills</span>
-    <mat-chip-listbox class="filter-chips" [multiple]="true">
-      <mat-chip-option
-        class="filter-chip"
-        *ngFor="let tag of tags$ | async"
-        [selected]="isTagSelected(tag)"
-        (click)="onTagChange(tag)"
-      >
-        {{tag}}
-      </mat-chip-option>
-    </mat-chip-listbox>
+
+    <div class="filter-row">
+      <div class="filter-header">
+        <span>Filter by skill:</span>
+        <button mat-stroked-button type="button" (click)="clearTagFilter()" [disabled]="selectedTags.length === 0">Clear</button>
+      </div>
+      <span class="filter-state" *ngIf="selectedTags.length === 0">All skills</span>
+      <mat-chip-listbox class="filter-chips" [multiple]="true">
+        <mat-chip-option
+          class="filter-chip"
+          *ngFor="let tag of tags$ | async"
+          [selected]="isTagSelected(tag)"
+          (click)="onTagChange(tag)"
+        >
+          {{tag}}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="filter-row">
+      <div class="filter-header">
+        <span>Filter by tech:</span>
+        <button mat-stroked-button type="button" (click)="clearTechTagFilter()" [disabled]="selectedTechTags.length === 0">Clear</button>
+      </div>
+      <span class="filter-state" *ngIf="selectedTechTags.length === 0">All tech</span>
+      <mat-chip-listbox class="filter-chips" [multiple]="true">
+        <mat-chip-option
+          class="filter-chip"
+          *ngFor="let tag of techTags$ | async"
+          [selected]="isTechTagSelected(tag)"
+          (click)="onTechTagChange(tag)"
+        >
+          {{tag}}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
   </div>
 
   <div *ngFor="let job of jobs$ | async">

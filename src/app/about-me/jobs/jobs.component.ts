@@ -17,7 +17,10 @@ export class JobsComponent {
   allJobs$: Observable<JobItem[]>;
   jobs$: Observable<JobItem[]>;
   tags$: Observable<string[]>;
+  techTags$: Observable<string[]>;
   selectedTags: string[] = [];
+  selectedTechTags: string[] = [];
+  filtersVisible = false;
 
   private jobservice = inject(JobService);
 
@@ -34,6 +37,17 @@ export class JobsComponent {
         return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b));
       })
     );
+
+    this.techTags$ = this.allJobs$.pipe(
+      map((jobs) => {
+        const uniqueTags = jobs.reduce((set, job) => {
+          (job.data.techTags ?? []).forEach((tag) => set.add(tag));
+          return set;
+        }, new Set<string>());
+
+        return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b));
+      })
+    );
   }
 
   onTagChange(tag: string): void {
@@ -42,11 +56,54 @@ export class JobsComponent {
       ? this.selectedTags.filter((selectedTag) => selectedTag !== tag)
       : [...this.selectedTags, tag];
 
+    this.applyFilters();
+  }
+
+  onTechTagChange(tag: string): void {
+    const isSelected = this.selectedTechTags.includes(tag);
+    this.selectedTechTags = isSelected
+      ? this.selectedTechTags.filter((selectedTag) => selectedTag !== tag)
+      : [...this.selectedTechTags, tag];
+
+    this.applyFilters();
+  }
+
+  isTechTagSelected(tag: string): boolean {
+    return this.selectedTechTags.includes(tag);
+  }
+
+  toggleFilters(): void {
+    this.filtersVisible = !this.filtersVisible;
+  }
+
+  clearTechTagFilter(): void {
+    this.selectedTechTags = [];
+    this.applyFilters();
+  }
+
+  clearAllFilters(): void {
+    this.selectedTags = [];
+    this.selectedTechTags = [];
+    this.jobs$ = this.allJobs$;
+  }
+
+  private applyFilters(): void {
+    const selectedSkills = this.selectedTags;
+    const selectedTech = this.selectedTechTags;
+
     this.jobs$ = this.allJobs$.pipe(
       map((jobs) =>
-        this.selectedTags.length === 0
-          ? jobs
-          : jobs.filter((job) => (job.data.tags ?? []).some((jobTag) => this.selectedTags.includes(jobTag)))
+        jobs.filter((job) => {
+          const matchesSkills =
+            selectedSkills.length === 0 ||
+            (job.data.tags ?? []).some((jobTag) => selectedSkills.includes(jobTag));
+
+          const matchesTech =
+            selectedTech.length === 0 ||
+            (job.data.techTags ?? []).some((jobTag) => selectedTech.includes(jobTag));
+
+          return matchesSkills && matchesTech;
+        })
       )
     );
   }
@@ -57,7 +114,7 @@ export class JobsComponent {
 
   clearTagFilter(): void {
     this.selectedTags = [];
-    this.jobs$ = this.allJobs$;
+    this.applyFilters();
   }
 }
 
