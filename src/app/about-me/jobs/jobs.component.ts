@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
-import { JobComponent } from './job.component';
 import { Observable } from 'rxjs';
+import { JobItem } from './job-item';
 
 @Component({
   selector: 'app-jobs',
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   imports: [CommonModule]
 })
 export class JobsComponent {
-  jobs$: Observable<JobComponent[]>;
+  jobs$: Observable<JobItem[]>;
 
   private jobservice = inject(JobService);
 

@@ -34,7 +34,6 @@ import { ComponentsComponent } from './components/components.component';
 import { LineGraphComponent } from './components/line-graph/line-graph.component';
 import { BigonotationComponent } from './documentation/bigonotation/bigonotation.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],

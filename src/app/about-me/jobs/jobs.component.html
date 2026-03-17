@@ -7,10 +7,10 @@
     <div>
       <b>{{job.role}}</b> <br />
 
-      {{job.company}}: {{job.startMonth}} {{job.startYear}} - {{job.endMonth}} {{job.endYear}}
+      {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
 
-      <p>{{job.description}}</p>
-      <!-- <mat-divider></mat-divider> -->
+      <p>{{job.data.description}}</p>
+
     </div>
   </div>
 </div>
