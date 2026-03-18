@@ -3,9 +3,11 @@
     <!-- This will be a dashboard showing a range of information from if a server is up to my calender to for ease of use to
     make bookings -->
 </p>
-<app-calender>
 
-</app-calender>
-<app-minecraft>
+<nav>
+    <a routerLink="/dashboard/calender">Calender</a>
+    |
+    <a routerLink="/dashboard/minecraft">Minecraft</a>
+</nav>
 
-</app-minecraft>
+<router-outlet></router-outlet>

@@ -14,12 +14,18 @@ import {
 import { Subject } from 'rxjs';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
+  CalendarA11y,
+  CalendarDateFormatter,
   CalendarEvent,
   CalendarEventAction,
+  CalendarEventTitleFormatter,
   CalendarEventTimesChangedEvent,
+  CalendarUtils,
   CalendarView,
   CalendarModule,
+  DateAdapter,
 } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 const colors: any = {
   red: {
@@ -42,6 +48,16 @@ const colors: any = {
   styleUrls: ['./calender.component.scss'],
   standalone: true,
   imports: [CommonModule, CalendarModule, FlexLayoutModule],
+  providers: [
+    {
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    },
+    CalendarEventTitleFormatter,
+    CalendarDateFormatter,
+    CalendarUtils,
+    CalendarA11y,
+  ],
 })
 export class CalenderComponent {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
@@ -52,10 +68,7 @@ export class CalenderComponent {
 
   viewDate: Date = new Date();
 
-  constructor() {
-    console.log(this.loadCalender());
-    // this.events = this.loadCalender();
-  }
+  constructor() { }
 
   async loadCalender() {
 
