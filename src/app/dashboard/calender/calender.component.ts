@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   startOfDay,
@@ -7,38 +8,44 @@ import {
   subDays,
   addDays,
   endOfMonth,
-  isSameDay,
   isSameMonth,
   addHours,
+  format,
+  startOfWeek,
+  endOfWeek,
+  subMonths,
+  addMonths,
+  subWeeks,
+  addWeeks,
 } from 'date-fns';
 import { Subject } from 'rxjs';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
-  CalendarA11y,
-  CalendarDateFormatter,
   CalendarEvent,
   CalendarEventAction,
-  CalendarEventTitleFormatter,
   CalendarEventTimesChangedEvent,
-  CalendarUtils,
   CalendarView,
-  CalendarModule,
+  CalendarMonthViewComponent,
+  CalendarWeekViewComponent,
+  CalendarDayViewComponent,
   DateAdapter,
+  provideCalendar,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { environment } from 'src/environments/environment';
 
-const colors: any = {
+interface EventColor { primary: string; secondary: string; }
+const colors: Record<string, EventColor> = {
   red: {
-    primary: "#ad2121",
-    secondary: "#FAE3E3",
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
   },
   blue: {
-    primary: "#1e90ff",
-    secondary: "#D1E8FF",
+    primary: '#1e90ff',
+    secondary: '#D1E8FF',
   },
   yellow: {
-    primary: "#e3bc08",
-    secondary: "#FDF1BA",
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
   },
 };
 
@@ -47,35 +54,40 @@ const colors: any = {
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.scss'],
   standalone: true,
-  imports: [CommonModule, CalendarModule, FlexLayoutModule],
-  providers: [
-    {
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    },
-    CalendarEventTitleFormatter,
-    CalendarDateFormatter,
-    CalendarUtils,
-    CalendarA11y,
-  ],
+  imports: [CommonModule, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, FlexLayoutModule],
+  providers: provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
 })
-export class CalenderComponent {
-  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+export class CalenderComponent implements OnInit {
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<unknown>;
 
-  view: CalendarView = CalendarView.Month;
+  private readonly http = inject(HttpClient);
+
+  private readonly calendarIcsUrl = environment.calendarIcsUrl;
+
+  view: CalendarView = CalendarView.Week;
 
   CalendarView = CalendarView;
 
   viewDate: Date = new Date();
 
-  constructor() { }
+  get viewTitle(): string {
+    switch (this.view) {
+      case CalendarView.Month:
+        return format(this.viewDate, 'MMMM yyyy');
+      case CalendarView.Week: {
+        const start = startOfWeek(this.viewDate);
+        const end = endOfWeek(this.viewDate);
+        return `${format(start, 'MMM d')} \u2013 ${format(end, 'MMM d, yyyy')}`;
+      }
+      case CalendarView.Day:
+        return format(this.viewDate, 'MMMM d, yyyy');
+    }
+  }
 
-  async loadCalender() {
+  constructor() {}
 
-    // this.http;
-    // // Convert
-    // const data = icsToJson(icsData);
-    // return data;
+  ngOnInit(): void {
+    this.loadEventsFromIcs();
   }
 
   modalData: {
@@ -87,92 +99,70 @@ export class CalenderComponent {
     {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
       a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent; }): void => {
+      onClick: ({ event }: { event: CalendarEvent }): void => {
         this.handleEvent('Edited', event);
       },
     },
     {
       label: '<i class="fas fa-fw fa-trash-alt"></i>',
       a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent; }): void => {
+      onClick: ({ event }: { event: CalendarEvent }): void => {
         this.events = this.events.filter((iEvent) => iEvent !== event);
         this.handleEvent('Deleted', event);
       },
     },
   ];
 
-  refresh: Subject<any> = new Subject();
+  refresh: Subject<void> = new Subject();
 
   events: CalendarEvent[] = [
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: "A 3 day event",
-      color: colors.red,
+      title: 'A 3 day event',
+      color: colors['red'],
       actions: this.actions,
       allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
+      resizable: { beforeStart: true, afterEnd: true },
       draggable: true,
     },
     {
       start: startOfDay(new Date()),
-      title: "An event with no end date",
-      color: colors.yellow,
+      title: 'An event with no end date',
+      color: colors['yellow'],
       actions: this.actions,
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
-      title: "A long event that spans 2 months",
-      color: colors.blue,
+      title: 'A long event that spans 2 months',
+      color: colors['blue'],
       allDay: true,
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
-      title: "A draggable and resizable event",
-      color: colors.yellow,
+      title: 'A draggable and resizable event',
+      color: colors['yellow'],
       actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
+      resizable: { beforeStart: true, afterEnd: true },
       draggable: true,
     },
   ];
 
   activeDayIsOpen: boolean = true;
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[]; }): void {
+  dayClicked({ date }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      this.CalendarView.Day;
-      // if (
-      //   (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-      //   events.length === 0
-      // ) {
-      //   this.activeDayIsOpen = false;
-      // } else {
       this.activeDayIsOpen = true;
-      // }
       this.viewDate = date;
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
+  eventTimesChanged({ event, newStart, newEnd }: CalendarEventTimesChangedEvent): void {
     this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
+        return { ...event, start: newStart, end: newEnd };
       }
       return iEvent;
     });
@@ -181,7 +171,6 @@ export class CalenderComponent {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    // this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   addEvent(): void {
@@ -191,21 +180,163 @@ export class CalenderComponent {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
-        color: colors.red,
+        color: colors['red'],
         draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
+        resizable: { beforeStart: true, afterEnd: true },
       },
     ];
   }
 
-  setView(view: CalendarView) {
+  setView(view: CalendarView): void {
     this.view = view;
   }
 
-  closeOpenMonthViewDay() {
+  navigatePrevious(): void {
+    switch (this.view) {
+      case CalendarView.Month: this.viewDate = subMonths(this.viewDate, 1); break;
+      case CalendarView.Week:  this.viewDate = subWeeks(this.viewDate, 1);  break;
+      case CalendarView.Day:   this.viewDate = subDays(this.viewDate, 1);   break;
+    }
+    this.closeOpenMonthViewDay();
+  }
+
+  navigateNext(): void {
+    switch (this.view) {
+      case CalendarView.Month: this.viewDate = addMonths(this.viewDate, 1); break;
+      case CalendarView.Week:  this.viewDate = addWeeks(this.viewDate, 1);  break;
+      case CalendarView.Day:   this.viewDate = addDays(this.viewDate, 1);   break;
+    }
+    this.closeOpenMonthViewDay();
+  }
+
+  navigateToday(): void {
+    this.viewDate = new Date();
+    this.closeOpenMonthViewDay();
+  }
+
+  closeOpenMonthViewDay(): void {
     this.activeDayIsOpen = false;
+  }
+
+  private loadEventsFromIcs(): void {
+    if (!this.calendarIcsUrl) {
+      return;
+    }
+
+    this.http.get(this.calendarIcsUrl, { responseType: 'text' }).subscribe({
+      next: (icsText: string) => {
+        const parsedEvents = this.parseIcsEvents(icsText);
+        if (parsedEvents.length > 0) {
+          this.events = parsedEvents;
+          this.refresh.next();
+        }
+      },
+      error: (error) => {
+        console.error('Failed to load ICS feed', error);
+      },
+    });
+  }
+
+  private parseIcsEvents(icsText: string): CalendarEvent[] {
+    const unfolded = icsText.replace(/\r?\n[ \t]/g, '');
+    const lines = unfolded.split(/\r?\n/);
+    const parsedEvents: CalendarEvent[] = [];
+
+    let inEvent = false;
+    let summary = '';
+    let start: Date | null = null;
+    let end: Date | null = null;
+    let allDay = false;
+
+    for (const line of lines) {
+      if (line === 'BEGIN:VEVENT') {
+        inEvent = true;
+        summary = '';
+        start = null;
+        end = null;
+        allDay = false;
+        continue;
+      }
+
+      if (line === 'END:VEVENT') {
+        if (start) {
+          parsedEvents.push({
+            title: summary || 'Untitled Event',
+            start,
+            end: end ?? undefined,
+            allDay,
+            color: colors['blue'],
+          });
+        }
+        inEvent = false;
+        continue;
+      }
+
+      if (!inEvent) {
+        continue;
+      }
+
+      const separatorIndex = line.indexOf(':');
+      if (separatorIndex === -1) {
+        continue;
+      }
+
+      const rawKey = line.slice(0, separatorIndex);
+      const value = line.slice(separatorIndex + 1);
+      const key = rawKey.split(';')[0];
+
+      if (key === 'SUMMARY') {
+        summary = this.unescapeIcsText(value);
+      } else if (key === 'DTSTART') {
+        allDay = rawKey.includes('VALUE=DATE') || /^\d{8}$/.test(value);
+        start = this.parseIcsDate(value);
+      } else if (key === 'DTEND') {
+        end = this.parseIcsDate(value);
+      }
+    }
+
+    return parsedEvents.sort((a, b) => a.start.getTime() - b.start.getTime());
+  }
+
+  private parseIcsDate(value: string): Date | null {
+    const dateOnlyMatch = /^(\d{4})(\d{2})(\d{2})$/.exec(value);
+    if (dateOnlyMatch) {
+      const [, year, month, day] = dateOnlyMatch;
+      return new Date(Number(year), Number(month) - 1, Number(day));
+    }
+
+    const dateTimeMatch = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(Z?)$/.exec(value);
+    if (!dateTimeMatch) {
+      return null;
+    }
+
+    const [, year, month, day, hours, minutes, seconds, utcFlag] = dateTimeMatch;
+    if (utcFlag === 'Z') {
+      return new Date(Date.UTC(
+        Number(year),
+        Number(month) - 1,
+        Number(day),
+        Number(hours),
+        Number(minutes),
+        Number(seconds)
+      ));
+    }
+
+    return new Date(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      Number(hours),
+      Number(minutes),
+      Number(seconds)
+    );
+  }
+
+  private unescapeIcsText(value: string): string {
+    return value
+      .replace(/\\n/g, '\n')
+      .replace(/\\,/g, ',')
+      .replace(/\\;/g, ';')
+      .replace(/\\\\/g, '\\');
   }
 }
