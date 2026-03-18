@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   startOfDay,
@@ -57,10 +57,11 @@ const colors: Record<string, EventColor> = {
   imports: [CommonModule, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, FlexLayoutModule],
   providers: provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
 })
-export class CalenderComponent implements OnInit {
+export class CalenderComponent implements OnInit, AfterViewInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<unknown>;
 
   private readonly http = inject(HttpClient);
+  private readonly hostElement = inject(ElementRef<HTMLElement>);
 
   private readonly calendarIcsUrl = environment.calendarIcsUrl;
 
@@ -88,6 +89,10 @@ export class CalenderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEventsFromIcs();
+  }
+
+  ngAfterViewInit(): void {
+    this.centerCurrentTimeMarker();
   }
 
   modalData: {
@@ -189,6 +194,7 @@ export class CalenderComponent implements OnInit {
 
   setView(view: CalendarView): void {
     this.view = view;
+    this.centerCurrentTimeMarker();
   }
 
   navigatePrevious(): void {
@@ -198,6 +204,7 @@ export class CalenderComponent implements OnInit {
       case CalendarView.Day:   this.viewDate = subDays(this.viewDate, 1);   break;
     }
     this.closeOpenMonthViewDay();
+    this.centerCurrentTimeMarker();
   }
 
   navigateNext(): void {
@@ -207,11 +214,13 @@ export class CalenderComponent implements OnInit {
       case CalendarView.Day:   this.viewDate = addDays(this.viewDate, 1);   break;
     }
     this.closeOpenMonthViewDay();
+    this.centerCurrentTimeMarker();
   }
 
   navigateToday(): void {
     this.viewDate = new Date();
     this.closeOpenMonthViewDay();
+    this.centerCurrentTimeMarker();
   }
 
   closeOpenMonthViewDay(): void {
@@ -338,5 +347,24 @@ export class CalenderComponent implements OnInit {
       .replace(/\\,/g, ',')
       .replace(/\\;/g, ';')
       .replace(/\\\\/g, '\\');
+  }
+
+  private centerCurrentTimeMarker(): void {
+    if (this.view === CalendarView.Month) {
+      return;
+    }
+
+    setTimeout(() => {
+      const host = this.hostElement.nativeElement;
+      const timeContainer = host.querySelector('.cal-time-events') as HTMLElement | null;
+      const marker = host.querySelector('.cal-current-time-marker') as HTMLElement | null;
+
+      if (!timeContainer || !marker) {
+        return;
+      }
+
+      const targetScrollTop = marker.offsetTop - (timeContainer.clientHeight / 2);
+      timeContainer.scrollTop = Math.max(0, targetScrollTop);
+    });
   }
 }
