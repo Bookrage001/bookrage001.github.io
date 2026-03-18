@@ -29,7 +29,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   /* Hide navigation elements during print */
   mat-toolbar,
   mat-sidenav,
-  .side-nav-container {
+  .side-nav-container,
+  .no-print {
     display: none !important;
   }
 

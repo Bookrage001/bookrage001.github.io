@@ -1,3 +1,13 @@
+.print-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+
+  button {
+    margin: 0;
+  }
+}
+
 .heading {
   display: flex;
   justify-content: space-between;
@@ -25,6 +35,13 @@ img {
 }
 
 @media (max-width: 400px) {
+  .print-action {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e6ec;
+    order: -1;
+  }
+
   .pair {
     display: block;
     .element {
@@ -34,7 +51,8 @@ img {
   }
 
   .heading {
-    display: block;
+    display: flex;
+    flex-direction: column;
     .image {
       width: 100%;
       margin: 0 0 10px 0;
