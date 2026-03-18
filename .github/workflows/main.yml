@@ -32,6 +32,7 @@ jobs:
         run: |
           npm i
           npm run build:prod
+          echo "{\"commit\":\"$GITHUB_SHA\"}" > docs/version.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -52,7 +53,16 @@ jobs:
             echo "Deployment verification failed: expected HTTP 200 but got $HTTP_STATUS"
             exit 1
           fi
-          echo "Deployment verified successfully."
+          echo "HTTP 200 confirmed."
+
+          echo "Verifying deployed version matches commit $GITHUB_SHA ..."
+          DEPLOYED_SHA=$(curl -sf --retry 3 --retry-delay 5 https://bookrage001.com/version.json | jq -r '.commit')
+          echo "Deployed SHA: $DEPLOYED_SHA"
+          if [ "$DEPLOYED_SHA" != "$GITHUB_SHA" ]; then
+            echo "Version mismatch: expected $GITHUB_SHA but found $DEPLOYED_SHA"
+            exit 1
+          fi
+          echo "Deployment verified successfully: correct version $GITHUB_SHA is live."
 
 
     # - uses: Bookrage001/bookrage001.github.io@master
