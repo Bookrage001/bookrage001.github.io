@@ -1,7 +1,8 @@
-import { JobComponent } from './job.component';
+import { JobInterface } from './job.interface';
 
 export class JobItem {
-  constructor(public data: JobComponent) { }
+  constructor(public data: JobInterface) { }
+
 
 }
 

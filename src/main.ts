@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
 
 if (environment.production) {
   enableProdMode();
@@ -31,5 +32,6 @@ bootstrapApplication(AppComponent, {
     ),
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(),
   ]
 }).catch(err => console.error(err));

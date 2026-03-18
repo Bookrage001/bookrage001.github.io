@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-poducts',
-  templateUrl: './poducts.component.html',
-  styleUrls: ['./poducts.component.scss'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
   standalone: true,
   imports: [
     RouterModule

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 import { JobsComponent } from './jobs/jobs.component';
+import { PrintService } from '../services/print.service';
 
 @Component({
   selector: 'app-about-me',
@@ -11,10 +13,14 @@ import { JobsComponent } from './jobs/jobs.component';
   imports: [
     RouterModule,
     FlexLayoutModule,
-    JobsComponent
+    JobsComponent,
+    MatButtonModule
   ]
 })
 export class AboutMeComponent {
+  private printService = inject(PrintService);
 
-  constructor() { }
+  printResume(): void {
+    this.printService.print();
+  }
 }

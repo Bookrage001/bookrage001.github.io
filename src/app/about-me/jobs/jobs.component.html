@@ -1,16 +1,102 @@
 <div>
   <hr />
 
-  <h1>Professional Experience</h1>
+  <div class="title-row">
+    <h1>Professional Experience</h1>
+    <div class="resume-actions no-print">
+      <button mat-stroked-button type="button" (click)="toggleFilters()">
+        {{ filtersVisible ? 'Hide Filters' : 'Show Filters' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="display-toggles no-print">
+    <div class="display-toggles-header">
+      <span class="display-toggles-title">Display Options</span>
+      <span class="display-toggles-subtitle">Choose what extra details appear in each role.</span>
+    </div>
+
+    <div class="display-toggle-options " role="group" aria-label="Display options">
+      <mat-checkbox class="show-tags-toggle" [checked]="showTags" (change)="showTags = !showTags">
+        Skill Tags
+      </mat-checkbox>
+
+      <mat-checkbox class="show-tags-toggle" [checked]="showTechTags" (change)="showTechTags = !showTechTags">
+        Technology Tags
+      </mat-checkbox>
+
+      <mat-checkbox class="show-tags-toggle" [checked]="lastFiveYearsOnly" (change)="onLastFiveYearsChange()">
+        Last 5 Years
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <div class="filter-panel no-print" *ngIf="filtersVisible">
+    <div class="filter-header">
+      <span>Filters</span>
+      <button mat-stroked-button type="button" (click)="clearAllFilters()" [disabled]="selectedTags.length === 0 && selectedTechTags.length === 0 && !lastFiveYearsOnly">Clear All</button>
+    </div>
+
+    <div class="filter-row">
+      <div class="filter-header">
+        <span>Filter by skill:</span>
+        <button mat-stroked-button type="button" (click)="clearTagFilter()" [disabled]="selectedTags.length === 0">Clear</button>
+      </div>
+      <span class="filter-state" *ngIf="selectedTags.length === 0">All skills</span>
+      <mat-chip-listbox class="filter-chips" [multiple]="true">
+        <mat-chip-option
+          class="filter-chip"
+          *ngFor="let tag of tags$ | async"
+          [selected]="isTagSelected(tag)"
+          [class.filter-chip-selected]="isTagSelected(tag)"
+          (click)="onTagChange(tag)"
+        >
+          {{tag}}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="filter-row">
+      <div class="filter-header">
+        <span>Filter by tech:</span>
+        <button mat-stroked-button type="button" (click)="clearTechTagFilter()" [disabled]="selectedTechTags.length === 0">Clear</button>
+      </div>
+      <span class="filter-state" *ngIf="selectedTechTags.length === 0">All tech</span>
+      <mat-chip-listbox class="filter-chips" [multiple]="true">
+        <mat-chip-option
+          class="filter-chip"
+          *ngFor="let tag of techTags$ | async"
+          [selected]="isTechTagSelected(tag)"
+          [class.filter-chip-selected]="isTechTagSelected(tag)"
+          (click)="onTechTagChange(tag)"
+        >
+          {{tag}}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  </div>
 
   <div *ngFor="let job of jobs$ | async">
     <div>
-      <b>{{job.role}}</b> <br />
+      <b>{{job.data.role}}</b> <br />
 
-      {{job.company}}: {{job.startMonth}} {{job.startYear}} - {{job.endMonth}} {{job.endYear}}
+      {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
 
-      <p>{{job.description}}</p>
-      <!-- <mat-divider></mat-divider> -->
+      <div class="tag-list" *ngIf="shouldShowTags && job.data.tags?.length">
+        <span class="tag-chip" [class.tag-chip-selected]="isTagSelected(tag)" *ngFor="let tag of job.data.tags">{{tag}}</span>
+      </div>
+
+      <div class="tech-tag-block" *ngIf="shouldShowTechTags && job.data.techTags?.length">
+        <span class="tech-tag-label">Tech:</span>
+        <div class="tag-list tech-tag-list">
+          <span class="tag-chip tech-tag-chip" [class.tech-tag-chip-selected]="isTechTagSelected(techTag)" *ngFor="let techTag of job.data.techTags">{{techTag}}</span>
+        </div>
+      </div>
+
+      <ul>
+        <li *ngFor="let description of job.data.description">{{description}}</li>
+      </ul>
+
     </div>
   </div>
 </div>
