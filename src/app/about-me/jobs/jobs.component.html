@@ -24,13 +24,17 @@
       <mat-checkbox class="show-tags-toggle" [checked]="showTechTags" (change)="showTechTags = !showTechTags">
         Technology Tags
       </mat-checkbox>
+
+      <mat-checkbox class="show-tags-toggle" [checked]="lastFiveYearsOnly" (change)="onLastFiveYearsChange()">
+        Last 5 Years
+      </mat-checkbox>
     </div>
   </div>
 
   <div class="filter-panel no-print" *ngIf="filtersVisible">
     <div class="filter-header">
       <span>Filters</span>
-      <button mat-stroked-button type="button" (click)="clearAllFilters()" [disabled]="selectedTags.length === 0 && selectedTechTags.length === 0">Clear All</button>
+      <button mat-stroked-button type="button" (click)="clearAllFilters()" [disabled]="selectedTags.length === 0 && selectedTechTags.length === 0 && !lastFiveYearsOnly">Clear All</button>
     </div>
 
     <div class="filter-row">

@@ -21,6 +21,7 @@ export class JobsComponent {
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
+  lastFiveYearsOnly = false;
   filtersVisible = false;
   showTags = false;
   showTechTags = false;
@@ -87,7 +88,13 @@ export class JobsComponent {
   clearAllFilters(): void {
     this.selectedTags = [];
     this.selectedTechTags = [];
-    this.jobs$ = this.allJobs$;
+    this.lastFiveYearsOnly = false;
+    this.applyFilters();
+  }
+
+  onLastFiveYearsChange(): void {
+    this.lastFiveYearsOnly = !this.lastFiveYearsOnly;
+    this.applyFilters();
   }
 
   get shouldShowTags(): boolean {
@@ -109,6 +116,9 @@ export class JobsComponent {
   private applyFilters(): void {
     const selectedSkills = this.selectedTags;
     const selectedTech = this.selectedTechTags;
+    const fiveYearsCutoff = new Date();
+    fiveYearsCutoff.setFullYear(fiveYearsCutoff.getFullYear() - 5);
+    fiveYearsCutoff.setHours(0, 0, 0, 0);
 
     this.jobs$ = this.allJobs$.pipe(
       map((jobs) =>
@@ -121,7 +131,12 @@ export class JobsComponent {
             selectedTech.length === 0 ||
             (job.data.techTags ?? []).some((jobTag) => selectedTech.includes(jobTag));
 
-          return matchesSkills && matchesTech;
+          const matchesLastFiveYears =
+            !this.lastFiveYearsOnly ||
+            !job.data.endDate ||
+            job.data.endDate >= fiveYearsCutoff;
+
+          return matchesSkills && matchesTech && matchesLastFiveYears;
         })
       )
     );
