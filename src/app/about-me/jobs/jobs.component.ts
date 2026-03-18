@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
+import { PrintService } from '../../services/print.service';
 import { Observable, map } from 'rxjs';
 import { JobItem } from './job-item';
 import { MatChipsModule } from '@angular/material/chips';
@@ -26,6 +27,7 @@ export class JobsComponent {
   showTechTags = false;
 
   private jobservice = inject(JobService);
+  private printService = inject(PrintService);
 
   constructor() {
     this.allJobs$ = this.jobservice.getAds();
@@ -91,7 +93,7 @@ export class JobsComponent {
   }
 
   printResume(): void {
-    window.print();
+    this.printService.print();
   }
 
   get shouldShowTags(): boolean {

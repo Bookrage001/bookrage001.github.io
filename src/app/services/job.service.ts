@@ -15,6 +15,7 @@ interface JobJsonItem {
 
 interface JobsResponse {
   data: JobJsonItem[];
+  lastEdited: Date;
 }
 
 @Injectable({
