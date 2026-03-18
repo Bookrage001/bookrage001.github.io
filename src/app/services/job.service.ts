@@ -1,139 +1,45 @@
-import { Injectable } from '@angular/core';
-
-
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { JobItem } from '../about-me/jobs/job-item';
-import { Observable, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
+
+interface JobJsonItem {
+  role: string;
+  company: string;
+  startDate: string;
+  endDate?: string;
+  description: string[];
+  tags?: string[];
+  techTags?: string[];
+}
+
+interface JobsResponse {
+  data: JobJsonItem[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
-  getAds() :Observable<JobItem[]> {
-    return of([
-      new JobItem({
-        role: 'Software Engineer', company: 'Windracers', startDate: new Date('2023-05-01'), endDate: new Date('2026-01-31'), description:
-        [
-          'Led mission software work with a focus on outcomes that matter to operators and teams on the ground.',
-          'Collaborated with teams on the ground to provide real-time support and deliver improvements that made a difference in high-stakes environments.',
-          'Built and integrated microservices into the Distributed Control Application to deliver reliable real-world impact.',
-          'Improved security and development practices because quality and trust are core values in my engineering approach.',
-          'Stepped into broader responsibilities to support the whole team, not just the codebase. Such as leading retrospectives, improving documentation, and mentoring others.',
-          'Maintained continuity of internal IT operations while delivering software work.',
-          'Revised and improved UX across the stack and products to make tools more intuitive and effective for users, reflecting a user centred mindset.',
-          'Contributed to automation scripts and infrastructure improvements to support the team and operations with more reliable and efficient tools.'
-        ],
-        tags: ['Full Stack Development', 'Security', 'Leadership', 'Project Delivery', 'Problem Solving', 'Stakeholder Management', 'User-Centered Design', 'Communication', 'End User Support', 'Design Thinking'],
-        techTags: ['C#', '.NET', 'Desktop Application', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Scripting', 'Jira', 'Microsoft 365']
-      }),
-      new JobItem({
-        role: 'Software Engineer', company: 'OptimalSlope Ltd', startDate: new Date('2022-11-01'), endDate: new Date('2023-04-01'),  description:
-        [
-          'Contributed to a new C# application that improved how mining teams design optimal slope walls.',
-          'Focused on practical problem solving where technical choices directly improved user capability.',
-          'Helped shape design and functionality across the stack to turn ideas into useful tools.'
-        ],
-        tags: ['Full Stack Development', 'Problem Solving', 'Project Delivery'],
-        techTags: ['C#', '.NET', 'Desktop Application']
-      }),
-      new JobItem(
-        {
-          role: 'Programme Coordinator', company: 'PGL Travel LTD', startDate: new Date('2022-07-01'), endDate: new Date('2022-09-01'), description:
-            [
-              'Coordinated staff programmes to create smooth experiences for schools, staff, and site teams.',
-              'Balanced changing requests with operational constraints, strengthening my adaptability and decision making.',
-              'Supported reception and activity leadership teams with a service-first, people-focused mindset.'
-            ],
-          tags: ['Operations', 'Leadership', 'Customer Service', 'Communication', 'Problem Solving', 'Stakeholder Management'],
-          techTags: []
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Activities Instructor / Group Leader', company: 'PGL Travel LTD', startDate: new Date('2022-02-01'), endDate: new Date('2022-10-01'), description:
-            [
-              'Led outdoor activities for large groups, creating safe, engaging experiences under changing conditions.',
-              'Developed confidence in communication, facilitation, and real-time problem solving.',
-              'Partnered closely with accompanying adults to align expectations and deliver a better overall experience.'
-            ],
-          tags: ['Leadership', 'Communication', 'Customer Service', 'Teamwork', 'Problem Solving', 'Stakeholder Management'],
-          techTags: []
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Technology Associate', company: 'Commonwealth Bank of Australia', startDate: new Date('2021-06-01'), endDate: new Date('2022-01-01'), description:
-            [
-              'Delivered C# .NET solution with a focus on secure, reliable outcomes for workplace technology.',
-              'Improved IT operations through automation and tools that reduced manual network diagnosis and improved reliability.',
-              'Supported a VPN rollout to strengthen access and trust across the organization.',
-              'Developed ideas through scripting and prototyping to find practical solutions to technical and operational challenges.',
-            ],
-          tags: ['Full Stack Development', 'Automation', 'Security', 'Project Delivery', 'Continuous Improvement', 'Problem Solving', 'End User Support', 'Communication'],
-          techTags: ['C#', '.NET', 'VPN', 'Scripting', 'Networking', 'Jira']
-        }
-      ),
-      new JobItem(
-        {
-          role: 'ICT Officer', company: 'Green Point Christian College', startDate: new Date('2021-03-01'), endDate: new Date('2021-12-01'), description:
-            [
-              'Supported staff and students through service desk work that prioritized empathy and practical outcomes.',
-              'Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents.',
-              'Strengthened foundations that helped others focus on teaching and learning.'
-            ],
-          tags: ['End User Support', 'Customer Service', 'Problem Solving', 'Continuous Improvement', 'Communication'],
-          techTags: ['Jira', 'Active Directory', 'Microsoft 365', 'Jamf', 'Scripting']
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Innovation Student', company: 'Bachelor of Creative Intelligence and Innovation (UTS)', startDate: new Date('2017-01-01'), endDate: new Date('2020-12-31'), description:
-            [
-              'Worked with diverse industry partners to design solutions for complex, human-centered challenges.',
-              'Developed a strong motivation for interdisciplinary collaboration, innovation, and systems thinking.',
-              'Built habits of reflection and learning that continue to guide day-to-day decisions.'
-            ],
-          tags: [ 'Design Thinking', 'Problem Solving', 'Communication', 'User-Centered Design', "Leadership", 'StakeHolder Management'],
-          techTags: []
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Software Developer', company: 'Assertiv Pty Ltd', startDate: new Date('2018-01-01'), endDate: new Date('2021-12-31'), description:
-            [
-              'Delivered full-stack solutions across AWS, Node.js, TypeScript, and Angular with strong ownership from design to delivery.',
-              'Improved client outcomes through automation, deployment workflows, and infrastructure implementation.',
-              'Used initiative and self-directed learning to solve unfamiliar problems and keep momentum on critical work.',
-            ],
-          tags: ['Full Stack Development', 'Automation', 'Project Delivery', 'Continuous Improvement', 'Problem Solving', 'User-Centered Design'],
-          techTags: ['AWS', 'Node.js', 'TypeScript', 'Angular', 'Docker', 'CI/CD', 'Infrastructure as Code', 'CloudFormation', 'SAML', 'OAuth', 'OpenID Connect', 'AWS Cognito', 'AWS Lambda', 'AWS API Gateway', 'AWS S3', 'AWS CloudWatch', 'AWS CloudTrail', 'Jira']
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Volunteer / Casual', company: 'Ev Church', startDate: new Date('2016-01-01'), endDate: new Date('2022-12-31'), description:
-            [
-              'Served in flexible technical and production roles to support community events and operations.',
-              'Contributed across IT, Audio Visual, and electrical needs with a consistent service and reliability mindset.',
-              'Adapted to changing responsibilities, reinforcing values of contribution, teamwork, and stewardship.',
-              'Contributed to internal tooling and automation to support operations and reduce manual work for volunteers'
-            ],
-          tags: ['Operations', 'End User Support', 'Customer Service', 'Teamwork', 'Problem Solving'],
-          techTags: ['AV Systems', 'FreePBX', '3CX', 'Docker', 'Networking', 'Telecom Hardware', 'Scripting', 'Infrastructure as Code', 'Jira']
-        }
-      ),
-      new JobItem(
-        {
-          role: 'Casual', company: 'VOIP Pty Ltd', startDate: new Date('2016-01-01'), endDate: new Date('2018-12-31'), description:
-            [
-              'Supported large-scale telecom hardware preparation, deployment, and refurbishment programs.',
-              'Delivered dependable execution on detailed technical tasks where consistency and quality mattered.',
-              'Built early foundations in hands-on IT operations, teamwork, and customer-focused delivery.'
-            ],
-          tags: ['Operations', 'Teamwork'],
-          techTags: ['Avaya', 'Nortel', 'Networking', 'Telecom Hardware']
-        }
-      ),
-    ]);
+  private readonly http = inject(HttpClient);
+
+  getAds(): Observable<JobItem[]> {
+    return this.http.get<JobsResponse>('/app/services/jobs.json').pipe(
+      map((response) =>
+        response.data.map(
+          (item) =>
+            new JobItem({
+              role: item.role,
+              company: item.company,
+              startDate: new Date(item.startDate),
+              endDate: item.endDate ? new Date(item.endDate) : undefined,
+              description: item.description,
+              tags: item.tags,
+              techTags: item.techTags
+            })
+        )
+      )
+    );
   }
 }
 

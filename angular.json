@@ -27,7 +27,12 @@
               "src/favicon.ico",
               "src/assets",
               "src/CNAME",
-              "src/404.html"
+              "src/404.html",
+              {
+                "glob": "jobs.json",
+                "input": "src/app/services",
+                "output": "/app/services"
+              }
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
