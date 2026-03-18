@@ -42,11 +42,6 @@
 	gap: 0.6rem;
 }
 
-.filter-state {
-	font-size: 0.78rem;
-	color: #5d6877;
-}
-
 .display-toggles {
 	margin: 0.5rem 0 0.35rem;
 	padding: 0.35rem 0;
@@ -86,77 +81,6 @@
 	font-size: 0.84rem;
 	font-weight: 500;
 	color: #2f3a48;
-}
-
-.filter-chips {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.35rem;
-}
-
-.filter-chip {
-	--mdc-chip-label-text-size: 0.72rem;
-	--mdc-chip-container-height: 24px;
-}
-
-.filter-chip.filter-chip-selected {
-	--mdc-chip-elevated-container-color: #1f3a63;
-	--mdc-chip-flat-selected-container-color: #1f3a63;
-	--mdc-chip-label-text-color: #ffffff;
-	--mdc-chip-with-icon-icon-color: #ffffff;
-}
-
-.tag-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.3rem;
-	margin: 0.35rem 0 0.5rem;
-}
-
-.tech-tag-block {
-	margin: 0.15rem 0 0.35rem;
-}
-
-.tech-tag-label {
-	display: inline-block;
-	font-size: 0.72rem;
-	font-weight: 600;
-	color: #5d6877;
-	margin-bottom: 0.2rem;
-}
-
-.tech-tag-list {
-	margin-top: 0.2rem;
-}
-
-.tag-chip {
-	font-size: 0.7rem;
-	line-height: 1.2;
-	padding: 0.1rem 0.35rem;
-	border-radius: 999px;
-	border: 1px solid #cfd4dc;
-	background: #f5f7fa;
-	color: #2f3a48;
-}
-
-.tag-chip-selected {
-	background: #e7f0ff;
-	border-color: #6f95d9;
-	color: #15335d;
-	font-weight: 600;
-}
-
-.tech-tag-chip {
-	background: #eef4ff;
-	border-color: #c9d8f5;
-	color: #24406b;
-}
-
-.tech-tag-chip.tech-tag-chip-selected {
-	background: #dceaff;
-	border-color: #6f95d9;
-	color: #15335d;
-	font-weight: 600;
 }
 
 @media print {
