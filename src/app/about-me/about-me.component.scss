@@ -27,14 +27,63 @@ img {
 
 .pair {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .pair .element {
+  width: 45%;
   padding: 2%;
-  width: 50%;
 }
 
-@media (max-width: 400px) {
+.attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.attributes .attribute-item {
+  flex: 0 1 45%;
+}
+
+.attribute-item {
+  padding-left: 1rem;
+  border-left: 4px solid #1976d2;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1976d2;
+    letter-spacing: 0.3px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+    color: #424242;
+    font-size: 13px;
+  }
+}
+
+@media print {
+  .attribute-item {
+    page-break-inside: avoid;
+    padding-left: 0.75rem;
+  }
+
+  .attribute-item h3 {
+    font-size: 13px;
+  }
+
+  .attribute-item p {
+    font-size: 12px;
+  }
+}
+
+// When in mobile view single column only
+@media (max-width: 500px) {
   .print-action {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
@@ -62,5 +111,14 @@ img {
       width: 100%;
       margin: 0 0 10px 0;
     }
+  }
+  .pair .element {
+    width: 100%;
+  }
+
+  .attributes .attribute-item {
+    width: 100%;
+    flex: 0 1 100%;
+    max-width: 100%;
   }
 }
