@@ -21,6 +21,7 @@
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "python-envs.pythonProjects": [],
     "conventionalCommits.scopes": [
-        "Job"
+        "Job",
+        "About Me"
     ]
 }
