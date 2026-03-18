@@ -27,7 +27,12 @@
               "src/favicon.ico",
               "src/assets",
               "src/CNAME",
-              "src/404.html"
+              "src/404.html",
+              {
+                "glob": "jobs.json",
+                "input": "src/app/services",
+                "output": "/app/services"
+              }
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
@@ -37,6 +42,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -68,36 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bookrage001:build"
+            "buildTarget": "bookrage001:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bookrage001:build:production"
+              "buildTarget": "bookrage001:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bookrage001:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "buildTarget": "bookrage001:build"
           }
         },
         "lint": {
@@ -128,5 +116,7 @@
       }
     }
   },
-  "defaultProject": "bookrage001"
+  "cli": {
+    "analytics": "c09f3a6b-55d8-45db-a576-4ec737eb9a64"
+  }
 }

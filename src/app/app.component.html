@@ -1,36 +1,36 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="container" [class.example-is-mobile]="mobileQuery.matches">
 
-    <mat-toolbar color="primary" class="example-toolbar">
-        <!-- <button mat-icon-button> -->
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <h1 class="example-app-name">&nbsp;{{title}}</h1>
-    </mat-toolbar>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <!-- <button mat-icon-button> -->
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">&nbsp;{{title}}</h1>
+  </mat-toolbar>
 
 
 
-    <mat-sidenav-container fullscreen id="container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-        style="flex: 0 0 100%;">
+  <mat-sidenav-container fullscreen id="container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    style="flex: 0 0 100%;">
 
-        <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-            fixedTopGap="56">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
 
-            <app-sidenav-list (sidenavClose)="sidenav.close()">
+      <app-sidenav-list (sidenavClose)="sidenav.close()">
 
-            </app-sidenav-list>
+      </app-sidenav-list>
 
-        </mat-sidenav>
+    </mat-sidenav>
 
-        <mat-sidenav-content>
-            <div style="  display: flex;
+    <mat-sidenav-content>
+      <div style="  display: flex;
             justify-content: center;">
-                <div style=" background-color:#dadada;margin-top: 30px; min-width: 60%; padding: 30px; max-width: 90%;">
+        <div style=" background-color:#dadada;margin-top: 30px; min-width: 60%; padding: 30px; max-width: 90%;">
 
-                    <router-outlet></router-outlet>
-                </div>
+          <router-outlet></router-outlet>
+        </div>
 
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

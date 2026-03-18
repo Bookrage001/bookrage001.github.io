@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { JobsComponent } from './jobs/jobs.component';
+import { PrintService } from '../services/print.service';
 
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.scss']
+  styleUrls: ['./about-me.component.scss'],
+  standalone: true,
+  imports: [
+    RouterModule,
+    FlexLayoutModule,
+    JobsComponent,
+    MatButtonModule
+  ]
 })
-export class AboutMeComponent implements OnInit {
+export class AboutMeComponent {
+  private printService = inject(PrintService);
 
-  constructor() { }
-
-  ngOnInit() {
+  printResume(): void {
+    this.printService.print();
   }
-
 }
