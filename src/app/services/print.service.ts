@@ -88,9 +88,21 @@ export class PrintService {
 
   /**
    * Open the browser's print dialog
+   * Sets document title as filename hint (for PDF save dialog)
    */
   print(): void {
     this.initializePrintDate();
+
+    // Set document title for PDF filename
+    const originalTitle = document.title;
+    const today = new Date().toISOString().split('T')[0];
+    document.title = `Caleb-Ardern-Resume-${today}`;
+
     window.print();
+
+    // Restore original title after print dialog closes
+    setTimeout(() => {
+      document.title = originalTitle;
+    }, 250);
   }
 }
