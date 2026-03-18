@@ -27,12 +27,11 @@ img {
 
 .pair {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .pair .element {
-  width: 45%;
+  flex: 1;
   padding: 2%;
 }
 
