@@ -21,7 +21,7 @@ export class JobsComponent {
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
-  lastFiveYearsOnly = false;
+  lastFiveYearsOnly = true;
   filtersVisible = false;
   showTags = false;
   showTechTags = false;
@@ -52,6 +52,8 @@ export class JobsComponent {
         return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b));
       })
     );
+
+    this.applyFilters();
   }
 
   onTagChange(tag: string): void {
