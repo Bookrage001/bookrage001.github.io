@@ -1,0 +1,5 @@
+:host ::ng-deep .cal-week-view .cal-time-events,
+:host ::ng-deep .cal-day-view .cal-time-events {
+	max-height: 70vh;
+	overflow-y: auto;
+}

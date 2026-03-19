@@ -4,6 +4,8 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { BlogComponent } from './blog/blog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CalenderComponent } from './dashboard/calender/calender.component';
+import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { GamesComponent } from './games/games.component';
 import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
 import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
@@ -27,7 +29,13 @@ export const routes: Routes = [
       { path: 'life-mystree', component: LifeMystreeGameComponent },
     ]
   },
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard', component: DashboardComponent, children: [
+      { path: '', redirectTo: 'calender', pathMatch: 'full' },
+      { path: 'calender', component: CalenderComponent },
+      { path: 'minecraft', component: MinecraftComponent },
+    ]
+  },
   { path: 'tools', component: ToolsComponent },
   {
     path: 'games', component: GamesComponent, children: [

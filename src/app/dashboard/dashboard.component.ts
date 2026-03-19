@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CalenderComponent } from './calender/calender.component';
-import { MinecraftComponent } from './minecraft/minecraft.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +7,7 @@ import { MinecraftComponent } from './minecraft/minecraft.component';
   styleUrls: ['./dashboard.component.scss'],
   standalone: true,
   imports: [
-    CalenderComponent,
-    MinecraftComponent
+    RouterModule
   ]
 })
 export class DashboardComponent {

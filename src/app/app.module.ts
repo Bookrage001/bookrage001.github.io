@@ -33,6 +33,9 @@ import { DocumentationComponent } from './documentation/documentation.component'
 import { ComponentsComponent } from './components/components.component';
 import { LineGraphComponent } from './components/line-graph/line-graph.component';
 import { BigonotationComponent } from './documentation/bigonotation/bigonotation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -69,6 +72,11 @@ import { BigonotationComponent } from './documentation/bigonotation/bigonotation
     ComponentsComponent,
     LineGraphComponent,
     BigonotationComponent,
+    HttpClientModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   // providers: [],
   // bootstrap: [],

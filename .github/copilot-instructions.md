@@ -19,6 +19,12 @@
 - Run lint checks with `npm run lint`.
 - `npm run e2e` uses Protractor and should be treated as legacy unless the task is explicitly about e2e coverage.
 
+## Minimal Changes (Cleanse Rule)
+- Only touch lines that are directly required for the task. Do not reformat, rename variables, switch quote styles, collapse multi-line objects, or remove comments in code you did not need to change.
+- Cosmetic edits (whitespace, brace style, quote normalisation) belong in a dedicated formatting commit, never mixed into a feature or fix commit.
+- If a file has a stray artefact (e.g. a trailing blank line added by an edit), restore it to its original state rather than leaving noise in the diff.
+- Prefer a focused rewrite of only the changed function or block over rewriting an entire file when only part of it needs to change.
+
 ## Conventions
 - Preserve Angular Material and `@angular/flex-layout` usage in touched areas unless you are intentionally migrating a feature.
 - Check both `eslint.config.js` and `tslint.json` before assuming lint rules. ESLint is active, but the repo still carries older TSLint conventions that reflect local style.
