@@ -7,3 +7,14 @@ mat-sidenav-container {
     color: #0d47a1;
     font-weight: 600;
 }
+
+:host ::ng-deep .mdc-list-item {
+    --mdc-list-list-item-one-line-container-height: 52px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+:host ::ng-deep .mdc-list-item .mdc-list-item__primary-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+}

@@ -40,7 +40,7 @@ h1 {
 .quick-links {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 0.9rem;
+  gap: 1.25rem;
 }
 
 .quick-link {
@@ -50,6 +50,23 @@ h1 {
 
 mat-card {
   transition: transform 120ms ease, box-shadow 120ms ease;
+  padding: 0.5rem 0;
+}
+
+mat-card-header {
+  align-items: flex-start;
+  min-height: 84px;
+}
+
+mat-card-title {
+  margin-bottom: 0.2rem;
+  line-height: 1.25;
+}
+
+mat-card-subtitle {
+  margin: 0;
+  line-height: 1.35;
+  min-height: 2.7em;
 }
 
 .quick-link:hover mat-card,
