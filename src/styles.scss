@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use "angular-calendar/scss/angular-calendar";
 
 html,
 body {
@@ -8,7 +9,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-@import "angular-calendar/scss/angular-calendar";
 
 .content {
   width: 80%;
