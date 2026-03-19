@@ -42,7 +42,7 @@ jobs:
 
       - name: Approve pull request
         run: |
-          gh pr review "$PR_NUMBER" --approve --body "Auto-approved: PR authored by repository owner @Bookrage001."
+          gh pr review "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --approve --body "Auto-approved: PR authored by repository owner @Bookrage001."
         env:
           GH_TOKEN: ${{ secrets.OWNER_PAT }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
