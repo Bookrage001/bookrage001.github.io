@@ -1,0 +1,46 @@
+name: Auto-approve owner pull requests
+
+# When @Bookrage001 opens or updates a PR, automatically approve it so the
+# CODEOWNERS requirement is satisfied and the PR can be merged without needing
+# a second reviewer.
+#
+# Prerequisites:
+#   1. Go to Settings → Secrets and variables → Actions.
+#   2. Create a secret named OWNER_PAT containing a Fine-grained Personal
+#      Access Token (or classic PAT with `repo` scope) for the @Bookrage001
+#      account.  The GITHUB_TOKEN that Actions creates automatically cannot
+#      approve its own PRs, so a separate PAT is required.
+
+on:
+  pull_request:
+    # Trigger when a PR is opened or re-opened (e.g. after being closed and
+    # re-opened, which dismisses prior approvals). 'synchronize' is omitted
+    # intentionally — GitHub preserves existing approvals on new pushes unless
+    # branch protection is set to dismiss stale reviews.
+    types: [opened, reopened]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    # Only run when the PR was opened by the repository owner AND the head
+    # branch belongs to this repository (not a fork), to prevent auto-approval
+    # of PRs from forks opened by an account with the same username.
+    if: >
+      github.actor == 'Bookrage001' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Verify OWNER_PAT secret is configured
+        run: |
+          if [ -z "$SECRET_VALUE" ]; then
+            echo "::error::The OWNER_PAT secret is not set. Go to Settings → Secrets and variables → Actions and add a PAT for @Bookrage001 with repo scope."
+            exit 1
+          fi
+        env:
+          SECRET_VALUE: ${{ secrets.OWNER_PAT }}
+
+      - name: Approve pull request
+        run: gh pr review ${{ github.event.pull_request.number }} --approve --body "Auto-approved: PR authored by repository owner @Bookrage001."
+        env:
+          GH_TOKEN: ${{ secrets.OWNER_PAT }}
