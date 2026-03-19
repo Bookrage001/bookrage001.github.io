@@ -63,7 +63,7 @@ export class CalenderComponent implements OnInit, AfterViewInit {
   private readonly http = inject(HttpClient);
   private readonly hostElement = inject(ElementRef<HTMLElement>);
 
-  private readonly calendarIcsUrl = environment.calendarIcsUrl;
+  private readonly calendarIcsUrls = this.getCalendarIcsUrls();
 
   view: CalendarView = CalendarView.Week;
 
@@ -120,40 +120,7 @@ export class CalenderComponent implements OnInit, AfterViewInit {
 
   refresh: Subject<void> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors['red'],
-      actions: this.actions,
-      allDay: true,
-      resizable: { beforeStart: true, afterEnd: true },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors['yellow'],
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors['blue'],
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors['yellow'],
-      actions: this.actions,
-      resizable: { beforeStart: true, afterEnd: true },
-      draggable: true,
-    },
-  ];
+  events: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = true;
 
@@ -228,22 +195,46 @@ export class CalenderComponent implements OnInit, AfterViewInit {
   }
 
   private loadEventsFromIcs(): void {
-    if (!this.calendarIcsUrl) {
+    if (this.calendarIcsUrls.length === 0) {
       return;
     }
 
-    this.http.get(this.calendarIcsUrl, { responseType: 'text' }).subscribe({
+    this.loadEventsFromIcsUrl(0);
+  }
+
+  private loadEventsFromIcsUrl(urlIndex: number): void {
+    if (urlIndex >= this.calendarIcsUrls.length) {
+      console.error('Failed to load ICS feed from all configured URLs');
+      return;
+    }
+
+    const url = this.calendarIcsUrls[urlIndex];
+    this.http.get(url, { responseType: 'text' }).subscribe({
       next: (icsText: string) => {
         const parsedEvents = this.parseIcsEvents(icsText);
         if (parsedEvents.length > 0) {
           this.events = parsedEvents;
           this.refresh.next();
+          return;
         }
+
+        this.loadEventsFromIcsUrl(urlIndex + 1);
       },
       error: (error) => {
-        console.error('Failed to load ICS feed', error);
+        console.warn(`Failed to load ICS feed from ${url}`, error);
+        this.loadEventsFromIcsUrl(urlIndex + 1);
       },
     });
+  }
+
+  private getCalendarIcsUrls(): string[] {
+    const fromArray = (environment as { calendarIcsUrls?: string[] }).calendarIcsUrls;
+    if (Array.isArray(fromArray) && fromArray.length > 0) {
+      return fromArray.filter((url) => Boolean(url));
+    }
+
+    const fromSingle = (environment as { calendarIcsUrl?: string }).calendarIcsUrl;
+    return fromSingle ? [fromSingle] : [];
   }
 
   private parseIcsEvents(icsText: string): CalendarEvent[] {
