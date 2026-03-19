@@ -1,0 +1,42 @@
+.dashboard-header h1 {
+	margin: 0;
+}
+
+.dashboard-header p {
+	margin: 0.4rem 0 1rem;
+	color: #4a5568;
+}
+
+.dashboard-links {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	gap: 1rem;
+}
+
+.dashboard-link {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+mat-card {
+	height: 100%;
+	min-height: 120px;
+	box-sizing: border-box;
+	transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.dashboard-link:hover mat-card,
+.dashboard-link:focus-visible mat-card {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(40, 80, 140, 0.14);
+}
+
+mat-icon[mat-card-avatar] {
+	color: #2e5ca8;
+}
+
+.dashboard-details {
+	margin-top: 1rem;
+}

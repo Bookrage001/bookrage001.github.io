@@ -1,7 +1,21 @@
-<a routerLink="tickTackToe">
-    TickTackToe
-</a>
+<section class="games-header">
+    <h1>Games</h1>
+    <p>Interactive projects and experiments.</p>
+</section>
 
+<section class="game-links">
+    <a class="game-link" routerLink="tickTackToe">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>sports_esports</mat-icon>
+                <mat-card-title>TickTackToe</mat-card-title>
+                <mat-card-subtitle>Browser game prototype</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </a>
+</section>
 
-<router-outlet>
-</router-outlet>
+<div class="game-details">
+    <hr />
+    <router-outlet></router-outlet>
+</div>
