@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { BlogComponent } from './blog/blog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -47,6 +48,7 @@ export const routes: Routes = [
       { path: 'tickTackToe', component: TickTackToeComponent },
     ]
   },
+  { path: 'contact', component: ContactComponent },
   {path: 'documentation', component: DocumentationComponent}
   // { path: '**', component: AboutMeComponent }
 ];

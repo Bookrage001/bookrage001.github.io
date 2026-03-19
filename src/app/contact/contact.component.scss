@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.contact-header h1 {
+  margin: 0;
+}
+
+.contact-header p {
+  margin: 0.4rem 0 1rem;
+  color: #4a5568;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.contact-card {
+  padding: 1rem;
+}
+
+.contact-card h3 {
+  margin: 0 0 0.4rem;
+}
+
+.contact-card p {
+  margin: 0 0 0.9rem;
+  line-height: 1.4;
+}
