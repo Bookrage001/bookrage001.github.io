@@ -1,27 +1,12 @@
 <mat-nav-list style="padding: 20px;">
 
+    <a mat-list-item routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="onSidenavClose()">Home</a>
+    <a mat-list-item routerLink="/about-me" routerLinkActive="active-link" (click)="onSidenavClose()">About Me</a>
+    <a mat-list-item routerLink="/blog" routerLinkActive="active-link" (click)="onSidenavClose()">Blog</a>
+    <a mat-list-item routerLink="/products" routerLinkActive="active-link" (click)="onSidenavClose()">Products</a>
+    <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link" (click)="onSidenavClose()">Dashboard</a>
+    <a mat-list-item routerLink="/tools" routerLinkActive="active-link" (click)="onSidenavClose()">Tools</a>
+    <a mat-list-item routerLink="/games" routerLinkActive="active-link" (click)="onSidenavClose()">Games</a>
+    <a mat-list-item routerLink="/documentation" routerLinkActive="active-link" (click)="onSidenavClose()">Documentation</a>
 
-    <!-- <mat-list-item>
-        <h3 matLine> MAT LINE </h3>
-        <p matLine>
-            <span> content </span>
-            <span class="demo-2"> -- content </span>
-        </p>
-    </mat-list-item> -->
-    <a mat-list-item routerLink="/" (click)="onSidenavClose()">Home</a>
-    <a mat-list-item routerLink="blog" (click)="onSidenavClose()">Blog</a>
-    <a mat-list-item routerLink="products" (click)="onSidenavClose()">Products</a>
-    <a mat-list-item routerLink="dashboard" (click)="onSidenavClose()">Dashboard</a>
-    <a mat-list-item routerLink="tools" (click)="onSidenavClose()">Tools</a>
-    <a mat-list-item routerLink="games" (click)="onSidenavClose()">Games</a>
-    <a mat-list-item routerLink="documentation" (click)="onSidenavClose()">Documentation</a>
-
-
-    <!-- <mat-tree>
-        <mat-tree-node> parent node </mat-tree-node>
-        <mat-tree-node> -- child node1 </mat-tree-node>
-        <mat-tree-node> -- child node2 </mat-tree-node>
-    </mat-tree> -->
-
-    <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
 </mat-nav-list>

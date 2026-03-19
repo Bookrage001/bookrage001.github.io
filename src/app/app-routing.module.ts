@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { HomeComponent } from './home/home.component';
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { BlogComponent } from './blog/blog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,7 +16,7 @@ import { DocumentationComponent } from './documentation/documentation.component'
 
 
 export const routes: Routes = [
-  { path: '', component: AboutMeComponent },
+  { path: '', component: HomeComponent },
   {
     path: 'about-me', component: AboutMeComponent, children: [
       { path: 'problem-solving', component: ProblemSolvingComponent },

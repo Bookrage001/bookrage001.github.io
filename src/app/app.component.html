@@ -1,11 +1,19 @@
 <div class="container" [class.example-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar color="primary" class="example-toolbar">
-    <!-- <button mat-icon-button> -->
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle navigation menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">&nbsp;{{title}}</h1>
+    <button mat-button class="back-button" *ngIf="showBackButton" (click)="goBackOneLevel()" aria-label="Go back one level">
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+    <h1 class="example-app-name"><a routerLink="/">{{title}}</a></h1>
+    <nav class="toolbar-links" *ngIf="!mobileQuery.matches" aria-label="Primary navigation">
+      <a mat-button routerLink="/about-me" routerLinkActive="toolbar-link-active">About Me</a>
+      <a mat-button routerLink="/products" routerLinkActive="toolbar-link-active">Products</a>
+      <a mat-button routerLink="/blog" routerLinkActive="toolbar-link-active">Blog</a>
+    </nav>
   </mat-toolbar>
 
 
@@ -14,7 +22,7 @@
     style="flex: 0 0 100%;">
 
     <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
+      [opened]="!mobileQuery.matches" fixedTopGap="56">
 
       <app-sidenav-list (sidenavClose)="sidenav.close()">
 
