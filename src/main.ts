@@ -1,5 +1,5 @@
 
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
@@ -21,7 +21,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
+    provideZoneChangeDetection(),importProvidersFrom(
       BrowserAnimationsModule,
       MatSidenavModule,
       MatListModule,

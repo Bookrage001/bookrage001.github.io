@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -52,7 +52,7 @@ const colors: Record<string, EventColor> = {
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.scss'],
   standalone: true,
-  imports: [CommonModule, CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, FlexLayoutModule],
+  imports: [CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, FlexLayoutModule],
   providers: provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
 })
 export class CalenderComponent implements OnInit, AfterViewInit {
