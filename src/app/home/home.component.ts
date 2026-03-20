@@ -28,19 +28,19 @@ export class HomeComponent {
     {
       title: 'Windracers Distributed Control Application',
       timeframe: '2023-2026',
-      summary: 'Mission software, distributed services, UX improvements, and delivery practices built around operator outcomes in a complex engineering environment.',
+      summary: 'Product delivery in a complex operational setting, balancing operator needs, technical constraints, and roadmap priorities to improve usability and mission outcomes.',
       route: '/products/distributed-avionics'
     },
     {
       title: 'Assertive Platform Delivery',
       timeframe: '2018-2021',
-      summary: 'Full-stack feature delivery across Angular, TypeScript, Node.js, authentication, automation, AWS, and customer-facing improvements.',
+      summary: 'Cross-functional platform work focused on shaping features, improving customer-facing journeys, and aligning delivery with product and business priorities.',
       route: '/products/assertive'
     },
     {
       title: 'Life is a Mystree',
       timeframe: 'Creative product work',
-      summary: 'A product and game build that shows design thinking, experimentation, and the ability to turn ideas into something tangible.',
+      summary: 'An experimental build that demonstrates idea validation, iterative design, and the discipline of turning concepts into a coherent product experience.',
       route: '/products/life-mystree'
     }
   ];
