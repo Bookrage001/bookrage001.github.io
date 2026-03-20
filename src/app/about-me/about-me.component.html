@@ -1,77 +1,71 @@
 <router-outlet></router-outlet>
-<div fxLayoutGap="30px" class="heading">
-  <div class="image">
 
-    <!-- Profile Photo (left)-->
+<section class="resume-header">
+  <div class="resume-header__image">
     <img src="./assets/img/profile.jpg" alt="Caleb Ardern">
   </div>
 
-  <div class="content">
-    <!-- Print Resume Button (top right) -->
+  <div class="resume-header__content">
     <div class="print-action no-print">
       <button mat-flat-button color="primary" type="button" (click)="printResume()">
         Print Resume
       </button>
     </div>
 
-    <!-- Details (Right) -->
-    <h1>
-      Caleb Ardern
-    </h1>
-    <h2> Software Developer</h2>
-    <!-- <p><b>Mobile:</b> TBC</p>
-            <p><b>Email:</b> TBC</p>
-            <p><b>Linkedin:</b> TBC</p> -->
-    <b></b>
-    <p>
-      <a href="https://www.linkedin.com/in/calebgardern/">Linkedin</a> |
-      <a href="https://github.com/Bookrage001">Github</a>
+    <h1>Caleb Ardern</h1>
+    <h2>Software Developer</h2>
+    <p class="resume-header__email">
+      Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
+    </p>
+
+    <p class="resume-header__contact">
+      <a href="https://www.linkedin.com/in/calebgardern/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="https://github.com/Bookrage001" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span class="no-print"> |
+        <a routerLink="/contact">Contact Page</a>
+      </span>
       <span class="print-only"> |
         <a href="https://bookrage001.com/">Website</a>
-    </span>
+      </span>
     </p>
-    <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-    </p>
-  </div>
-</div>
 
-<div class="pair">
-  <div class="element">
-    <h3>
-      About me:
-    </h3>
-    <p>
-      I love to engage with professionals in a multi-disciplinary manner as I enjoy learning and understanding
-      other individuals and their individual perspectives and views in their respective fields. I am always keen
-      to learn new skills and knowledge in the workplace and how to apply them to solve problems. I enjoy
-      understanding, exploring, experimenting and researching technology in my free time.
+    <p class="resume-header__degree">
+      <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+    </p>
+
+    <p class="resume-header__summary">
+      Software developer with experience across full-stack delivery, cloud systems, identity and access, operational
+      tooling, and cross-functional engineering work. Strongest in roles where technical implementation, practical
+      problem solving, and clear collaboration all matter.
     </p>
   </div>
-  <!-- <div class="element">
-    <h3>
-      Skills
-    </h3>
-    <ol>
-      <li>Cloud</li>
-      <li>Networking</li>
-      <li>Identity and Access Management</li>
-    </ol>
-  </div> -->
-  <div class="element">
+</section>
 
-    <h3>
-      Reference:
-    </h3>
-    <i>
-      "Caleb is a highly independent software developer who grasps complex problems and can translate
-      them into
-      intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
-      attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
-      for any team who needs a developer with strong core technical skills across a range of development and cloud
-      technologies. "
-    </i> - Dan Bligh (Manager)
+<section class="resume-section pair">
+  <div class="element">
+    <h3>Core Strengths</h3>
+    <ul class="resume-list">
+      <li>Full-stack delivery across Angular, TypeScript, Node.js, .NET, AWS, and CI/CD workflows.</li>
+      <li>Security, identity, networking, and cloud experience that supports resilient implementation decisions.</li>
+      <li>Cross-functional collaboration with engineering, operations, IT, and leadership teams.</li>
+      <li>Strong ownership from problem framing through delivery, iteration, and operational follow-up.</li>
+    </ul>
   </div>
-</div>
+
+  <div class="element">
+    <h3>Reference</h3>
+    <p class="reference-copy">
+      <i>
+        "Caleb is a highly independent software developer who grasps complex problems and can translate them into
+        intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
+        attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
+        for any team who needs a developer with strong core technical skills across a range of development and cloud
+        technologies."
+      </i>
+      <span>- Dan Bligh (Manager)</span>
+    </p>
+  </div>
+</section>
 
 <div>
   <hr />
@@ -112,7 +106,7 @@
     <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
       data-share-badge-host="https://www.credly.com">
     </div>
-    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+    <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
   </div>
 
   <hr />

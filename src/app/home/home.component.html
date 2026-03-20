@@ -2,14 +2,41 @@
   <p class="kicker">Welcome</p>
   <h1>Caleb Ardern</h1>
   <p class="intro">
-    Software developer focused on practical engineering, cloud systems, and continuous improvement.
+    Software developer focused on practical engineering, cloud systems, and continuous improvement. Use this page to
+    explore selected work, then go to About Me for the resume view.
   </p>
 
   <div class="hero-actions">
-    <a mat-flat-button color="primary" routerLink="/about-me">View Resume</a>
-    <a mat-stroked-button color="primary" routerLink="/products">Explore Projects</a>
+    <a mat-flat-button color="primary" routerLink="/products">Explore Projects</a>
+    <a mat-stroked-button color="primary" routerLink="/about-me">View Resume</a>
     <a mat-stroked-button color="primary" routerLink="/contact">Contact Me</a>
   </div>
+</section>
+
+<section class="featured-work">
+  <div class="section-heading">
+    <h2>Selected Work</h2>
+    <p>
+      A quick portfolio view of product and engineering work. Each example links through to more detail, while the
+      resume page keeps the full career history separate.
+    </p>
+  </div>
+
+  <div class="featured-work-grid">
+    @for (project of featuredProjects; track project.title) {
+      <mat-card appearance="outlined" class="featured-work-card">
+        <p class="featured-work-card__timeframe">{{ project.timeframe }}</p>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.summary }}</p>
+        <a mat-stroked-button color="primary" [routerLink]="project.route">View Project Details</a>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="navigation-overview">
+  <h2>Further Navigation</h2>
+  <p>Browse additional sections across the site.</p>
 </section>
 
 <section class="quick-links">
@@ -43,32 +70,12 @@
     </mat-card>
   </a>
 
-  <a class="quick-link" routerLink="/tools">
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <mat-icon mat-card-avatar>build</mat-icon>
-        <mat-card-title>Tools</mat-card-title>
-        <mat-card-subtitle>Utilities and experiments</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-  </a>
-
   <a class="quick-link" routerLink="/games">
     <mat-card appearance="outlined">
       <mat-card-header>
         <mat-icon mat-card-avatar>sports_esports</mat-icon>
         <mat-card-title>Games</mat-card-title>
         <mat-card-subtitle>Interactive projects</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-  </a>
-
-  <a class="quick-link" routerLink="/documentation">
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <mat-icon mat-card-avatar>description</mat-icon>
-        <mat-card-title>Documentation</mat-card-title>
-        <mat-card-subtitle>Technical references</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
   </a>

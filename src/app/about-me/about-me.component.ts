@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { JobsComponent } from './jobs/jobs.component';
 import { PrintService } from '../services/print.service';
@@ -12,7 +11,6 @@ import { PrintService } from '../services/print.service';
   standalone: true,
   imports: [
     RouterModule,
-    FlexLayoutModule,
     JobsComponent,
     MatButtonModule
   ]
