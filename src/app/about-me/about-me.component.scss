@@ -9,6 +9,9 @@ img {
 
 .print-action {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: flex-end;
   margin-bottom: 1rem;
 }
@@ -179,6 +182,11 @@ img {
     padding: 0;
     border: 0;
     background: transparent;
+  }
+
+  .resume-header.resume-header--compact-print {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0;
   }
 
   .resume-header__image {
