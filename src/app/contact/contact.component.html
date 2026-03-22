@@ -1,0 +1,55 @@
+<section class="contact-hero">
+  <p class="contact-hero__eyebrow">Connect</p>
+  <h1>Reach out</h1>
+  <p class="contact-hero__lead">
+    A few different ways to get a feel for my work and background. Email tends to be the most direct, with LinkedIn,
+    GitHub, the resume page, and project work available for context.
+  </p>
+
+  <div class="contact-hero__actions">
+    <a mat-flat-button color="primary" href="mailto:caleb.ardern@bookrage001.com">Start with Email</a>
+    <a mat-stroked-button color="primary" routerLink="/about-me">Resume</a>
+    <a mat-stroked-button color="primary" routerLink="/products">Projects</a>
+  </div>
+</section>
+
+<section class="contact-layout">
+  <mat-card appearance="outlined" class="contact-card contact-card--featured">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>{{ primaryContact.icon }}</mat-icon>
+      <mat-card-title>{{ primaryContact.title }}</mat-card-title>
+      <mat-card-subtitle>{{ primaryContact.subtitle }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ primaryContact.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [href]="primaryContact.href">{{ primaryContact.label }}</a>
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="contact-layout__secondary">
+    @for (card of profileCards; track card.title) {
+      <mat-card appearance="outlined" class="contact-card contact-card--compact">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>{{ card.icon }}</mat-icon>
+          <mat-card-title>{{ card.title }}</mat-card-title>
+          <mat-card-subtitle>{{ card.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ card.description }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a
+            mat-stroked-button
+            color="primary"
+            [href]="card.href"
+            [attr.target]="card.external ? '_blank' : null"
+            [attr.rel]="card.external ? 'noopener noreferrer' : null">
+            {{ card.label }}
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</section>

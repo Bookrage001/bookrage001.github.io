@@ -23,6 +23,9 @@
     "conventionalCommits.scopes": [
         "Job",
         "About Me",
-        "Deployment"
+        "Deployment",
+        "Dashboard",
+        "Calender",
+        "Projects"
     ]
 }

@@ -1,0 +1,94 @@
+<section class="home-hero">
+  <p class="kicker">Welcome</p>
+  <h1>Caleb Ardern</h1>
+  <p class="intro">
+    Product-focused software developer with a strong interest in product management, user needs, and business value.
+    This page highlights work shaped by prioritisation, stakeholder alignment, and outcome-driven delivery, while About
+    Me provides the full resume view.
+  </p>
+
+  <div class="hero-actions">
+    <a mat-flat-button color="primary" routerLink="/products">Review Product Work</a>
+    <a mat-stroked-button color="primary" routerLink="/about-me">View Resume</a>
+    <a mat-stroked-button color="primary" routerLink="/contact">Contact Me</a>
+  </div>
+</section>
+
+<section class="featured-work">
+  <div class="section-heading">
+    <h2>Product Highlights</h2>
+    <p>
+      A snapshot of work viewed through a product management lens: understanding users, shaping priorities, aligning
+      delivery with business goals, and improving the end experience. Each example links to more detail, while the
+      resume page keeps the broader career history separate.
+    </p>
+  </div>
+
+  <div class="featured-work-grid">
+    @for (project of featuredProjects; track project.title) {
+      <mat-card appearance="outlined" class="featured-work-card">
+        <p class="featured-work-card__timeframe">{{ project.timeframe }}</p>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.summary }}</p>
+        <a mat-stroked-button color="primary" [routerLink]="project.route">View Project Details</a>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="navigation-overview">
+  <h2>Explore More</h2>
+  <p>Browse sections covering experience, product thinking, shipped work, and opportunities to connect.</p>
+</section>
+
+<section class="quick-links">
+  <a class="quick-link" routerLink="/about-me">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>person</mat-icon>
+        <mat-card-title>About Me</mat-card-title>
+        <mat-card-subtitle>Background, leadership potential, and product-oriented experience</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </a>
+
+  <a class="quick-link" routerLink="/blog">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>article</mat-icon>
+        <mat-card-title>Blog</mat-card-title>
+        <mat-card-subtitle>Thoughts on product decisions, delivery tradeoffs, and problem solving</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </a>
+
+  <a class="quick-link" routerLink="/products">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>inventory_2</mat-icon>
+        <mat-card-title>Products</mat-card-title>
+        <mat-card-subtitle>Examples of product direction, prioritised delivery, and measurable outcomes</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </a>
+
+  <a class="quick-link" routerLink="/games">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>sports_esports</mat-icon>
+        <mat-card-title>Games</mat-card-title>
+        <mat-card-subtitle>Interactive experiments that show discovery, iteration, and feature shaping</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </a>
+
+  <a class="quick-link" routerLink="/contact">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>mail</mat-icon>
+        <mat-card-title>Contact</mat-card-title>
+        <mat-card-subtitle>Discuss product, delivery, or cross-functional leadership opportunities</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </a>
+</section>

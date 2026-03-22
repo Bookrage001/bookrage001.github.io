@@ -23,6 +23,37 @@ body {
     top: 64px !important;
 }
 
+.example-app-name {
+    margin: 0;
+}
+
+.back-button {
+    margin-left: 4px;
+    margin-right: 6px;
+    color: #fff;
+}
+
+.example-app-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.toolbar-links {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.toolbar-links a {
+    color: #fff;
+}
+
+.toolbar-links a.toolbar-link-active {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 @media (max-width: 599px) {
     #container {
         top: 56px !important;
@@ -43,6 +74,9 @@ body {
         height: auto !important;
         min-height: 0 !important;
         overflow: visible !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
     }
 
     #container {

@@ -1,79 +1,129 @@
 <router-outlet></router-outlet>
-<div fxLayoutGap="30px" class="heading">
-  <div class="image">
 
-    <!-- Profile Photo (left)-->
+<section class="resume-header">
+  <div class="resume-header__image">
     <img src="./assets/img/profile.jpg" alt="Caleb Ardern">
   </div>
 
-  <div class="content">
-    <!-- Print Resume Button (top right) -->
+  <div class="resume-header__content">
     <div class="print-action no-print">
       <button mat-flat-button color="primary" type="button" (click)="printResume()">
         Print Resume
       </button>
     </div>
 
-    <!-- Details (Right) -->
-    <h1>
-      Caleb Ardern
-    </h1>
-    <h2> Software Developer</h2>
-    <!-- <p><b>Mobile:</b> TBC</p>
-            <p><b>Email:</b> TBC</p>
-            <p><b>Linkedin:</b> TBC</p> -->
-    <b></b>
-    <p>
-      <a href="https://www.linkedin.com/in/calebgardern/">Linkedin</a> |
-      <a href="https://github.com/Bookrage001">Github</a>
+    <h1>Caleb Ardern</h1>
+  <h2>Product and Delivery Lead</h2>
+    <p class="resume-header__email">
+      Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
+    </p>
+
+    <p class="resume-header__contact">
+      <a href="https://www.linkedin.com/in/calebgardern/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="https://github.com/Bookrage001" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span class="no-print"> |
+        <a routerLink="/contact">Contact Page</a>
+      </span>
       <span class="print-only"> |
         <a href="https://bookrage001.com/">Website</a>
-    </span>
+      </span>
     </p>
-    <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-    </p>
-  </div>
-</div>
 
-<div class="pair">
-  <div class="element">
-    <h3>
-      About me:
-    </h3>
-    <p>
-      I love to engage with professionals in a multi-disciplinary manner as I enjoy learning and understanding
-      other individuals and their individual perspectives and views in their respective fields. I am always keen
-      to learn new skills and knowledge in the workplace and how to apply them to solve problems. I enjoy
-      understanding, exploring, experimenting and researching technology in my free time.
+    <p class="resume-header__degree">
+      <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+    </p>
+
+    <p class="resume-header__summary">
+      Product and delivery leader with a software engineering background, working across two core focuses: Product
+      development and Software delivery. Experienced in turning complex problems into clear priorities, aligning
+      stakeholders, and shipping improvements that balance user needs, operational realities, and business goals.
+      Strongest in roles that require structured thinking, cross-functional delivery, and practical execution from
+      idea through rollout.
     </p>
   </div>
-  <!-- <div class="element">
-    <h3>
-      Skills
-    </h3>
-    <ol>
-      <li>Cloud</li>
-      <li>Networking</li>
-      <li>Identity and Access Management</li>
-    </ol>
-  </div> -->
-  <div class="element">
+</section>
 
-    <h3>
-      Reference:
-    </h3>
-    <i>
-      "Caleb is a highly independent software developer who grasps complex problems and can translate
-      them into
-      intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
-      attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
-      for any team who needs a developer with strong core technical skills across a range of development and cloud
-      technologies. "
-    </i> - Dan Bligh (Manager)
+<section class="resume-section pair">
+  <div class="element">
+    <h3>Focus: Product Development</h3>
+    <ul class="resume-list">
+      <li>Define and refine priorities based on user problems, operational context, and business value.</li>
+      <li>Partner with stakeholders to shape roadmap decisions, scope choices, and delivery tradeoffs.</li>
+      <li>Translate feedback and constraints into practical, iterative product improvements.</li>
+    </ul>
   </div>
-</div>
+
+  <div class="element">
+    <h3>Focus: Software Delivery</h3>
+    <ul class="resume-list">
+      <li>Lead end-to-end implementation across planning, build, rollout, and operational follow-up.</li>
+      <li>Work across modern stacks including Angular, TypeScript, Node.js, .NET, AWS, and CI/CD workflows.</li>
+      <li>Use technical depth to de-risk delivery and keep execution aligned with product intent.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="resume-section pair">
+  <div class="element">
+    <h3>Core Strengths</h3>
+    <ul class="resume-list">
+      <li>Product thinking grounded in user needs, operational context, and business priorities.</li>
+      <li>Cross-functional leadership across engineering, operations, IT, and stakeholder groups.</li>
+      <li>Prioritisation and delivery management that balances scope, risk, technical constraints, and value.</li>
+      <li>Clear communication that turns complex technical detail into actionable decisions and aligned execution.</li>
+    </ul>
+  </div>
+
+  <div class="element">
+    <h3>Reference</h3>
+    <p class="reference-copy">
+      <i>
+        "Caleb is a highly independent software developer who grasps complex problems and can translate them into
+        intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
+        attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
+        for any team who needs a developer with strong core technical skills across a range of development and cloud
+        technologies."
+      </i>
+      <span>- Dan Bligh (Manager)</span>
+    </p>
+  </div>
+</section>
 
 <div>
+  <hr />
+
+  <h1>Selected Outcomes</h1>
+
+  <ul class="resume-list">
+    <li>Shape and deliver improvements in complex operational environments where usability, reliability, and mission outcomes all matter.</li>
+    <li>Align technical and non-technical stakeholders around delivery decisions tied to business and customer needs.</li>
+    <li>Drive customer-facing platform improvements that reduce friction and strengthen day-to-day product experience.</li>
+    <li>Bring technical depth into planning and prioritisation discussions to support practical, high-confidence product decisions.</li>
+    <li>Lead delivery from problem framing through rollout, iteration, and follow-up instead of focusing only on implementation.</li>
+  </ul>
+
+  <app-jobs></app-jobs>
+
+  <hr />
+
+  <h1>Leadership and Collaboration</h1>
+  <div class="attributes">
+    <div class="attribute-item">
+      <h3>Cross-Functional Leadership</h3>
+      <p>I align engineering, operations, IT, and stakeholder groups around clear priorities and practical execution.</p>
+    </div>
+
+    <div class="attribute-item">
+      <h3>Structured Problem Solving</h3>
+      <p>I break down ambiguous problems, evaluate tradeoffs, and guide teams toward decisions that balance user and business outcomes.</p>
+    </div>
+
+    <div class="attribute-item">
+      <h3>Communication and Team Enablement</h3>
+      <p>I communicate clearly across audiences, reduce delivery friction, and support teams through knowledge sharing and collaboration.</p>
+    </div>
+  </div>
+
   <hr />
 
   <h1>Education</h1>
@@ -112,40 +162,6 @@
     <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
       data-share-badge-host="https://www.credly.com">
     </div>
-    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+    <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
   </div>
-
-  <hr />
-
-  <h1>Personal Attributes</h1>
-  <div class="attributes">
-    <div class="attribute-item">
-      <h3>Critical Thinking &amp; Problem Solving</h3>
-      <p>I approach problems by understanding the wider system—people, processes, and technology—to diagnose issues accurately and design solutions with lasting impact.</p>
-    </div>
-
-    <div class="attribute-item">
-      <h3>Interpersonal &amp; Cross-Functional Collaboration</h3>
-      <p>I work comfortably across engineering, operations, IT, and leadership teams. I adapt communication to build clarity and ensure technical decisions align with real-world needs.</p>
-    </div>
-
-    <div class="attribute-item">
-      <h3>Team Contribution &amp; Listening</h3>
-      <p>I listen first, clarify second, and act third—supporting teammates effectively, reducing friction, and building a culture where everyone feels heard.</p>
-    </div>
-
-    <div class="attribute-item">
-      <h3>Continuous Learning &amp; Curiosity</h3>
-      <p>Driven by curiosity, I explore new tools and unfamiliar domains to understand how systems work, enabling innovation and better software and process design.</p>
-    </div>
-
-    <div class="attribute-item">
-      <h3>Mentoring &amp; Knowledge Sharing</h3>
-      <p>Once I learn something, I share it naturally and enjoy helping others grow through improved documentation and clarity that accelerates team velocity and confidence.</p>
-    </div>
-  </div>
-</div>
-
-<div>
-  <app-jobs></app-jobs>
 </div>
