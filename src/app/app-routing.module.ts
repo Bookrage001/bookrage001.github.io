@@ -13,6 +13,7 @@ import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.compon
 import { AssertiveComponent } from './products/assertive/assertive.component';
 import { DistributedAvionicsComponent } from './products/distributed-avionics/distributed-avionics.component';
 import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
+import { BookrageWebsiteComponent } from './products/bookrage-website/bookrage-website.component';
 import { ProductsComponent } from './products/products.component';
 import { ToolsComponent } from './tools/tools.component';
 import { DocumentationComponent } from './documentation/documentation.component';
@@ -30,6 +31,7 @@ export const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   {
     path: 'products', component: ProductsComponent, children: [
+      { path: 'bookrage-website', component: BookrageWebsiteComponent },
       { path: 'life-mystree', component: LifeMystreeGameComponent },
       { path: 'assertive', component: AssertiveComponent },
       { path: 'distributed-avionics', component: DistributedAvionicsComponent }
