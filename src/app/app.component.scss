@@ -54,9 +54,42 @@ body {
     text-underline-offset: 3px;
 }
 
+.app-sidenav-container {
+    flex: 0 0 100%;
+}
+
+.page-shell {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0.5rem;
+}
+
+.page-content {
+    width: min(96vw, 1700px);
+    max-width: 1700px;
+    background-color: #dadada;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1920px) {
+    .page-content {
+        width: min(95vw, 1800px);
+        max-width: 1800px;
+    }
+}
+
 @media (max-width: 599px) {
     #container {
         top: 56px !important;
+    }
+
+    .page-shell {
+        padding: 1rem 0.5rem;
+    }
+
+    .page-content {
+        padding: 1rem;
     }
 }
 
