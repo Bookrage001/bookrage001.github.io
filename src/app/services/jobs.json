@@ -294,7 +294,13 @@
         "Networking",
         "Telecom Hardware"
       ]
+    },{
+      "role": "Crew Member",
+      "company": "Hungry Jacks",
+      "startDate": "2014-04-01",
+      "endDate": "2015-01-01"
     }
+
   ],
   "lastEdited": "2026-03-18"
 }

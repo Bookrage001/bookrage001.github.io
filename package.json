@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
+    "start": "ng serve --host 0.0.0.0  --no-hmr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -45,7 +45,7 @@
     "@angular/cli": "^21.2.3",
     "@angular/compiler-cli": "^21.2.5",
     "@angular/language-service": "^21.2.5",
-    "@types/jasmine": "~3.6.0",
+    "@types/jasmine": "~6.0.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^8.40.0",

@@ -1,12 +1,18 @@
 <router-outlet></router-outlet>
 
-<section class="resume-header">
-  <div class="resume-header__image">
+<section class="resume-header" [class.resume-header--compact-print]="compactPrintMode">
+  <div class="resume-header__image" [class.no-print]="compactPrintMode">
     <img src="./assets/img/profile.jpg" alt="Caleb Ardern">
   </div>
 
   <div class="resume-header__content">
     <div class="print-action no-print">
+      <mat-checkbox
+        [checked]="compactPrintMode"
+        (change)="onCompactPrintModeChange($event)">
+        Compact Print
+      </mat-checkbox>
+
       <button mat-flat-button color="primary" type="button" (click)="printResume()">
         Print Resume
       </button>
@@ -29,7 +35,7 @@
       </span>
     </p>
 
-    <p class="resume-header__degree">
+    <p class="resume-header__degree" [class.no-print]="compactPrintMode">
       <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
     </p>
 
@@ -37,8 +43,8 @@
       Product and delivery leader with a software engineering background, working across two core focuses: Product
       development and Software delivery. Experienced in turning complex problems into clear priorities, aligning
       stakeholders, and shipping improvements that balance user needs, operational realities, and business goals.
-      Strongest in roles that require structured thinking, cross-functional delivery, and practical execution from
-      idea through rollout.
+      Mission-minded in approach, with a focus on building the right solutions and delivering them reliably from idea
+      through rollout.
     </p>
   </div>
 </section>
@@ -47,7 +53,7 @@
   <div class="element">
     <h3>Focus: Product Development</h3>
     <ul class="resume-list">
-      <li>Define and refine priorities based on user problems, operational context, and business value.</li>
+      <li>Define and refine priorities based on user problems, mission goals, operational context, and business value.</li>
       <li>Partner with stakeholders to shape roadmap decisions, scope choices, and delivery tradeoffs.</li>
       <li>Translate feedback and constraints into practical, iterative product improvements.</li>
     </ul>
@@ -56,9 +62,9 @@
   <div class="element">
     <h3>Focus: Software Delivery</h3>
     <ul class="resume-list">
-      <li>Lead end-to-end implementation across planning, build, rollout, and operational follow-up.</li>
+      <li>Lead end-to-end implementation across planning, build, rollout, and mission-critical operational follow-up.</li>
       <li>Work across modern stacks including Angular, TypeScript, Node.js, .NET, AWS, and CI/CD workflows.</li>
-      <li>Use technical depth to de-risk delivery and keep execution aligned with product intent.</li>
+      <li>Use technical depth to de-risk delivery and keep execution aligned with product and mission intent.</li>
     </ul>
   </div>
 </section>
@@ -74,7 +80,7 @@
     </ul>
   </div>
 
-  <div class="element">
+  <div class="element" [class.no-print]="compactPrintMode">
     <h3>Reference</h3>
     <p class="reference-copy">
       <i>
@@ -104,64 +110,66 @@
 
   <app-jobs></app-jobs>
 
-  <hr />
+  <section [class.no-print]="compactPrintMode">
+    <hr />
 
-  <h1>Leadership and Collaboration</h1>
-  <div class="attributes">
-    <div class="attribute-item">
-      <h3>Cross-Functional Leadership</h3>
-      <p>I align engineering, operations, IT, and stakeholder groups around clear priorities and practical execution.</p>
+    <h1>Leadership and Collaboration</h1>
+    <div class="attributes">
+      <div class="attribute-item">
+        <h3>Cross-Functional Leadership</h3>
+        <p>I align engineering, operations, IT, and stakeholder groups around clear priorities and practical execution.</p>
+      </div>
+
+      <div class="attribute-item">
+        <h3>Structured Problem Solving</h3>
+        <p>I break down ambiguous problems, evaluate tradeoffs, and guide teams toward decisions that balance user and business outcomes.</p>
+      </div>
+
+      <div class="attribute-item">
+        <h3>Communication and Team Enablement</h3>
+        <p>I communicate clearly across audiences, reduce delivery friction, and support teams through knowledge sharing and collaboration.</p>
+      </div>
     </div>
 
-    <div class="attribute-item">
-      <h3>Structured Problem Solving</h3>
-      <p>I break down ambiguous problems, evaluate tradeoffs, and guide teams toward decisions that balance user and business outcomes.</p>
+    <hr />
+
+    <h1>Education</h1>
+
+    <div>
+      <b>Amazon Web Services</b>
+      <p>
+        <img src="./assets/img/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner">
+      </p>
     </div>
 
-    <div class="attribute-item">
-      <h3>Communication and Team Enablement</h3>
-      <p>I communicate clearly across audiences, reduce delivery friction, and support teams through knowledge sharing and collaboration.</p>
+    <div>
+      <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b></p>
     </div>
-  </div>
 
-  <hr />
-
-  <h1>Education</h1>
-
-  <div>
-    <b>Amazon Web Services</b>
-    <p>
-      <img src="./assets/img/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner">
-    </p>
-  </div>
-
-  <div>
-    <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b></p>
-  </div>
-
-  <div>
-    The University of Technology Sydney <br />
-    Major: Enterprise Systems Development<br />
-    Sub Major: Network Security<br />
-    2017 - 2020<br />
-  </div>
-
-  <p><b>Diploma of Networking In Information Technology</b></p>
-  <div>
-    Tafe NSW - Ourimbah campus <br />
-    2016
-  </div>
-
-  <p><b>Certificate IV of Networking In Information Technology</b></p>
-  <div>
-    Tafe NSW - Ourimbah campus <br />
-    2016
-  </div>
-
-  <div>
-    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
-      data-share-badge-host="https://www.credly.com">
+    <div>
+      The University of Technology Sydney <br />
+      Major: Enterprise Systems Development<br />
+      Sub Major: Network Security<br />
+      2017 - 2020<br />
     </div>
-    <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
-  </div>
+
+    <p><b>Diploma of Networking In Information Technology</b></p>
+    <div>
+      Tafe NSW - Ourimbah campus <br />
+      2016
+    </div>
+
+    <p><b>Certificate IV of Networking In Information Technology</b></p>
+    <div>
+      Tafe NSW - Ourimbah campus <br />
+      2016
+    </div>
+
+    <div>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
+        data-share-badge-host="https://www.credly.com">
+      </div>
+      <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
+    </div>
+  </section>
 </div>
