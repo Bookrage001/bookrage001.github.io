@@ -18,8 +18,7 @@
 
 
 
-  <mat-sidenav-container fullscreen id="container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-    style="flex: 0 0 100%;">
+  <mat-sidenav-container fullscreen id="container" class="app-sidenav-container">
 
     <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       [opened]="!mobileQuery.matches" fixedTopGap="56">
@@ -31,13 +30,10 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <div style="  display: flex;
-            justify-content: center;">
-        <div style=" background-color:#dadada;margin-top: 30px; margin-bottom: 30px; min-width: 60%; padding: 30px; max-width: 90%; box-sizing: border-box;">
-
+      <div class="page-shell">
+        <div class="page-content">
           <router-outlet></router-outlet>
         </div>
-
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

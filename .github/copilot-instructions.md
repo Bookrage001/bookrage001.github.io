@@ -4,6 +4,7 @@
 - Prefer Angular Material components and existing Material layout patterns for UI changes.
 - Follow the current Angular style in `src/app`: standalone components are the default for active app code, with SCSS styles and `app-` selectors.
 - Keep changes small and consistent with the surrounding feature instead of reformatting older files.
+- Prefer responsive spacing units (`%`, `rem`, `em`, `clamp`) for layout and spacing; avoid hard-coded `px` spacing unless there is a specific UI reason.
 
 ## Architecture
 - The app boots with `bootstrapApplication()` in `src/main.ts`; treat this as the active application entry point.
