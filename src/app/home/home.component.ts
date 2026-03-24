@@ -77,7 +77,7 @@ export class HomeComponent {
 
   readonly approach: HomeApproachStep[] = [
     {
-      name: 'Diagnose',
+      name: 'Discovery',
       summary: 'Free stage. Assess workflows, systems, and constraints to identify the highest-friction points first.'
     },
     {
@@ -96,7 +96,7 @@ export class HomeComponent {
 
   readonly caseStudies: HomeCaseStudy[] = [
     {
-      title: 'Windracers Distributed Control Application',
+      title: 'Windracers Application',
       summary: 'Stabilised delivery in a high-stakes environment by aligning engineering, operations, and stakeholders around practical workflow changes.',
       outcome: 'Improved reliability and clearer cross-team execution under operational pressure.',
       route: '/products/distributed-avionics'
