@@ -81,10 +81,6 @@ export class HomeComponent {
       summary: 'Free stage. Assess workflows, systems, and constraints to identify the highest-friction points first.'
     },
     {
-      name: 'Propose',
-      summary: 'Free stage. Align on requirements and deliverables, then present a clear plan with priorities and expected impact.'
-    },
-    {
       name: 'Validate',
       summary: 'Design and test with your team before build, including accessibility and usability checks, to prove value early.'
     },
