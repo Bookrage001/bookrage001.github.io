@@ -82,11 +82,11 @@ export class HomeComponent {
     },
     {
       name: 'Propose',
-      summary: 'Free stage. Present a clear, practical improvement plan with priorities, options, and expected impact.'
+      summary: 'Free stage. Align on requirements and deliverables, then present a clear plan with priorities and expected impact.'
     },
     {
       name: 'Validate',
-      summary: 'Design and test the solution with your team before build, so we prove value early and reduce risk.'
+      summary: 'Design and test with your team before build, including accessibility and usability checks, to prove value early.'
     },
     {
       name: 'Build',
