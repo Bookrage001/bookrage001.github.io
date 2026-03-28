@@ -29,7 +29,7 @@
     "angular-draggable-droppable": "^9.0.1",
     "angular-resizable-element": "^8.0.3",
     "date-fns": "^4.1.0",
-    "echarts": "^5.4.1",
+    "echarts": "^6.0.0",
     "jquery": "^3.5.1",
     "rxjs": "^7.8.2",
     "tslib": "^2.6.2",
