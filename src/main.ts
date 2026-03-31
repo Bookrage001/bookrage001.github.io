@@ -1,5 +1,5 @@
 
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
 
 if (environment.production) {
   enableProdMode();
@@ -20,7 +21,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
+    provideZoneChangeDetection(),importProvidersFrom(
       BrowserAnimationsModule,
       MatSidenavModule,
       MatListModule,
@@ -31,5 +32,6 @@ bootstrapApplication(AppComponent, {
     ),
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(),
   ]
 }).catch(err => console.error(err));

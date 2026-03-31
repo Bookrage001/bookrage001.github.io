@@ -1,149 +1,175 @@
 <router-outlet></router-outlet>
-<div fxLayoutGap="30px" class="heading">
-  <div class="image">
 
-    <!-- Profile Photo (left)-->
+<section class="resume-header" [class.resume-header--compact-print]="compactPrintMode">
+  <div class="resume-header__image" [class.no-print]="compactPrintMode">
     <img src="./assets/img/profile.jpg" alt="Caleb Ardern">
   </div>
 
-  <div class="content">
-    <!-- Details (Right) -->
-    <h1>
-      Caleb Ardern
-    </h1>
-    <h2> Software Developer</h2>
-    <!-- <p><b>Mobile:</b> TBC</p>
-            <p><b>Email:</b> TBC</p>
-            <p><b>Linkedin:</b> TBC</p> -->
-    <b></b>
-    <p>
-      <a href="https://www.linkedin.com/in/calebgardern/">Linkedin</a> |
-      <a href="https://github.com/Bookrage001">Github</a>
-    </p>
-    <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-    </p>
-  </div>
-</div>
+  <div class="resume-header__content">
+    <div class="print-action no-print">
+      <mat-checkbox
+        [checked]="compactPrintMode"
+        (change)="onCompactPrintModeChange($event)">
+        Compact Print
+      </mat-checkbox>
 
-<div class="pair">
-  <div class="element">
-    <h3>
-      About me:
-    </h3>
-    <p>
-      I love to engage with professionals in a multi-disciplinary manner as I enjoy learning and understanding
-      other individuals and their individual perspectives and views in their respective fields. I am always keen
-      to learn new skills and knowledge in the workplace and how to apply them to solve problems. I enjoy
-      understanding, exploring, experimenting and researching technology in my free time.
-    </p>
-  </div>
-  <!-- <div class="element">
-    <h3>
-      Skills
-    </h3>
-    <ol>
-      <li>Cloud</li>
-      <li>Networking</li>
-      <li>Identity and Access Management</li>
-    </ol>
-  </div> -->
-  <div class="element">
-
-    <h3>
-      Reference:
-    </h3>
-    <i>
-      "Caleb is a highly independent software developer who grasps complex problems and can translate
-      them into
-      intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
-      attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
-      for any team who needs a developer with strong core technical skills across a range of development and cloud
-      technologies. "
-    </i> - Dan Bligh (Manager)
-  </div>
-</div>
-
-<div>
-  <hr />
-
-  <h1>Education</h1>
-
-  <div>
-    <b>Amazon Web Services</b>
-    <p>
-      <img src="./assets/img/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner">
-    </p>
-  </div>
-
-  <div>
-    <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b></p>
-  </div>
-
-  <div>
-    The University of Technology Sydney <br />
-    Major: Enterprise Systems Development<br />
-    Sub Major: Network Security<br />
-    2017 - 2020<br />
-  </div>
-
-  <p><b>Diploma of Networking In Information Technology</b></p>
-  <div>
-    Tafe NSW - Ourimbah campus <br />
-    2016
-  </div>
-
-  <p><b>Certificate IV of Networking In Information Technology</b></p>
-  <div>
-    Tafe NSW - Ourimbah campus <br />
-    2016
-  </div>
-
-  <div>
-    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
-      data-share-badge-host="https://www.credly.com">
+      <button mat-flat-button color="primary" type="button" (click)="printResume()">
+        Print Resume
+      </button>
     </div>
-    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+    <h1>Caleb Ardern</h1>
+  <h2>Product and Delivery Lead</h2>
+    <p class="resume-header__email">
+      Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
+    </p>
+
+    <p class="resume-header__contact">
+      <a href="https://www.linkedin.com/in/calebgardern/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="https://github.com/Bookrage001" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span class="no-print"> |
+        <a routerLink="/contact">Contact Page</a>
+      </span>
+      <span class="print-only"> |
+        <a href="https://bookrage001.com/">Website</a>
+      </span>
+    </p>
+
+    <p class="resume-header__degree" [class.no-print]="compactPrintMode">
+      <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+    </p>
+
+    <p class="resume-header__summary">
+      Product and delivery leader with a software engineering background, working across two core focuses: Product
+      development and Software delivery. Experienced in turning complex problems into clear priorities, aligning
+      stakeholders, and shipping improvements that balance user needs, operational realities, and business goals.
+      Mission-minded in approach, with a focus on building the right solutions and delivering them reliably from idea
+      through rollout.
+    </p>
   </div>
+</section>
 
-  <hr />
-
-  <h1>Personal Attributes</h1>
-  <div>
-    <ul>
-
-      <li>
-        <b>Critical Thinking and Troubleshooting:</b> I am always learning from professionals and finding issues
-        in
-        order to understand issues and to propose effective solutions.
-      </li>
-
-      <li>
-        <b>Interpersonal Skills:</b> I have the ability to work with a wide range of individuals from different
-        age
-        groups and skill sets.
-
-      </li>
-
-      <li>
-        <b>Teamwork:</b> I actively listen well to others opinions and aim to understand them by clarifying
-        before
-        trying to help them in their task.
-      </li>
-
-      <li>
-        <b>Learner:</b> I often try to learn new skills to use in my day to day life
-        as well as in my work life. Through this I understand how different systems work and operate. This helps
-        inform me to understand how i can best innovate and take inituite in the workplace
-      </li>
-
-      <li>
-        <b>Teacher:</b> Once I have learnt any skill I am happy to share my knowledge
-        with others. As well as to manage and coordinate with other people in a flexible manner. .
-      </li>
+<section class="resume-section pair">
+  <div class="element">
+    <h3>Focus: Product Development</h3>
+    <ul class="resume-list">
+      <li>Define and refine priorities based on user problems, mission goals, operational context, and business value.</li>
+      <li>Partner with stakeholders to shape roadmap decisions, scope choices, and delivery tradeoffs.</li>
+      <li>Translate feedback and constraints into practical, iterative product improvements.</li>
     </ul>
   </div>
-</div>
+
+  <div class="element">
+    <h3>Focus: Software Delivery</h3>
+    <ul class="resume-list">
+      <li>Lead end-to-end implementation across planning, build, rollout, and mission-critical operational follow-up.</li>
+      <li>Work across modern stacks including Angular, TypeScript, Node.js, .NET, AWS, and CI/CD workflows.</li>
+      <li>Use technical depth to de-risk delivery and keep execution aligned with product and mission intent.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="resume-section pair">
+  <div class="element">
+    <h3>Core Strengths</h3>
+    <ul class="resume-list">
+      <li>Product thinking grounded in user needs, operational context, and business priorities.</li>
+      <li>Cross-functional leadership across engineering, operations, IT, and stakeholder groups.</li>
+      <li>Prioritisation and delivery management that balances scope, risk, technical constraints, and value.</li>
+      <li>Clear communication that turns complex technical detail into actionable decisions and aligned execution.</li>
+    </ul>
+  </div>
+
+  <div class="element" [class.no-print]="compactPrintMode">
+    <h3>Reference</h3>
+    <p class="reference-copy">
+      <i>
+        "Caleb is a highly independent software developer who grasps complex problems and can translate them into
+        intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
+        attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
+        for any team who needs a developer with strong core technical skills across a range of development and cloud
+        technologies."
+      </i>
+      <span>- Dan Bligh (Manager)</span>
+    </p>
+  </div>
+</section>
 
 <div>
+  <hr />
+
+  <h1>Selected Outcomes</h1>
+
+  <ul class="resume-list">
+    <li>Shape and deliver improvements in complex operational environments where usability, reliability, and mission outcomes all matter.</li>
+    <li>Align technical and non-technical stakeholders around delivery decisions tied to business and customer needs.</li>
+    <li>Drive customer-facing platform improvements that reduce friction and strengthen day-to-day product experience.</li>
+    <li>Bring technical depth into planning and prioritisation discussions to support practical, high-confidence product decisions.</li>
+    <li>Lead delivery from problem framing through rollout, iteration, and follow-up instead of focusing only on implementation.</li>
+  </ul>
+
   <app-jobs></app-jobs>
+
+  <section [class.no-print]="compactPrintMode">
+    <hr />
+
+    <h1>Leadership and Collaboration</h1>
+    <div class="attributes">
+      <div class="attribute-item">
+        <h3>Cross-Functional Leadership</h3>
+        <p>I align engineering, operations, IT, and stakeholder groups around clear priorities and practical execution.</p>
+      </div>
+
+      <div class="attribute-item">
+        <h3>Structured Problem Solving</h3>
+        <p>I break down ambiguous problems, evaluate tradeoffs, and guide teams toward decisions that balance user and business outcomes.</p>
+      </div>
+
+      <div class="attribute-item">
+        <h3>Communication and Team Enablement</h3>
+        <p>I communicate clearly across audiences, reduce delivery friction, and support teams through knowledge sharing and collaboration.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <h1>Education</h1>
+
+    <div>
+      <b>Amazon Web Services</b>
+      <p>
+        <img src="./assets/img/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner">
+      </p>
+    </div>
+
+    <div>
+      <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b></p>
+    </div>
+
+    <div>
+      The University of Technology Sydney <br />
+      Major: Enterprise Systems Development<br />
+      Sub Major: Network Security<br />
+      2017 - 2020<br />
+    </div>
+
+    <p><b>Diploma of Networking In Information Technology</b></p>
+    <div>
+      Tafe NSW - Ourimbah campus <br />
+      2016
+    </div>
+
+    <p><b>Certificate IV of Networking In Information Technology</b></p>
+    <div>
+      Tafe NSW - Ourimbah campus <br />
+      2016
+    </div>
+
+    <div>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
+        data-share-badge-host="https://www.credly.com">
+      </div>
+      <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
+    </div>
+  </section>
 </div>

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { JobsComponent } from './jobs/jobs.component';
+import { PrintService } from '../services/print.service';
 
 @Component({
   selector: 'app-about-me',
@@ -10,11 +12,20 @@ import { JobsComponent } from './jobs/jobs.component';
   standalone: true,
   imports: [
     RouterModule,
-    FlexLayoutModule,
-    JobsComponent
+    JobsComponent,
+    MatButtonModule,
+    MatCheckboxModule
   ]
 })
 export class AboutMeComponent {
+  private printService = inject(PrintService);
+  compactPrintMode = false;
 
-  constructor() { }
+  onCompactPrintModeChange(event: MatCheckboxChange): void {
+    this.compactPrintMode = event.checked;
+  }
+
+  printResume(): void {
+    this.printService.print(this.compactPrintMode ? 'Compact' : undefined);
+  }
 }

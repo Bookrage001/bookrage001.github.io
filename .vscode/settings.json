@@ -19,5 +19,14 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "python-envs.defaultEnvManager": "ms-python.python:system",
-    "python-envs.pythonProjects": []
+    "python-envs.pythonProjects": [],
+    "conventionalCommits.scopes": [
+        "Job",
+        "About Me",
+        "Deployment",
+        "Dashboard",
+        "Calender",
+        "Projects",
+        "Business Development"
+    ]
 }

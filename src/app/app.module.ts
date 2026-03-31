@@ -13,8 +13,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
-import { PoductsComponent } from './poducts/poducts.component';
-import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
+import { ProductsComponent } from './products/products.component';
+import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -33,6 +33,9 @@ import { DocumentationComponent } from './documentation/documentation.component'
 import { ComponentsComponent } from './components/components.component';
 import { LineGraphComponent } from './components/line-graph/line-graph.component';
 import { BigonotationComponent } from './documentation/bigonotation/bigonotation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -50,7 +53,7 @@ import { BigonotationComponent } from './documentation/bigonotation/bigonotation
     RouterModule,
     AboutMeComponent,
     SidenavListComponent,
-    PoductsComponent,
+    ProductsComponent,
     LifeMystreeGameComponent,
     DashboardComponent,
     MinecraftComponent,
@@ -69,6 +72,11 @@ import { BigonotationComponent } from './documentation/bigonotation/bigonotation
     ComponentsComponent,
     LineGraphComponent,
     BigonotationComponent,
+    HttpClientModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   // providers: [],
   // bootstrap: [],

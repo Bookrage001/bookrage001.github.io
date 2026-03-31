@@ -1,11 +1,31 @@
-<h1>dashboard works!</h1>
-<p>
-    <!-- This will be a dashboard showing a range of information from if a server is up to my calender to for ease of use to
-    make bookings -->
-</p>
-<app-calender>
+<section class="dashboard-header">
+    <h1>Dashboard</h1>
+    <p>Monitoring and utility dashboards.</p>
+</section>
 
-</app-calender>
-<app-minecraft>
+<section class="dashboard-links">
+    <a class="dashboard-link" routerLink="calender">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>calendar_month</mat-icon>
+                <mat-card-title>Calender</mat-card-title>
+                <mat-card-subtitle>Scheduling and booking tools</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </a>
 
-</app-minecraft>
+    <a class="dashboard-link" routerLink="minecraft">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-icon mat-card-avatar>terrain</mat-icon>
+                <mat-card-title>Minecraft</mat-card-title>
+                <mat-card-subtitle>Server and world utilities</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </a>
+</section>
+
+<div class="dashboard-details">
+    <hr />
+    <router-outlet></router-outlet>
+</div>

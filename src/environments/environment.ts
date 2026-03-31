@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Local dev: request goes through the Angular dev-server proxy (proxy.conf.json)
+  // which forwards /ics-proxy/* → https://calendar.google.com/*
+  calendarIcsUrl: '/ics-proxy/calendar/ical/caleb.ardern%40gmail.com/public/basic.ics',
 };
 
 /*

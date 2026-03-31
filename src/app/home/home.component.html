@@ -1,0 +1,126 @@
+<section class="home-hero">
+  <p class="kicker">Operational Clarity + Digital Momentum</p>
+  <h1>We Help Growing Businesses Fix Workflows and Bring Practical Digital Solutions Forward</h1>
+  <p class="intro">
+    No bloated transformation programs. Just clear practical solutions, and reliable implementation that
+    removes friction and helps your business move faster.
+  </p>
+
+  <p class="highlight-note">
+    Discovery is free. It is time to get to know each other and define requirements and deliverables before
+    any build work.
+  </p>
+
+  <div class="hero-actions">
+    <a mat-flat-button color="primary" routerLink="/contact">Book a Clarity Call</a>
+    <a mat-stroked-button color="primary" routerLink="/products">See Where We Can Help</a>
+  </div>
+</section>
+
+<section class="content-section problem-section">
+  <div class="section-heading">
+    <h2>The Problem for Growing Teams</h2>
+    <p>
+      Growth gets harder when daily operations are inconsistent. Time is lost in manual work, delivery quality drifts,
+      and teams spend more energy managing tools than moving the business forward. We work best with small businesses
+      and lean teams, but the core approach applies broadly.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    @for (item of painPoints; track item.title) {
+      <mat-card appearance="outlined" class="info-card">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.summary }}</p>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="content-section solution-section">
+  <div class="section-heading">
+    <h2>What We Can Do Together</h2>
+    <p>
+      Practical support across workflow, systems, and delivery. You get explicit actions, not vague consulting language.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    @for (item of solutions; track item.title) {
+      <mat-card appearance="outlined" class="info-card">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.summary }}</p>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="content-section approach-section">
+  <div class="section-heading">
+    <h2>Our Approach</h2>
+    <p>Clear stages with low friction up front, validation before build, and collaborative support long after launch.</p>
+  </div>
+
+  <div class="approach-grid">
+    @for (step of approach; track step.name; let index = $index) {
+      <mat-card appearance="outlined" class="approach-card">
+        <p class="approach-card__step">Step {{ index + 1 }}</p>
+        <h3>{{ step.name }}</h3>
+        <p>{{ step.summary }}</p>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="content-section proof-section">
+  <div class="section-heading">
+    <h2>Professional Experience</h2>
+    <p>
+      Real work delivered in complex environments, reframed around operational outcomes: reliability, reduced friction,
+      and clearer workflows.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    @for (study of caseStudies; track study.title) {
+      <mat-card appearance="outlined" class="case-study-card">
+        <h3>{{ study.title }}</h3>
+        <p>{{ study.summary }}</p>
+        <p class="case-study-card__outcome"><strong>Outcome:</strong> {{ study.outcome }}</p>
+        <a mat-stroked-button color="primary" [routerLink]="study.route">View Case Study</a>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<section class="content-section founder-section">
+  <div class="section-heading">
+    <h2>About the Founder</h2>
+  </div>
+  <p>
+    Caleb Ardern works at the intersection of business development and technical implementation. He has improved
+    workflows in high-stakes environments by creating practical structure, clearer systems, and delivery processes that
+    teams can trust.
+  </p>
+  <p>
+    He works cross-functionally with engineering, operations, IT, and business stakeholders to turn complexity into
+    clarity and help small businesses build momentum through practical digital change.
+  </p>
+  <p class="founder-section__support-note">
+    Not sure if you need to set up a full business structure first? Start with the free Discovery stage and
+    we can shape a practical path from there.
+  </p>
+  <a mat-stroked-button color="primary" routerLink="/about-me">Read Founder Story</a>
+</section>
+
+<section class="home-cta">
+  <h2>Ready to Remove Friction and Move Faster?</h2>
+  <p>
+    Start with a free Discovery call to align on requirements and deliverables, then validate the plan before
+    committing to build.
+  </p>
+  <div class="hero-actions">
+    <a mat-flat-button color="primary" routerLink="/products">Start with a Free Workflow Audit</a>
+    <a mat-stroked-button color="primary" routerLink="/contact">Book a Clarity Call</a>
+  </div>
+</section>

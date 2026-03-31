@@ -1,30 +1,242 @@
-.heading {
-  display: flex;
-  justify-content: space-between;
-}
 img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.image {
-  width: 20%;
+:host {
+  display: block;
 }
 
-.content {
-  width: 80%;
+.print-action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.resume-header {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eef5ff 0%, #f7fbff 100%);
+  border: 1px solid #d4e4ff;
+}
+
+.resume-header__image {
+  width: 100%;
+  max-width: 320px;
+
+  img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(25, 118, 210, 0.12);
+  }
+}
+
+.resume-header__content {
+  min-width: 0;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  h2 {
+    margin: 0.35rem 0 0.75rem;
+    color: #425466;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
+.resume-header__contact,
+.resume-header__degree,
+.resume-header__summary {
+  margin: 0.5rem 0 0;
+}
+
+.resume-header__email {
+  margin: 0.35rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.resume-header__contact {
+  overflow-wrap: anywhere;
+}
+
+.resume-header__summary {
+  margin-top: 1rem;
+  max-width: 72ch;
+  line-height: 1.6;
+  color: #243647;
+}
+
+.resume-section {
+  margin-bottom: 1.5rem;
+
+  h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 84ch;
+    line-height: 1.55;
+    color: #36485b;
+  }
+}
+
+.resume-list {
+  margin: 0;
+  padding-left: 1.2rem;
+
+  li {
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    color: #36485b;
+  }
 }
 
 .pair {
   display: flex;
+  gap: 1rem;
 }
 
 .pair .element {
-  padding: 2%;
-  width: 50%;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  padding: 1rem 1.1rem;
+  border: 1px solid #dce6f0;
+  border-radius: 12px;
+  background: #fff;
 }
 
-@media (max-width: 400px) {
+.reference-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  span {
+    font-weight: 600;
+    color: #223648;
+  }
+}
+
+.attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.attributes .attribute-item {
+  flex: 0 1 45%;
+}
+
+.attribute-item {
+  padding-left: 1rem;
+  border-left: 4px solid #1976d2;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1976d2;
+    letter-spacing: 0.3px;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+    color: #424242;
+    font-size: 13px;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: inline;
+  }
+
+  .resume-header {
+    display: grid !important;
+    grid-template-columns: 140px minmax(0, 1fr) !important;
+    gap: 1rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .resume-header.resume-header--compact-print {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0;
+  }
+
+  .resume-header__image {
+    max-width: 140px !important;
+    width: 140px !important;
+
+    img {
+      max-height: 180px;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  .pair {
+    display: flex !important;
+    gap: 1rem;
+  }
+
+  .pair .element {
+    border: 0;
+    padding: 0;
+  }
+
+  .attribute-item {
+    page-break-inside: avoid;
+    padding-left: 0.75rem;
+  }
+
+  .attribute-item h3 {
+    font-size: 13px;
+  }
+
+  .attribute-item p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 980px) {
+  .resume-header {
+    grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+// Stack header columns before content starts to feel cramped
+@media (max-width: 860px) {
+  .resume-header {
+    grid-template-columns: 1fr;
+  }
+
   .pair {
     display: block;
     .element {
@@ -33,16 +245,24 @@ img {
     }
   }
 
-  .heading {
-    display: block;
-    .image {
-      width: 100%;
-      margin: 0 0 10px 0;
-      max-width: 100%;
-    }
-    .content {
-      width: 100%;
-      margin: 0 0 10px 0;
-    }
+  .resume-header__image {
+    width: 100%;
+    margin: 0 0 10px 0;
+    max-width: 100%;
+  }
+
+  .resume-header__content {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  .pair .element {
+    width: 100%;
+  }
+
+  .attributes .attribute-item {
+    width: 100%;
+    flex: 0 1 100%;
+    max-width: 100%;
   }
 }

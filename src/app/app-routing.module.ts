@@ -1,19 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 import { ProblemSolvingComponent } from './about-me/problem-solving/problem-solving.component';
 import { BlogComponent } from './blog/blog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CalenderComponent } from './dashboard/calender/calender.component';
+import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { GamesComponent } from './games/games.component';
 import { TickTackToeComponent } from './games/tick-tack-toe/tick-tack-toe.component';
-import { LifeMystreeGameComponent } from './poducts/life-mystree-game/life-mystree-game.component';
-import { PoductsComponent } from './poducts/poducts.component';
+import { AssertiveComponent } from './products/assertive/assertive.component';
+import { DistributedAvionicsComponent } from './products/distributed-avionics/distributed-avionics.component';
+import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
+import { BookrageWebsiteComponent } from './products/bookrage-website/bookrage-website.component';
+import { ProductsComponent } from './products/products.component';
 import { ToolsComponent } from './tools/tools.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 
 
 export const routes: Routes = [
-  { path: '', component: AboutMeComponent },
+  { path: '', component: HomeComponent },
   {
     path: 'about-me', component: AboutMeComponent, children: [
       { path: 'problem-solving', component: ProblemSolvingComponent },
@@ -23,17 +30,27 @@ export const routes: Routes = [
   { path: 'problem-solving', component: ProblemSolvingComponent },
   { path: 'blog', component: BlogComponent },
   {
-    path: 'products', component: PoductsComponent, children: [
+    path: 'products', component: ProductsComponent, children: [
+      { path: 'bookrage-website', component: BookrageWebsiteComponent },
       { path: 'life-mystree', component: LifeMystreeGameComponent },
+      { path: 'assertive', component: AssertiveComponent },
+      { path: 'distributed-avionics', component: DistributedAvionicsComponent }
     ]
   },
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard', component: DashboardComponent, children: [
+      { path: '', redirectTo: 'calender', pathMatch: 'full' },
+      { path: 'calender', component: CalenderComponent },
+      { path: 'minecraft', component: MinecraftComponent },
+    ]
+  },
   { path: 'tools', component: ToolsComponent },
   {
     path: 'games', component: GamesComponent, children: [
       { path: 'tickTackToe', component: TickTackToeComponent },
     ]
   },
+  { path: 'contact', component: ContactComponent },
   {path: 'documentation', component: DocumentationComponent}
   // { path: '**', component: AboutMeComponent }
 ];

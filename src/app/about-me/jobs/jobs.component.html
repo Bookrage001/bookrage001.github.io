@@ -1,16 +1,115 @@
 <div>
   <hr />
 
-  <h1>Professional Experience</h1>
-
-  <div *ngFor="let job of jobs$ | async">
-    <div>
-      <b>{{job.role}}</b> <br />
-
-      {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
-
-      <p>{{job.data.description}}</p>
-
+  <div class="title-row">
+    <h1>Professional Experience</h1>
+    <div class="resume-actions no-print">
+      <button mat-stroked-button type="button" (click)="toggleFilters()">
+        {{ filtersVisible ? 'Hide Filters' : 'Show Filters' }}
+      </button>
     </div>
   </div>
+
+  <div class="display-toggles no-print">
+    <div class="display-toggles-header">
+      <span class="display-toggles-title">Display Options</span>
+      <span class="display-toggles-subtitle">Choose what extra details appear in each role.</span>
+    </div>
+
+    <div class="display-toggle-options " role="group" aria-label="Display options">
+      <mat-checkbox class="show-tags-toggle" [checked]="showTags" (change)="showTags = !showTags">
+        Skill Tags
+      </mat-checkbox>
+
+      <mat-checkbox class="show-tags-toggle" [checked]="showTechTags" (change)="showTechTags = !showTechTags">
+        Technology Tags
+      </mat-checkbox>
+
+      <mat-checkbox class="show-tags-toggle" [checked]="lastFiveYearsOnly" (change)="onLastFiveYearsChange()">
+        Last 5 Years
+      </mat-checkbox>
+    </div>
+  </div>
+
+  @if (filtersVisible) {
+    <div class="filter-panel no-print">
+      <div class="filter-header">
+        <span>Filters</span>
+        <button mat-stroked-button type="button" (click)="clearAllFilters()" [disabled]="selectedTags.length === 0 && selectedTechTags.length === 0 && !lastFiveYearsOnly">Clear All</button>
+      </div>
+      <div class="filter-row">
+        <div class="filter-header">
+          <span>Filter by skill:</span>
+          <button mat-stroked-button type="button" (click)="clearTagFilter()" [disabled]="selectedTags.length === 0">Clear</button>
+        </div>
+        @if (selectedTags.length === 0) {
+          <span class="filter-state">All skills</span>
+        }
+        <mat-chip-listbox class="filter-chips" [multiple]="true">
+          @for (tag of tags$ | async; track tag) {
+            <mat-chip-option
+              class="filter-chip"
+              [selected]="isTagSelected(tag)"
+              [class.filter-chip-selected]="isTagSelected(tag)"
+              (click)="onTagChange(tag)"
+              >
+              {{tag}}
+            </mat-chip-option>
+          }
+        </mat-chip-listbox>
+      </div>
+      <div class="filter-row">
+        <div class="filter-header">
+          <span>Filter by tech:</span>
+          <button mat-stroked-button type="button" (click)="clearTechTagFilter()" [disabled]="selectedTechTags.length === 0">Clear</button>
+        </div>
+        @if (selectedTechTags.length === 0) {
+          <span class="filter-state">All tech</span>
+        }
+        <mat-chip-listbox class="filter-chips" [multiple]="true">
+          @for (tag of techTags$ | async; track tag) {
+            <mat-chip-option
+              class="filter-chip"
+              [selected]="isTechTagSelected(tag)"
+              [class.filter-chip-selected]="isTechTagSelected(tag)"
+              (click)="onTechTagChange(tag)"
+              >
+              {{tag}}
+            </mat-chip-option>
+          }
+        </mat-chip-listbox>
+      </div>
+    </div>
+  }
+
+  @for (job of jobs$ | async; track job) {
+    <div>
+      <div>
+        <b>{{job.data.role}}</b> <br />
+        {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
+        @if (shouldShowTags && job.data.tags?.length) {
+          <div class="tag-list">
+            @for (tag of job.data.tags; track tag) {
+              <span class="tag-chip" [class.tag-chip-selected]="isTagSelected(tag)">{{tag}}</span>
+            }
+          </div>
+        }
+        @if (shouldShowTechTags && job.data.techTags?.length) {
+          <div class="tech-tag-block">
+            <span class="tech-tag-label">Tech:</span>
+            <div class="tag-list tech-tag-list">
+              @for (techTag of job.data.techTags; track techTag) {
+                <span class="tag-chip tech-tag-chip" [class.tech-tag-chip-selected]="isTechTagSelected(techTag)">{{techTag}}</span>
+              }
+            </div>
+          </div>
+        }
+        <ul>
+          @for (description of job.data.description; track description) {
+            <li>{{description}}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
 </div>

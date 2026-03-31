@@ -5,6 +5,7 @@ export interface JobInterface {
   company: string,
   startDate: Date,
   endDate?: Date,
-  description: string,
+  description: string[],
   tags?: Array<string>;
+  techTags?: Array<string>;
 }

@@ -1,23 +1,156 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { JobItem } from './job-item';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent {
+  allJobs$: Observable<JobItem[]>;
   jobs$: Observable<JobItem[]>;
+  tags$: Observable<string[]>;
+  techTags$: Observable<string[]>;
+  selectedTags: string[] = [];
+  selectedTechTags: string[] = [];
+  lastFiveYearsOnly = true;
+  filtersVisible = false;
+  showTags = false;
+  showTechTags = false;
 
   private jobservice = inject(JobService);
 
   constructor() {
-    this.jobs$ = this.jobservice.getAds();
+    this.allJobs$ = this.jobservice.getAds();
+    this.jobs$ = this.allJobs$;
+    this.tags$ = this.allJobs$.pipe(
+      map((jobs) => {
+        const uniqueTags = jobs.reduce((set, job) => {
+          (job.data.tags ?? []).forEach((tag) => set.add(tag));
+          return set;
+        }, new Set<string>());
+
+        return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b));
+      })
+    );
+
+    this.techTags$ = this.allJobs$.pipe(
+      map((jobs) => {
+        const uniqueTags = jobs.reduce((set, job) => {
+          (job.data.techTags ?? []).forEach((tag) => set.add(tag));
+          return set;
+        }, new Set<string>());
+
+        return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b));
+      })
+    );
+
+    this.applyFilters();
+  }
+
+  onTagChange(tag: string): void {
+    const isSelected = this.selectedTags.includes(tag);
+    this.selectedTags = isSelected
+      ? this.selectedTags.filter((selectedTag) => selectedTag !== tag)
+      : [...this.selectedTags, tag];
+
+    this.applyFilters();
+  }
+
+  onTechTagChange(tag: string): void {
+    const isSelected = this.selectedTechTags.includes(tag);
+    this.selectedTechTags = isSelected
+      ? this.selectedTechTags.filter((selectedTag) => selectedTag !== tag)
+      : [...this.selectedTechTags, tag];
+
+    this.applyFilters();
+  }
+
+  isTechTagSelected(tag: string): boolean {
+    return this.selectedTechTags.includes(tag);
+  }
+
+  toggleFilters(): void {
+    this.filtersVisible = !this.filtersVisible;
+  }
+
+  clearTechTagFilter(): void {
+    this.selectedTechTags = [];
+    this.applyFilters();
+  }
+
+  clearAllFilters(): void {
+    this.selectedTags = [];
+    this.selectedTechTags = [];
+    this.lastFiveYearsOnly = false;
+    this.applyFilters();
+  }
+
+  onLastFiveYearsChange(): void {
+    this.lastFiveYearsOnly = !this.lastFiveYearsOnly;
+    this.applyFilters();
+  }
+
+  get shouldShowTags(): boolean {
+    return this.showTags || this.hasSelectedSkillFilters;
+  }
+
+  get shouldShowTechTags(): boolean {
+    return this.showTechTags || this.hasSelectedTechFilters;
+  }
+
+  private get hasSelectedSkillFilters(): boolean {
+    return this.selectedTags.length > 0;
+  }
+
+  private get hasSelectedTechFilters(): boolean {
+    return this.selectedTechTags.length > 0;
+  }
+
+  private applyFilters(): void {
+    const selectedSkills = this.selectedTags;
+    const selectedTech = this.selectedTechTags;
+    const fiveYearsCutoff = new Date();
+    fiveYearsCutoff.setFullYear(fiveYearsCutoff.getFullYear() - 5);
+    fiveYearsCutoff.setHours(0, 0, 0, 0);
+
+    this.jobs$ = this.allJobs$.pipe(
+      map((jobs) =>
+        jobs.filter((job) => {
+          const matchesSkills =
+            selectedSkills.length === 0 ||
+            (job.data.tags ?? []).some((jobTag) => selectedSkills.includes(jobTag));
+
+          const matchesTech =
+            selectedTech.length === 0 ||
+            (job.data.techTags ?? []).some((jobTag) => selectedTech.includes(jobTag));
+
+          const matchesLastFiveYears =
+            !this.lastFiveYearsOnly ||
+            !job.data.endDate ||
+            job.data.endDate >= fiveYearsCutoff;
+
+          return matchesSkills && matchesTech && matchesLastFiveYears;
+        })
+      )
+    );
+  }
+
+  isTagSelected(tag: string): boolean {
+    return this.selectedTags.includes(tag);
+  }
+
+  clearTagFilter(): void {
+    this.selectedTags = [];
+    this.applyFilters();
   }
 }
 

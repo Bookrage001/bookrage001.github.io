@@ -23,8 +23,107 @@ body {
     top: 64px !important;
 }
 
+.example-app-name {
+    margin: 0;
+}
+
+.back-button {
+    margin-left: 4px;
+    margin-right: 6px;
+    color: #fff;
+}
+
+.example-app-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.toolbar-links {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.toolbar-links a {
+    color: #fff;
+}
+
+.toolbar-links a.toolbar-link-active {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.app-sidenav-container {
+    flex: 0 0 100%;
+}
+
+.page-shell {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0.5rem;
+}
+
+.page-content {
+    width: min(96vw, 1700px);
+    max-width: 1700px;
+    background-color: #dadada;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1920px) {
+    .page-content {
+        width: min(95vw, 1800px);
+        max-width: 1800px;
+    }
+}
+
 @media (max-width: 599px) {
     #container {
         top: 56px !important;
+    }
+
+    .page-shell {
+        padding: 1rem 0.5rem;
+    }
+
+    .page-content {
+        padding: 1rem;
+    }
+}
+
+@media print {
+    .example-toolbar,
+    mat-sidenav {
+        display: none !important;
+    }
+
+    .container,
+    #container,
+    mat-sidenav-container,
+    mat-sidenav-content,
+    .mat-drawer-content {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    #container {
+        position: static !important;
+        top: 0 !important;
+    }
+
+    mat-sidenav-content > div,
+    mat-sidenav-content > div > div {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        background: transparent !important;
     }
 }
