@@ -14,7 +14,9 @@ import { AssertiveComponent } from './products/assertive/assertive.component';
 import { DistributedAvionicsComponent } from './products/distributed-avionics/distributed-avionics.component';
 import { LifeMystreeGameComponent } from './products/life-mystree-game/life-mystree-game.component';
 import { BookrageWebsiteComponent } from './products/bookrage-website/bookrage-website.component';
+import { VolunteerAppComponent } from './products/volunteer-app/volunteer-app.component';
 import { ProductsComponent } from './products/products.component';
+import { IndustryExperienceComponent } from './industry-experience/industry-experience.component';
 import { ToolsComponent } from './tools/tools.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 
@@ -33,6 +35,11 @@ export const routes: Routes = [
     path: 'products', component: ProductsComponent, children: [
       { path: 'bookrage-website', component: BookrageWebsiteComponent },
       { path: 'life-mystree', component: LifeMystreeGameComponent },
+      { path: 'volunteer-app', component: VolunteerAppComponent }
+    ]
+  },
+  {
+    path: 'industry-experience', component: IndustryExperienceComponent, children: [
       { path: 'assertive', component: AssertiveComponent },
       { path: 'distributed-avionics', component: DistributedAvionicsComponent }
     ]
