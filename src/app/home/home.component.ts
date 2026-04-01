@@ -22,7 +22,8 @@ interface HomeCaseStudy {
   title: string;
   summary: string;
   outcome: string;
-  route: string;
+  route?: string;
+  link?: string;
 }
 
 @Component({
@@ -96,22 +97,16 @@ export class HomeComponent {
 
   readonly caseStudies: HomeCaseStudy[] = [
     {
-      title: 'Windracers Application',
-      summary: 'Stabilised delivery in a high-stakes environment by aligning engineering, operations, and stakeholders around practical workflow changes.',
-      outcome: 'Improved reliability and clearer cross-team execution under operational pressure.',
-      route: '/products/distributed-avionics'
-    },
-    {
-      title: 'Assertive Platform Delivery',
-      summary: 'Reduced delivery friction by coordinating product priorities with platform implementation across multiple teams.',
-      outcome: 'Faster iteration cycles and stronger operational consistency for customer-facing work.',
-      route: '/products/assertive'
-    },
-    {
       title: 'Life is a Mystree',
       summary: 'Took a concept from idea to working product through structured validation, iterative design, and practical implementation decisions.',
       outcome: 'Clearer product direction, stronger process discipline, and better decision quality during build.',
       route: '/products/life-mystree'
+    },
+    {
+      title: 'Volunteer App',
+      summary: 'Built and iterated a volunteer-focused application to make coordination, visibility, and day-to-day participation easier for community teams.',
+      outcome: 'Improved volunteer experience with clearer workflows and a practical digital home for ongoing engagement.',
+      route: '/products/volunteer-app'
     }
   ];
 }

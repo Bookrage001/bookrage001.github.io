@@ -92,6 +92,62 @@ h1 {
     linear-gradient(165deg, #fffefb 0%, #fff8ea 100%);
 }
 
+.mission-vision-section {
+  background:
+    linear-gradient(165deg, #f9fffd 0%, #edf9f5 100%);
+}
+
+.mid-page-cta {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 8% 18%, rgba(39, 91, 207, 0.14) 0%, rgba(39, 91, 207, 0) 34%),
+    linear-gradient(145deg, #f3f9ff 0%, #f8fffc 100%);
+
+  h2 {
+    margin: 0 0 0.45rem;
+    color: #123452;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+    max-width: 74ch;
+    line-height: 1.55;
+  }
+}
+
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.values-card {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+
+  h3 {
+    margin: 0 0 0.65rem;
+    color: #113454;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+
+  li {
+    margin: 0 0 0.5rem;
+    color: var(--text-main);
+    line-height: 1.45;
+  }
+}
+
 .section-heading {
   margin-bottom: 1rem;
 
@@ -227,5 +283,9 @@ mat-card {
 
   .home-cta {
     padding: 1.25rem;
+  }
+
+  .mid-page-cta {
+    padding: 1.15rem;
   }
 }

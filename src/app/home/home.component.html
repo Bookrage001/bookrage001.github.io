@@ -1,14 +1,13 @@
 <section class="home-hero">
-  <p class="kicker">Operational Clarity + Digital Momentum</p>
-  <h1>We Help Growing Businesses Fix Workflows and Bring Practical Digital Solutions Forward</h1>
+  <p class="kicker">Clarity &amp; Smart Systems Consulting</p>
+  <h1>Streamline Operations, Improve Workflows, and Implement Technology That Supports the Work</h1>
   <p class="intro">
-    No bloated transformation programs. Just clear practical solutions, and reliable implementation that
-    removes friction and helps your business move faster.
+    We partner with small and medium sized businesses to improve how work gets done through operational
+    clarity, workflow design, and practical technology enablement.
   </p>
 
   <p class="highlight-note">
-    Discovery is free. It is time to get to know each other and define requirements and deliverables before
-    any build work.
+    We work with businesses to run smoother operations using clear workflows and smart technology that scales.
   </p>
 
   <div class="hero-actions">
@@ -19,11 +18,10 @@
 
 <section class="content-section problem-section">
   <div class="section-heading">
-    <h2>The Problem for Growing Teams</h2>
+    <h2>Where Teams Lose Momentum</h2>
     <p>
-      Growth gets harder when daily operations are inconsistent. Time is lost in manual work, delivery quality drifts,
-      and teams spend more energy managing tools than moving the business forward. We work best with small businesses
-      and lean teams, but the core approach applies broadly.
+      As businesses grow, hidden process gaps become expensive. Teams lose time to unclear handoffs, manual work,
+      and disconnected tools that add complexity instead of enabling progress.
     </p>
   </div>
 
@@ -39,9 +37,10 @@
 
 <section class="content-section solution-section">
   <div class="section-heading">
-    <h2>What We Can Do Together</h2>
+    <h2>How We Help</h2>
     <p>
-      Practical support across workflow, systems, and delivery. You get explicit actions, not vague consulting language.
+      We blend operational clarity, workflow design, and practical technology to help owners and teams understand
+      what works, what does not, and what needs to change to scale sustainably.
     </p>
   </div>
 
@@ -58,7 +57,7 @@
 <section class="content-section approach-section">
   <div class="section-heading">
     <h2>Our Approach</h2>
-    <p>Clear stages with low friction up front, validation before build, and collaborative support long after launch.</p>
+    <p>We assess current operations, simplify and redesign workflows, then implement technology that reduces friction and supports sustainable growth.</p>
   </div>
 
   <div class="approach-grid">
@@ -70,6 +69,56 @@
       </mat-card>
     }
   </div>
+</section>
+
+<section class="mid-page-cta">
+  <h2>Need a Practical Starting Point?</h2>
+  <p>
+    Start with a focused clarity call and we can map the highest-impact workflow improvements before any heavy build work.
+  </p>
+  <div class="hero-actions">
+    <a mat-flat-button color="primary" routerLink="/contact">Book a Clarity Call</a>
+    <a mat-stroked-button color="primary" routerLink="/products">Explore Case Studies</a>
+  </div>
+</section>
+
+<section class="content-section mission-vision-section">
+  <div class="section-heading">
+    <h2>Mission, Vision &amp; Values</h2>
+  </div>
+
+  <div class="mission-vision-grid">
+    <mat-card appearance="outlined" class="info-card">
+      <h3>Mission</h3>
+      <p>
+        To empower small and medium sized businesses with clarity, structure, and practical technology,
+        enabling teams to work confidently, learn continuously, and grow sustainably.
+      </p>
+    </mat-card>
+
+    <mat-card appearance="outlined" class="info-card">
+      <h3>Vision</h3>
+      <p>
+        A business landscape where owners and teams learn together, share what works and what does not,
+        and build confidence in technology.
+      </p>
+      <p>
+        A world where clarity replaces confusion, and smart systems support the work, not complicate it.
+      </p>
+    </mat-card>
+  </div>
+
+  <mat-card appearance="outlined" class="values-card">
+    <h3>Values</h3>
+    <ul>
+      <li>Clarity over complexity</li>
+      <li>Learning over guessing</li>
+      <li>Technology that empowers people</li>
+      <li>Practicality over perfection</li>
+      <li>Shared knowledge, shared progress</li>
+      <li>Calm, grounded communication</li>
+    </ul>
+  </mat-card>
 </section>
 
 <section class="content-section proof-section">
@@ -87,7 +136,11 @@
         <h3>{{ study.title }}</h3>
         <p>{{ study.summary }}</p>
         <p class="case-study-card__outcome"><strong>Outcome:</strong> {{ study.outcome }}</p>
-        <a mat-stroked-button color="primary" [routerLink]="study.route">View Case Study</a>
+        @if (study.route) {
+          <a mat-stroked-button color="primary" [routerLink]="study.route">View Case Study</a>
+        } @else if (study.link) {
+          <a mat-stroked-button color="primary" [href]="study.link" target="_blank" rel="noopener noreferrer">View Case Study</a>
+        }
       </mat-card>
     }
   </div>
@@ -114,10 +167,10 @@
 </section>
 
 <section class="home-cta">
-  <h2>Ready to Remove Friction and Move Faster?</h2>
+  <h2>Ready to Build Systems That Scale?</h2>
   <p>
-    Start with a free Discovery call to align on requirements and deliverables, then validate the plan before
-    committing to build.
+    If your operations feel heavier than they should, we can map what is working, fix what is not, and implement
+    practical systems that make delivery smoother.
   </p>
   <div class="hero-actions">
     <a mat-flat-button color="primary" routerLink="/products">Start with a Free Workflow Audit</a>
