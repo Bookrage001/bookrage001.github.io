@@ -17,14 +17,12 @@
         "Contributed automation scripts and infrastructure improvements that increased platform stability and team velocity."
       ],
       "businessDescription": [
-        "Gathered and clarified operational requirements from operations, manufacturing, and field stakeholders in mission-critical contexts.",
-        "Led Requirements Gathering and Stakeholder Engagement activities, translating outcomes into User Stories for Agile Delivery.",
-        "Facilitated Workshops and Discovery Sessions with stakeholders to improve UX Alignment and guide Strategic Thinking for delivery priorities.",
-        "Supported Scrum ceremonies including Backlog Grooming and Sprint Planning to improve prioritization and traceability.",
+        "Gathered and clarified operational requirements with operations, manufacturing, and field stakeholders in mission-critical contexts.",
+        "Ran workshops and discovery sessions to define user stories, align scope, and improve delivery readiness.",
+        "Supported sprint planning and backlog refinement to prioritize work and maintain traceability from requirements to delivery.",
         "Facilitated retrospectives and process reviews to identify root causes and reduce repeat delivery issues.",
-        "Contributed to Operating Models and risk management decisions by balancing mission needs, delivery constraints, and technical trade-offs.",
-        "Mentored developers in business analysis practices, including requirement framing, stakeholder communication, and prioritization.",
-        "Coached a junior developer on integrating AI into business workflows to support better analysis and decision making."
+        "Balanced mission risk, operating model needs, and technical constraints to support practical delivery decisions.",
+        "Mentored developers in business analysis practices and coached a junior developer on AI integration for operational decision support."
       ],
       "softwareDescription": [
         "Built and integrated microservices into the Distributed Control Application to improve reliability in real-world operations.",
@@ -112,9 +110,9 @@
         "Worked closely with domain experts, strengthening my ability to translate complex needs into clear technical solutions."
       ],
       "businessDescription": [
-        "Partnered with domain experts to elicit and document operational requirements for slope design workflows.",
-        "Connected user needs and business constraints to feasible implementation options, supporting informed delivery decisions.",
-        "Focused on analysis-led outcomes that improved user capability and day-to-day decision confidence."
+        "Collaborated with domain experts to elicit and document operational requirements for slope design workflows.",
+        "Converted user needs and business constraints into scoped implementation options that supported informed decisions.",
+        "Delivered analysis-led recommendations that improved user capability and day-to-day decision confidence."
       ],
       "softwareDescription": [
         "Contributed to a C# desktop application for optimal slope wall design in mining scenarios.",
@@ -146,10 +144,10 @@
         "Developed strong situational awareness and the ability to manage competing priorities calmly."
       ],
       "businessDescription": [
-        "Coordinated programme delivery across schools, site teams, and staff by clarifying requirements and aligning expectations.",
-        "Managed changing requests and operational constraints through structured prioritization and trade-off decisions.",
-        "Partnered with reception and activity leadership to standardize workflows and improve delivery consistency.",
-        "Built strong stakeholder communication and decision-support habits in fast-paced, people-focused operations."
+        "Gathered requirements across schools, site teams, and staff to align expectations and improve programme delivery.",
+        "Prioritized changing requests and operational constraints through clear trade-off decisions.",
+        "Standardized handoff workflows with reception and activity leadership to improve execution consistency.",
+        "Communicated decisions clearly to stakeholders in a fast-paced, people-focused operating environment."
       ],
       "softwareDescription": [
         "Applied structured problem solving and prioritization to coordinate multi-team operations under changing conditions.",
@@ -179,9 +177,9 @@
         "Strengthened leadership presence and the ability to guide groups with clarity and calmness."
       ],
       "businessDescription": [
-        "Gathered group and stakeholder needs quickly, then adjusted delivery plans to maintain safety and experience quality.",
-        "Facilitated communication with accompanying adults to align expectations, constraints, and day-to-day priorities.",
-        "Improved execution consistency by applying structured decision making under changing operational conditions."
+        "Captured group and stakeholder requirements quickly, then adjusted plans to maintain safety and experience quality.",
+        "Aligned accompanying adults on expectations, constraints, and daily priorities to reduce execution friction.",
+        "Applied structured prioritization under changing conditions to improve consistency and decision quality."
       ],
       "softwareDescription": [
         "Applied real-time problem solving and incident-style decision making in dynamic, time-sensitive environments.",
@@ -212,10 +210,10 @@
         "Built strong foundations in enterprise-scale collaboration and service delivery."
       ],
       "businessDescription": [
-        "Analyzed workplace technology needs and translated security, reliability, and continuity goals into actionable delivery scope.",
-        "Reduced operational friction by mapping support workflows and introducing improvements to diagnostic processes.",
-        "Supported VPN rollout planning by aligning stakeholder requirements, risks, and implementation constraints.",
-        "Collaborated across enterprise stakeholders to keep technical delivery aligned with service outcomes and business priorities."
+        "Assessed workplace technology requirements and translated security, reliability, and continuity goals into actionable scope.",
+        "Mapped support workflows and introduced process improvements that reduced operational friction.",
+        "Coordinated VPN rollout planning by aligning stakeholder requirements, risks, and implementation constraints.",
+        "Aligned enterprise stakeholders to keep technical delivery tied to service outcomes and business priorities."
       ],
       "softwareDescription": [
         "Built and shipped C# .NET solutions focused on secure and reliable enterprise workplace technology.",
@@ -255,9 +253,9 @@
         "Developed early habits of systems thinking and continuous improvement."
       ],
       "businessDescription": [
-        "Gathered support requirements from staff and students, then prioritized ICT work to improve teaching continuity.",
-        "Analyzed service workflows to identify recurring friction points and improve operational response quality.",
-        "Translated day-to-day support insights into practical process improvements for stakeholders and school operations."
+        "Collected support requirements from staff and students, then prioritized ICT work to improve teaching continuity.",
+        "Analyzed service workflows to identify recurring friction points and improve response quality.",
+        "Converted support trends into practical process improvements for stakeholders and school operations."
       ],
       "softwareDescription": [
         "Improved ICT service reliability through workflow analysis, scripting support, and better operational practices.",
@@ -292,9 +290,9 @@
         "Strengthened the ability to connect ideas across domains and communicate them clearly."
       ],
       "businessDescription": [
-        "Ran discovery-style collaboration with diverse partners to frame ambiguous problems and clarify desired outcomes.",
-        "Applied business analysis thinking to connect stakeholder needs, constraints, and practical solution options.",
-        "Strengthened workshop facilitation and communication skills for cross-functional decision support."
+        "Led discovery sessions with diverse partners to frame ambiguous problems and clarify desired outcomes.",
+        "Synthesized stakeholder needs and constraints into practical solution options.",
+        "Facilitated workshops that improved cross-functional communication and decision support."
       ],
       "softwareDescription": [
         "Applied systems thinking to break down complex challenges into actionable solution pathways.",
@@ -325,10 +323,10 @@
         "Developed strong foundations in identity management, cloud architecture, and secure design."
       ],
       "businessDescription": [
-        "Owned end-to-end analysis and delivery for client-facing solutions, aligning implementation scope with business goals.",
-        "Improved client outcomes by identifying bottlenecks in deployment workflows and driving process improvements.",
-        "Worked independently in ambiguous problem spaces to define requirements and maintain momentum on critical priorities.",
-        "Translated client requirements into secure, scalable cloud solution designs with clear delivery trade-offs."
+        "Led end-to-end discovery, requirements definition, and delivery alignment for client-facing solutions.",
+        "Analyzed deployment bottlenecks and drove process improvements that improved client outcomes.",
+        "Converted ambiguous client problems into actionable requirements and prioritized delivery plans.",
+        "Balanced business goals, delivery constraints, and technical trade-offs in secure cloud solution decisions."
       ],
       "softwareDescription": [
         "Delivered full-stack features across AWS, Node.js, TypeScript, and Angular from design through production rollout.",
@@ -381,9 +379,9 @@
         "Built internal tooling and automation to support operations and reduce manual work for volunteers."
       ],
       "businessDescription": [
-        "Gathered operational needs from event and volunteer stakeholders, then coordinated support to improve service delivery.",
-        "Improved volunteer workflows by introducing practical tooling and process adjustments that reduced manual overhead.",
-        "Balanced changing priorities across IT and production support while maintaining consistent event operations."
+        "Gathered event and volunteer requirements, then coordinated support to improve service delivery.",
+        "Improved volunteer workflows through practical tooling and process adjustments that reduced manual overhead.",
+        "Prioritized competing IT and production needs while maintaining consistent event operations."
       ],
       "softwareDescription": [
         "Built lightweight internal tooling and automation to reduce repetitive tasks and improve operational reliability.",
@@ -421,9 +419,9 @@
         "Built early foundations in hands-on IT operations, teamwork, and customer-focused delivery."
       ],
       "businessDescription": [
-        "Supported deployment and refurbishment workflows with consistent execution against operational quality expectations.",
-        "Contributed to dependable delivery by following structured processes across large-scale telecom preparation tasks.",
-        "Built early stakeholder and service awareness through customer-focused execution in operational environments."
+        "Supported deployment and refurbishment workflows with consistent execution against quality expectations.",
+        "Executed structured processes across large-scale telecom preparation tasks to support dependable delivery.",
+        "Built early stakeholder communication habits through customer-focused operational execution."
       ],
       "softwareDescription": [
         "Developed foundational technical operations capability through hands-on telecom deployment and refurbishment work.",
@@ -454,9 +452,9 @@
         "Built strong foundational habits in communication, accountability, and attention to detail."
       ],
       "businessDescription": [
-        "Supported daily operations by balancing customer needs, team coordination, and service quality expectations.",
-        "Applied structured prioritization under time pressure to maintain throughput and customer experience.",
-        "Developed early stakeholder communication habits in a high-volume service environment."
+        "Supported daily operations by balancing customer demand, team coordination, and service quality expectations.",
+        "Prioritized tasks under time pressure to maintain throughput and customer experience.",
+        "Built foundational stakeholder communication habits in a high-volume service environment."
       ],
       "softwareDescription": [
         "Built foundational delivery discipline through repeatable process execution in a high-tempo environment.",
