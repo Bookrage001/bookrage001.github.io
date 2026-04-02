@@ -83,6 +83,11 @@
 	color: #2f3a48;
 }
 
+:host ::ng-deep .important-word {
+	font-weight: 700;
+	color: #1f2f42;
+}
+
 @media print {
 	.no-print {
 		display: none !important;

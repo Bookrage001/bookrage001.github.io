@@ -18,8 +18,20 @@
       </button>
     </div>
 
+    <div class="resume-mode no-print">
+      <span class="resume-mode__label">Resume Mode</span>
+      <mat-button-toggle-group [value]="resumeMode" (change)="onResumeModeChange($event)" aria-label="Resume mode">
+        <mat-button-toggle value="business">Business Analyst</mat-button-toggle>
+        <mat-button-toggle value="software">Software</mat-button-toggle>
+        <mat-button-toggle value="all">Balanced</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
     <h1>Caleb Ardern</h1>
   <h2>Product and Delivery Lead</h2>
+    <p class="resume-mode__print print-only">
+      <b>Resume Mode:</b> {{ resumeModeLabel }}
+    </p>
     <p class="resume-header__email">
       Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
     </p>
@@ -108,7 +120,7 @@
     <li>Lead delivery from problem framing through rollout, iteration, and follow-up instead of focusing only on implementation.</li>
   </ul>
 
-  <app-jobs></app-jobs>
+  <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
 
   <section [class.no-print]="compactPrintMode">
     <hr />
