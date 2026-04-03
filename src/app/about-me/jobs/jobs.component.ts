@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
 import { Observable, map } from 'rxjs';
@@ -14,13 +14,116 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   standalone: true,
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
-export class JobsComponent {
+export class JobsComponent implements OnChanges {
+    @Input() roleFocus: 'all' | 'business' | 'software' = 'all';
+    @Output() roleFocusChange = new EventEmitter<'all' | 'business' | 'software'>();
+
+  private readonly importantTerms = [
+    'Full Stack Development',
+    'Backend Development',
+    'Frontend Development',
+    'Node.js',
+    'typeScript',
+    'JavaScript',
+    'Python',
+    'C#',
+    'RESTful APIs',
+    'GraphQL',
+    'Microservices',
+    'Cloud Platforms',
+    'AWS',
+    'Azure',
+    'GCP',
+    'Infrastructure as Code',
+    'CloudFormation',
+    'Serverless',
+    'Docker',
+    'Kubernetes',
+    'CI/CD',
+    'Automation',
+    'Testing (Unit, Integration, E2E)',
+    'SQL',
+    'Relational Databases',
+    'NoSQL Databases',
+    'Large Datasets',
+    'System Architecture',
+    'Scalability',
+    'Real-time Systems',
+    'WebSockets',
+    'MQTT',
+    'Requirements Gathering',
+    'User Stories',
+    'Backlog Grooming',
+    'Sprint Planning',
+    'Agile Delivery',
+    'Scrum',
+    'Stakeholder Engagement',
+    'Cross-functional Collaboration',
+    'Solution Design',
+    'UX Alignment',
+    'Documentation',
+    'Traceability',
+    'Product Development',
+    'Roadmapping',
+    'Prioritisation',
+    'Technology Transformation',
+    'Digital Transformation',
+    'Business Analyst',
+    'Business Analysis',
+    'Problem Solving',
+    'Client Engagement',
+    'Workshops',
+    'Discovery Sessions',
+    'Strategic Thinking',
+    'Enterprise Architecture',
+    'Operating Models',
+    'Process Improvement',
+    'Digital Health',
+    'Enterprise SaaS',
+    'Risk Management',
+    'Maritime Logistics',
+    'IoT',
+    'AI/ML Integration',
+    'Expense Automation',
+    'Mission-critical Systems',
+    'Communication',
+    'Analytical Thinking',
+    'Collaboration',
+    'Proactive Mindset',
+    'Curiosity',
+    'Adaptability',
+    'Attention to Detail',
+    'User-centric Thinking'
+  ];
+
+  private readonly importantTermsRegex = this.buildImportantTermsRegex();
+
+  private readonly businessFocusTags = [
+    'Stakeholder Management',
+    'Workflow Analysis',
+    'Communication',
+    'Project Delivery',
+    'Problem Solving',
+    'User-Centered Design',
+    'Continuous Improvement'
+  ];
+
+  private readonly softwareFocusTags = [
+    'Full Stack Development',
+    'Automation',
+    'Security',
+    'Cloud Architecture',
+    'Identity Management',
+    'Enterprise IT'
+  ];
+
   allJobs$: Observable<JobItem[]>;
   jobs$: Observable<JobItem[]>;
   tags$: Observable<string[]>;
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
+  activeFocus: 'all' | 'business' | 'software' = 'all';
   lastFiveYearsOnly = true;
   filtersVisible = false;
   showTags = false;
@@ -56,6 +159,26 @@ export class JobsComponent {
     this.applyFilters();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes['roleFocus']) {
+      return;
+    }
+
+    if (this.roleFocus === 'business' && this.activeFocus !== 'business') {
+      this.applyBusinessFocus(false);
+      return;
+    }
+
+    if (this.roleFocus === 'software' && this.activeFocus !== 'software') {
+      this.applySoftwareFocus(false);
+      return;
+    }
+
+    if (this.roleFocus === 'all' && this.activeFocus !== 'all') {
+      this.clearRoleFocus(false);
+    }
+  }
+
   onTagChange(tag: string): void {
     const isSelected = this.selectedTags.includes(tag);
     this.selectedTags = isSelected
@@ -88,9 +211,49 @@ export class JobsComponent {
   }
 
   clearAllFilters(): void {
+    this.activeFocus = 'all';
     this.selectedTags = [];
     this.selectedTechTags = [];
     this.lastFiveYearsOnly = false;
+    this.applyFilters();
+  }
+
+  applyBusinessFocus(emitChange = true): void {
+    this.activeFocus = 'business';
+    this.selectedTags = [...this.businessFocusTags];
+    this.selectedTechTags = [];
+    this.showTags = true;
+    this.showTechTags = false;
+    this.lastFiveYearsOnly = false;
+    if (emitChange) {
+      this.roleFocusChange.emit(this.activeFocus);
+    }
+    this.applyFilters();
+  }
+
+  applySoftwareFocus(emitChange = true): void {
+    this.activeFocus = 'software';
+    this.selectedTags = [...this.softwareFocusTags];
+    this.selectedTechTags = [];
+    this.showTags = true;
+    this.showTechTags = true;
+    this.lastFiveYearsOnly = false;
+    if (emitChange) {
+      this.roleFocusChange.emit(this.activeFocus);
+    }
+    this.applyFilters();
+  }
+
+  clearRoleFocus(emitChange = true): void {
+    this.activeFocus = 'all';
+    this.selectedTags = [];
+    this.selectedTechTags = [];
+    this.showTags = false;
+    this.showTechTags = false;
+    this.lastFiveYearsOnly = true;
+    if (emitChange) {
+      this.roleFocusChange.emit(this.activeFocus);
+    }
     this.applyFilters();
   }
 
@@ -151,6 +314,45 @@ export class JobsComponent {
   clearTagFilter(): void {
     this.selectedTags = [];
     this.applyFilters();
+  }
+
+  getDescriptions(job: JobItem): string[] {
+    if (this.activeFocus === 'business' && job.data.businessDescription?.length) {
+      return job.data.businessDescription;
+    }
+
+    if (this.activeFocus === 'software' && job.data.softwareDescription?.length) {
+      return job.data.softwareDescription;
+    }
+
+    return job.data.description;
+  }
+
+  highlightImportantWords(text: string): string {
+    const safeText = this.escapeHtml(text);
+    return safeText.replace(this.importantTermsRegex, '<strong class="important-word">$1</strong>');
+  }
+
+  private buildImportantTermsRegex(): RegExp {
+    const escapedTerms = this.importantTerms
+      .slice()
+      .sort((a, b) => b.length - a.length)
+      .map((term) => this.escapeRegex(term));
+
+    return new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+  }
+
+  private escapeRegex(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  private escapeHtml(value: string): string {
+    return value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 }
 

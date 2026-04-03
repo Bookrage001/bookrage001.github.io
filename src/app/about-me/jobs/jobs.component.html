@@ -12,6 +12,27 @@
 
   <div class="display-toggles no-print">
     <div class="display-toggles-header">
+      <span class="display-toggles-title">Role Focus</span>
+      <span class="display-toggles-subtitle">Switch between business analyst and software development emphasis.</span>
+    </div>
+
+    <div class="display-toggle-options" role="group" aria-label="Role focus options">
+      <button mat-stroked-button type="button" [disabled]="activeFocus === 'business'" (click)="applyBusinessFocus()">
+        Business Analyst Focus
+      </button>
+
+      <button mat-stroked-button type="button" [disabled]="activeFocus === 'software'" (click)="applySoftwareFocus()">
+        Software Development Focus
+      </button>
+
+      <button mat-stroked-button type="button" [disabled]="activeFocus === 'all'" (click)="clearRoleFocus()">
+        Reset Focus
+      </button>
+    </div>
+  </div>
+
+  <div class="display-toggles no-print">
+    <div class="display-toggles-header">
       <span class="display-toggles-title">Display Options</span>
       <span class="display-toggles-subtitle">Choose what extra details appear in each role.</span>
     </div>
@@ -105,9 +126,7 @@
           </div>
         }
         <ul>
-          @for (description of job.data.description; track description) {
-            <li>{{description}}</li>
-          }
+          <li *ngFor="let description of getDescriptions(job)" [innerHTML]="highlightImportantWords(description)"></li>
         </ul>
       </div>
     </div>
