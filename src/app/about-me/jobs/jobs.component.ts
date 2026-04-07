@@ -288,20 +288,12 @@ export class JobsComponent implements OnChanges {
     this.jobs$ = this.allJobs$.pipe(
       map((jobs) =>
         jobs.filter((job) => {
-          const matchesSkills =
-            selectedSkills.length === 0 ||
-            (job.data.tags ?? []).some((jobTag) => selectedSkills.includes(jobTag));
-
-          const matchesTech =
-            selectedTech.length === 0 ||
-            (job.data.techTags ?? []).some((jobTag) => selectedTech.includes(jobTag));
-
           const matchesLastFiveYears =
             !this.lastFiveYearsOnly ||
             !job.data.endDate ||
             job.data.endDate >= fiveYearsCutoff;
 
-          return matchesSkills && matchesTech && matchesLastFiveYears;
+          return this.matchesSelectedFilters(job, selectedSkills, selectedTech) && matchesLastFiveYears;
         })
       )
     );
@@ -326,6 +318,61 @@ export class JobsComponent implements OnChanges {
     }
 
     return job.data.description;
+  }
+
+  getDurationLabel(startDate: Date, endDate?: Date): string {
+    return this.formatDurationLabel(this.getDurationInMonths(startDate, endDate));
+  }
+
+  private matchesSelectedFilters(job: JobItem, selectedSkills: string[], selectedTech: string[]): boolean {
+    const matchesSkills =
+      selectedSkills.length === 0 ||
+      (job.data.tags ?? []).some((jobTag) => selectedSkills.includes(jobTag));
+
+    const matchesTech =
+      selectedTech.length === 0 ||
+      (job.data.techTags ?? []).some((jobTag) => selectedTech.includes(jobTag));
+
+    return matchesSkills && matchesTech;
+  }
+
+  private getDurationInMonths(startDate: Date, endDate?: Date): number {
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : new Date();
+
+    if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || end < start) {
+      return 0;
+    }
+
+    let totalMonths =
+      (end.getFullYear() - start.getFullYear()) * 12 +
+      (end.getMonth() - start.getMonth());
+
+    // Count the current month when the end day is on/after the start day.
+    if (end.getDate() >= start.getDate()) {
+      totalMonths += 1;
+    }
+
+    return Math.max(totalMonths, 1);
+  }
+
+  private formatDurationLabel(totalMonths: number): string {
+    if (totalMonths <= 0) {
+      return '0 mo';
+    }
+
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+
+    if (years > 0 && months > 0) {
+      return `${years} yr ${months} mo`;
+    }
+
+    if (years > 0) {
+      return `${years} yr`;
+    }
+
+    return `${months} mo`;
   }
 
   highlightImportantWords(text: string): string {

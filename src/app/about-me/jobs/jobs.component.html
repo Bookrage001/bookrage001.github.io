@@ -107,7 +107,7 @@
     <div>
       <div>
         <b>{{job.data.role}}</b> <br />
-        {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}}
+        {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}} ({{ getDurationLabel(job.data.startDate, job.data.endDate) }})
         @if (shouldShowTags && job.data.tags?.length) {
           <div class="tag-list">
             @for (tag of job.data.tags; track tag) {
