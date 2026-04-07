@@ -155,15 +155,7 @@
         "Strengthened stakeholder communication and execution discipline that translates directly to agile software delivery.",
         "Built operational awareness and incident-style decision making in time-sensitive environments."
       ],
-      "tags": [
-        "Operations",
-        "Leadership",
-        "Customer Service",
-        "Communication",
-        "Problem Solving",
-        "Stakeholder Management",
-        "Adaptability"
-      ],
+      "tags": [],
       "techTags": []
     },
     {
@@ -187,15 +179,7 @@
         "Strengthened delivery discipline through clear communication, planning, and rapid adaptation to changing requirements.",
         "Built transferable execution habits for agile software delivery: prioritization, clarity, and calm under pressure."
       ],
-      "tags": [
-        "Leadership",
-        "Communication",
-        "Customer Service",
-        "Teamwork",
-        "Problem Solving",
-        "Stakeholder Management",
-        "Facilitation"
-      ],
+      "tags": [],
       "techTags": []
     },
     {
@@ -300,16 +284,7 @@
         "Built interdisciplinary collaboration habits that improved handoffs between technical and non-technical contributors.",
         "Developed structured problem-solving and communication patterns used later in software delivery roles."
       ],
-      "tags": [
-        "Design Thinking",
-        "Problem Solving",
-        "Communication",
-        "User-Centered Design",
-        "Leadership",
-        "Stakeholder Management",
-        "Systems Thinking",
-        "Innovation"
-      ],
+      "tags": [],
       "techTags": []
     },
     {
@@ -389,25 +364,8 @@
         "Supported IT and AV systems across live event environments with a focus on stability and rapid issue resolution.",
         "Applied hands-on infrastructure and scripting practices that strengthened practical delivery capability."
       ],
-      "tags": [
-        "Operations",
-        "End User Support",
-        "Customer Service",
-        "Teamwork",
-        "Problem Solving",
-        "Service Mindset"
-      ],
-      "techTags": [
-        "AV Systems",
-        "FreePBX",
-        "3CX",
-        "Docker",
-        "Networking",
-        "Telecom Hardware",
-        "Scripting",
-        "Infrastructure as Code",
-        "Jira"
-      ]
+      "tags": [],
+      "techTags": []
     },
     {
       "role": "Casual",
@@ -429,18 +387,8 @@
         "Applied detail-oriented execution and process discipline in hardware lifecycle and deployment tasks.",
         "Built early reliability habits that carried into later software and infrastructure delivery roles."
       ],
-      "tags": [
-        "Operations",
-        "Teamwork",
-        "Technical Execution",
-        "Reliability"
-      ],
-      "techTags": [
-        "Avaya",
-        "Nortel",
-        "Networking",
-        "Telecom Hardware"
-      ]
+      "tags": [],
+      "techTags": []
     },
     {
       "role": "Crew Member",
