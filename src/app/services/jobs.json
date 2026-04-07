@@ -6,15 +6,15 @@
       "startDate": "2023-05-01",
       "endDate": "2026-01-31",
       "description": [
-        "Led mission software delivery for operators and field teams, improving reliability in high-stakes environments.",
-        "Collaborated across operations, manufacturing, and engineering to align delivery priorities with mission outcomes.",
+        "Led mission software deliveries for operators and field teams, improving reliability in high-stakes environments.",
+        "Collaborated across operations, manufacturing, and engineering to align delivery priorities with business outcomes.",
         "Delivered mission-critical code and data pathways where rapid, reliable updates were needed for time-sensitive operational decisions.",
         "Worked with large operational datasets across SQL and NoSQL data stores to support analytics, decision making, and system reliability.",
-        "Built and integrated microservices into the Distributed Control Application to improve real-world system performance.",
+        "Built and integrated microservices into the Windracers Application to improve real-world system performance.",
         "Improved security, documentation, and team workflows to reduce delivery friction and support consistent execution.",
         "Mentored developers across business analysis and software delivery practices to strengthen team capability.",
-        "Mentored a junior developer on AI/ML Integration into business workflows and product decisions.",
-        "Contributed automation scripts and infrastructure improvements that increased platform stability and team velocity."
+        "Mentored junior developers on integration into business workflows and product decisions including AI/ML development.",
+        "Automated infrastructure and production improvements to improve business velocity and team delivery speed."
       ],
       "businessDescription": [
         "Gathered and clarified operational requirements with operations, manufacturing, and field stakeholders in mission-critical contexts.",
@@ -25,12 +25,12 @@
         "Mentored developers in business analysis practices and coached a junior developer on AI integration for operational decision support."
       ],
       "softwareDescription": [
-        "Built and integrated microservices into the Distributed Control Application to improve reliability in real-world operations.",
+        "Built and integrated microservices into the Windracers software stack to improve reliability in real-world operations.",
         "Contributed to Backend Development and Frontend Development across C#, .NET, TypeScript, and Angular services.",
         "Implemented WebSockets-based real-time data delivery flows to support low-latency mission-critical operational updates.",
         "Implemented and optimized data flows across SQL and NoSQL stores handling large datasets for performance and operational resilience.",
-        "Designed and integrated RESTful APIs to improve System Architecture quality, Enterprise Architecture alignment, and operational resilience for Enterprise SaaS workflows.",
-        "Improved secure engineering practices and delivery quality across C#, .NET, TypeScript, and Angular systems.",
+        "Designed and integrated RESTful APIs to improve System Architecture quality, Enterprise Architecture alignment, and operational resilience for Enterprise SaaS and PasS workflows.",
+        "Improved secure engineering practices and delivery quality across Information Security and DevSecOps initiatives.",
         "Mentored developers on software engineering practices and coached a junior developer on practical AI integration patterns.",
         "Contributed automation scripts and infrastructure improvements to increase platform stability and team velocity."
       ],
@@ -46,7 +46,6 @@
         "User Stories",
         "Agile Delivery",
         "Scrum",
-        "Backlog Grooming",
         "Sprint Planning",
         "Roadmapping",
         "Traceability",
@@ -57,7 +56,6 @@
         "UX Alignment",
         "Enterprise Architecture",
         "Operating Models",
-        "Enterprise SaaS",
         "Risk Management",
         "Analytical Thinking",
         "Proactive Mindset",
@@ -76,7 +74,6 @@
       "techTags": [
         "C#",
         ".NET",
-        "Desktop Application",
         "AWS",
         "Node.js",
         "TypeScript",
@@ -128,8 +125,7 @@
       ],
       "techTags": [
         "C#",
-        ".NET",
-        "Desktop Application"
+        ".NET"
       ]
     },
     {
