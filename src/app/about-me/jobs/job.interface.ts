@@ -6,6 +6,8 @@ export interface JobInterface {
   startDate: Date,
   endDate?: Date,
   description: string[],
+  businessDescription?: string[],
+  softwareDescription?: string[],
   tags?: Array<string>;
   techTags?: Array<string>;
 }

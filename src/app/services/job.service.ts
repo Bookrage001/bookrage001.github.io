@@ -9,6 +9,8 @@ interface JobJsonItem {
   startDate: string;
   endDate?: string;
   description: string[];
+  businessDescription?: string[];
+  softwareDescription?: string[];
   tags?: string[];
   techTags?: string[];
 }
@@ -35,6 +37,8 @@ export class JobService {
               startDate: new Date(item.startDate),
               endDate: item.endDate ? new Date(item.endDate) : undefined,
               description: item.description,
+              businessDescription: item.businessDescription,
+              softwareDescription: item.softwareDescription,
               tags: item.tags,
               techTags: item.techTags
             })

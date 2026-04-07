@@ -83,8 +83,18 @@
 	color: #2f3a48;
 }
 
+:host .important-word {
+	font-weight: 700;
+	color: #1f2f42;
+}
+
 @media print {
 	.no-print {
+		display: none !important;
+	}
+
+	.tag-list,
+	.tech-tag-block {
 		display: none !important;
 	}
 

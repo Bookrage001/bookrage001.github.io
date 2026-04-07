@@ -1,0 +1,55 @@
+.tools-shell {
+	width: min(95%, 70rem);
+	margin: 2rem auto;
+}
+
+.fuel-card {
+	display: grid;
+	gap: 1.25rem;
+	padding: clamp(1rem, 2vw, 2rem);
+}
+
+h1 {
+	margin: 0;
+}
+
+.intro {
+	margin: 0;
+}
+
+.controls-row {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+	align-items: end;
+}
+
+label {
+	display: grid;
+	gap: 0.35rem;
+	font-weight: 600;
+}
+
+input {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 0.5rem;
+	padding: 0.65rem 0.75rem;
+	font: inherit;
+}
+
+.stats-row,
+.actions-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.stats-row p {
+	margin: 0;
+}
+
+@media (max-width: 56rem) {
+	.controls-row {
+		grid-template-columns: 1fr;
+	}
+}
