@@ -186,7 +186,7 @@
       "endDate": "2022-01-01",
       "description": [
         "Delivered C# .NET solutions with a focus on secure, reliable outcomes for workplace technology.",
-        "Improved IT operations through automation and tools that reduced manual network diagnosis.",
+        "Improved IT operations through automation and tools that reduced manual LAN and endpoint network diagnosis.",
         "Supported a VPN rollout to strengthen access and trust across the organization.",
         "Developed ideas through scripting and prototyping to find practical solutions to technical and operational challenges.",
         "Built strong foundations in enterprise-scale collaboration and service delivery."
@@ -199,7 +199,7 @@
       ],
       "softwareDescription": [
         "Built and shipped C# .NET solutions focused on secure and reliable enterprise workplace technology.",
-        "Automated network diagnosis and support workflows using scripting and prototyping.",
+        "Automated LAN support diagnosis workflows (connectivity checks, adapter state, and incident triage) using scripting and prototyping.",
         "Contributed to VPN rollout implementation and supporting systems to strengthen access control.",
         "Developed practical technical solutions for operational challenges in an enterprise IT environment."
       ],
@@ -217,7 +217,8 @@
         ".NET",
         "VPN",
         "Scripting",
-        "Networking",
+        "LAN Support",
+        "Network Troubleshooting",
         "Jira"
       ]
     },
@@ -228,6 +229,7 @@
       "endDate": "2021-12-01",
       "description": [
         "Supported staff and students through service desk work that prioritized empathy and practical outcomes.",
+        "Provided MacOS and Windows desktop support across end-user environments to maintain reliable day-to-day operations.",
         "Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents.",
         "Strengthened foundations that helped others focus on teaching and learning.",
         "Developed early habits of systems thinking and continuous improvement."
@@ -239,6 +241,7 @@
       ],
       "softwareDescription": [
         "Improved ICT service reliability through workflow analysis, scripting support, and better operational practices.",
+        "Developed PowerShell automations and operational dashboards to streamline recurring processes and improve support visibility.",
         "Applied systems thinking to reduce repetitive incidents and improve support team effectiveness.",
         "Built foundational delivery habits in troubleshooting, root-cause analysis, and continuous improvement."
       ],
@@ -251,6 +254,9 @@
       ],
       "techTags": [
         "Jira",
+        "PowerShell",
+        "Windows Desktop Support",
+        "MacOS Desktop Support",
         "Active Directory",
         "Microsoft 365",
         "Jamf",
@@ -377,6 +383,7 @@
       ],
       "softwareDescription": [
         "Developed foundational technical operations capability through hands-on telecom deployment and refurbishment work.",
+        "Contributed to networking and telecommunication development activities supporting deployment readiness and service reliability.",
         "Applied detail-oriented execution and process discipline in hardware lifecycle and deployment tasks.",
         "Built early reliability habits that carried into later software and infrastructure delivery roles."
       ],
