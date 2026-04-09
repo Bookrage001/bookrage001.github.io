@@ -30,7 +30,7 @@
     "angular-resizable-element": "^8.0.3",
     "date-fns": "^4.1.0",
     "echarts": "^6.0.0",
-    "jquery": "^3.5.1",
+    "jquery": "^4.0.0",
     "rxjs": "^7.8.2",
     "tslib": "^2.6.2",
     "web-animations-js": "^2.3.2",
