@@ -22,7 +22,7 @@ import { PrintService } from '../services/print.service';
 export class AboutMeComponent {
   private printService = inject(PrintService);
   compactPrintMode = false;
-  resumeMode: 'all' | 'business' | 'software' = 'software';
+  resumeMode: 'all' | 'business' | 'software' | 'hospitality' = 'software';
 
   get resumeModeLabel(): string {
     if (this.resumeMode === 'business') {
@@ -33,7 +33,11 @@ export class AboutMeComponent {
       return 'Software Development Focus';
     }
 
-    return 'Balanced Focus';
+    if (this.resumeMode === 'hospitality') {
+      return 'Hospitality Focus';
+    }
+
+    return 'Full';
   }
 
   onCompactPrintModeChange(event: MatCheckboxChange): void {
@@ -44,7 +48,7 @@ export class AboutMeComponent {
     this.resumeMode = event.value;
   }
 
-  onRoleFocusChange(focus: 'all' | 'business' | 'software'): void {
+  onRoleFocusChange(focus: 'all' | 'business' | 'software' | 'hospitality'): void {
     this.resumeMode = focus;
   }
 
