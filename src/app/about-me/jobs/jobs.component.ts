@@ -15,10 +15,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent implements OnChanges {
-    @Input() roleFocus: 'all' | 'business' | 'software' = 'all';
-    @Output() roleFocusChange = new EventEmitter<'all' | 'business' | 'software'>();
+@Input() roleFocus: 'all' | 'business' | 'software' | 'hospitality' = 'all';
+    @Output() roleFocusChange = new EventEmitter<'all' | 'business' | 'software' | 'hospitality'>();
 
-  private readonly importantTerms = [
+  private readonly fullResumeImportantTerms = [
     'Full Stack Development',
     'Backend Development',
     'Frontend Development',
@@ -53,7 +53,7 @@ export class JobsComponent implements OnChanges {
     'MQTT',
     'Networking',
     'Network Troubleshooting',
-    'LAN',
+    ' LAN ',
     'LAN Support',
     'VPN',
     'Telecommunication',
@@ -105,10 +105,216 @@ export class JobsComponent implements OnChanges {
     'Curiosity',
     'Adaptability',
     'Attention to Detail',
-    'User-centric Thinking'
+    'User-centric Thinking',
+    'DevSecOps',
+    'Cloud-Native',
+    'Event-Driven Architecture',
+    'API-First',
+    'Observability',
+    'SRE',
+    'Platform Engineering',
+    'KPI Tracking',
+    'Change Management',
+    'Gap Analysis',
+    'Process Mapping',
+    'UAT',
+    'As-Is/To-Be',
+    'Guest Experience',
+    'Service Excellence',
+    'Customer Satisfaction',
+    'Conflict Resolution',
+    'Shift Management',
+    'Front-of-House Operations',
+    'POS Systems'
   ];
 
-  private readonly importantTermsRegex = this.buildImportantTermsRegex();
+  private readonly businessImportantTerms = [
+    'Requirements Gathering',
+    'User Stories',
+    'Backlog Grooming',
+    'Sprint Planning',
+    'Agile Delivery',
+    'Scrum',
+    'Stakeholder Engagement',
+    'Cross-functional Collaboration',
+    'Solution Design',
+    'UX Alignment',
+    'Documentation',
+    'Traceability',
+    'Product Development',
+    'Roadmapping',
+    'Prioritisation',
+    'Technology Transformation',
+    'Digital Transformation',
+    'Business Analyst',
+    'Business Analysis',
+    'Problem Solving',
+    'Client Engagement',
+    'Workshops',
+    'Discovery Sessions',
+    'Strategic Thinking',
+    'Enterprise Architecture',
+    'Operating Models',
+    'Process Improvement',
+    'Risk Management',
+    'Communication',
+    'Analytical Thinking',
+    'Collaboration',
+    'Proactive Mindset',
+    'Curiosity',
+    'Adaptability',
+    'Attention to Detail',
+    'User-centric Thinking',
+    'Stakeholder Management',
+    'Process Mapping',
+    'Gap Analysis',
+    'KPI Tracking',
+    'Change Management',
+    'UAT',
+    'As-Is/To-Be'
+  ];
+
+  private readonly softwareImportantTerms = [
+    'Full Stack Development',
+    'Backend Development',
+    'Frontend Development',
+    'Node.js',
+    'typeScript',
+    'JavaScript',
+    'Python',
+    'C#',
+    'RESTful APIs',
+    'GraphQL',
+    'Microservices',
+    'Cloud Platforms',
+    'AWS',
+    'Azure',
+    'GCP',
+    'Infrastructure as Code',
+    'CloudFormation',
+    'Serverless',
+    'Docker',
+    'Kubernetes',
+    'CI/CD',
+    'Automation',
+    'Testing (Unit, Integration, E2E)',
+    'SQL',
+    'Relational Databases',
+    'NoSQL Databases',
+    'Large Datasets',
+    'System Architecture',
+    'Scalability',
+    'Real-time Systems',
+    'WebSockets',
+    'MQTT',
+    'Networking',
+    'VPN',
+    'PowerShell',
+    'IoT',
+    'AI/ML Integration',
+    'Expense Automation',
+    'Mission-critical Systems',
+    'DevSecOps',
+    'Cloud-Native',
+    'Event-Driven Architecture',
+    'API-First',
+    'Observability',
+    'SRE',
+    'Platform Engineering'
+  ];
+
+  private readonly hospitalityImportantTerms = [
+    'Communication',
+    'Collaboration',
+    'Problem Solving',
+    'Adaptability',
+    'Attention to Detail',
+    'User-centric Thinking',
+    'Client Engagement',
+    'Workshops',
+    'Discovery Sessions',
+    'Process Improvement',
+    'Strategic Thinking',
+    'Analytical Thinking',
+    'Proactive Mindset',
+    'Guest Experience',
+    'Service Excellence',
+    'Customer Satisfaction',
+    'Conflict Resolution',
+    'Shift Management',
+    'Front-of-House Operations',
+    'POS Systems'
+  ];
+
+  private readonly fullResumeSkillWords = [
+    'Leadership',
+    'Mentoring',
+    'Ownership',
+    'Execution',
+    'Delivery',
+    'Strategy',
+    'Planning',
+    'Facilitation',
+    'Negotiation',
+    'Coaching',
+    'Incident Response',
+    'Troubleshooting',
+    'Optimization',
+    'Governance',
+    'Compliance',
+    'Security',
+    'Reliability',
+    'Performance',
+    'Innovation',
+    'Customer Focus'
+  ];
+
+  private readonly businessSkillWords = [
+    'Stakeholder Management',
+    'Workshop Facilitation',
+    'Requirements Elicitation',
+    'Workflow Analysis',
+    'Business Process Modelling',
+    'Acceptance Criteria',
+    'Prioritization',
+    'Decision-Making',
+    'Roadmap Planning',
+    'Risk Assessment',
+    'Governance',
+    'Change Enablement'
+  ];
+
+  private readonly softwareSkillWords = [
+    'System Design',
+    'Secure Coding',
+    'Code Review',
+    'Refactoring',
+    'Integration Testing',
+    'Continuous Delivery',
+    'Infrastructure Automation',
+    'Containerization',
+    'Monitoring',
+    'Observability',
+    'Reliability Engineering',
+    'Performance Tuning'
+  ];
+
+  private readonly hospitalitySkillWords = [
+    'Guest Relations',
+    'Service Recovery',
+    'Team Leadership',
+    'Roster Coordination',
+    'Operational Support',
+    'Quality Service',
+    'Complaint Handling',
+    'De-escalation',
+    'Front Desk Support',
+    'Point-of-Sale Operations',
+    'Upselling',
+    'Hospitality Standards'
+  ];
+
+  private readonly highlightRegexCache = new Map<string, RegExp>();
 
   private readonly businessFocusTags = [
     'Stakeholder Management',
@@ -129,13 +335,23 @@ export class JobsComponent implements OnChanges {
     'Enterprise IT'
   ];
 
+  private readonly hospitalityFocusTags = [
+    'Customer Service',
+    'End User Support',
+    'Communication',
+    'Leadership',
+    'Teamwork',
+    'Operations',
+    'Service Mindset'
+  ];
+
   allJobs$: Observable<JobItem[]>;
   jobs$: Observable<JobItem[]>;
   tags$: Observable<string[]>;
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
-  activeFocus: 'all' | 'business' | 'software' = 'all';
+  activeFocus: 'all' | 'business' | 'software' | 'hospitality' = 'all';
   lastFiveYearsOnly = true;
   filtersVisible = false;
   showTags = false;
@@ -183,6 +399,11 @@ export class JobsComponent implements OnChanges {
 
     if (this.roleFocus === 'software' && this.activeFocus !== 'software') {
       this.applySoftwareFocus(false);
+      return;
+    }
+
+    if (this.roleFocus === 'hospitality' && this.activeFocus !== 'hospitality') {
+      this.applyHospitalityFocus(false);
       return;
     }
 
@@ -249,6 +470,19 @@ export class JobsComponent implements OnChanges {
     this.selectedTechTags = [];
     this.showTags = true;
     this.showTechTags = true;
+    this.lastFiveYearsOnly = false;
+    if (emitChange) {
+      this.roleFocusChange.emit(this.activeFocus);
+    }
+    this.applyFilters();
+  }
+
+  applyHospitalityFocus(emitChange = true): void {
+    this.activeFocus = 'hospitality';
+    this.selectedTags = [...this.hospitalityFocusTags];
+    this.selectedTechTags = [];
+    this.showTags = true;
+    this.showTechTags = false;
     this.lastFiveYearsOnly = false;
     if (emitChange) {
       this.roleFocusChange.emit(this.activeFocus);
@@ -389,16 +623,123 @@ export class JobsComponent implements OnChanges {
 
   highlightImportantWords(text: string): string {
     const safeText = this.escapeHtml(text);
-    return safeText.replace(this.importantTermsRegex, '<strong class="important-word">$1</strong>');
+    const highlightTerms = this.getHighlightTerms();
+    const highlightRegex = this.buildImportantTermsRegex(highlightTerms);
+
+    if (!highlightRegex) {
+      return safeText;
+    }
+
+    return safeText.replace(highlightRegex, '<strong class="important-word">$1</strong>');
   }
 
-  private buildImportantTermsRegex(): RegExp {
-    const escapedTerms = this.importantTerms
+  private getHighlightTerms(): string[] {
+    // Check if user has manually applied filters beyond the focus selection
+    const hasManualFilters = this.hasManualFiltersApplied();
+
+    if (hasManualFilters) {
+      return [...new Set([
+        ...this.selectedTags,
+        ...this.selectedTechTags,
+        ...this.getFocusSkillWords()
+      ])];
+    }
+
+    const focusImportantTerms = this.getFocusImportantTerms();
+    const focusSkillWords = this.getFocusSkillWords();
+
+    return [...new Set([...focusImportantTerms, ...focusSkillWords])];
+  }
+
+  private hasManualFiltersApplied(): boolean {
+    // No filters at all means no manual filters
+    if (this.selectedTags.length === 0 && this.selectedTechTags.length === 0) {
+      return false;
+    }
+
+    // Tech filters are always manual (focus doesn't set tech tags for highlighting)
+    if (this.selectedTechTags.length > 0) {
+      return true;
+    }
+
+    // Check if skill tags match the current focus tags exactly
+    if (this.activeFocus === 'business') {
+      const matchesFocus = this.selectedTags.length === this.businessFocusTags.length &&
+        this.selectedTags.every(tag => this.businessFocusTags.includes(tag));
+      return !matchesFocus;
+    }
+
+    if (this.activeFocus === 'software') {
+      const matchesFocus = this.selectedTags.length === this.softwareFocusTags.length &&
+        this.selectedTags.every(tag => this.softwareFocusTags.includes(tag));
+      return !matchesFocus;
+    }
+
+    if (this.activeFocus === 'hospitality') {
+      const matchesFocus = this.selectedTags.length === this.hospitalityFocusTags.length &&
+        this.selectedTags.every(tag => this.hospitalityFocusTags.includes(tag));
+      return !matchesFocus;
+    }
+
+    // If focus is 'all' and there are selected tags, it's manual
+    return true;
+  }
+
+  private getFocusImportantTerms(): string[] {
+    if (this.activeFocus === 'business') {
+      return this.businessImportantTerms;
+    }
+
+    if (this.activeFocus === 'software') {
+      return this.softwareImportantTerms;
+    }
+
+    if (this.activeFocus === 'hospitality') {
+      return this.hospitalityImportantTerms;
+    }
+
+    return this.fullResumeImportantTerms;
+  }
+
+  private getFocusSkillWords(): string[] {
+    if (this.activeFocus === 'business') {
+      return this.businessSkillWords;
+    }
+
+    if (this.activeFocus === 'software') {
+      return this.softwareSkillWords;
+    }
+
+    if (this.activeFocus === 'hospitality') {
+      return this.hospitalitySkillWords;
+    }
+
+    return this.fullResumeSkillWords;
+  }
+
+  private buildImportantTermsRegex(terms: string[]): RegExp | null {
+    if (!terms.length) {
+      return null;
+    }
+
+    const cacheKey = terms
+      .map((term) => term.toLocaleLowerCase())
+      .sort((a, b) => a.localeCompare(b))
+      .join('|');
+
+    const cachedRegex = this.highlightRegexCache.get(cacheKey);
+    if (cachedRegex) {
+      return cachedRegex;
+    }
+
+    const escapedTerms = terms
       .slice()
       .sort((a, b) => b.length - a.length)
       .map((term) => this.escapeRegex(term));
 
-    return new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+    const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+    this.highlightRegexCache.set(cacheKey, regex);
+    return regex;
   }
 
   private escapeRegex(value: string): string {

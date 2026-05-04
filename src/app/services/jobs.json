@@ -95,7 +95,8 @@
         "Mission-critical Systems",
         "Scripting",
         "Jira",
-        "Microsoft 365"
+        "Microsoft 365",
+        "AWS"
       ]
     },
     {
@@ -130,6 +131,43 @@
         ".NET"
       ]
     },
+        {
+      "role": "Hospitality Member",
+      "company": "Barton Peveril",
+      "startDate": "2022-10-28",
+      "endDate": "2024-02-26",
+      "description": [
+            "Delivered responsive customer service while preparing coffee, managing point-of-sale transactions, cash handling, and responsible service of alcohol in a busy hospitality environment.",
+            "Managed inventory levels through systematic stock checks, rotation, and restocking to maintain service continuity.",
+        "Coordinated with team members during peak service periods to keep operations flowing smoothly and maintain service quality.",
+            "Followed hygiene and safety procedures during service to maintain clean, compliant, and guest-ready work areas.",
+            "Completed end-of-day close-down tasks including till reconciliation, cleaning, restocking, and secure lock-up.",
+        "Built strong foundations in attention to detail, time management, and the ability to prioritize tasks under pressure."
+      ],
+      "businessDescription": [
+            "Provided attentive guest-facing service by preparing coffee orders, accurately processing transactions, cash handling, and managing customer interactions.",
+            "Supported operational efficiency through proactive inventory management, stock checks, and restocking workflows.",
+        "Maintained compliance with responsible service of alcohol standards while delivering welcoming guest experiences.",
+            "Applied hygiene and safety procedures to support compliant operations and a safe service environment.",
+            "Completed consistent close-down workflows including till reconciliation, cleaning, restocking, and secure lock-up to support next-shift readiness.",
+        "Coordinated with team members to balance competing priorities during high-volume service periods."
+      ],
+      "softwareDescription": [],
+      "tags": [
+        "Customer Service",
+        "End User Support",
+        "Communication",
+        "Teamwork",
+        "Operations",
+        "Service Mindset",
+            "Attention to Detail",
+            "Cash Handling",
+            "Stock Checks",
+            "Hygiene and Safety",
+            "Closing Procedures"
+      ],
+      "techTags": []
+    },
     {
       "role": "Programme Coordinator",
       "company": "PGL Travel LTD",
@@ -152,7 +190,15 @@
         "Strengthened stakeholder communication and execution discipline that translates directly to agile software delivery.",
         "Built operational awareness and incident-style decision making in time-sensitive environments."
       ],
-      "tags": [],
+      "tags": [
+        "Customer Service",
+        "Communication",
+        "Teamwork",
+        "Operations",
+        "Service Mindset",
+        "Problem Solving",
+        "Stakeholder Management"
+      ],
       "techTags": []
     },
     {
@@ -176,7 +222,15 @@
         "Strengthened delivery discipline through clear communication, planning, and rapid adaptation to changing requirements.",
         "Built transferable execution habits for agile software delivery: prioritization, clarity, and calm under pressure."
       ],
-      "tags": [],
+      "tags": [
+        "Customer Service",
+        "Communication",
+        "Teamwork",
+        "Leadership",
+        "Operations",
+        "Service Mindset",
+        "Problem Solving"
+      ],
       "techTags": []
     },
     {
@@ -339,7 +393,8 @@
         "SAML",
         "OAuth",
         "OpenID Connect",
-        "Jira"
+        "Jira",
+        "AWS"
       ]
     },
     {
@@ -396,22 +451,63 @@
       "startDate": "2014-04-01",
       "endDate": "2015-01-01",
       "description": [
-        "Delivered consistent customer service in a fast-paced environment while maintaining quality and operational standards.",
+        "Delivered consistent customer service and cash handling in a fast-paced environment while maintaining quality and operational standards.",
         "Coordinated with team members during peak periods to keep service flow efficient and dependable.",
+        "Followed hygiene and safety procedures to maintain clean workstations and safe food service practices.",
         "Built strong foundational habits in communication, accountability, and attention to detail."
       ],
       "businessDescription": [
-        "Supported daily operations by balancing customer demand, team coordination, and service quality expectations.",
+        "Supported daily operations by balancing customer demand, team coordination, cash handling accuracy, and service quality expectations.",
         "Prioritized tasks under time pressure to maintain throughput and customer experience.",
+        "Applied hygiene and safety procedures consistently to support compliant, reliable shift operations.",
         "Built foundational stakeholder communication habits in a high-volume service environment."
       ],
       "softwareDescription": [
         "Built foundational delivery discipline through repeatable process execution in a high-tempo environment.",
         "Strengthened teamwork and communication patterns that transfer directly to collaborative software delivery.",
         "Developed attention to detail and consistency under pressure, supporting reliable execution habits."
-      ]
+      ],
+      "tags": [
+        "Customer Service",
+        "Teamwork",
+        "Communication",
+        "Operations",
+        "Attention to Detail",
+        "Cash Handling",
+        "Hygiene and Safety"
+      ],
+      "techTags": []
+    },
+    {
+      "role": "Volunteer Barista",
+      "company": "Local Coffee Shop",
+      "startDate": "2012-01-01",
+      "endDate": "2013-12-31",
+      "description": [
+        "Prepared and served quality coffee and beverages while building rapport with regular customers in a welcoming environment.",
+        "Supported point-of-sale transactions and cash handling during service periods.",
+        "Worked closely with team members to keep service flowing smoothly during busy periods.",
+        "Developed strong foundations in customer communication, attention to detail, and supporting local business outcomes."
+      ],
+      "businessDescription": [
+        "Delivered warm, guest-facing service to create a positive customer experience and encourage repeat visits.",
+        "Supported operational consistency through cash handling support and being available to help during busy periods.",
+        "Collaborated with the team to balance service speed, quality, and customer engagement.",
+        "Contributed to local business continuity through reliable volunteer support and service-minded execution."
+      ],
+      "softwareDescription": [],
+      "tags": [
+        "Customer Service",
+        "Communication",
+        "Teamwork",
+        "Operations",
+        "Service Mindset",
+        "Attention to Detail",
+        "Cash Handling"
+      ],
+      "techTags": []
     }
 
   ],
-  "lastEdited": "2026-04-02"
+  "lastEdited": "2026-04-24"
 }
