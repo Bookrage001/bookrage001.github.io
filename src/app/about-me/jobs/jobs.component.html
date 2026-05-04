@@ -13,7 +13,7 @@
   <div class="display-toggles no-print">
     <div class="display-toggles-header">
       <span class="display-toggles-title">Role Focus</span>
-      <span class="display-toggles-subtitle">Switch between business analyst and software development emphasis.</span>
+      <span class="display-toggles-subtitle">Switch between business analyst, software development, and hospitality emphasis.</span>
     </div>
 
     <div class="display-toggle-options" role="group" aria-label="Role focus options">
@@ -23,6 +23,10 @@
 
       <button mat-stroked-button type="button" [disabled]="activeFocus === 'software'" (click)="applySoftwareFocus()">
         Software Development Focus
+      </button>
+
+      <button mat-stroked-button type="button" [disabled]="activeFocus === 'hospitality'" (click)="applyHospitalityFocus()">
+        Hospitality Focus
       </button>
 
       <button mat-stroked-button type="button" [disabled]="activeFocus === 'all'" (click)="clearRoleFocus()">
