@@ -29,7 +29,9 @@
     </div>
 
     <h1>Caleb Ardern</h1>
-  <h2>Product and Delivery Lead</h2>
+    @if (resumeMode !== 'hospitality') {
+      <h2>Product and Delivery Lead</h2>
+    }
     <p class="resume-mode__print print-only">
       <b>Resume Mode:</b> {{ resumeModeLabel }}
     </p>
@@ -48,9 +50,11 @@
       </span>
     </p>
 
-    <p class="resume-header__degree" [class.no-print]="compactPrintMode">
-      <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-    </p>
+    @if (resumeMode !== 'hospitality') {
+      <p class="resume-header__degree" [class.no-print]="compactPrintMode">
+        <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+      </p>
+    }
 
     <p class="resume-header__summary">
       {{ activeResumeContent.summary }}
