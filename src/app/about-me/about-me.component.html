@@ -39,12 +39,12 @@
 
     <p class="resume-header__contact">
       <a href="https://www.linkedin.com/in/calebgardern/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-      <a href="https://github.com/Bookrage001" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/Bookrage001/" target="_blank" rel="noopener noreferrer">GitHub</a>
       <span class="no-print"> |
         <a routerLink="/contact">Contact Page</a>
       </span>
       <span class="print-only"> |
-        <a href="https://bookrage001.com/">Website</a>
+        <a href="https://bookrage001.com/about-me">Website</a>
       </span>
     </p>
 
@@ -53,31 +53,16 @@
     </p>
 
     <p class="resume-header__summary">
-      Product and delivery leader with a software engineering background, working across two core focuses: Product
-      development and Software delivery. Experienced in turning complex problems into clear priorities, aligning
-      stakeholders, and shipping improvements that balance user needs, operational realities, and business goals.
-      Mission-minded in approach, with a focus on building the right solutions and delivering them reliably from idea
-      through rollout.
+      {{ activeResumeContent.summary }}
     </p>
   </div>
 </section>
 
 <section class="resume-section pair">
-  <div class="element">
-    <h3>Focus: Product Development</h3>
+  <div class="element" *ngFor="let section of activeResumeContent.focusSections">
+    <h3>Focus: {{ section.title }}</h3>
     <ul class="resume-list">
-      <li>Define and refine priorities based on user problems, mission goals, operational context, and business value.</li>
-      <li>Partner with stakeholders to shape roadmap decisions, scope choices, and delivery tradeoffs.</li>
-      <li>Translate feedback and constraints into practical, iterative product improvements.</li>
-    </ul>
-  </div>
-
-  <div class="element">
-    <h3>Focus: Software Delivery</h3>
-    <ul class="resume-list">
-      <li>Lead end-to-end implementation across planning, build, rollout, and mission-critical operational follow-up.</li>
-      <li>Work across modern stacks including Angular, TypeScript, Node.js, .NET, AWS, and CI/CD workflows.</li>
-      <li>Use technical depth to de-risk delivery and keep execution aligned with product and mission intent.</li>
+      <li *ngFor="let bullet of section.bullets">{{ bullet }}</li>
     </ul>
   </div>
 </section>
@@ -86,10 +71,7 @@
   <div class="element">
     <h3>Core Strengths</h3>
     <ul class="resume-list">
-      <li>Product thinking grounded in user needs, operational context, and business priorities.</li>
-      <li>Cross-functional leadership across engineering, operations, IT, and stakeholder groups.</li>
-      <li>Prioritisation and delivery management that balances scope, risk, technical constraints, and value.</li>
-      <li>Clear communication that turns complex technical detail into actionable decisions and aligned execution.</li>
+      <li *ngFor="let strength of activeResumeContent.coreStrengths">{{ strength }}</li>
     </ul>
   </div>
 
@@ -114,11 +96,7 @@
   <h1>Selected Outcomes</h1>
 
   <ul class="resume-list">
-    <li>Shape and deliver improvements in complex operational environments where usability, reliability, and mission outcomes all matter.</li>
-    <li>Align technical and non-technical stakeholders around delivery decisions tied to business and customer needs.</li>
-    <li>Drive customer-facing platform improvements that reduce friction and strengthen day-to-day product experience.</li>
-    <li>Bring technical depth into planning and prioritisation discussions to support practical, high-confidence product decisions.</li>
-    <li>Lead delivery from problem framing through rollout, iteration, and follow-up instead of focusing only on implementation.</li>
+    <li *ngFor="let outcome of activeResumeContent.selectedOutcomes">{{ outcome }}</li>
   </ul>
 
   <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
