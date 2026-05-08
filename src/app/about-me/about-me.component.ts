@@ -16,7 +16,6 @@ interface ResumeSectionContent {
     bullets: string[];
   }[];
   coreStrengths: string[];
-  selectedOutcomes: string[];
 }
 
 @Component({
@@ -65,13 +64,6 @@ export class AboutMeComponent {
         'Cross-functional leadership across engineering, operations, IT, and stakeholder groups',
         'Prioritisation and delivery management balancing scope, risk, constraints, and value',
         'Communication that converts technical complexity into aligned decisions and clear execution'
-      ],
-      selectedOutcomes: [
-        'Shaped and delivered improvements in complex environments where usability, reliability, and mission outcomes all matter',
-        'Aligned technical and non-technical stakeholders around delivery decisions tied to business and customer needs',
-        'Drove platform improvements that reduced friction and strengthened day-to-day product experience',
-        'Brought technical depth into prioritisation discussions to support practical, high-confidence decisions',
-        'Led delivery from problem framing through rollout, iteration, and follow-up'
       ]
     },
     business: {
@@ -104,13 +96,6 @@ export class AboutMeComponent {
         'Process improvement grounded in data, operational context, and user research',
         'Communication that accelerates decision-making and reduces delivery ambiguity',
         'Delivery discipline that keeps scope, value, and customer outcomes consistently aligned'
-      ],
-      selectedOutcomes: [
-        'Led cross-functional business alignment to keep product scope, sequencing, and delivery outcomes commercially focused',
-        'Improved alignment between product scope and business outcomes across cross-functional teams',
-        'Reduced delivery risk by resolving requirements ambiguity, dependencies, and rollout gaps early',
-        'Strengthened stakeholder confidence through transparent planning and consistent communication',
-        'Enabled iterative delivery cycles by balancing strategic goals with practical constraints',
       ]
     },
     technology: {
@@ -142,14 +127,6 @@ export class AboutMeComponent {
         'Technical leadership that unblocks teams, de-risks delivery, and maintains execution momentum',
         'Delivery discipline across planning, implementation, release, and production support',
         'Stakeholder communication that connects engineering progress to business and customer outcomes'
-      ],
-      selectedOutcomes: [
-        'Led critical delivery streams in mission-sensitive environments while maintaining reliability under operational pressure',
-        'Delivered customer-facing platform improvements that measurably reduced friction in daily workflows',
-        'Resolved high-impact delivery blockers quickly and safely using deep technical knowledge',
-        'Raised release confidence through structured testing, deployment practices, and follow-up disciplines',
-        'Maintained delivery momentum in complex multi-integration environments under operational pressure',
-        'Prevented scope drift by keeping business priorities visible throughout engineering execution'
       ]
     },
     hospitality: {
@@ -181,14 +158,6 @@ export class AboutMeComponent {
         'Operational reliability with close attention to service detail and standards',
         'Practical problem resolution that protects both guest experience and team performance',
         'Process-oriented mindset that translates operational experience into repeatable improvements'
-      ],
-      selectedOutcomes: [
-        'Maintained dependable service output across busy shifts by combining speed, consistency, and strong team support',
-        'Delivered consistently positive guest experiences across high-volume and high-pressure service periods',
-        'Improved operational consistency through disciplined workflows and proactive team coordination',
-        'Strengthened team performance through clear communication, coaching, and practical leadership',
-        'Maintained service quality and speed balance to meet standards during peak demand',
-        'Surfaced and resolved recurring service bottlenecks through structured observation and team feedback'
       ]
     }
   };

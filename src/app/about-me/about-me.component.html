@@ -32,9 +32,6 @@
     @if (resumeMode !== 'hospitality') {
       <h2>Product and Delivery Lead</h2>
     }
-    <p class="resume-mode__print print-only">
-      <b>Resume Mode:</b> {{ resumeModeLabel }}
-    </p>
     <p class="resume-header__email">
       Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
     </p>
@@ -79,30 +76,10 @@
     </ul>
   </div>
 
-  <div class="element" [class.no-print]="compactPrintMode">
-    <h3>Reference</h3>
-    <p class="reference-copy">
-      <i>
-        "Caleb is a highly independent software developer who grasps complex problems and can translate them into
-        intelligent solutions. I've worked with Caleb for several years and have sincerely appreciated his can-do
-        attitude. He's a team player and is always willing to assist his colleagues to get results. He'd be an asset
-        for any team who needs a developer with strong core technical skills across a range of development and cloud
-        technologies."
-      </i>
-      <span>- Dan Bligh (Manager)</span>
-    </p>
-  </div>
+
 </section>
 
 <div>
-  <hr />
-
-  <h1>Selected Outcomes</h1>
-
-  <ul class="resume-list">
-    <li *ngFor="let outcome of activeResumeContent.selectedOutcomes">{{ outcome }}</li>
-  </ul>
-
   <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
 
   <section [class.no-print]="compactPrintMode">
