@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "upload": "aws s3 cp ./docs/ s3://bookrage001.com --recursive",
+    "upload": "aws s3 sync ./docs/ s3://bookrage001.com --delete && aws s3 sync ./docs/ s3://bookrage001.com --exclude \"*\" --include \"*.js\" --content-type \"application/javascript\" --metadata-directive REPLACE",
     "e2e": "ng e2e",
     "update": "ng update",
     "build:prod": "ng build --configuration production"
