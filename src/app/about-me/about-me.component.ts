@@ -226,6 +226,15 @@ export class AboutMeComponent {
   }
 
   printResume(): void {
-    this.printService.print(this.compactPrintMode ? 'Compact' : undefined);
+    // Build filename suffix with resume mode and optionally compact
+    const modeLabel = this.resumeModeLabel.split(' ')[0]; // Get first word: 'Business', 'Technology', 'Hospitality', or 'Full'
+    const parts = [modeLabel];
+
+    if (this.compactPrintMode) {
+      parts.push('Compact');
+    }
+
+    const suffix = parts.join('-');
+    this.printService.print(suffix);
   }
 }
