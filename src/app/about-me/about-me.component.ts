@@ -22,15 +22,15 @@ import { PrintService } from '../services/print.service';
 export class AboutMeComponent {
   private printService = inject(PrintService);
   compactPrintMode = false;
-  resumeMode: 'all' | 'business' | 'software' | 'hospitality' = 'software';
+  resumeMode: 'full' | 'business' | 'technology' | 'hospitality' = 'technology';
 
   get resumeModeLabel(): string {
     if (this.resumeMode === 'business') {
       return 'Business Analyst Focus';
     }
 
-    if (this.resumeMode === 'software') {
-      return 'Software Development Focus';
+    if (this.resumeMode === 'technology') {
+      return 'Technology Focus';
     }
 
     if (this.resumeMode === 'hospitality') {
@@ -48,7 +48,7 @@ export class AboutMeComponent {
     this.resumeMode = event.value;
   }
 
-  onRoleFocusChange(focus: 'all' | 'business' | 'software' | 'hospitality'): void {
+  onRoleFocusChange(focus: 'full' | 'business' | 'technology' | 'hospitality'): void {
     this.resumeMode = focus;
   }
 
