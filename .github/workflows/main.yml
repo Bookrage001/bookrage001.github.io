@@ -41,7 +41,9 @@ jobs:
           aws-region: ap-southeast-2
 
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./docs/ s3://bookrage001.com --delete
+        run: |
+          aws s3 sync ./docs/ s3://bookrage001.com --delete
+          aws s3 sync ./docs/ s3://bookrage001.com --exclude "*" --include "*.js" --content-type "application/javascript" --metadata-directive REPLACE
 
       - name: Verify deployment
         run: |
