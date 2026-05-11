@@ -14,30 +14,33 @@
         "Improved security, documentation, and team workflows to reduce delivery friction and support consistent execution.",
         "Mentored developers across business analysis and software delivery practices to strengthen team capability including in AI/ML development.",
         "Automated infrastructure and production improvements to improve business velocity and team delivery speed.",
-        "Introduced documentation improvements and process adjustments that reduced delivery friction and improved team execution consistency.",
-        "Applied hands-off approaches to support delivery momentum while maintaining reliability, customer service and security in a high-stakes operational environment reducing interruptions by about 50%."
+        "Served as a Subject Matter Expert (SME), operating autonomously to triage issues and deliver timely solutions in high-pressure environments with competing timeline-driven priorities.",
+        "Worked directly with Manufacturing, Maintenance, and Engineering teams to act on operational problems through new feature development and implementation of existing software fixes.",
+        "Implemented an international customer handback communication process, improving clarity of operational information, reducing wait times, speeding solution delivery, and enabling teams to manage outcomes autonomously."
       ],
       "businessDescription": [
-        "Gathered and clarified operational requirements with operations, manufacturing, and field stakeholders in mission-critical contexts.",
-        "Ran workshops and discovery sessions to define user stories, align scope, and improve delivery readiness.",
-        "Supported sprint planning and backlog refinement to prioritize work and maintain traceability from requirements to delivery.",
-        "Facilitated retrospectives and process reviews to identify root causes and reduce repeat delivery issues.",
-        "Balanced mission risk, operating model needs, and technical constraints to support practical delivery decisions.",
-        "Mentored developers in business analysis practices and coached a junior developer on AI integration for operational decision support.",
-                "Introduced documentation improvements and process adjustments that reduced delivery friction and improved team execution consistency.",
-        "Applied hands-off approaches to support delivery momentum while maintaining reliability, customer service and security in a high-stakes operational environment."
+        "Applied a customer-first approach across external operators and internal teams, clarifying requirements with Operations, Manufacturing, and field stakeholders to reduce delivery ambiguity.",
+        "Ran workshops and discovery sessions that translated customer pain points into user stories, aligned scope, and improved delivery readiness.",
+        "Supported sprint planning and backlog refinement to prioritize customer-impacting work and maintain traceability from requirement through delivery.",
+        "Facilitated retrospectives and process reviews that identified root causes behind service issues and reduced repeat delivery problems.",
+        "Balanced mission risk, operating model needs, and technical constraints to make practical decisions that protected customer outcomes.",
+        "Mentored developers in business analysis practices, strengthening the team's ability to understand customer context and deliver usable solutions, including AI integration support.",
+        "Acted as a Subject Matter Expert (SME), autonomously triaging operational issues and coordinating timely resolutions across competing delivery timelines.",
+        "Partnered with Manufacturing, Maintenance, and Engineering to define and deliver new features or implement existing software fixes based on operational priorities.",
+        "Implemented a structured international handback communication process that reduced wait times, improved information clarity, and enabled teams to manage outcomes autonomously."
       ],
       "softwareDescription": [
-        "Built and integrated microservices into the Windracers software stack to improve reliability in real-world operations.",
-        "Contributed to Backend Development and Frontend Development across C#, .NET, TypeScript, and Angular services.",
-        "Implemented WebSockets-based real-time data delivery flows to support low-latency mission-critical operational updates.",
-        "Implemented and optimized data flows across SQL and NoSQL stores handling large datasets for performance and operational resilience.",
-        "Designed and integrated RESTful APIs to improve System Architecture quality, Enterprise Architecture alignment, and operational resilience for Enterprise SaaS and PasS workflows.",
-        "Improved secure engineering practices and delivery quality across Information Security and DevSecOps initiatives.",
+        "Built and integrated microservices into the Windracers software stack to improve reliability for operators and internal support teams.",
+        "Delivered backend and frontend changes across C#, .NET, TypeScript, and Angular services to address customer-facing and internal operational needs.",
+        "Implemented WebSockets-based real-time delivery flows that improved the speed and consistency of mission updates for customer decision-making.",
+        "Optimized SQL and NoSQL data flows handling large operational datasets to improve performance, resilience, and service continuity.",
+        "Designed and integrated RESTful APIs to improve system architecture quality and operational resilience for enterprise SaaS and PaaS workflows.",
+        "Improved secure engineering practices and delivery quality across Information Security and DevSecOps initiatives to protect customer trust.",
         "Mentored developers on software engineering practices and coached a junior developer on practical AI integration patterns.",
         "Contributed automation scripts and infrastructure improvements to increase platform stability and team velocity.",
-        "Introduced documentation improvements and process adjustments that reduced delivery friction and improved team execution consistency.",
-        "Applied hands-off approaches to support delivery momentum while maintaining reliability, customer service and security in a high-stakes operational environment."
+        "Served as a Subject Matter Expert (SME) for mission software support, autonomously triaging incidents and delivering timely technical solutions under high-pressure, competing deadlines.",
+        "Collaborated with Manufacturing, Maintenance, and Engineering teams to build new features and implement existing software fixes that addressed live operational issues.",
+        "Implemented an international customer handback communication process that reduced wait times and accelerated solution delivery while preserving operational reliability."
       ],
       "tags": [
         "Full Stack Development",
@@ -95,8 +98,7 @@
         "Mission-critical Systems",
         "Scripting",
         "Jira",
-        "Microsoft 365",
-        "AWS"
+        "Microsoft 365"
       ]
     },
     {
@@ -304,7 +306,8 @@
         "Customer Service",
         "Problem Solving",
         "Continuous Improvement",
-        "Workflow Analysis"
+        "Workflow Analysis",
+        "Enterprise IT"
       ],
       "techTags": [
         "Jira",

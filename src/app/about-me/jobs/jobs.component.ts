@@ -15,7 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent implements OnChanges {
-@Input() roleFocus: 'full' | 'business' | 'technology' | 'hospitality' = 'full';
+@Input() roleFocus: 'full' | 'business' | 'technology' | 'hospitality' = 'technology';
     @Output() roleFocusChange = new EventEmitter<'full' | 'business' | 'technology' | 'hospitality'>();
 
   private readonly fullResumeImportantTerms = [
@@ -125,7 +125,8 @@ export class JobsComponent implements OnChanges {
     'Conflict Resolution',
     'Shift Management',
     'Front-of-House Operations',
-    'POS Systems'
+    'POS Systems',
+    'SME'
   ];
 
   private readonly businessImportantTerms = [
@@ -156,6 +157,7 @@ export class JobsComponent implements OnChanges {
     'Enterprise Architecture',
     'Operating Models',
     'Process Improvement',
+    'AI Integration',
     'Risk Management',
     'Communication',
     'Analytical Thinking',
@@ -200,7 +202,7 @@ export class JobsComponent implements OnChanges {
     'Testing (Unit, Integration, E2E)',
     'SQL',
     'Relational Databases',
-    'NoSQL Databases',
+    'NoSQL',
     'Large Datasets',
     'System Architecture',
     'Scalability',
@@ -210,7 +212,9 @@ export class JobsComponent implements OnChanges {
     'Networking',
     'VPN',
     'PowerShell',
+    'SME',
     'IoT',
+    'AI Integration',
     'AI/ML Integration',
     'Expense Automation',
     'Mission-critical Systems',
@@ -351,8 +355,8 @@ export class JobsComponent implements OnChanges {
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
-  activeFocus: 'full' | 'business' | 'technology' | 'hospitality' = 'full';
-  lastFiveYearsOnly = true;
+  activeFocus: 'full' | 'business' | 'technology' | 'hospitality' = 'technology';
+  lastFiveYearsOnly = false;
   filtersVisible = false;
   showTags = false;
   showTechTags = false;
@@ -384,7 +388,7 @@ export class JobsComponent implements OnChanges {
       })
     );
 
-    this.applyFilters();
+    this.applySoftwareFocus(false);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

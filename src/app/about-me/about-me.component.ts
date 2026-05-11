@@ -35,7 +35,7 @@ interface ResumeSectionContent {
 export class AboutMeComponent {
   private printService = inject(PrintService);
   compactPrintMode = false;
-  resumeMode: ResumeMode = 'business';
+  resumeMode: ResumeMode = 'technology';
 
   private resumeContentByMode: Record<ResumeMode, ResumeSectionContent> = {
     full: {
@@ -67,12 +67,12 @@ export class AboutMeComponent {
       ]
     },
     business: {
-      summary: 'Business analyst and delivery lead with core strength in business alignment. Experienced in identifying root business issues, translating complex requirements into clear priorities, and leading aligned execution across technical and non-technical stakeholders.',
+      summary: 'Business analyst and delivery lead focused on business alignment and customer-first delivery for external and internal customers. Identifies root business issues, translates complex requirements into clear priorities, and leads aligned execution across technical and non-technical stakeholders.',
       focusSections: [
         {
           title: 'Business Analysis and Discovery',
           bullets: [
-            'Elicited requirements through workshops, stakeholder interviews, and iterative discovery sessions.',
+            'Elicited requirements through workshops, stakeholder interviews, and iterative discovery sessions across customer-facing and internal teams.',
             'Produced user stories, acceptance criteria, process maps, and decision-ready trade-off documentation.',
             'Led alignment between technical and business teams by applying engineering knowledge to requirements analysis.',
             'Mapped as-is and to-be workflows to reduce ambiguity and accelerate delivery readiness.'
@@ -81,10 +81,10 @@ export class AboutMeComponent {
         {
           title: 'Delivery and Stakeholder Alignment',
           bullets: [
-            'Backlog and roadmap prioritisation based on business value, risk, and operational constraints.',
+            'Backlog and roadmap prioritisation based on business value, risk, operational constraints, and customer impact.',
             'Directed alignment across engineering, operations, and leadership throughout the delivery cycle.',
             'Managed rollout readiness through change communication, traceability, and stakeholder engagement.',
-            'Kept customer outcomes visible in delivery decisions from discovery through to release.'
+            'Kept customer outcomes visible in delivery decisions from discovery through to release, including internal service users.'
           ]
         }
       ],
@@ -95,19 +95,19 @@ export class AboutMeComponent {
         'Stakeholder engagement across technical, operational, and executive audiences',
         'Process improvement grounded in data, operational context, and user research',
         'Communication that accelerates decision-making and reduces delivery ambiguity',
-        'Delivery discipline that keeps scope, value, and customer outcomes consistently aligned'
+        'Delivery discipline that keeps scope, value, and outcomes for external and internal customers consistently aligned'
       ]
     },
     technology: {
-      summary: 'Senior software engineer and technical delivery lead with strengths in solution implementation, platform delivery, and production reliability. Known for leading technical execution against business priorities while shipping dependable outcomes in modern web stacks and mission-critical operational environments.',
+      summary: 'Senior software engineer and technical delivery lead focused on solution implementation, platform delivery, and production reliability. Leads technical execution against business priorities while delivering dependable outcomes for external users and internal customers in modern web stacks and time-sensitive operational environments.',
       focusSections: [
         {
           title: 'Solution Engineering and Delivery',
           bullets: [
-            'Led implementation of scalable features across frontend, backend, and integration layers.',
+            'Led implementation of scalable features across frontend, backend, and integration layers for customer-facing workflows and internal operations.',
             'Guided solution design decisions that balanced maintainability, delivery speed, and reliability.',
             'Established automated test coverage and CI/CD pipelines to reduce regressions and raise release confidence.',
-            'Communicated technical decisions in plain language to keep non-technical stakeholders aligned.'
+            'Communicated technical decisions in plain language to keep non-technical stakeholders and internal customers aligned.'
           ]
         },
         {
@@ -126,7 +126,7 @@ export class AboutMeComponent {
         'Cloud-native delivery with focus on resilience, observability, and operability',
         'Technical leadership that unblocks teams, de-risks delivery, and maintains execution momentum',
         'Delivery discipline across planning, implementation, release, and production support',
-        'Stakeholder communication that connects engineering progress to business and customer outcomes'
+        'Stakeholder communication that connects engineering progress to business outcomes for external and internal customers'
       ]
     },
     hospitality: {
