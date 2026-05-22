@@ -15,8 +15,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent implements OnChanges {
-@Input() roleFocus: 'all' | 'business' | 'software' | 'hospitality' = 'all';
-    @Output() roleFocusChange = new EventEmitter<'all' | 'business' | 'software' | 'hospitality'>();
+@Input() roleFocus: 'full' | 'business' | 'technology' | 'hospitality' = 'technology';
+    @Output() roleFocusChange = new EventEmitter<'full' | 'business' | 'technology' | 'hospitality'>();
 
   private readonly fullResumeImportantTerms = [
     'Full Stack Development',
@@ -125,7 +125,8 @@ export class JobsComponent implements OnChanges {
     'Conflict Resolution',
     'Shift Management',
     'Front-of-House Operations',
-    'POS Systems'
+    'POS Systems',
+    'SME'
   ];
 
   private readonly businessImportantTerms = [
@@ -156,6 +157,7 @@ export class JobsComponent implements OnChanges {
     'Enterprise Architecture',
     'Operating Models',
     'Process Improvement',
+    'AI Integration',
     'Risk Management',
     'Communication',
     'Analytical Thinking',
@@ -200,7 +202,7 @@ export class JobsComponent implements OnChanges {
     'Testing (Unit, Integration, E2E)',
     'SQL',
     'Relational Databases',
-    'NoSQL Databases',
+    'NoSQL',
     'Large Datasets',
     'System Architecture',
     'Scalability',
@@ -210,7 +212,9 @@ export class JobsComponent implements OnChanges {
     'Networking',
     'VPN',
     'PowerShell',
+    'SME',
     'IoT',
+    'AI Integration',
     'AI/ML Integration',
     'Expense Automation',
     'Mission-critical Systems',
@@ -351,8 +355,8 @@ export class JobsComponent implements OnChanges {
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
   selectedTechTags: string[] = [];
-  activeFocus: 'all' | 'business' | 'software' | 'hospitality' = 'all';
-  lastFiveYearsOnly = true;
+  activeFocus: 'full' | 'business' | 'technology' | 'hospitality' = 'technology';
+  lastFiveYearsOnly = false;
   filtersVisible = false;
   showTags = false;
   showTechTags = false;
@@ -384,7 +388,7 @@ export class JobsComponent implements OnChanges {
       })
     );
 
-    this.applyFilters();
+    this.applySoftwareFocus(false);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -397,7 +401,7 @@ export class JobsComponent implements OnChanges {
       return;
     }
 
-    if (this.roleFocus === 'software' && this.activeFocus !== 'software') {
+    if (this.roleFocus === 'technology' && this.activeFocus !== 'technology') {
       this.applySoftwareFocus(false);
       return;
     }
@@ -407,7 +411,7 @@ export class JobsComponent implements OnChanges {
       return;
     }
 
-    if (this.roleFocus === 'all' && this.activeFocus !== 'all') {
+    if (this.roleFocus === 'full' && this.activeFocus !== 'full') {
       this.clearRoleFocus(false);
     }
   }
@@ -444,7 +448,7 @@ export class JobsComponent implements OnChanges {
   }
 
   clearAllFilters(): void {
-    this.activeFocus = 'all';
+    this.activeFocus = 'full';
     this.selectedTags = [];
     this.selectedTechTags = [];
     this.lastFiveYearsOnly = false;
@@ -465,7 +469,7 @@ export class JobsComponent implements OnChanges {
   }
 
   applySoftwareFocus(emitChange = true): void {
-    this.activeFocus = 'software';
+    this.activeFocus = 'technology';
     this.selectedTags = [...this.softwareFocusTags];
     this.selectedTechTags = [];
     this.showTags = true;
@@ -491,7 +495,7 @@ export class JobsComponent implements OnChanges {
   }
 
   clearRoleFocus(emitChange = true): void {
-    this.activeFocus = 'all';
+    this.activeFocus = 'full';
     this.selectedTags = [];
     this.selectedTechTags = [];
     this.showTags = false;
@@ -559,7 +563,7 @@ export class JobsComponent implements OnChanges {
       return job.data.businessDescription;
     }
 
-    if (this.activeFocus === 'software' && job.data.softwareDescription?.length) {
+    if (this.activeFocus === 'technology' && job.data.softwareDescription?.length) {
       return job.data.softwareDescription;
     }
 
@@ -669,7 +673,7 @@ export class JobsComponent implements OnChanges {
       return !matchesFocus;
     }
 
-    if (this.activeFocus === 'software') {
+    if (this.activeFocus === 'technology') {
       const matchesFocus = this.selectedTags.length === this.softwareFocusTags.length &&
         this.selectedTags.every(tag => this.softwareFocusTags.includes(tag));
       return !matchesFocus;
@@ -690,7 +694,7 @@ export class JobsComponent implements OnChanges {
       return this.businessImportantTerms;
     }
 
-    if (this.activeFocus === 'software') {
+    if (this.activeFocus === 'technology') {
       return this.softwareImportantTerms;
     }
 
@@ -706,7 +710,7 @@ export class JobsComponent implements OnChanges {
       return this.businessSkillWords;
     }
 
-    if (this.activeFocus === 'software') {
+    if (this.activeFocus === 'technology') {
       return this.softwareSkillWords;
     }
 
