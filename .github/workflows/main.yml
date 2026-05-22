@@ -42,8 +42,17 @@ jobs:
 
       - name: Deploy static site to S3 bucket
         run: |
-          aws s3 sync ./docs/ s3://bookrage001.com --delete
+          aws s3 sync ./docs/ s3://bookrage001.com
+          aws s3 sync ./docs/ s3://bookrage001.com --exclude "*" --include "*.html" --cache-control "no-cache, no-store, must-revalidate" --content-type "text/html; charset=utf-8" --metadata-directive REPLACE
           aws s3 sync ./docs/ s3://bookrage001.com --exclude "*" --include "*.js" --content-type "application/javascript" --metadata-directive REPLACE
+
+      - name: Invalidate CloudFront HTML cache
+        run: |
+          if [ -n "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" ]; then
+            aws cloudfront create-invalidation --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" --paths "/" "/index.html" "/404.html"
+          else
+            echo "CLOUDFRONT_DISTRIBUTION_ID is not configured; skipping invalidation."
+          fi
 
       - name: Verify deployment
         run: |
