@@ -98,7 +98,9 @@
         "Mission-critical Systems",
         "Scripting",
         "Jira",
-        "Microsoft 365"
+        "Microsoft 365",
+        "Git",
+        "GitHub"
       ]
     },
     {
@@ -130,11 +132,10 @@
       ],
       "techTags": [
         "C#",
-        ".NET"
+        ".NET",
+        "Git"
       ]
     },
-        {
-      "role": "Hospitality Member",
       "company": "Barton Peveril (UK)",
       "startDate": "2022-10-28",
       "endDate": "2024-02-26",
@@ -275,7 +276,8 @@
         "Scripting",
         "LAN Support",
         "Network Troubleshooting",
-        "Jira"
+        "Jira",
+        "Git"
       ]
     },
     {
@@ -397,6 +399,8 @@
         "OAuth",
         "OpenID Connect",
         "Jira",
+        "Git",
+        "GitHub",
         "AWS"
       ]
     },
@@ -422,7 +426,8 @@
         "Applied hands-on infrastructure and scripting practices that strengthened practical delivery capability."
       ],
       "tags": [],
-      "techTags": []
+      "techTags": [],
+      "isVolunteer": true
     },
     {
       "role": "Casual",
@@ -508,9 +513,10 @@
         "Attention to Detail",
         "Cash Handling"
       ],
-      "techTags": []
+      "techTags": [],
+      "isVolunteer": true
     }
 
   ],
-  "lastEdited": "2026-04-24"
+  "lastEdited": "2026-06-15"
 }

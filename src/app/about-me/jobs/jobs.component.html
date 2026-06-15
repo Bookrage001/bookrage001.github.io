@@ -109,7 +109,7 @@
     </div>
   }
 
-  @for (job of jobs$ | async; track job) {
+  @for (job of professionalJobs$ | async; track job) {
     <div>
       <div>
         <b>{{job.data.role}}</b> <br />
@@ -136,5 +136,38 @@
         </ul>
       </div>
     </div>
+  }
+
+  @if ((volunteerJobs$ | async)?.length) {
+    <hr class="no-print" />
+    <h1>Volunteering</h1>
+    @for (job of volunteerJobs$ | async; track job) {
+      <div>
+        <div>
+          <b>{{job.data.role}}</b> <br />
+          {{job.data.company}}: {{job.data.startDate | date:'MMM y'}} - {{job.data.endDate ? (job.data.endDate | date:'MMM y') : 'Present'}} ({{ getDurationLabel(job.data.startDate, job.data.endDate) }})
+          @if (shouldShowTags && job.data.tags?.length) {
+            <div class="tag-list">
+              @for (tag of job.data.tags; track tag) {
+                <span class="tag-chip" [class.tag-chip-selected]="isTagSelected(tag)">{{tag}}</span>
+              }
+            </div>
+          }
+          @if (shouldShowTechTags && job.data.techTags?.length) {
+            <div class="tech-tag-block">
+              <span class="tech-tag-label">Tech:</span>
+              <div class="tag-list tech-tag-list">
+                @for (techTag of job.data.techTags; track techTag) {
+                  <span class="tag-chip tech-tag-chip" [class.tech-tag-chip-selected]="isTechTagSelected(techTag)">{{techTag}}</span>
+                }
+              </div>
+            </div>
+          }
+          <ul>
+            <li *ngFor="let description of getDescriptions(job)" [innerHTML]="highlightImportantWords(description)"></li>
+          </ul>
+        </div>
+      </div>
+    }
   }
 </div>
