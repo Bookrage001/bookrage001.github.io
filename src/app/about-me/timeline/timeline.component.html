@@ -1,0 +1,76 @@
+<div class="timeline">
+
+  <div class="timeline__legend">
+    <span class="timeline__legend-item timeline__legend-item--job">Experience</span>
+    <span class="timeline__legend-item timeline__legend-item--cert">Certifications</span>
+  </div>
+
+  <div class="timeline__track">
+    <div class="timeline__col-label timeline__col-label--left" aria-hidden="true">Experience</div>
+    <div class="timeline__col-label timeline__col-label--spine" aria-hidden="true"></div>
+    <div class="timeline__col-label timeline__col-label--right" aria-hidden="true">Certifications</div>
+  </div>
+
+  @for (row of timelineRows$ | async; track row.year) {
+    <div class="timeline__row">
+
+      <div class="timeline__side timeline__side--left">
+        @for (job of row.jobs; track job.data.role) {
+          <div class="timeline-card timeline-card--job">
+            <div class="timeline-card__title">{{ job.data.role }}</div>
+            <div class="timeline-card__sub">{{ job.data.company }}</div>
+            <div class="timeline-card__dates">{{ getDateRangeLabel(job) }}</div>
+          </div>
+        }
+      </div>
+
+      <div class="timeline__spine">
+        <div class="timeline__year-pill">{{ row.year }}</div>
+      </div>
+
+      <div class="timeline__side timeline__side--right">
+        @for (cert of row.certs; track cert.name) {
+          <div class="timeline-card timeline-card--cert">
+            <div class="timeline-card__title">{{ cert.name }}</div>
+            @if (cert.issuer) {
+              <div class="timeline-card__sub">{{ cert.issuer }}</div>
+            }
+            @if (cert.issuedDate) {
+              <div class="timeline-card__dates">
+                Issued: {{ cert.issuedDate | date:'d MMM yyyy' }}
+                @if (cert.expiryDate) {
+                  &bull; Expires: {{ cert.expiryDate | date:'d MMM yyyy' }}
+                }
+              </div>
+            }
+            @if (cert.notes?.length) {
+              <ul class="timeline-card__notes">
+                @for (note of cert.notes!; track note) {
+                  <li>{{ note }}</li>
+                }
+              </ul>
+            }
+          </div>
+        }
+      </div>
+
+    </div>
+  }
+
+  @if ((undatedCerts$ | async)?.length) {
+    <div class="timeline__undated">
+      <h3 class="timeline__undated-heading">Other Certifications</h3>
+      <div class="timeline__undated-list">
+        @for (cert of undatedCerts$ | async; track cert.name) {
+          <div class="timeline-card timeline-card--cert">
+            <div class="timeline-card__title">{{ cert.name }}</div>
+            @if (cert.issuer) {
+              <div class="timeline-card__sub">{{ cert.issuer }}</div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+</div>

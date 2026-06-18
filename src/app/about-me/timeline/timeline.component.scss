@@ -1,0 +1,253 @@
+// ===========================================================================
+// Timeline Layout
+// ===========================================================================
+
+$spine-width: 5rem;
+$card-max-width: 320px;
+
+.timeline {
+  margin: 1.5rem 0;
+}
+
+// ===========================================================================
+// Legend
+// ===========================================================================
+
+.timeline__legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.timeline__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #4a5565;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &--job::before { background: #1976d2; }
+  &--cert::before { background: #43a047; }
+}
+
+// ===========================================================================
+// Column header labels
+// ===========================================================================
+
+.timeline__track {
+  display: grid;
+  grid-template-columns: 1fr $spine-width 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline__col-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #657282;
+  padding: 0.25rem 0;
+
+  &--left  { text-align: right; }
+  &--right { text-align: left; }
+  &--spine { text-align: center; }
+}
+
+// ===========================================================================
+// Rows
+// ===========================================================================
+
+.timeline__row {
+  display: grid;
+  grid-template-columns: 1fr $spine-width 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+// ===========================================================================
+// Spine
+// ===========================================================================
+
+.timeline__spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: -0.75rem; // connect line through to next row's gap
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: #d4e4ff;
+    z-index: 0;
+  }
+}
+
+.timeline__year-pill {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1976d2;
+  background: #eef5ff;
+  border: 1px solid #b3ccf5;
+  border-radius: 20px;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+
+// ===========================================================================
+// Side columns
+// ===========================================================================
+
+.timeline__side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &--left {
+    align-items: flex-end;
+
+    .timeline-card { text-align: right; }
+  }
+
+  &--right {
+    align-items: flex-start;
+  }
+}
+
+// ===========================================================================
+// Cards
+// ===========================================================================
+
+.timeline-card {
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #dce6f0;
+  background: #fff;
+  max-width: $card-max-width;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.timeline-card--job  { border-left: 3px solid #1976d2; }
+.timeline-card--cert { border-left: 3px solid #43a047; }
+
+.timeline-card__title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1a2a3a;
+  line-height: 1.35;
+}
+
+.timeline-card__sub {
+  font-size: 0.8rem;
+  color: #425466;
+  margin-top: 0.15rem;
+}
+
+.timeline-card__dates {
+  font-size: 0.75rem;
+  color: #657282;
+  margin-top: 0.2rem;
+}
+
+.timeline-card__notes {
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.75rem;
+  color: #425466;
+
+  li { margin-bottom: 0.15rem; }
+}
+
+// ===========================================================================
+// Undated section
+// ===========================================================================
+
+.timeline__undated {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e6ec;
+}
+
+.timeline__undated-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4a5565;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.timeline__undated-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  .timeline-card { max-width: 260px; }
+}
+
+// ===========================================================================
+// Responsive: Mobile (≤ 600px)
+// ===========================================================================
+
+@media (max-width: 600px) {
+  .timeline__track { display: none; }
+
+  .timeline__row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'spine'
+      'left'
+      'right';
+  }
+
+  .timeline__spine {
+    grid-area: spine;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+
+    &::before { display: none; }
+  }
+
+  .timeline__side {
+    &--left {
+      grid-area: left;
+      align-items: stretch;
+
+      .timeline-card {
+        text-align: left;
+        max-width: 100%;
+      }
+    }
+
+    &--right {
+      grid-area: right;
+      align-items: stretch;
+
+      .timeline-card { max-width: 100%; }
+    }
+  }
+
+  .timeline__undated-list .timeline-card { max-width: 100%; }
+}

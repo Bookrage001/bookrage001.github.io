@@ -1,13 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
 import { JobsComponent } from './jobs/jobs.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { CertItem } from './timeline/cert-item.interface';
 import { PrintService } from '../services/print.service';
 
 type ResumeMode = 'full' | 'business' | 'technology' | 'hospitality';
+type ViewMode = 'resume' | 'timeline';
 
 interface ResumeSectionContent {
   summary: string;
@@ -27,6 +30,7 @@ interface ResumeSectionContent {
     CommonModule,
     RouterModule,
     JobsComponent,
+    TimelineComponent,
     MatButtonModule,
     MatCheckboxModule,
     MatButtonToggleModule
@@ -34,8 +38,10 @@ interface ResumeSectionContent {
 })
 export class AboutMeComponent {
   private printService = inject(PrintService);
+  private cdr = inject(ChangeDetectorRef);
   compactPrintMode = false;
   resumeMode: ResumeMode = 'technology';
+  viewMode: ViewMode = 'resume';
 
   private resumeContentByMode: Record<ResumeMode, ResumeSectionContent> = {
     full: {
@@ -162,6 +168,58 @@ export class AboutMeComponent {
     }
   };
 
+  readonly certs: CertItem[] = [
+    {
+      name: 'Provide First Aid',
+      issuedDate: new Date(2026, 5, 11), // 11 Jun 2026
+      notes: [
+        'HLTAID011 Provide First Aid (renew every 3 years)',
+        'HLTAID010 Provide Basic Emergency Life Support',
+        'HLTAID009 Provide Cardiopulmonary Resuscitation (renew yearly)'
+      ]
+    },
+    {
+      name: 'International Certificate for Operators of Pleasure Craft',
+      issuedDate: new Date(2025, 6, 1), // 1 Jul 2025
+      expiryDate: new Date(2030, 6, 1)
+    },
+    {
+      name: 'Marine Radio Short Range Certificate',
+      issuedDate: new Date(2024, 10, 18) // 18 Nov 2024
+    },
+    {
+      name: 'Safe and Fun – Safeguarding Awareness Training',
+      issuedDate: new Date(2024, 2, 27) // 27 Mar 2024
+    },
+    {
+      name: 'Sailing Scheme Instructor',
+      issuedDate: new Date(2024, 3, 5), // 5 Apr 2024
+      expiryDate: new Date(2029, 3, 5),
+      notes: ['Dinghy Instructor endorsement (expires 5 April 2029)']
+    },
+    {
+      name: 'Safety Boat Certificate',
+      issuedDate: new Date(2023, 8, 2) // 2 Sep 2023
+    },
+    {
+      name: 'Powerboat Level 2',
+      issuedDate: new Date(2023, 5, 25) // 25 Jun 2023
+    },
+    {
+      name: 'First Aid Certificate',
+      issuedDate: new Date(2023, 6, 16), // 16 Jul 2023
+      expiryDate: new Date(2026, 6, 16)
+    },
+    {
+      name: 'AWS Certified Cloud Practitioner',
+      issuer: 'Amazon Web Services'
+    },
+    {
+      name: 'Fire Warden Training',
+      issuer: 'Windracers'
+    }
+  ];
+
   get activeResumeContent(): ResumeSectionContent {
     return this.resumeContentByMode[this.resumeMode];
   }
@@ -194,7 +252,18 @@ export class AboutMeComponent {
     this.resumeMode = focus;
   }
 
+  onViewModeChange(event: MatButtonToggleChange): void {
+    this.viewMode = event.value;
+  }
+
   printResume(): void {
+    // Always print the resume view, not the timeline
+    const previousViewMode = this.viewMode;
+    if (this.viewMode === 'timeline') {
+      this.viewMode = 'resume';
+      this.cdr.detectChanges();
+    }
+
     // Build filename suffix with resume mode and optionally compact
     const modeLabel = this.resumeModeLabel.split(' ')[0]; // Get first word: 'Business', 'Technology', 'Hospitality', or 'Full'
     const parts = [modeLabel];
@@ -205,5 +274,10 @@ export class AboutMeComponent {
 
     const suffix = parts.join('-');
     this.printService.print(suffix);
+
+    // Restore view mode after print dialog closes
+    if (previousViewMode === 'timeline') {
+      setTimeout(() => { this.viewMode = 'timeline'; }, 300);
+    }
   }
 }
