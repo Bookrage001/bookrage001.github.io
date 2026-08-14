@@ -47,8 +47,8 @@ jobs:
 
       - name: Deploy static site to S3 bucket
         run: |
-          aws s3 sync ./docs/ s3://bookrage001.com --delete
-          aws s3 sync ./docs/ s3://bookrage001.com --exclude "*" --include "*.js" --content-type "application/javascript" --metadata-directive REPLACE
+          aws s3 sync ./docs/ s3://bookrage001.com --delete --acl public-read
+          aws s3 sync ./docs/ s3://bookrage001.com --exclude "*" --include "*.js" --content-type "application/javascript" --acl public-read --metadata-directive REPLACE
 
       - name: Verify deployment
         run: |
