@@ -77,6 +77,7 @@ $card-max-width: 320px;
   }
 
   &--job::before { background: var(--timeline-job); }
+  &--volunteer::before { background: #b7791f; }
   &--cert::before { background: var(--timeline-cert); }
 }
 
@@ -287,14 +288,19 @@ $card-anchor: 1.1rem;
   }
 }
 
+// Job cards hug the axis from the left; volunteering cards from the right.
 .timeline__job-cell {
   display: flex;
   justify-content: flex-end;
   min-width: 0;
   padding-bottom: 0.5rem;
+
+  &--right {
+    justify-content: flex-start;
+  }
 }
 
-// --job-color and --lane are set per card to match its lane bar.
+// --job-color and --lane-offset are set per card to match its lane bar.
 .timeline-card--job {
   --job-color: var(--timeline-job);
 
@@ -309,10 +315,16 @@ $card-anchor: 1.1rem;
   }
 }
 
-// Connector from the card's right edge to the centre of its lane.
-// Width = column gap + the lanes before it (14px + gap each) + half a lane.
+.timeline-card--volunteer {
+  background:
+    linear-gradient(90deg, #fbeed7 0, #fbeed7 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
+    rgba(255, 255, 255, 0.94);
+}
+
+// Connector from the card's inner edge to the centre of its lane.
+// Width = column gap + the lanes in between (14px + gap each) + half a lane.
 .timeline__job-cell .timeline-card--job {
-  --lane: 0;
+  --lane-offset: 0;
 
   position: relative;
 
@@ -321,11 +333,18 @@ $card-anchor: 1.1rem;
     position: absolute;
     top: calc(#{$card-anchor} - 1px);
     left: calc(100% + 1px);
-    width: calc(0.6rem + var(--lane) * (14px + 0.6rem) + 7px);
+    width: calc(0.6rem + var(--lane-offset) * (14px + 0.6rem) + 7px);
     height: 2px;
     background: var(--job-color);
     opacity: 0.55;
     pointer-events: none;
+  }
+
+  // Volunteering sits right of the axis, so its connector leaves from the left
+  // edge, outside the 4px left border.
+  &.timeline-card--volunteer::after {
+    left: auto;
+    right: calc(100% + 4px);
   }
 
   &.is-active::after {
@@ -341,7 +360,8 @@ $card-anchor: 1.1rem;
 }
 
 // Certifications are one-off events: a dot on the year axis beside each card.
-// Offset = column gap + half the axis column + the card's left border + half the dot.
+// Offset = column gap + any volunteer lanes (14px + gap each) + half the axis
+// column + the card's left border + half the dot.
 .timeline__grid .timeline__side--right .timeline-card--cert {
   position: relative;
 
@@ -349,7 +369,7 @@ $card-anchor: 1.1rem;
     content: '';
     position: absolute;
     top: 50%;
-    left: calc(-0.6rem - 2.25rem - 4px - 6px);
+    left: calc(-0.6rem - var(--volunteer-lanes, 0) * (14px + 0.6rem) - 2.25rem - 4px - 6px);
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -378,32 +398,6 @@ $card-anchor: 1.1rem;
   font-size: 0.75rem;
   color: var(--timeline-muted);
   margin-top: 0.2rem;
-}
-
-.timeline-card__during {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.45rem;
-  padding-top: 0.4rem;
-  border-top: 1px dashed #d5e3ee;
-}
-
-.timeline-card__during-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--timeline-muted);
-}
-
-.timeline-card__during-chip {
-  font-size: 0.72rem;
-  color: var(--timeline-job);
-  background: var(--timeline-job-soft);
-  border-radius: 999px;
-  padding: 0.1rem 0.5rem;
 }
 
 .timeline-card__notes {

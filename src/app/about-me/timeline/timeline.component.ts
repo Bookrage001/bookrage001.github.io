@@ -7,16 +7,13 @@ import { JobItem } from '../jobs/job-item';
 import { CertItem } from './cert-item.interface';
 import { MilestoneItem } from './milestone-item.interface';
 
-interface TimelineCert {
-  cert: CertItem;
-  // Roles held when the certification was issued, e.g. "Software Engineer · Windracers (UK)"
-  during: string[];
-}
-
 interface LaneJob {
   key: string;
   job: JobItem;
   lane: number;
+  // Lanes sitting between this role's card and its own lane, for the connector width
+  laneOffset: number;
+  gridColumn: number;
   color: string;
   isDot: boolean;
   // Grid row holding this job's card, inside the slice the job started in
@@ -36,9 +33,12 @@ interface SliceEntry {
   // CSS grid-row span covering all of the slice's rows, for the year pill and certifications
   gridRows: string;
   isEmpty: boolean;
-  // Jobs that started during this slice (the bottom of their bar)
+  // Roles that started during this slice (the bottom of their bar): jobs left of
+  // the axis, volunteering right of it above the certifications
   jobs: LaneJob[];
-  certs: TimelineCert[];
+  volunteers: LaneJob[];
+  certs: CertItem[];
+  certsRows: string;
 }
 
 interface MilestoneEntry {
@@ -55,6 +55,8 @@ interface TimelineModel {
   entries: TimelineEntry[];
   jobs: LaneJob[];
   axisColumn: number;
+  rightColumn: number;
+  volunteerLaneCount: number;
   axisRows: string;
   gridTemplateColumns: string;
 }
@@ -67,6 +69,7 @@ interface Slice {
 
 // Adjacent lanes get different colours so concurrent roles are easy to tell apart.
 const LANE_COLORS = ['#0b63c9', '#7b4bd1', '#0e8a8a', '#d9822b', '#c2417a', '#4a6a8a', '#6b8e23'];
+const VOLUNTEER_COLORS = ['#b7791f', '#8d6e63', '#a0522d'];
 const HEADER_ROWS = 1;
 
 @Component({
@@ -196,7 +199,9 @@ export class TimelineComponent {
         gridRows: '',
         isEmpty: true,
         jobs: [],
-        certs: []
+        volunteers: [],
+        certs: [],
+        certsRows: ''
       };
       entries.push(entry);
       slices.push({ start, end, entry });
@@ -215,40 +220,84 @@ export class TimelineComponent {
         key: `${job.data.role}-${job.data.company}-${job.data.startDate}`,
         job,
         lane: 0,
+        laneOffset: 0,
+        gridColumn: 0,
         color: '',
         isDot: sliceAt(startOf(job)) === sliceAt(endOf(job)),
         cardRow: 0,
         barRow: ''
       };
-      sliceAt(startOf(job)).entry.jobs.push(laneJob);
+      const entry = sliceAt(startOf(job)).entry;
+      (job.data.isVolunteer ? entry.volunteers : entry.jobs).push(laneJob);
       return laneJob;
     });
 
     for (const cert of [...datedCerts].sort((a, b) => b.issuedDate!.getTime() - a.issuedDate!.getTime())) {
-      sliceAt(cert.issuedDate!.getTime()).entry.certs.push({
-        cert,
-        during: this.getRolesHeldOn(jobs, cert.issuedDate!)
-      });
+      sliceAt(cert.issuedDate!.getTime()).entry.certs.push(cert);
     }
 
-    // Lay out grid rows top to bottom: one per job card in a slice (at least one),
-    // newest start first, and one per milestone.
+    // Lay out grid rows top to bottom: one per milestone, and per slice enough rows
+    // for one job card each on the left and, on the right, one volunteering card
+    // each followed by a row for the certifications. Newest start first.
     let gridRow = HEADER_ROWS + 1;
     for (const entry of entries) {
       if (entry.kind === 'milestone') {
         entry.gridRow = gridRow++;
         continue;
       }
-      entry.jobs.sort((a, b) => startOf(b.job) - startOf(a.job) || endOf(b.job) - endOf(a.job));
-      entry.isEmpty = !entry.jobs.length && !entry.certs.length;
+      const newestFirst = (a: LaneJob, b: LaneJob): number =>
+        startOf(b.job) - startOf(a.job) || endOf(b.job) - endOf(a.job);
+      entry.jobs.sort(newestFirst);
+      entry.volunteers.sort(newestFirst);
+      entry.isEmpty = !entry.jobs.length && !entry.volunteers.length && !entry.certs.length;
       entry.firstRow = gridRow;
       entry.jobs.forEach((lj, index) => lj.cardRow = entry.firstRow + index);
-      gridRow += Math.max(1, entry.jobs.length);
+      entry.volunteers.forEach((lj, index) => lj.cardRow = entry.firstRow + index);
+      const rightRows = entry.volunteers.length + (entry.certs.length ? 1 : 0);
+      gridRow += Math.max(1, entry.jobs.length, rightRows);
       entry.gridRows = `${entry.firstRow} / ${gridRow}`;
+      entry.certsRows = `${entry.firstRow + entry.volunteers.length} / ${gridRow}`;
     }
 
-    // Greedy interval colouring over grid rows: a job reuses the first lane whose
-    // previous bar sits entirely below it, so bars never share a row.
+    const isVolunteer = (lj: LaneJob): boolean => !!lj.job.data.isVolunteer;
+    const jobLaneCount = Math.max(1, this.assignLanes(laneJobs.filter(lj => !isVolunteer(lj)), LANE_COLORS, sliceAt, startOf, endOf));
+    const volunteerLaneCount = this.assignLanes(laneJobs.filter(isVolunteer), VOLUNTEER_COLORS, sliceAt, startOf, endOf);
+
+    // Columns: job cards | job lanes | axis | volunteer lanes | volunteering + certifications.
+    // laneOffset counts the lanes between a card and its own lane: job lanes number
+    // outward from the job cards, volunteer lanes outward from the axis.
+    const axisColumn = jobLaneCount + 2;
+    for (const lj of laneJobs) {
+      if (isVolunteer(lj)) {
+        lj.gridColumn = axisColumn + 1 + lj.lane;
+        lj.laneOffset = volunteerLaneCount - 1 - lj.lane;
+      } else {
+        lj.gridColumn = lj.lane + 2;
+        lj.laneOffset = lj.lane;
+      }
+    }
+
+    const volunteerLanes = volunteerLaneCount ? `repeat(${volunteerLaneCount}, 14px) ` : '';
+    return {
+      entries,
+      jobs: laneJobs,
+      axisColumn,
+      rightColumn: axisColumn + volunteerLaneCount + 1,
+      volunteerLaneCount,
+      axisRows: `${HEADER_ROWS + 1} / ${gridRow}`,
+      gridTemplateColumns: `minmax(0, 1fr) repeat(${jobLaneCount}, 14px) 4.5rem ${volunteerLanes}minmax(0, 1fr)`
+    };
+  }
+
+  // Greedy interval colouring over grid rows: a role reuses the first lane whose
+  // previous bar sits entirely below it, so bars never share a row. Returns the lane count.
+  private assignLanes(
+    laneJobs: LaneJob[],
+    colors: string[],
+    sliceAt: (time: number) => Slice,
+    startOf: (job: JobItem) => number,
+    endOf: (job: JobItem) => number
+  ): number {
     const laneTopRows: number[] = [];
     for (const lj of [...laneJobs].sort((a, b) => startOf(a.job) - startOf(b.job))) {
       const topRow = lj.isDot ? lj.cardRow : sliceAt(endOf(lj.job)).entry.firstRow;
@@ -258,29 +307,9 @@ export class TimelineComponent {
       }
       laneTopRows[lane] = topRow;
       lj.lane = lane;
-      lj.color = LANE_COLORS[lane % LANE_COLORS.length];
+      lj.color = colors[lane % colors.length];
       lj.barRow = lj.isDot ? `${lj.cardRow}` : `${topRow} / ${lj.cardRow}`;
     }
-
-    const laneCount = Math.max(1, laneTopRows.length);
-    return {
-      entries,
-      jobs: laneJobs,
-      axisColumn: laneCount + 2,
-      axisRows: `${HEADER_ROWS + 1} / ${gridRow}`,
-      gridTemplateColumns: `minmax(0, 1fr) repeat(${laneCount}, 14px) 4.5rem minmax(0, 1fr)`
-    };
-  }
-
-  private getRolesHeldOn(jobs: JobItem[], date: Date): string[] {
-    const time = date.getTime();
-    return jobs
-      .filter(job => {
-        const start = new Date(job.data.startDate).getTime();
-        const end = job.data.endDate ? new Date(job.data.endDate).getTime() : Date.now();
-        return start <= time && time <= end;
-      })
-      .sort((a, b) => new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime())
-      .map(job => `${job.data.role} · ${job.data.company}`);
+    return laneTopRows.length;
   }
 }

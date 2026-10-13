@@ -2,22 +2,25 @@
 
   <div class="timeline__heading-wrap">
     <h3 class="timeline__heading">Career Timeline</h3>
-    <p class="timeline__intro">Experience and certifications arranged by year for quick scanning.</p>
+    <p class="timeline__intro">Experience, volunteering, and certifications arranged by year for quick scanning.</p>
   </div>
 
   <div class="timeline__legend">
     <span class="timeline__legend-item timeline__legend-item--job">Experience</span>
+    <span class="timeline__legend-item timeline__legend-item--volunteer">Volunteering</span>
     <span class="timeline__legend-item timeline__legend-item--cert">Certifications</span>
   </div>
 
   @if (model$ | async; as model) {
-    <!-- Grid columns: job cards | one lane per concurrent job | year axis | certifications.
-         On mobile the grid becomes a plain stack in DOM order (pill, jobs, certs per year). -->
-    <div class="timeline__grid" [style.grid-template-columns]="model.gridTemplateColumns">
+    <!-- Grid columns: job cards | job lanes | year axis | volunteer lanes | volunteering + certifications.
+         On mobile the grid becomes a plain stack in DOM order (pill, jobs, volunteering, certs per year). -->
+    <div class="timeline__grid"
+         [style.grid-template-columns]="model.gridTemplateColumns"
+         [style.--volunteer-lanes]="model.volunteerLaneCount">
       <div class="timeline__col-label timeline__col-label--left" aria-hidden="true"
            [style.grid-column]="1" [style.grid-row]="1">Experience</div>
       <div class="timeline__col-label timeline__col-label--right" aria-hidden="true"
-           [style.grid-column]="model.axisColumn + 1" [style.grid-row]="1">Certifications</div>
+           [style.grid-column]="model.rightColumn" [style.grid-row]="1">Volunteering &amp; Certifications</div>
 
       <div class="timeline__axis" aria-hidden="true"
            [style.grid-column]="model.axisColumn" [style.grid-row]="model.axisRows"></div>
@@ -27,7 +30,7 @@
              [class.timeline__bar--dot]="lj.isDot"
              [class.is-active]="hoveredJobKey === lj.key"
              [style.--job-color]="lj.color"
-             [style.grid-column]="lj.lane + 2"
+             [style.grid-column]="lj.gridColumn"
              [style.grid-row]="lj.barRow"
              [title]="lj.job.data.role + ' · ' + lj.job.data.company"
              (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)"></div>
@@ -47,59 +50,66 @@
             <div class="timeline__year-pill">{{ row.year }}</div>
           </div>
 
-          <!-- One cell per job card so its bar can end on the card's own row -->
+          <!-- One cell per role card so its bar can end on the card's own row -->
           @for (lj of row.jobs; track lj.key; let last = $last) {
             <div class="timeline__job-cell" [class.timeline__job-cell--last]="last"
                  [style.grid-column]="1" [style.grid-row]="lj.cardRow">
-              <div class="timeline-card timeline-card--job"
-                   [class.is-active]="hoveredJobKey === lj.key"
-                   [style.--job-color]="lj.color"
-                   [style.--lane]="lj.lane"
-                   (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)">
-                <div class="timeline-card__title">{{ lj.job.data.role }}</div>
-                <div class="timeline-card__sub">{{ lj.job.data.company }}</div>
-                <div class="timeline-card__dates">
-                  {{ getDateRangeLabel(lj.job) }} ({{ getDurationLabel(lj.job.data.startDate, lj.job.data.endDate) }})
-                </div>
-              </div>
+              <ng-container *ngTemplateOutlet="roleCard; context: { $implicit: lj }"></ng-container>
             </div>
           }
 
-          <div class="timeline__side timeline__side--right" [style.grid-column]="model.axisColumn + 1" [style.grid-row]="row.gridRows">
-            @for (item of row.certs; track item.cert.name) {
-              <div class="timeline-card timeline-card--cert">
-                <div class="timeline-card__title">{{ item.cert.name }}</div>
-                @if (item.cert.issuer) {
-                  <div class="timeline-card__sub">{{ item.cert.issuer }}</div>
-                }
-                <div class="timeline-card__dates">
-                  Issued: {{ item.cert.issuedDate | date:'d MMM yyyy' }}
-                  @if (item.cert.expiryDate) {
-                    &bull; Expires: {{ item.cert.expiryDate | date:'d MMM yyyy' }}
+          @for (lj of row.volunteers; track lj.key; let last = $last) {
+            <div class="timeline__job-cell timeline__job-cell--right"
+                 [class.timeline__job-cell--last]="last && !row.certs.length"
+                 [style.grid-column]="model.rightColumn" [style.grid-row]="lj.cardRow">
+              <ng-container *ngTemplateOutlet="roleCard; context: { $implicit: lj }"></ng-container>
+            </div>
+          }
+
+          @if (row.certs.length) {
+            <div class="timeline__side timeline__side--right" [style.grid-column]="model.rightColumn" [style.grid-row]="row.certsRows">
+              @for (cert of row.certs; track cert.name) {
+                <div class="timeline-card timeline-card--cert">
+                  <div class="timeline-card__title">{{ cert.name }}</div>
+                  @if (cert.issuer) {
+                    <div class="timeline-card__sub">{{ cert.issuer }}</div>
                   }
-                </div>
-                @if (item.cert.notes?.length) {
-                  <ul class="timeline-card__notes">
-                    @for (note of item.cert.notes; track note) {
-                      <li>{{ note }}</li>
-                    }
-                  </ul>
-                }
-                @if (item.during.length) {
-                  <div class="timeline-card__during">
-                    <span class="timeline-card__during-label">While at</span>
-                    @for (role of item.during; track role) {
-                      <span class="timeline-card__during-chip">{{ role }}</span>
+                  <div class="timeline-card__dates">
+                    Issued: {{ cert.issuedDate | date:'d MMM yyyy' }}
+                    @if (cert.expiryDate) {
+                      &bull; Expires: {{ cert.expiryDate | date:'d MMM yyyy' }}
                     }
                   </div>
-                }
-              </div>
-            }
-          </div>
+                  @if (cert.notes?.length) {
+                    <ul class="timeline-card__notes">
+                      @for (note of cert.notes; track note) {
+                        <li>{{ note }}</li>
+                      }
+                    </ul>
+                  }
+                </div>
+              }
+            </div>
+          }
         }
       }
     </div>
   }
+
+  <ng-template #roleCard let-lj>
+    <div class="timeline-card timeline-card--job"
+         [class.timeline-card--volunteer]="lj.job.data.isVolunteer"
+         [class.is-active]="hoveredJobKey === lj.key"
+         [style.--job-color]="lj.color"
+         [style.--lane-offset]="lj.laneOffset"
+         (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)">
+      <div class="timeline-card__title">{{ lj.job.data.role }}</div>
+      <div class="timeline-card__sub">{{ lj.job.data.company }}</div>
+      <div class="timeline-card__dates">
+        {{ getDateRangeLabel(lj.job) }} ({{ getDurationLabel(lj.job.data.startDate, lj.job.data.endDate) }})
+      </div>
+    </div>
+  </ng-template>
 
   @if ((undatedCerts$ | async)?.length) {
     <div class="timeline__undated">
