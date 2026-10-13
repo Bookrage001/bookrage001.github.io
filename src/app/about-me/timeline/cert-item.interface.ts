@@ -4,4 +4,7 @@ export interface CertItem {
   issuedDate?: Date;
   expiryDate?: Date;
   notes?: string[];
+  // Formal qualifications (degrees, diplomas) are styled apart from certifications
+  // and show only the completion year.
+  kind?: 'certification' | 'qualification';
 }

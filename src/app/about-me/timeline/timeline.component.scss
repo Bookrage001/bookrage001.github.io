@@ -13,6 +13,8 @@ $card-max-width: 320px;
   --timeline-job-soft: #d9eaff;
   --timeline-cert: #1f8a4c;
   --timeline-cert-soft: #dbf5e4;
+  --timeline-qualification: #3f51b5;
+  --timeline-qualification-soft: #e3e7fb;
 
   margin: 1.5rem 0;
   padding: clamp(0.9rem, 1.8vw, 1.35rem);
@@ -78,6 +80,7 @@ $card-max-width: 320px;
 
   &--job::before { background: var(--timeline-job); }
   &--volunteer::before { background: #b7791f; }
+  &--qualification::before { background: var(--timeline-qualification); }
   &--cert::before { background: var(--timeline-cert); }
 }
 
@@ -379,6 +382,18 @@ $card-anchor: 1.1rem;
     box-sizing: border-box;
     transform: translateY(-50%);
   }
+
+  &.timeline-card--qualification::before {
+    background: var(--timeline-qualification);
+    box-shadow: 0 0 0 1px var(--timeline-qualification);
+  }
+}
+
+.timeline-card--qualification {
+  border-left-color: var(--timeline-qualification);
+  background:
+    linear-gradient(90deg, var(--timeline-qualification-soft) 0, var(--timeline-qualification-soft) 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
+    rgba(255, 255, 255, 0.94);
 }
 
 .timeline-card__title {

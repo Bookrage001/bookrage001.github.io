@@ -2,12 +2,13 @@
 
   <div class="timeline__heading-wrap">
     <h3 class="timeline__heading">Career Timeline</h3>
-    <p class="timeline__intro">Experience, volunteering, and certifications arranged by year for quick scanning.</p>
+    <p class="timeline__intro">Experience, volunteering, qualifications, and certifications arranged by year for quick scanning.</p>
   </div>
 
   <div class="timeline__legend">
     <span class="timeline__legend-item timeline__legend-item--job">Experience</span>
     <span class="timeline__legend-item timeline__legend-item--volunteer">Volunteering</span>
+    <span class="timeline__legend-item timeline__legend-item--qualification">Qualifications</span>
     <span class="timeline__legend-item timeline__legend-item--cert">Certifications</span>
   </div>
 
@@ -20,7 +21,7 @@
       <div class="timeline__col-label timeline__col-label--left" aria-hidden="true"
            [style.grid-column]="1" [style.grid-row]="1">Experience</div>
       <div class="timeline__col-label timeline__col-label--right" aria-hidden="true"
-           [style.grid-column]="model.rightColumn" [style.grid-row]="1">Volunteering &amp; Certifications</div>
+           [style.grid-column]="model.rightColumn" [style.grid-row]="1">Volunteering, Qualifications &amp; Certifications</div>
 
       <div class="timeline__axis" aria-hidden="true"
            [style.grid-column]="model.axisColumn" [style.grid-row]="model.axisRows"></div>
@@ -69,15 +70,20 @@
           @if (row.certs.length) {
             <div class="timeline__side timeline__side--right" [style.grid-column]="model.rightColumn" [style.grid-row]="row.certsRows">
               @for (cert of row.certs; track cert.name) {
-                <div class="timeline-card timeline-card--cert">
+                <div class="timeline-card timeline-card--cert"
+                     [class.timeline-card--qualification]="cert.kind === 'qualification'">
                   <div class="timeline-card__title">{{ cert.name }}</div>
                   @if (cert.issuer) {
                     <div class="timeline-card__sub">{{ cert.issuer }}</div>
                   }
                   <div class="timeline-card__dates">
-                    Issued: {{ cert.issuedDate | date:'d MMM yyyy' }}
-                    @if (cert.expiryDate) {
-                      &bull; Expires: {{ cert.expiryDate | date:'d MMM yyyy' }}
+                    @if (cert.kind === 'qualification') {
+                      Completed: {{ cert.issuedDate | date:'yyyy' }}
+                    } @else {
+                      Issued: {{ cert.issuedDate | date:'d MMM yyyy' }}
+                      @if (cert.expiryDate) {
+                        &bull; Expires: {{ cert.expiryDate | date:'d MMM yyyy' }}
+                      }
                     }
                   </div>
                   @if (cert.notes?.length) {

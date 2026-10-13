@@ -225,6 +225,26 @@ export class AboutMeComponent {
     {
       name: 'Fire Warden Training',
       issuer: 'Windracers'
+    },
+    // Qualifications: only the completion year is known, so dates use December.
+    {
+      name: 'Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation',
+      issuer: 'University of Technology Sydney',
+      issuedDate: new Date(2020, 11, 1), // 2020
+      kind: 'qualification',
+      notes: ['Major: Enterprise Systems Development', 'Sub Major: Network Security']
+    },
+    {
+      name: 'Diploma of Networking in Information Technology',
+      issuer: 'TAFE NSW - Ourimbah campus',
+      issuedDate: new Date(2016, 11, 1), // 2016
+      kind: 'qualification'
+    },
+    {
+      name: 'Certificate IV of Networking in Information Technology',
+      issuer: 'TAFE NSW - Ourimbah campus',
+      issuedDate: new Date(2016, 11, 1), // 2016
+      kind: 'qualification'
     }
   ];
 
