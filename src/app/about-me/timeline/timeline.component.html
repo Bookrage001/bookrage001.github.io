@@ -10,39 +10,51 @@
     <span class="timeline__legend-item timeline__legend-item--cert">Certifications</span>
   </div>
 
-  <div class="timeline__track">
-    <div class="timeline__col-label timeline__col-label--left" aria-hidden="true">Experience</div>
-    <div class="timeline__col-label timeline__col-label--spine" aria-hidden="true"></div>
-    <div class="timeline__col-label timeline__col-label--right" aria-hidden="true">Certifications</div>
-  </div>
+  @if (model$ | async; as model) {
+    <!-- Grid columns: job cards | one lane per concurrent job | year axis | certifications.
+         On mobile the grid becomes a plain stack in DOM order (pill, jobs, certs per year). -->
+    <div class="timeline__grid" [style.grid-template-columns]="model.gridTemplateColumns">
+      <div class="timeline__col-label timeline__col-label--left" aria-hidden="true"
+           [style.grid-column]="1" [style.grid-row]="1">Experience</div>
+      <div class="timeline__col-label timeline__col-label--right" aria-hidden="true"
+           [style.grid-column]="model.axisColumn + 1" [style.grid-row]="1">Certifications</div>
 
-  <div class="timeline__body">
-    @for (row of rows$ | async; track row.year) {
-      <div class="timeline__row">
-        <div class="timeline__side timeline__side--left">
-          @if (row.continuing.length) {
-            <div class="timeline__continuing">
-              @for (job of row.continuing; track job.data.role + '-' + job.data.company) {
-                <span class="timeline__continuing-chip">{{ job.data.role }} · {{ job.data.company }}</span>
-              }
-            </div>
-          }
-          @for (job of row.jobs; track job.data.role + '-' + job.data.company + '-' + job.data.startDate) {
-            <div class="timeline-card timeline-card--job">
-              <div class="timeline-card__title">{{ job.data.role }}</div>
-              <div class="timeline-card__sub">{{ job.data.company }}</div>
+      <div class="timeline__axis" aria-hidden="true"
+           [style.grid-column]="model.axisColumn" [style.grid-row]="'2 / ' + (model.rows.length + 2)"></div>
+
+      @for (lj of model.jobs; track lj.key) {
+        <div class="timeline__bar" aria-hidden="true"
+             [class.timeline__bar--dot]="lj.startYear === lj.endYear"
+             [class.is-active]="hoveredJobKey === lj.key"
+             [style.--job-color]="lj.color"
+             [style.grid-column]="lj.lane + 2"
+             [style.grid-row]="lj.gridRow"
+             [title]="lj.job.data.role + ' · ' + lj.job.data.company"
+             (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)"></div>
+      }
+
+      @for (row of model.rows; track row.year) {
+        <div class="timeline__year" [class.timeline__year--empty]="!row.jobs.length && !row.certs.length"
+             [style.grid-column]="model.axisColumn" [style.grid-row]="row.gridRow">
+          <div class="timeline__year-pill">{{ row.year }}</div>
+        </div>
+
+        <div class="timeline__side timeline__side--left" [style.grid-column]="1" [style.grid-row]="row.gridRow">
+          @for (lj of row.jobs; track lj.key) {
+            <div class="timeline-card timeline-card--job"
+                 [class.is-active]="hoveredJobKey === lj.key"
+                 [style.--job-color]="lj.color"
+                 (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)">
+              <div class="timeline-card__title">{{ lj.job.data.role }}</div>
+              <div class="timeline-card__sub">{{ lj.job.data.company }}</div>
               <div class="timeline-card__dates">
-                {{ getDateRangeLabel(job) }} ({{ getDurationLabel(job.data.startDate, job.data.endDate) }})
+                {{ getDateRangeLabel(lj.job) }} ({{ getDurationLabel(lj.job.data.startDate, lj.job.data.endDate) }})
               </div>
             </div>
           }
         </div>
 
-        <div class="timeline__spine">
-          <div class="timeline__year-pill">{{ row.year }}</div>
-        </div>
-
-        <div class="timeline__side timeline__side--right">
+        <div class="timeline__side timeline__side--right" [style.grid-column]="model.axisColumn + 1" [style.grid-row]="row.gridRow">
           @for (item of row.certs; track item.cert.name) {
             <div class="timeline-card timeline-card--cert">
               <div class="timeline-card__title">{{ item.cert.name }}</div>
@@ -73,9 +85,9 @@
             </div>
           }
         </div>
-      </div>
-    }
-  </div>
+      }
+    </div>
+  }
 
   @if ((undatedCerts$ | async)?.length) {
     <div class="timeline__undated">

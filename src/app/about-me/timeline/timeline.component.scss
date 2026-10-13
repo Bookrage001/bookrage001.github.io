@@ -2,7 +2,6 @@
 // Timeline Layout
 // ===========================================================================
 
-$spine-width: 5rem;
 $card-max-width: 320px;
 
 .timeline {
@@ -82,35 +81,16 @@ $card-max-width: 320px;
 }
 
 // ===========================================================================
-// Column header labels
+// Grid: job cards | job lanes | year axis | certifications
+// Column template is set inline from the number of lanes needed.
 // ===========================================================================
 
-// Header and every year row share one column template: experience | year | certifications.
-.timeline__track,
-.timeline__row {
+$row-gap: 1.1rem;
+
+.timeline__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) $spine-width minmax(0, 1fr);
-  gap: 0 0.75rem;
-}
-
-.timeline__track {
-  margin-bottom: 0.5rem;
-}
-
-// ===========================================================================
-// Rows
-// ===========================================================================
-
-.timeline__row {
-  // Padding rather than margin so the spine line runs through the gap to the next year.
-  padding-bottom: 1.1rem;
+  column-gap: 0.6rem;
   align-items: start;
-
-  &:last-child {
-    padding-bottom: 0;
-
-    .timeline__spine::before { display: none; }
-  }
 }
 
 .timeline__col-label {
@@ -120,43 +100,49 @@ $card-max-width: 320px;
   text-transform: uppercase;
   color: var(--timeline-muted);
   padding: 0.25rem 0;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.6rem;
 
   &--left  { text-align: right; }
   &--right { text-align: left; }
-  &--spine { text-align: center; }
 }
 
 // ===========================================================================
-// Spine
+// Year axis
 // ===========================================================================
 
-.timeline__spine {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+.timeline__axis {
   align-self: stretch;
-  position: relative;
-  min-height: 100%;
-  margin-bottom: -1.1rem; // extend through the row's bottom padding
+  justify-self: center;
+  width: 2px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, #c6dcfa 0%, #c8e5d4 100%);
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, #c6dcfa 0%, #c8e5d4 100%);
-    z-index: 0;
+// Each year cell owns the bottom gap so bars and the axis run through it.
+.timeline__year,
+.timeline__side {
+  padding-bottom: $row-gap;
+}
+
+.timeline__year {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+
+  &--empty {
+    padding-bottom: 0.4rem;
+
+    .timeline__year-pill {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--timeline-muted);
+      box-shadow: none;
+    }
   }
 }
 
 .timeline__year-pill {
-  position: relative;
-  z-index: 1;
   font-size: 0.78rem;
   font-weight: 800;
   color: var(--timeline-job);
@@ -169,10 +155,45 @@ $card-max-width: 320px;
 }
 
 // ===========================================================================
+// Job lanes: a bar spanning the years a role ran, or a dot for a single year
+// ===========================================================================
+
+.timeline__bar {
+  --job-color: var(--timeline-job);
+
+  align-self: stretch;
+  justify-self: center;
+  width: 6px;
+  margin: 0.55rem 0 calc(#{$row-gap} + 0.2rem);
+  border-radius: 99px;
+  background: var(--job-color);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 140ms ease, width 140ms ease;
+
+  &--dot {
+    align-self: start;
+    width: 12px;
+    height: 12px;
+    margin-bottom: 0;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px var(--job-color);
+  }
+
+  &.is-active {
+    opacity: 1;
+    width: 8px;
+
+    &.timeline__bar--dot { width: 12px; }
+  }
+}
+
+// ===========================================================================
 // Side columns
 // ===========================================================================
 
-// Cards hug the spine from both sides.
+// Cards hug the axis from both sides.
 .timeline__side {
   display: flex;
   flex-direction: column;
@@ -185,29 +206,6 @@ $card-max-width: 320px;
 
   &--right {
     align-items: flex-start;
-  }
-}
-
-// Compact markers for roles still running from an earlier year.
-.timeline__continuing {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.3rem;
-  max-width: $card-max-width;
-}
-
-.timeline__continuing-chip {
-  font-size: 0.72rem;
-  color: var(--timeline-muted);
-  border: 1px dashed #b8d0ec;
-  border-radius: 999px;
-  padding: 0.12rem 0.55rem;
-  background: rgba(255, 255, 255, 0.6);
-
-  &::before {
-    content: '↑ ';
-    color: var(--timeline-job);
   }
 }
 
@@ -235,11 +233,19 @@ $card-max-width: 320px;
   }
 }
 
+// --job-color is set per card to match its lane bar.
 .timeline-card--job {
-  border-left: 4px solid var(--timeline-job);
+  --job-color: var(--timeline-job);
+
+  border-left: 4px solid var(--job-color);
   background:
     linear-gradient(90deg, var(--timeline-job-soft) 0, var(--timeline-job-soft) 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
     rgba(255, 255, 255, 0.94);
+
+  &.is-active {
+    border-color: var(--job-color);
+    box-shadow: 0 0 0 2px var(--job-color), 0 12px 20px rgba(17, 48, 82, 0.1);
+  }
 }
 
 .timeline-card--cert {
@@ -247,6 +253,27 @@ $card-max-width: 320px;
   background:
     linear-gradient(90deg, var(--timeline-cert-soft) 0, var(--timeline-cert-soft) 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
     rgba(255, 255, 255, 0.94);
+}
+
+// Certifications are one-off events: a dot on the year axis beside each card.
+// Offset = column gap + half the axis column + the card's left border + half the dot.
+.timeline__grid .timeline__side--right .timeline-card--cert {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(-0.6rem - 2.25rem - 4px - 6px);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--timeline-cert);
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px var(--timeline-cert);
+    box-sizing: border-box;
+    transform: translateY(-50%);
+  }
 }
 
 .timeline-card__title {
@@ -348,24 +375,21 @@ $card-max-width: 320px;
     font-size: 0.78rem;
   }
 
-  .timeline__track {
+  // Stack in DOM order: each year's pill, then its jobs, then its certifications.
+  .timeline__grid {
+    display: block;
+  }
+
+  .timeline__col-label,
+  .timeline__axis,
+  .timeline__bar,
+  .timeline__year--empty {
     display: none;
   }
 
-  // Stack each year: pill, then that year's jobs, then its certifications.
-  .timeline__row {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 0.5rem;
-    padding-bottom: 1rem;
-  }
-
-  .timeline__spine {
-    order: -1;
-    flex-direction: row;
+  .timeline__year {
     justify-content: flex-start;
-    margin-bottom: 0;
-
-    &::before { display: none; }
+    padding-bottom: 0.5rem;
   }
 
   .timeline__side {
@@ -379,9 +403,8 @@ $card-max-width: 320px;
     &:empty { display: none; }
   }
 
-  .timeline__continuing {
-    justify-content: flex-start;
-    max-width: 100%;
+  .timeline__grid .timeline__side--right .timeline-card--cert::before {
+    display: none;
   }
 
   .timeline__undated-list .timeline-card { max-width: 100%; }

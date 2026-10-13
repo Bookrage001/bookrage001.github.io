@@ -12,13 +12,36 @@ interface TimelineCert {
   during: string[];
 }
 
+interface LaneJob {
+  key: string;
+  job: JobItem;
+  lane: number;
+  color: string;
+  startYear: number;
+  endYear: number;
+  // CSS grid-row span from the end-year row (top) down to the start-year row
+  gridRow: string;
+}
+
 interface TimelineRow {
   year: number;
-  jobs: JobItem[];
-  // Roles that started in an earlier year and were still running in this one
-  continuing: JobItem[];
+  gridRow: number;
+  // Jobs whose bar starts (at the top) in this row, i.e. ended this year
+  jobs: LaneJob[];
   certs: TimelineCert[];
 }
+
+interface TimelineModel {
+  rows: TimelineRow[];
+  jobs: LaneJob[];
+  laneCount: number;
+  axisColumn: number;
+  gridTemplateColumns: string;
+}
+
+// Adjacent lanes get different colours so concurrent roles are easy to tell apart.
+const LANE_COLORS = ['#0b63c9', '#7b4bd1', '#0e8a8a', '#d9822b', '#c2417a', '#4a6a8a', '#6b8e23'];
+const HEADER_ROWS = 1;
 
 @Component({
   selector: 'app-timeline',
@@ -35,14 +58,17 @@ export class TimelineComponent {
     this.certsSubject.next(value);
   }
 
-  // One row per year on a shared spine: jobs that started that year on the
-  // left, certifications issued that year on the right.
-  readonly rows$: Observable<TimelineRow[]> = combineLatest([
+  // One grid row per year (newest first). Each job is a bar in its own lane
+  // spanning the years it ran, or a dot when it sits inside a single year.
+  // Certifications are dots on the year axis.
+  readonly model$: Observable<TimelineModel> = combineLatest([
     this.jobService.getAds(),
     this.certsSubject
   ]).pipe(
-    map(([jobs, certs]) => this.buildRows(jobs, certs))
+    map(([jobs, certs]) => this.buildModel(jobs, certs))
   );
+
+  hoveredJobKey: string | null = null;
 
   readonly undatedCerts$: Observable<CertItem[]> = this.certsSubject.pipe(
     map(certs => certs.filter(c => !c.issuedDate))
@@ -94,38 +120,73 @@ export class TimelineComponent {
     return Math.max(totalMonths, 1);
   }
 
-  private buildRows(jobs: JobItem[], certs: CertItem[]): TimelineRow[] {
-    const rowMap = new Map<number, TimelineRow>();
-    const rowFor = (year: number): TimelineRow => {
-      if (!rowMap.has(year)) rowMap.set(year, { year, jobs: [], continuing: [], certs: [] });
-      return rowMap.get(year)!;
-    };
+  setHoveredJob(key: string | null): void {
+    this.hoveredJobKey = key;
+  }
 
-    for (const job of jobs) {
-      rowFor(new Date(job.data.startDate).getFullYear()).jobs.push(job);
+  private buildModel(jobs: JobItem[], certs: CertItem[]): TimelineModel {
+    const datedCerts = certs.filter(c => c.issuedDate);
+    const laneJobs = this.assignLanes(jobs);
+
+    const years = [
+      ...laneJobs.flatMap(j => [j.startYear, j.endYear]),
+      ...datedCerts.map(c => c.issuedDate!.getFullYear())
+    ];
+    const maxYear = Math.max(...years);
+    const minYear = Math.min(...years);
+    const gridRowFor = (year: number): number => maxYear - year + 1 + HEADER_ROWS;
+    for (const lj of laneJobs) {
+      lj.gridRow = `${gridRowFor(lj.endYear)} / ${gridRowFor(lj.startYear) + 1}`;
     }
 
-    for (const cert of certs.filter(c => c.issuedDate)) {
-      rowFor(cert.issuedDate!.getFullYear()).certs.push({
-        cert,
-        during: this.getRolesHeldOn(jobs, cert.issuedDate!)
+    // Every year gets a row, even empty ones, so bars run continuously.
+    const rows: TimelineRow[] = [];
+    for (let year = maxYear; year >= minYear; year--) {
+      rows.push({
+        year,
+        gridRow: gridRowFor(year),
+        jobs: laneJobs.filter(j => j.endYear === year).sort((a, b) => a.lane - b.lane),
+        certs: datedCerts
+          .filter(c => c.issuedDate!.getFullYear() === year)
+          .sort((a, b) => b.issuedDate!.getTime() - a.issuedDate!.getTime())
+          .map(cert => ({ cert, during: this.getRolesHeldOn(jobs, cert.issuedDate!) }))
       });
     }
 
-    const startTime = (job: JobItem): number => new Date(job.data.startDate).getTime();
-    const rows = Array.from(rowMap.values()).sort((a, b) => b.year - a.year);
-    for (const row of rows) {
-      row.continuing = jobs
-        .filter(job => {
-          const startYear = new Date(job.data.startDate).getFullYear();
-          const endYear = (job.data.endDate ? new Date(job.data.endDate) : new Date()).getFullYear();
-          return startYear < row.year && row.year <= endYear;
-        })
-        .sort((a, b) => startTime(b) - startTime(a));
-      row.jobs.sort((a, b) => startTime(b) - startTime(a));
-      row.certs.sort((a, b) => b.cert.issuedDate!.getTime() - a.cert.issuedDate!.getTime());
-    }
-    return rows;
+    const laneCount = Math.max(1, ...laneJobs.map(j => j.lane + 1));
+    return {
+      rows,
+      jobs: laneJobs,
+      laneCount,
+      axisColumn: laneCount + 2,
+      gridTemplateColumns: `minmax(0, 1fr) repeat(${laneCount}, 14px) 4.5rem minmax(0, 1fr)`
+    };
+  }
+
+  // Greedy interval colouring at year granularity: a job reuses the first lane
+  // whose previous job finished in an earlier year, so bars never share a row.
+  private assignLanes(jobs: JobItem[]): LaneJob[] {
+    const laneEndYears: number[] = [];
+    return [...jobs]
+      .sort((a, b) => new Date(a.data.startDate).getTime() - new Date(b.data.startDate).getTime())
+      .map(job => {
+        const startYear = new Date(job.data.startDate).getFullYear();
+        const endYear = (job.data.endDate ? new Date(job.data.endDate) : new Date()).getFullYear();
+        let lane = laneEndYears.findIndex(end => end < startYear);
+        if (lane === -1) {
+          lane = laneEndYears.length;
+        }
+        laneEndYears[lane] = endYear;
+        return {
+          key: `${job.data.role}-${job.data.company}-${job.data.startDate}`,
+          job,
+          lane,
+          color: LANE_COLORS[lane % LANE_COLORS.length],
+          startYear,
+          endYear,
+          gridRow: ''
+        };
+      });
   }
 
   private getRolesHeldOn(jobs: JobItem[], date: Date): string[] {
