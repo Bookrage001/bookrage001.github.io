@@ -1,13 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
 import { JobsComponent } from './jobs/jobs.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { CertItem } from './timeline/cert-item.interface';
+import { MilestoneItem } from './timeline/milestone-item.interface';
 import { PrintService } from '../services/print.service';
 
 type ResumeMode = 'full' | 'business' | 'technology' | 'hospitality';
+type ViewMode = 'resume' | 'timeline';
 
 interface ResumeSectionContent {
   summary: string;
@@ -27,6 +31,7 @@ interface ResumeSectionContent {
     CommonModule,
     RouterModule,
     JobsComponent,
+    TimelineComponent,
     MatButtonModule,
     MatCheckboxModule,
     MatButtonToggleModule
@@ -34,12 +39,14 @@ interface ResumeSectionContent {
 })
 export class AboutMeComponent {
   private printService = inject(PrintService);
+  private cdr = inject(ChangeDetectorRef);
   compactPrintMode = false;
-  resumeMode: ResumeMode = 'technology';
+  resumeMode: ResumeMode = 'full';
+  viewMode: ViewMode = 'resume';
 
   private resumeContentByMode: Record<ResumeMode, ResumeSectionContent> = {
     full: {
-      summary: 'Business-aligned product and delivery leader with a software engineering background. Experienced across product development, software delivery, and cross-functional stakeholder alignment. Identifies core business issues early and drives practical solutions that balance user needs, operational realities, and commercial outcomes.',
+      summary: 'Full-stack Software Engineer with a strong ownership mindset, shipping features from concept through production, validating solutions directly with customers, and improving reliability in mission-critical systems. Brings applied innovation training and practical AI-assisted engineering coaching into delivery teams.',
       focusSections: [
         {
           title: 'Product Development',
@@ -67,7 +74,7 @@ export class AboutMeComponent {
       ]
     },
     business: {
-      summary: 'Business analyst and delivery lead focused on business alignment and customer-first delivery for external and internal customers. Identifies root business issues, translates complex requirements into clear priorities, and leads aligned execution across technical and non-technical stakeholders.',
+      summary: 'Business Analyst and delivery lead aligning customer needs, operational constraints, and technical execution. Translates ambiguous requirements into prioritized backlog outcomes and drives cross-functional delivery.',
       focusSections: [
         {
           title: 'Business Analysis and Discovery',
@@ -99,13 +106,13 @@ export class AboutMeComponent {
       ]
     },
     technology: {
-      summary: 'Senior software engineer and technical delivery lead focused on solution implementation, platform delivery, and production reliability. Leads technical execution against business priorities while delivering dependable outcomes for external users and internal customers in modern web stacks and time-sensitive operational environments.',
+      summary: 'Software Engineer delivering customer-facing platforms across Angular, TypeScript, Node.js, .NET, and AWS, with strong ownership from discovery through production support, practical AI-assisted engineering patterns, and operational reliability.',
       focusSections: [
         {
           title: 'Solution Engineering and Delivery',
           bullets: [
-            'Led implementation of scalable features across frontend, backend, and integration layers for customer-facing workflows and internal operations.',
-            'Guided solution design decisions that balanced maintainability, delivery speed, and reliability.',
+            'Implemented scalable features across frontend, backend, and integration layers for customer-facing workflows and internal operations.',
+            'Delivered solution design decisions that balanced maintainability, delivery speed, and reliability.',
             'Established automated test coverage and CI/CD pipelines to reduce regressions and raise release confidence.',
             'Communicated technical decisions in plain language to keep non-technical stakeholders and internal customers aligned.'
           ]
@@ -130,7 +137,7 @@ export class AboutMeComponent {
       ]
     },
     hospitality: {
-      summary: 'Hard-working hospitality professional with experience in front-of-house operations, team coordination, and consistent service delivery under pressure. Known for high-effort execution, reliability across demanding shifts, and a strong team-first work ethic.',
+      summary: 'Hospitality professional with front-of-house and shift operations experience in high-volume venues. Known for reliable execution, calm issue resolution, and consistent guest service standards under pressure.',
       focusSections: [
         {
           title: 'Guest Experience and Service',
@@ -161,6 +168,85 @@ export class AboutMeComponent {
       ]
     }
   };
+
+  // Shown as labelled lines across the career timeline; they also split a year
+  // so roles either side of a move sit in separate rows.
+  readonly milestones: MilestoneItem[] = [
+    { label: 'Moved back to Australia', date: new Date(2026, 1, 1) }, // Feb 2026
+    { label: 'Moved to the UK', date: new Date(2022, 1, 1) } // Feb 2022
+  ];
+
+  readonly certs: CertItem[] = [
+    {
+      name: 'Provide First Aid',
+      issuedDate: new Date(2026, 5, 11), // 11 Jun 2026
+      notes: [
+        'HLTAID011 Provide First Aid (renew every 3 years)',
+        'HLTAID010 Provide Basic Emergency Life Support',
+        'HLTAID009 Provide Cardiopulmonary Resuscitation (renew yearly)'
+      ]
+    },
+    {
+      name: 'International Certificate for Operators of Pleasure Craft',
+      issuedDate: new Date(2025, 6, 1), // 1 Jul 2025
+      expiryDate: new Date(2030, 6, 1)
+    },
+    {
+      name: 'Marine Radio Short Range Certificate',
+      issuedDate: new Date(2024, 10, 18) // 18 Nov 2024
+    },
+    {
+      name: 'Safe and Fun – Safeguarding Awareness Training',
+      issuedDate: new Date(2024, 2, 27) // 27 Mar 2024
+    },
+    {
+      name: 'Sailing Scheme Instructor',
+      issuedDate: new Date(2024, 3, 5), // 5 Apr 2024
+      expiryDate: new Date(2029, 3, 5),
+      notes: ['Dinghy Instructor endorsement (expires 5 April 2029)']
+    },
+    {
+      name: 'Safety Boat Certificate',
+      issuedDate: new Date(2023, 8, 2) // 2 Sep 2023
+    },
+    {
+      name: 'Powerboat Level 2',
+      issuedDate: new Date(2023, 5, 25) // 25 Jun 2023
+    },
+    {
+      name: 'First Aid Certificate',
+      issuedDate: new Date(2023, 6, 16), // 16 Jul 2023
+      expiryDate: new Date(2026, 6, 16)
+    },
+    {
+      name: 'AWS Certified Cloud Practitioner',
+      issuer: 'Amazon Web Services'
+    },
+    {
+      name: 'Fire Warden Training',
+      issuer: 'Windracers'
+    },
+    // Qualifications: only the completion year is known, so dates use December.
+    {
+      name: 'Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation',
+      issuer: 'University of Technology Sydney',
+      issuedDate: new Date(2020, 11, 1), // 2020
+      kind: 'qualification',
+      notes: ['Major: Enterprise Systems Development', 'Sub Major: Network Security']
+    },
+    {
+      name: 'Diploma of Networking in Information Technology',
+      issuer: 'TAFE NSW - Ourimbah campus',
+      issuedDate: new Date(2016, 11, 1), // 2016
+      kind: 'qualification'
+    },
+    {
+      name: 'Certificate IV of Networking in Information Technology',
+      issuer: 'TAFE NSW - Ourimbah campus',
+      issuedDate: new Date(2016, 11, 1), // 2016
+      kind: 'qualification'
+    }
+  ];
 
   get activeResumeContent(): ResumeSectionContent {
     return this.resumeContentByMode[this.resumeMode];
@@ -194,7 +280,18 @@ export class AboutMeComponent {
     this.resumeMode = focus;
   }
 
+  onViewModeChange(event: MatButtonToggleChange): void {
+    this.viewMode = event.value;
+  }
+
   printResume(): void {
+    // Always print the resume view, not the timeline
+    const previousViewMode = this.viewMode;
+    if (this.viewMode === 'timeline') {
+      this.viewMode = 'resume';
+      this.cdr.detectChanges();
+    }
+
     // Build filename suffix with resume mode and optionally compact
     const modeLabel = this.resumeModeLabel.split(' ')[0]; // Get first word: 'Business', 'Technology', 'Hospitality', or 'Full'
     const parts = [modeLabel];
@@ -205,5 +302,10 @@ export class AboutMeComponent {
 
     const suffix = parts.join('-');
     this.printService.print(suffix);
+
+    // Restore view mode after print dialog closes
+    if (previousViewMode === 'timeline') {
+      setTimeout(() => { this.viewMode = 'timeline'; }, 300);
+    }
   }
 }

@@ -1,46 +1,38 @@
 {
   "data": [
+
     {
       "role": "Software Engineer",
       "company": "Windracers (UK)",
       "startDate": "2023-05-01",
       "endDate": "2026-01-31",
       "description": [
-        "Led mission software deliveries for operators and field teams, improving reliability in high-stakes environments.",
-        "Collaborated across operations, manufacturing, and engineering to align delivery priorities with business outcomes.",
-        "Delivered mission-critical code and data pathways where rapid, reliable updates were needed for time-sensitive operational decisions.",
-        "Worked with large operational datasets across SQL and NoSQL data stores to support analytics, decision making, and system reliability.",
-        "Built and integrated microservices into the Windracers Application to improve real-world system performance.",
-        "Improved security, documentation, and team workflows to reduce delivery friction and support consistent execution.",
-        "Mentored developers across business analysis and software delivery practices to strengthen team capability including in AI/ML development.",
-        "Automated infrastructure and production improvements to improve business velocity and team delivery speed.",
-        "Served as a Subject Matter Expert (SME), operating autonomously to triage issues and deliver timely solutions in high-pressure environments with competing timeline-driven priorities.",
-        "Worked directly with Manufacturing, Maintenance, and Engineering teams to act on operational problems through new feature development and implementation of existing software fixes.",
-        "Implemented an international customer handback communication process, improving clarity of operational information, reducing wait times, speeding solution delivery, and enabling teams to manage outcomes autonomously."
+        "Delivered WebSocket-based real-time data pipelines to operator dashboards, improving mission-update speed and consistency for customer decision-making.",
+        "Designed and built microservices for mission-critical operations, handling large-scale datasets with sub-second response times.",
+        "Built and optimized RESTful APIs serving internal teams and external operators, scaling to handle production traffic spikes.",
+        "Worked directly with internal and external customers and stakeholders to clarify requirements, validate solutions, and iterate on features based on real-world feedback.",
+        "Implemented an international customer handback communication process that reduced wait times and accelerated solution delivery.",
+        "Served as Subject Matter Expert for mission software support, autonomously triaging and resolving production incidents under high-pressure, competing deadlines.",
+        "Mentored developers on software engineering practices, including coaching a junior developer on practical AI integration patterns.",
+        "Owned database optimization, CI/CD automation, and DevSecOps improvements to reduce latency and strengthen platform reliability and security.",
+        "Collaborated cross-functionally with Manufacturing, Maintenance, and Engineering teams, and acted as informal team social lead supporting team morale during high-pressure periods."
       ],
       "businessDescription": [
-        "Applied a customer-first approach across external operators and internal teams, clarifying requirements with Operations, Manufacturing, and field stakeholders to reduce delivery ambiguity.",
-        "Ran workshops and discovery sessions that translated customer pain points into user stories, aligned scope, and improved delivery readiness.",
-        "Supported sprint planning and backlog refinement to prioritize customer-impacting work and maintain traceability from requirement through delivery.",
-        "Facilitated retrospectives and process reviews that identified root causes behind service issues and reduced repeat delivery problems.",
-        "Balanced mission risk, operating model needs, and technical constraints to make practical decisions that protected customer outcomes.",
-        "Mentored developers in business analysis practices, strengthening the team's ability to understand customer context and deliver usable solutions, including AI integration support.",
-        "Acted as a Subject Matter Expert (SME), autonomously triaging operational issues and coordinating timely resolutions across competing delivery timelines.",
-        "Partnered with Manufacturing, Maintenance, and Engineering to define and deliver new features or implement existing software fixes based on operational priorities.",
-        "Implemented a structured international handback communication process that reduced wait times, improved information clarity, and enabled teams to manage outcomes autonomously."
+        "Partnered with operations and manufacturing teams to capture mission-critical requirements and prioritize delivery against operational constraints.",
+        "Triaged production issues independently, balancing competing timelines while protecting service reliability for external operators.",
+        "Owned delivery from requirements clarification through deployment and post-release monitoring, improving traceability across the delivery lifecycle.",
+        "Improved team capability through practical mentoring, code review, and pair-programming support focused on production delivery quality."
       ],
       "softwareDescription": [
-        "Built and integrated microservices into the Windracers software stack to improve reliability for operators and internal support teams.",
-        "Delivered backend and frontend changes across C#, .NET, TypeScript, and Angular services to address customer-facing and internal operational needs.",
-        "Implemented WebSockets-based real-time delivery flows that improved the speed and consistency of mission updates for customer decision-making.",
-        "Optimized SQL and NoSQL data flows handling large operational datasets to improve performance, resilience, and service continuity.",
-        "Designed and integrated RESTful APIs to improve system architecture quality and operational resilience for enterprise SaaS and PaaS workflows.",
-        "Improved secure engineering practices and delivery quality across Information Security and DevSecOps initiatives to protect customer trust.",
-        "Mentored developers on software engineering practices and coached a junior developer on practical AI integration patterns.",
-        "Contributed automation scripts and infrastructure improvements to increase platform stability and team velocity.",
-        "Served as a Subject Matter Expert (SME) for mission software support, autonomously triaging incidents and delivering timely technical solutions under high-pressure, competing deadlines.",
-        "Collaborated with Manufacturing, Maintenance, and Engineering teams to build new features and implement existing software fixes that addressed live operational issues.",
-        "Implemented an international customer handback communication process that reduced wait times and accelerated solution delivery while preserving operational reliability."
+        "Delivered WebSocket-based real-time data pipelines to operator dashboards, improving mission-update speed and consistency for customer decision-making.",
+        "Designed and built microservices for mission-critical operations, handling large-scale datasets with sub-second response times.",
+        "Built and optimized RESTful APIs serving internal teams and external operators, scaling to handle production traffic spikes.",
+        "Worked directly with internal and external customers and stakeholders to clarify requirements, validate solutions, and iterate on features based on real-world feedback.",
+        "Implemented an international customer handback communication process that reduced wait times and accelerated solution delivery.",
+        "Served as Subject Matter Expert for mission software support, autonomously triaging and resolving production incidents under high-pressure, competing deadlines.",
+        "Mentored developers on software engineering practices, including coaching a junior developer on practical AI integration patterns.",
+        "Owned database optimization, CI/CD automation, and DevSecOps improvements to reduce latency and strengthen platform reliability and security.",
+        "Collaborated cross-functionally with Manufacturing, Maintenance, and Engineering teams, and acted as informal team social lead supporting team morale during high-pressure periods."
       ],
       "tags": [
         "Full Stack Development",
@@ -75,7 +67,8 @@
         "Design Thinking",
         "Systems Thinking",
         "Continuous Improvement",
-        "Cross-Functional Collaboration"
+        "Cross-Functional Collaboration",
+        "AI Integration"
       ],
       "techTags": [
         "C#",
@@ -98,7 +91,9 @@
         "Mission-critical Systems",
         "Scripting",
         "Jira",
-        "Microsoft 365"
+        "Microsoft 365",
+        "Git",
+        "GitHub"
       ]
     },
     {
@@ -107,20 +102,16 @@
       "startDate": "2022-11-01",
       "endDate": "2023-04-01",
       "description": [
-        "Contributed to a new C# application that improved how mining teams design optimal slope walls.",
-        "Focused on practical problem solving where technical choices directly improved user capability.",
-        "Helped shape design and functionality across the stack to turn ideas into useful tools.",
-        "Worked closely with domain experts, strengthening my ability to translate complex needs into clear technical solutions."
+        "Designed and built features across desktop UI and C# backend logic for slope design calculations and analysis, owning delivery end-to-end from requirements through user validation.",
+        "Translated complex geotechnical domain knowledge into practical, maintainable software solutions."
       ],
       "businessDescription": [
-        "Collaborated with domain experts to elicit and document operational requirements for slope design workflows.",
-        "Converted user needs and business constraints into scoped implementation options that supported informed decisions.",
-        "Delivered analysis-led recommendations that improved user capability and day-to-day decision confidence."
+        "Worked with domain experts to understand geotechnical workflows and translate them into prioritized implementation features.",
+        "Delivered solutions that directly improved user decision confidence and daily workflow efficiency."
       ],
       "softwareDescription": [
-        "Contributed to a C# desktop application for optimal slope wall design in mining scenarios.",
-        "Shaped features across design and implementation to turn complex geotechnical requirements into usable tooling.",
-        "Applied structured problem solving to convert specialist inputs into clear technical solutions."
+        "Designed and built features across desktop UI and C# backend logic for slope design calculations and analysis, owning delivery end-to-end from requirements through user validation.",
+        "Translated complex geotechnical domain knowledge into practical, maintainable software solutions."
       ],
       "tags": [
         "Full Stack Development",
@@ -130,31 +121,32 @@
       ],
       "techTags": [
         "C#",
-        ".NET"
+        ".NET",
+        "Git"
       ]
     },
-        {
+    {
       "role": "Hospitality Member",
       "company": "Barton Peveril (UK)",
       "startDate": "2022-10-28",
       "endDate": "2024-02-26",
       "description": [
-            "Delivered responsive customer service while preparing coffee, managing point-of-sale transactions, cash handling, and responsible service of alcohol in a busy hospitality environment.",
-            "Managed inventory levels through systematic stock checks, rotation, and restocking to maintain service continuity.",
+        "Delivered responsive customer service while preparing coffee, managing point-of-sale transactions, cash handling, and responsible service of alcohol in a busy hospitality environment.",
+        "Managed inventory levels through systematic stock checks, rotation, and restocking to maintain service continuity.",
         "Coordinated with team members during peak service periods to keep operations flowing smoothly and maintain service quality.",
-            "Followed hygiene and safety procedures during service to maintain clean, compliant, and guest-ready work areas.",
-            "Completed end-of-day close-down tasks including till reconciliation, cleaning, restocking, and secure lock-up.",
+        "Followed hygiene and safety procedures during service to maintain clean, compliant, and guest-ready work areas.",
+        "Completed end-of-day close-down tasks including till reconciliation, cleaning, restocking, and secure lock-up.",
         "Built strong foundations in attention to detail, time management, and the ability to prioritize tasks under pressure."
       ],
       "businessDescription": [
-            "Provided attentive guest-facing service by preparing coffee orders, accurately processing transactions, cash handling, and managing customer interactions.",
-            "Supported operational efficiency through proactive inventory management, stock checks, and restocking workflows.",
+        "Provided attentive guest-facing service by preparing coffee orders, accurately processing transactions, cash handling, and managing customer interactions.",
+        "Supported operational efficiency through proactive inventory management, stock checks, and restocking workflows.",
         "Maintained compliance with responsible service of alcohol standards while delivering welcoming guest experiences.",
-            "Applied hygiene and safety procedures to support compliant operations and a safe service environment.",
-            "Completed consistent close-down workflows including till reconciliation, cleaning, restocking, and secure lock-up to support next-shift readiness.",
+        "Applied hygiene and safety procedures to support compliant operations and a safe service environment.",
+        "Completed consistent close-down workflows including till reconciliation, cleaning, restocking, and secure lock-up to support next-shift readiness.",
         "Coordinated with team members to balance competing priorities during high-volume service periods."
       ],
-      "softwareDescription": [],
+      "softwareDescription": [ ],
       "tags": [
         "Customer Service",
         "End User Support",
@@ -162,13 +154,13 @@
         "Teamwork",
         "Operations",
         "Service Mindset",
-            "Attention to Detail",
-            "Cash Handling",
-            "Stock Checks",
-            "Hygiene and Safety",
-            "Closing Procedures"
+        "Attention to Detail",
+        "Cash Handling",
+        "Stock Checks",
+        "Hygiene and Safety",
+        "Closing Procedures"
       ],
-      "techTags": []
+      "techTags": [ ]
     },
     {
       "role": "Programme Coordinator",
@@ -201,7 +193,7 @@
         "Problem Solving",
         "Stakeholder Management"
       ],
-      "techTags": []
+      "techTags": [ ]
     },
     {
       "role": "Activities Instructor / Group Leader",
@@ -233,7 +225,7 @@
         "Service Mindset",
         "Problem Solving"
       ],
-      "techTags": []
+      "techTags": [ ]
     },
     {
       "role": "Technology Associate",
@@ -241,11 +233,9 @@
       "startDate": "2021-06-01",
       "endDate": "2022-01-01",
       "description": [
-        "Delivered C# .NET solutions with a focus on secure, reliable outcomes for workplace technology.",
-        "Improved IT operations through automation and tools that reduced manual LAN and endpoint network diagnosis.",
-        "Supported a VPN rollout to strengthen access and trust across the organization.",
-        "Developed ideas through scripting and prototyping to find practical solutions to technical and operational challenges.",
-        "Built strong foundations in enterprise-scale collaboration and service delivery."
+        "Delivered C# .NET solutions focused on secure, reliable enterprise workplace technology.",
+        "Automated LAN and endpoint network diagnosis workflows via scripting and prototyping.",
+        "Supported a VPN rollout to strengthen access control and trust across the organization."
       ],
       "businessDescription": [
         "Assessed workplace technology requirements and translated security, reliability, and continuity goals into actionable scope.",
@@ -254,10 +244,9 @@
         "Aligned enterprise stakeholders to keep technical delivery tied to service outcomes and business priorities."
       ],
       "softwareDescription": [
-        "Built and shipped C# .NET solutions focused on secure and reliable enterprise workplace technology.",
-        "Automated LAN support diagnosis workflows (connectivity checks, adapter state, and incident triage) using scripting and prototyping.",
-        "Contributed to VPN rollout implementation and supporting systems to strengthen access control.",
-        "Developed practical technical solutions for operational challenges in an enterprise IT environment."
+        "Delivered C# .NET solutions focused on secure, reliable enterprise workplace technology.",
+        "Automated LAN and endpoint network diagnosis workflows via scripting and prototyping.",
+        "Supported a VPN rollout to strengthen access control and trust across the organization."
       ],
       "tags": [
         "Full Stack Development",
@@ -275,7 +264,8 @@
         "Scripting",
         "LAN Support",
         "Network Troubleshooting",
-        "Jira"
+        "Jira",
+        "Git"
       ]
     },
     {
@@ -284,11 +274,8 @@
       "startDate": "2021-03-01",
       "endDate": "2021-12-01",
       "description": [
-        "Supported staff and students through service desk work that prioritized empathy and practical outcomes.",
-        "Provided MacOS and Windows desktop support across end-user environments to maintain reliable day-to-day operations.",
-        "Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents.",
-        "Strengthened foundations that helped others focus on teaching and learning.",
-        "Developed early habits of systems thinking and continuous improvement."
+        "Provided MacOS and Windows desktop support across end-user environments, prioritizing empathy and practical outcomes.",
+        "Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents."
       ],
       "businessDescription": [
         "Collected support requirements from staff and students, then prioritized ICT work to improve teaching continuity.",
@@ -296,10 +283,8 @@
         "Converted support trends into practical process improvements for stakeholders and school operations."
       ],
       "softwareDescription": [
-        "Improved ICT service reliability through workflow analysis, scripting support, and better operational practices.",
-        "Developed PowerShell automations and operational dashboards to streamline recurring processes and improve support visibility.",
-        "Applied systems thinking to reduce repetitive incidents and improve support team effectiveness.",
-        "Built foundational delivery habits in troubleshooting, root-cause analysis, and continuous improvement."
+        "Provided MacOS and Windows desktop support across end-user environments, prioritizing empathy and practical outcomes.",
+        "Analyzed workflows to improve ICT effectiveness rather than only fixing individual incidents."
       ],
       "tags": [
         "End User Support",
@@ -339,10 +324,13 @@
       "softwareDescription": [
         "Applied systems thinking to break down complex challenges into actionable solution pathways.",
         "Built interdisciplinary collaboration habits that improved handoffs between technical and non-technical contributors.",
-        "Developed structured problem-solving and communication patterns used later in software delivery roles."
+        "Developed structured problem-solving and communication patterns used later in software delivery roles.",
+        "Gained early exposure to design thinking, user-centered design, and innovation practices that continue to influence my approach to software development.",
+        "Completed a capstone project with Java that involved designing and prototyping a software solution for a real-world problem, applying the skills and mindset developed throughout the degree.",
+        "Gained experience with Java, which provided a strong foundation in programming concepts and object-oriented design that I have built upon in my software engineering career."
       ],
-      "tags": [],
-      "techTags": []
+      "tags": [ ],
+      "techTags": [ ]
     },
     {
       "role": "Software Developer",
@@ -350,30 +338,26 @@
       "startDate": "2018-01-01",
       "endDate": "2021-12-31",
       "description": [
-        "Delivered full-stack solutions across AWS, Node.js, TypeScript, and Angular with strong ownership from design to delivery.",
-        "Improved client outcomes through automation, deployment workflows, and infrastructure implementation.",
-        "Used initiative and self-directed learning to solve unfamiliar problems and keep momentum on critical work.",
-        "Developed strong foundations in identity management, cloud architecture, and secure design."
+        "Built and shipped full-stack features end-to-end for client-facing SaaS products across AWS, Node.js, TypeScript, and Angular, from requirements through production.",
+        "Owned backend services, APIs, infrastructure, deployment pipelines, automation, and CI/CD workflows to improve delivery speed.",
+        "Developed cloud architecture and identity management expertise (SAML, OAuth, OpenID Connect), strengthening platform security and serverless design.",
+        "Rapidly learned new tech stacks and solved unfamiliar problems independently to keep momentum on critical client work."
       ],
       "businessDescription": [
-        "Led end-to-end discovery, requirements definition, and delivery alignment for client-facing solutions.",
-        "Analyzed deployment bottlenecks and drove process improvements that improved client outcomes.",
-        "Converted ambiguous client problems into actionable requirements and prioritized delivery plans.",
-        "Balanced business goals, delivery constraints, and technical trade-offs in secure cloud solution decisions."
+        "Translated ambiguous client requirements into prioritized delivery plans with realistic scope, risk controls, and implementation sequencing.",
+        "Partnered directly with client stakeholders to validate solutions, capture feedback, and adjust backlog priorities during delivery.",
+        "Identified process and platform bottlenecks, then proposed targeted technical changes that improved measurable business outcomes."
       ],
       "softwareDescription": [
-        "Delivered full-stack features across AWS, Node.js, TypeScript, and Angular from design through production rollout.",
-        "Built Backend Development and Frontend Development features with emphasis on maintainable System Architecture.",
-        "Implemented Serverless services and RESTful APIs on AWS to improve Scalability and delivery speed.",
-        "Implemented automation, CI/CD workflows, and infrastructure components to improve engineering throughput.",
-        "Strengthened platform security and architecture through hands-on identity and cloud design implementation.",
-        "Solved unfamiliar technical problems quickly through self-directed learning and iterative delivery."
+        "Built and shipped full-stack features end-to-end for client-facing SaaS products across AWS, Node.js, TypeScript, and Angular, from requirements through production.",
+        "Owned backend services, APIs, infrastructure, deployment pipelines, automation, and CI/CD workflows to improve delivery speed.",
+        "Developed cloud architecture and identity management expertise (SAML, OAuth, OpenID Connect), strengthening platform security and serverless design.",
+        "Rapidly learned new tech stacks and solved unfamiliar problems independently to keep momentum on critical client work."
       ],
       "tags": [
         "Full Stack Development",
         "Automation",
-        "Backend Development",
-        "Frontend Development",
+        "Security",
         "Continuous Improvement",
         "Problem Solving",
         "User-Centered Design",
@@ -397,14 +381,16 @@
         "OAuth",
         "OpenID Connect",
         "Jira",
-        "AWS"
+        "Git",
+        "GitHub",
+        "PostgreSQL"
       ]
     },
     {
       "role": "Volunteer / Casual",
       "company": "Ev Church",
       "startDate": "2016-01-01",
-      "endDate": "2022-12-31",
+      "endDate": "2021-12-31",
       "description": [
         "Served in flexible technical and production roles to support community events and operations.",
         "Contributed across IT, Audio Visual, and electrical needs with a consistent service and reliability mindset.",
@@ -421,8 +407,26 @@
         "Supported IT and AV systems across live event environments with a focus on stability and rapid issue resolution.",
         "Applied hands-on infrastructure and scripting practices that strengthened practical delivery capability."
       ],
-      "tags": [],
-      "techTags": []
+      "tags": [ ],
+      "techTags": [
+        "Scripting",
+        "Automation",
+        "IT Support",
+        "Audio Visual Systems",
+        "Event Production",
+        "Teamwork",
+        "CI/CD",
+        "Docker",
+        "kubernetes",
+        "Git",
+        "Gogs",
+        "MDM",
+        "Jira",
+        "Confluence",
+        "Telecommunications",
+        "Networking"
+      ],
+      "isVolunteer": true
     },
     {
       "role": "Casual",
@@ -445,8 +449,13 @@
         "Applied detail-oriented execution and process discipline in hardware lifecycle and deployment tasks.",
         "Built early reliability habits that carried into later software and infrastructure delivery roles."
       ],
-      "tags": [],
-      "techTags": []
+      "tags": [ ],
+      "techTags": [
+        "Networking",
+        "Telecommunications",
+        "Hardware Deployment",
+        "Refurbishment"
+      ]
     },
     {
       "role": "Crew Member",
@@ -479,7 +488,7 @@
         "Cash Handling",
         "Hygiene and Safety"
       ],
-      "techTags": []
+      "techTags": [ ]
     },
     {
       "role": "Volunteer Barista",
@@ -498,7 +507,7 @@
         "Collaborated with the team to balance service speed, quality, and customer engagement.",
         "Contributed to local business continuity through reliable volunteer support and service-minded execution."
       ],
-      "softwareDescription": [],
+      "softwareDescription": [ ],
       "tags": [
         "Customer Service",
         "Communication",
@@ -508,9 +517,10 @@
         "Attention to Detail",
         "Cash Handling"
       ],
-      "techTags": []
+      "techTags": [ ],
+      "isVolunteer": true
     }
 
   ],
-  "lastEdited": "2026-04-24"
+  "lastEdited": "2026-10-13"
 }

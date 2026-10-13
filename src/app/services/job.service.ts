@@ -13,6 +13,7 @@ interface JobJsonItem {
   softwareDescription?: string[];
   tags?: string[];
   techTags?: string[];
+  isVolunteer?: boolean;
 }
 
 interface JobsResponse {
@@ -40,7 +41,8 @@ export class JobService {
               businessDescription: item.businessDescription,
               softwareDescription: item.softwareDescription,
               tags: item.tags,
-              techTags: item.techTags
+              techTags: item.techTags,
+              isVolunteer: item.isVolunteer
             })
         )
       )

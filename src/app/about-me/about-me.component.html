@@ -7,9 +7,7 @@
 
   <div class="resume-header__content">
     <div class="print-action no-print">
-      <mat-checkbox
-        [checked]="compactPrintMode"
-        (change)="onCompactPrintModeChange($event)">
+      <mat-checkbox [checked]="compactPrintMode" (change)="onCompactPrintModeChange($event)">
         Compact Print
       </mat-checkbox>
 
@@ -18,7 +16,7 @@
       </button>
     </div>
 
-    <div class="resume-mode no-print">
+    <!-- <div class="resume-mode no-print">
       <span class="resume-mode__label">Resume Mode</span>
       <mat-button-toggle-group [value]="resumeMode" (change)="onResumeModeChange($event)" aria-label="Resume mode">
         <mat-button-toggle value="business">Business</mat-button-toggle>
@@ -26,11 +24,11 @@
         <mat-button-toggle value="hospitality">Hospitality</mat-button-toggle>
         <mat-button-toggle value="full">Full</mat-button-toggle>
       </mat-button-toggle-group>
-    </div>
+    </div> -->
 
     <h1>Caleb Ardern</h1>
     @if (resumeMode !== 'hospitality') {
-      <h2>Solution Engineer | Technical Delivery & Integration Lead</h2>
+    <h2>Software Engineer - Customer-Facing Platforms & Applied Innovation</h2>
     }
     <p class="resume-header__email">
       Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
@@ -48,9 +46,9 @@
     </p>
 
     @if (resumeMode !== 'hospitality') {
-      <p class="resume-header__degree" [class.no-print]="compactPrintMode">
-        <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-      </p>
+    <p class="resume-header__degree" [class.no-print]="compactPrintMode">
+      <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+    </p>
     }
 
     <p class="resume-header__summary">
@@ -59,60 +57,94 @@
   </div>
 </section>
 
-<section class="resume-section pair">
-  <div class="element" *ngFor="let section of activeResumeContent.focusSections">
-    <h3>Focus: {{ section.title }}</h3>
-    <ul class="resume-list">
-      <li *ngFor="let bullet of section.bullets">{{ bullet }}</li>
-    </ul>
-  </div>
-</section>
-
-<section class="resume-section pair">
-  <div class="element">
-    <h3>Core Strengths</h3>
-    <ul class="resume-list">
-      <li *ngFor="let strength of activeResumeContent.coreStrengths">{{ strength }}</li>
-    </ul>
-  </div>
-
-
+<section [class.no-print]="!compactPrintMode" >
+  <h2>Technical Skills</h2>
+  Expertise:
+  <ul>
+    <li>Backend: C#, .NET, Node.js, REST APIs, Microservices</li>
+    <li>Frontend: Angular, TypeScript (developing familiarity with React), CSS, SCSS</li>
+    <li>Cloud & DevOps: AWS, Docker, CI/CD, Serverless, CloudFormation</li>
+    <li>Databases: SQL, NoSQL, PostgreSQL, DynamoDB</li>
+    <li>Identity & Security: OAuth, SAML, OpenID Connect, DevSecOps</li>
+    <li>Product & Delivery: Integration, Scoping, Solution Design, Delivery</li>
+  </ul>
 </section>
 
 <div>
+  <div class="view-mode-toggle no-print">
+    <mat-button-toggle-group [value]="viewMode" (change)="onViewModeChange($event)" aria-label="View mode">
+      <mat-button-toggle value="resume">Resume View</mat-button-toggle>
+      <mat-button-toggle value="timeline">Timeline View</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  @if (viewMode === 'resume') {
   <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
 
   <section [class.no-print]="compactPrintMode">
     <hr />
 
-    <h1>Leadership and Collaboration</h1>
-    <div class="attributes">
-      <div class="attribute-item">
-        <h3>Cross-Functional Leadership</h3>
-        <p>I align engineering, operations, IT, and stakeholder groups around clear priorities and practical execution.</p>
-      </div>
+    <h1>Certifications</h1>
 
-      <div class="attribute-item">
-        <h3>Structured Problem Solving</h3>
-        <p>I break down ambiguous problems, evaluate tradeoffs, and guide teams toward decisions that balance user and business outcomes.</p>
+    <div class="certifications">
+      <div class="cert-item">
+        <b>AWS Certified Cloud Practitioner</b>
+        <p class="cert-meta">Amazon Web Services</p>
+        <img src="./assets/img/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner">
+        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
+          data-share-badge-host="https://www.credly.com">
+        </div>
+        <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
       </div>
-
-      <div class="attribute-item">
-        <h3>Communication and Team Enablement</h3>
-        <p>I communicate clearly across audiences, reduce delivery friction, and support teams through knowledge sharing and collaboration.</p>
+      <div class="cert-item">
+        <b>Provide First Aid</b>
+        <p class="cert-meta">Issued: 11 June 2026</p>
+        <ul class="cert-units">
+          <li>HLTAID011 Provide First Aid <span class="cert-renew">(renew every 3 years)</span></li>
+          <li>HLTAID010 Provide Basic Emergency Life Support</li>
+          <li>HLTAID009 Provide Cardiopulmonary Resuscitation <span class="cert-renew">(renew yearly)</span></li>
+        </ul>
+      </div>
+      <div class="cert-item">
+        <b>First Aid Certificate</b>
+        <p class="cert-meta">Issued: 16 July 2023 &bull; Expires: 16 July 2026</p>
+      </div>
+      <div class="cert-item">
+        <b>International Certificate for Operators of Pleasure Craft</b>
+        <p class="cert-meta">Issued: 1 July 2025 &bull; Expires: 1 July 2030</p>
+      </div>
+      <div class="cert-item">
+        <b>Marine Radio Short Range Certificate</b>
+        <p class="cert-meta">Issued: 18 November 2024</p>
+      </div>
+      <div class="cert-item">
+        <b>Powerboat Level 2</b>
+        <p class="cert-meta">Issued: 25 June 2023</p>
+      </div>
+      <div class="cert-item">
+        <b>Safe and Fun – Safeguarding Awareness Training</b>
+        <p class="cert-meta">Issued: 27 March 2024</p>
+      </div>
+      <div class="cert-item">
+        <b>Safety Boat Certificate</b>
+        <p class="cert-meta">Issued: 2 September 2023</p>
+      </div>
+      <div class="cert-item">
+        <b>Sailing Scheme Instructor</b>
+        <p class="cert-meta">Issued: 5 April 2024 &bull; Expires: 5 April 2029</p>
+        <ul class="cert-units">
+          <li>Dinghy Instructor <span class="cert-renew">(expires 5 April 2029)</span></li>
+        </ul>
+      </div>
+      <div class="cert-item">
+        <b>Fire Warden Training</b>
+        <p class="cert-meta">Windracers</p>
       </div>
     </div>
 
     <hr />
 
     <h1>Education</h1>
-
-    <div>
-      <b>Amazon Web Services</b>
-      <p>
-        <img src="./assets/img/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner">
-      </p>
-    </div>
 
     <div>
       <p><b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b></p>
@@ -125,23 +157,14 @@
       2017 - 2020<br />
     </div>
 
-    <p><b>Diploma of Networking In Information Technology</b></p>
+    <p><b>Diploma and Certificate IV of Networking in Information Technology</b></p>
     <div>
-      Tafe NSW - Ourimbah campus <br />
+      TAFE NSW - Ourimbah campus <br />
       2016
-    </div>
-
-    <p><b>Certificate IV of Networking In Information Technology</b></p>
-    <div>
-      Tafe NSW - Ourimbah campus <br />
-      2016
-    </div>
-
-    <div>
-      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="21dfa770-50bd-4e08-b620-7e8699847a21"
-        data-share-badge-host="https://www.credly.com">
-      </div>
-      <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
     </div>
   </section>
+  } @else {
+  <app-timeline [certs]="certs" [milestones]="milestones"></app-timeline>
+  }
+
 </div>

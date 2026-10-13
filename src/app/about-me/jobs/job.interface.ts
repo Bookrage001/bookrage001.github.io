@@ -10,4 +10,5 @@ export interface JobInterface {
   softwareDescription?: string[],
   tags?: Array<string>;
   techTags?: Array<string>;
+  isVolunteer?: boolean;
 }
