@@ -7,6 +7,7 @@ import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/
 import { JobsComponent } from './jobs/jobs.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { CertItem } from './timeline/cert-item.interface';
+import { MilestoneItem } from './timeline/milestone-item.interface';
 import { PrintService } from '../services/print.service';
 
 type ResumeMode = 'full' | 'business' | 'technology' | 'hospitality';
@@ -167,6 +168,13 @@ export class AboutMeComponent {
       ]
     }
   };
+
+  // Shown as labelled lines across the career timeline; they also split a year
+  // so roles either side of a move sit in separate rows.
+  readonly milestones: MilestoneItem[] = [
+    { label: 'Moved back to Australia', date: new Date(2026, 1, 1) }, // Feb 2026, after Windracers
+    { label: 'Moved to the UK', date: new Date(2022, 0, 15) } // Jan 2022, between CBA and PGL
+  ];
 
   readonly certs: CertItem[] = [
     {

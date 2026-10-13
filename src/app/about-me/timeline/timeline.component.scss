@@ -155,6 +155,57 @@ $row-gap: 1.1rem;
 }
 
 // ===========================================================================
+// Milestones: a labelled line across the full width (e.g. moving country)
+// ===========================================================================
+
+.timeline__milestone {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2rem 0 calc(#{$row-gap} + 0.2rem);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 2px dashed #e0a24a;
+  }
+}
+
+.timeline__milestone-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #8a5300;
+  background: #fff4e2;
+  border: 1px solid #e0a24a;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  box-shadow: 0 4px 10px rgba(138, 83, 0, 0.12);
+
+  &::before {
+    content: '✈';
+    font-size: 0.85rem;
+  }
+}
+
+.timeline__milestone-date {
+  font-weight: 600;
+  text-transform: none;
+  color: #a46a14;
+}
+
+// ===========================================================================
 // Job lanes: a bar spanning the years a role ran, or a dot for a single year
 // ===========================================================================
 
