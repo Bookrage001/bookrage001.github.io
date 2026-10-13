@@ -85,17 +85,21 @@ $card-max-width: 320px;
 // Column header labels
 // ===========================================================================
 
-.timeline__track {
+// Track and body share one column template so the headers sit over their panes.
+// The cert pane spans the spine + right columns; its rows re-split that space
+// with the same gap, keeping the year pills under the spine.
+.timeline__track,
+.timeline__body {
   display: grid;
-  grid-template-columns: 1fr $spine-width 1fr;
-  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1fr) $spine-width minmax(0, 1fr);
+  gap: 0 0.75rem;
+}
+
+.timeline__track {
   margin-bottom: 0.5rem;
 }
 
 .timeline__body {
-  display: grid;
-  grid-template-columns: 1fr calc(#{$spine-width} + 1fr);
-  gap: 0.75rem;
   align-items: start;
 }
 
@@ -104,6 +108,7 @@ $card-max-width: 320px;
 }
 
 .timeline__cert-pane {
+  grid-column: 2 / -1;
   min-width: 0;
 }
 
@@ -163,7 +168,7 @@ $card-max-width: 320px;
   padding: 0.25rem 0;
   margin-bottom: 0.45rem;
 
-  &--left  { text-align: right; }
+  &--left  { text-align: left; padding-left: 1rem; }
   &--right { text-align: left; }
   &--spine { text-align: center; }
 }
@@ -347,8 +352,12 @@ $card-max-width: 320px;
   }
 
   .timeline__body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.9rem;
+  }
+
+  .timeline__cert-pane {
+    grid-column: auto;
   }
 
   .timeline__row {
@@ -357,7 +366,6 @@ $card-max-width: 320px;
   }
 
   .timeline__spine {
-    grid-area: spine;
     flex-direction: row;
     justify-content: flex-start;
     gap: 0.5rem;
