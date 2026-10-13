@@ -86,6 +86,8 @@ $card-max-width: 320px;
 // ===========================================================================
 
 $row-gap: 1.1rem;
+// Vertical point on each job card where its connector meets its lane bar.
+$card-anchor: 1.1rem;
 
 .timeline__grid {
   display: grid;
@@ -120,7 +122,8 @@ $row-gap: 1.1rem;
 
 // Each year cell owns the bottom gap so bars and the axis run through it.
 .timeline__year,
-.timeline__side {
+.timeline__side,
+.timeline__job-cell--last {
   padding-bottom: $row-gap;
 }
 
@@ -212,10 +215,13 @@ $row-gap: 1.1rem;
 .timeline__bar {
   --job-color: var(--timeline-job);
 
+  position: relative;
+  z-index: 1;
   align-self: stretch;
   justify-self: center;
   width: 6px;
-  margin: 0.55rem 0 calc(#{$row-gap} + 0.2rem);
+  // Runs from the top of the end-date slice down into its card's row, stopping at the connector.
+  margin: 0.55rem 0 calc(-1 * #{$card-anchor} - 3px);
   border-radius: 99px;
   background: var(--job-color);
   opacity: 0.55;
@@ -226,7 +232,7 @@ $row-gap: 1.1rem;
     align-self: start;
     width: 12px;
     height: 12px;
-    margin-bottom: 0;
+    margin: calc(#{$card-anchor} - 8px) 0 0; // centre the 16px dot (incl. border) on the connector
     border-radius: 50%;
     border: 2px solid #ffffff;
     box-shadow: 0 0 0 1px var(--job-color);
@@ -244,16 +250,13 @@ $row-gap: 1.1rem;
 // Side columns
 // ===========================================================================
 
-// Cards hug the axis from both sides.
+// Certification cards sit right of the axis; job cards hug it from the left
+// via .timeline__job-cell.
 .timeline__side {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   min-width: 0;
-
-  &--left {
-    align-items: flex-end;
-  }
 
   &--right {
     align-items: flex-start;
@@ -284,7 +287,14 @@ $row-gap: 1.1rem;
   }
 }
 
-// --job-color is set per card to match its lane bar.
+.timeline__job-cell {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+  padding-bottom: 0.5rem;
+}
+
+// --job-color and --lane are set per card to match its lane bar.
 .timeline-card--job {
   --job-color: var(--timeline-job);
 
@@ -296,6 +306,30 @@ $row-gap: 1.1rem;
   &.is-active {
     border-color: var(--job-color);
     box-shadow: 0 0 0 2px var(--job-color), 0 12px 20px rgba(17, 48, 82, 0.1);
+  }
+}
+
+// Connector from the card's right edge to the centre of its lane.
+// Width = column gap + the lanes before it (14px + gap each) + half a lane.
+.timeline__job-cell .timeline-card--job {
+  --lane: 0;
+
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(#{$card-anchor} - 1px);
+    left: calc(100% + 1px);
+    width: calc(0.6rem + var(--lane) * (14px + 0.6rem) + 7px);
+    height: 2px;
+    background: var(--job-color);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  &.is-active::after {
+    opacity: 1;
   }
 }
 
@@ -443,17 +477,24 @@ $row-gap: 1.1rem;
     padding-bottom: 0.5rem;
   }
 
-  .timeline__side {
-    &--left,
-    &--right {
-      align-items: stretch;
-
-      .timeline-card { max-width: 100%; }
-    }
+  .timeline__side--right {
+    align-items: stretch;
 
     &:empty { display: none; }
   }
 
+  .timeline__job-cell,
+  .timeline__job-cell--last {
+    display: block;
+    padding-bottom: 0.5rem;
+  }
+
+  .timeline__job-cell .timeline-card,
+  .timeline__side--right .timeline-card {
+    max-width: 100%;
+  }
+
+  .timeline__job-cell .timeline-card--job::after,
   .timeline__grid .timeline__side--right .timeline-card--cert::before {
     display: none;
   }

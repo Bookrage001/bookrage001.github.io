@@ -28,7 +28,7 @@
              [class.is-active]="hoveredJobKey === lj.key"
              [style.--job-color]="lj.color"
              [style.grid-column]="lj.lane + 2"
-             [style.grid-row]="lj.gridRow"
+             [style.grid-row]="lj.barRow"
              [title]="lj.job.data.role + ' · ' + lj.job.data.company"
              (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)"></div>
       }
@@ -43,15 +43,18 @@
           </div>
         } @else {
           <div class="timeline__year" [class.timeline__year--empty]="row.isEmpty"
-               [style.grid-column]="model.axisColumn" [style.grid-row]="row.gridRow">
+               [style.grid-column]="model.axisColumn" [style.grid-row]="row.gridRows">
             <div class="timeline__year-pill">{{ row.year }}</div>
           </div>
 
-          <div class="timeline__side timeline__side--left" [style.grid-column]="1" [style.grid-row]="row.gridRow">
-            @for (lj of row.jobs; track lj.key) {
+          <!-- One cell per job card so its bar can end on the card's own row -->
+          @for (lj of row.jobs; track lj.key; let last = $last) {
+            <div class="timeline__job-cell" [class.timeline__job-cell--last]="last"
+                 [style.grid-column]="1" [style.grid-row]="lj.cardRow">
               <div class="timeline-card timeline-card--job"
                    [class.is-active]="hoveredJobKey === lj.key"
                    [style.--job-color]="lj.color"
+                   [style.--lane]="lj.lane"
                    (mouseenter)="setHoveredJob(lj.key)" (mouseleave)="setHoveredJob(null)">
                 <div class="timeline-card__title">{{ lj.job.data.role }}</div>
                 <div class="timeline-card__sub">{{ lj.job.data.company }}</div>
@@ -59,10 +62,10 @@
                   {{ getDateRangeLabel(lj.job) }} ({{ getDurationLabel(lj.job.data.startDate, lj.job.data.endDate) }})
                 </div>
               </div>
-            }
-          </div>
+            </div>
+          }
 
-          <div class="timeline__side timeline__side--right" [style.grid-column]="model.axisColumn + 1" [style.grid-row]="row.gridRow">
+          <div class="timeline__side timeline__side--right" [style.grid-column]="model.axisColumn + 1" [style.grid-row]="row.gridRows">
             @for (item of row.certs; track item.cert.name) {
               <div class="timeline-card timeline-card--cert">
                 <div class="timeline-card__title">{{ item.cert.name }}</div>

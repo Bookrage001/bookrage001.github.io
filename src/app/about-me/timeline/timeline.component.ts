@@ -19,17 +19,22 @@ interface LaneJob {
   lane: number;
   color: string;
   isDot: boolean;
-  // CSS grid-row span from the slice the job ended in (top) down to the one it started in
-  gridRow: string;
+  // Grid row holding this job's card, inside the slice the job started in
+  cardRow: number;
+  // Bar: from the top of the slice the job ended in down to its card's row; a dot sits on the card's row
+  barRow: string;
 }
 
-// A slice of time shown as one grid row: a calendar year, or part of one when
-// a milestone falls inside it (e.g. 2022 before and after moving to the UK).
+// A slice of time: a calendar year, or part of one when a milestone falls inside
+// it (e.g. 2022 before and after moving to the UK). It gets one grid row per job
+// card that starts in it, so every bar can end exactly at its own card.
 interface SliceEntry {
   kind: 'slice';
   key: string;
   year: number;
-  gridRow: number;
+  firstRow: number;
+  // CSS grid-row span covering all of the slice's rows, for the year pill and certifications
+  gridRows: string;
   isEmpty: boolean;
   // Jobs that started during this slice (the bottom of their bar)
   jobs: LaneJob[];
@@ -180,7 +185,6 @@ export class TimelineComponent {
 
     const entries: TimelineEntry[] = [];
     const slices: Slice[] = [];
-    let gridRow = HEADER_ROWS + 1;
     for (let i = 0; i < sortedBoundaries.length - 1; i++) {
       const end = sortedBoundaries[i];
       const start = sortedBoundaries[i + 1];
@@ -188,7 +192,8 @@ export class TimelineComponent {
         kind: 'slice',
         key: `slice-${start}`,
         year: new Date(start).getFullYear(),
-        gridRow: gridRow++,
+        firstRow: 0,
+        gridRows: '',
         isEmpty: true,
         jobs: [],
         certs: []
@@ -198,38 +203,26 @@ export class TimelineComponent {
 
       const milestone = milestoneByTime.get(start);
       if (milestone) {
-        entries.push({ kind: 'milestone', key: `milestone-${start}`, milestone, gridRow: gridRow++ });
+        entries.push({ kind: 'milestone', key: `milestone-${start}`, milestone, gridRow: 0 });
       }
     }
 
     const sliceAt = (time: number): Slice =>
       slices.find(s => s.start <= time && time < s.end) ?? (time < slices[slices.length - 1].start ? slices[slices.length - 1] : slices[0]);
 
-    // Greedy interval colouring over grid rows: a job reuses the first lane whose
-    // previous bar sits entirely below it, so bars never share a row.
-    const laneTopRows: number[] = [];
-    const laneJobs: LaneJob[] = [...jobs]
-      .sort((a, b) => startOf(a) - startOf(b))
-      .map(job => {
-        const top = sliceAt(endOf(job)).entry;
-        const bottom = sliceAt(startOf(job)).entry;
-        let lane = laneTopRows.findIndex(laneTop => bottom.gridRow < laneTop);
-        if (lane === -1) {
-          lane = laneTopRows.length;
-        }
-        laneTopRows[lane] = top.gridRow;
-
-        const laneJob: LaneJob = {
-          key: `${job.data.role}-${job.data.company}-${job.data.startDate}`,
-          job,
-          lane,
-          color: LANE_COLORS[lane % LANE_COLORS.length],
-          isDot: top === bottom,
-          gridRow: `${top.gridRow} / ${bottom.gridRow + 1}`
-        };
-        bottom.jobs.push(laneJob);
-        return laneJob;
-      });
+    const laneJobs: LaneJob[] = jobs.map(job => {
+      const laneJob: LaneJob = {
+        key: `${job.data.role}-${job.data.company}-${job.data.startDate}`,
+        job,
+        lane: 0,
+        color: '',
+        isDot: sliceAt(startOf(job)) === sliceAt(endOf(job)),
+        cardRow: 0,
+        barRow: ''
+      };
+      sliceAt(startOf(job)).entry.jobs.push(laneJob);
+      return laneJob;
+    });
 
     for (const cert of [...datedCerts].sort((a, b) => b.issuedDate!.getTime() - a.issuedDate!.getTime())) {
       sliceAt(cert.issuedDate!.getTime()).entry.certs.push({
@@ -238,10 +231,35 @@ export class TimelineComponent {
       });
     }
 
-    // Newest start first within a slice, matching the timeline's top-to-bottom order.
-    for (const { entry } of slices) {
+    // Lay out grid rows top to bottom: one per job card in a slice (at least one),
+    // newest start first, and one per milestone.
+    let gridRow = HEADER_ROWS + 1;
+    for (const entry of entries) {
+      if (entry.kind === 'milestone') {
+        entry.gridRow = gridRow++;
+        continue;
+      }
       entry.jobs.sort((a, b) => startOf(b.job) - startOf(a.job) || endOf(b.job) - endOf(a.job));
       entry.isEmpty = !entry.jobs.length && !entry.certs.length;
+      entry.firstRow = gridRow;
+      entry.jobs.forEach((lj, index) => lj.cardRow = entry.firstRow + index);
+      gridRow += Math.max(1, entry.jobs.length);
+      entry.gridRows = `${entry.firstRow} / ${gridRow}`;
+    }
+
+    // Greedy interval colouring over grid rows: a job reuses the first lane whose
+    // previous bar sits entirely below it, so bars never share a row.
+    const laneTopRows: number[] = [];
+    for (const lj of [...laneJobs].sort((a, b) => startOf(a.job) - startOf(b.job))) {
+      const topRow = lj.isDot ? lj.cardRow : sliceAt(endOf(lj.job)).entry.firstRow;
+      let lane = laneTopRows.findIndex(laneTop => lj.cardRow < laneTop);
+      if (lane === -1) {
+        lane = laneTopRows.length;
+      }
+      laneTopRows[lane] = topRow;
+      lj.lane = lane;
+      lj.color = LANE_COLORS[lane % LANE_COLORS.length];
+      lj.barRow = lj.isDot ? `${lj.cardRow}` : `${topRow} / ${lj.cardRow}`;
     }
 
     const laneCount = Math.max(1, laneTopRows.length);
