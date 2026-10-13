@@ -31,7 +31,7 @@ interface SliceEntry {
   year: number;
   gridRow: number;
   isEmpty: boolean;
-  // Jobs whose bar starts (at the top) in this slice, i.e. ended during it
+  // Jobs that started during this slice (the bottom of their bar)
   jobs: LaneJob[];
   certs: TimelineCert[];
 }
@@ -227,7 +227,7 @@ export class TimelineComponent {
           isDot: top === bottom,
           gridRow: `${top.gridRow} / ${bottom.gridRow + 1}`
         };
-        top.jobs.push(laneJob);
+        bottom.jobs.push(laneJob);
         return laneJob;
       });
 
@@ -238,9 +238,9 @@ export class TimelineComponent {
       });
     }
 
-    // Newest first within a slice, matching the timeline's top-to-bottom order.
+    // Newest start first within a slice, matching the timeline's top-to-bottom order.
     for (const { entry } of slices) {
-      entry.jobs.sort((a, b) => endOf(b.job) - endOf(a.job) || startOf(b.job) - startOf(a.job));
+      entry.jobs.sort((a, b) => startOf(b.job) - startOf(a.job) || endOf(b.job) - endOf(a.job));
       entry.isEmpty = !entry.jobs.length && !entry.certs.length;
     }
 
