@@ -46,7 +46,7 @@ export class AboutMeComponent {
 
   private resumeContentByMode: Record<ResumeMode, ResumeSectionContent> = {
     full: {
-      summary: 'Full-stack Software Engineer with a strong ownership mindset, shipping features from concept through production, validating solutions directly with customers, and improving reliability in mission-critical systems. Brings applied innovation training and practical AI-assisted engineering coaching into delivery teams.',
+      summary: 'Full-stack software engineer with hands-on delivery experience across mission-critical systems for uncrewed aircraft operations, including real-time data pipelines processing gigabytes of mission data and supporting a fleet of 50+ operational aircraft. Combines direct customer and stakeholder collaboration with a technical stack spanning Angular, TypeScript, Node.js, .NET, and AWS, backed by a Bachelor of Creative Intelligence and Innovation. Has coached a junior developer on practical AI-assisted engineering practices.',
       focusSections: [
         {
           title: 'Product Development',
@@ -220,7 +220,8 @@ export class AboutMeComponent {
     },
     {
       name: 'AWS Certified Cloud Practitioner',
-      issuer: 'Amazon Web Services'
+      issuer: 'Amazon Web Services',
+      notes: ['Previously held, lapsed']
     },
     {
       name: 'Fire Warden Training',
