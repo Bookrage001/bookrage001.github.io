@@ -172,8 +172,8 @@ export class AboutMeComponent {
   // Shown as labelled lines across the career timeline; they also split a year
   // so roles either side of a move sit in separate rows.
   readonly milestones: MilestoneItem[] = [
-    { label: 'Moved back to Australia', date: new Date(2026, 1, 1) }, // Feb 2026, after Windracers
-    { label: 'Moved to the UK', date: new Date(2022, 0, 15) } // Jan 2022, between CBA and PGL
+    { label: 'Moved back to Australia', date: new Date(2026, 1, 1) }, // Feb 2026
+    { label: 'Moved to the UK', date: new Date(2022, 1, 1) } // Feb 2022
   ];
 
   readonly certs: CertItem[] = [
