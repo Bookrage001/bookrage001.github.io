@@ -85,11 +85,9 @@ $card-max-width: 320px;
 // Column header labels
 // ===========================================================================
 
-// Track and body share one column template so the headers sit over their panes.
-// The cert pane spans the spine + right columns; its rows re-split that space
-// with the same gap, keeping the year pills under the spine.
+// Header and every year row share one column template: experience | year | certifications.
 .timeline__track,
-.timeline__body {
+.timeline__row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) $spine-width minmax(0, 1fr);
   gap: 0 0.75rem;
@@ -99,64 +97,20 @@ $card-max-width: 320px;
   margin-bottom: 0.5rem;
 }
 
-.timeline__body {
-  align-items: start;
-}
-
-.timeline__experience-pane {
-  min-width: 0;
-}
-
-.timeline__cert-pane {
-  grid-column: 2 / -1;
-  min-width: 0;
-}
-
-.timeline__experience-list {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  padding-left: 1rem;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0.28rem;
-    top: 0.1rem;
-    bottom: 0.1rem;
-    width: 2px;
-    background: linear-gradient(180deg, #bcd4f1 0%, #c8e5d4 100%);
-    border-radius: 99px;
-  }
-
-  .timeline-card {
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: -0.98rem;
-      top: 1rem;
-      width: 0.45rem;
-      height: 0.45rem;
-      border-radius: 50%;
-      background: var(--timeline-job);
-      box-shadow: 0 0 0 3px #e8f1fc;
-    }
-  }
-}
-
 // ===========================================================================
 // Rows
 // ===========================================================================
 
 .timeline__row {
-  display: grid;
-  grid-template-columns: $spine-width 1fr;
-  gap: 0.75rem;
-  margin-bottom: 0.95rem;
+  // Padding rather than margin so the spine line runs through the gap to the next year.
+  padding-bottom: 1.1rem;
   align-items: start;
+
+  &:last-child {
+    padding-bottom: 0;
+
+    .timeline__spine::before { display: none; }
+  }
 }
 
 .timeline__col-label {
@@ -168,7 +122,7 @@ $card-max-width: 320px;
   padding: 0.25rem 0;
   margin-bottom: 0.45rem;
 
-  &--left  { text-align: left; padding-left: 1rem; }
+  &--left  { text-align: right; }
   &--right { text-align: left; }
   &--spine { text-align: center; }
 }
@@ -185,12 +139,13 @@ $card-max-width: 320px;
   align-self: stretch;
   position: relative;
   min-height: 100%;
+  margin-bottom: -1.1rem; // extend through the row's bottom padding
 
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    bottom: -0.95rem; // connect line through to next row's gap
+    bottom: 0;
     left: 50%;
     width: 2px;
     transform: translateX(-50%);
@@ -217,23 +172,43 @@ $card-max-width: 320px;
 // Side columns
 // ===========================================================================
 
+// Cards hug the spine from both sides.
 .timeline__side {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-width: 0;
+
+  &--left {
+    align-items: flex-end;
+  }
 
   &--right {
     align-items: flex-start;
   }
 }
 
-.timeline__cluster-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+// Compact markers for roles still running from an earlier year.
+.timeline__continuing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  max-width: $card-max-width;
+}
+
+.timeline__continuing-chip {
+  font-size: 0.72rem;
   color: var(--timeline-muted);
-  margin-bottom: 0.2rem;
+  border: 1px dashed #b8d0ec;
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  background: rgba(255, 255, 255, 0.6);
+
+  &::before {
+    content: '↑ ';
+    color: var(--timeline-job);
+  }
 }
 
 // ===========================================================================
@@ -291,6 +266,32 @@ $card-max-width: 320px;
   font-size: 0.75rem;
   color: var(--timeline-muted);
   margin-top: 0.2rem;
+}
+
+.timeline-card__during {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed #d5e3ee;
+}
+
+.timeline-card__during-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--timeline-muted);
+}
+
+.timeline-card__during-chip {
+  font-size: 0.72rem;
+  color: var(--timeline-job);
+  background: var(--timeline-job-soft);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
 }
 
 .timeline-card__notes {
@@ -351,46 +352,36 @@ $card-max-width: 320px;
     display: none;
   }
 
-  .timeline__body {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.9rem;
-  }
-
-  .timeline__cert-pane {
-    grid-column: auto;
-  }
-
+  // Stack each year: pill, then that year's jobs, then its certifications.
   .timeline__row {
-    grid-template-columns: 1fr;
-    margin-bottom: 0.8rem;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.5rem;
+    padding-bottom: 1rem;
   }
 
   .timeline__spine {
+    order: -1;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 0.5rem;
+    margin-bottom: 0;
 
     &::before { display: none; }
   }
 
-  .timeline__experience-list {
-    padding-left: 0;
-
-    &::before {
-      display: none;
-    }
-
-    .timeline-card::before {
-      display: none;
-    }
-  }
-
   .timeline__side {
+    &--left,
     &--right {
       align-items: stretch;
 
       .timeline-card { max-width: 100%; }
     }
+
+    &:empty { display: none; }
+  }
+
+  .timeline__continuing {
+    justify-content: flex-start;
+    max-width: 100%;
   }
 
   .timeline__undated-list .timeline-card { max-width: 100%; }
