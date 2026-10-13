@@ -7,9 +7,7 @@
 
   <div class="resume-header__content">
     <div class="print-action no-print">
-      <mat-checkbox
-        [checked]="compactPrintMode"
-        (change)="onCompactPrintModeChange($event)">
+      <mat-checkbox [checked]="compactPrintMode" (change)="onCompactPrintModeChange($event)">
         Compact Print
       </mat-checkbox>
 
@@ -18,7 +16,7 @@
       </button>
     </div>
 
-    <div class="resume-mode no-print">
+    <!-- <div class="resume-mode no-print">
       <span class="resume-mode__label">Resume Mode</span>
       <mat-button-toggle-group [value]="resumeMode" (change)="onResumeModeChange($event)" aria-label="Resume mode">
         <mat-button-toggle value="business">Business</mat-button-toggle>
@@ -26,11 +24,11 @@
         <mat-button-toggle value="hospitality">Hospitality</mat-button-toggle>
         <mat-button-toggle value="full">Full</mat-button-toggle>
       </mat-button-toggle-group>
-    </div>
+    </div> -->
 
     <h1>Caleb Ardern</h1>
     @if (resumeMode !== 'hospitality') {
-      <h2>Solution Engineer | Technical Delivery & Integration Lead</h2>
+    <h2>Software Engineer - Customer-Facing Platforms & Applied Innovation</h2>
     }
     <p class="resume-header__email">
       Email: <a href="mailto:Caleb.Ardern@bookrage001.com">Caleb.Ardern@bookrage001.com</a>
@@ -48,9 +46,9 @@
     </p>
 
     @if (resumeMode !== 'hospitality') {
-      <p class="resume-header__degree" [class.no-print]="compactPrintMode">
-        <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
-      </p>
+    <p class="resume-header__degree" [class.no-print]="compactPrintMode">
+      <b>Bachelor of Science in Information Technology and Bachelor of Creative Intelligence and Innovation</b>
+    </p>
     }
 
     <p class="resume-header__summary">
@@ -59,24 +57,17 @@
   </div>
 </section>
 
-<section class="resume-section pair">
-  <div class="element" *ngFor="let section of activeResumeContent.focusSections">
-    <h3>Focus: {{ section.title }}</h3>
-    <ul class="resume-list">
-      <li *ngFor="let bullet of section.bullets">{{ bullet }}</li>
-    </ul>
-  </div>
-</section>
-
-<section class="resume-section pair">
-  <div class="element">
-    <h3>Core Strengths</h3>
-    <ul class="resume-list">
-      <li *ngFor="let strength of activeResumeContent.coreStrengths">{{ strength }}</li>
-    </ul>
-  </div>
-
-
+<section [class.no-print]="!compactPrintMode" >
+  <h2>Technical Skills</h2>
+  Expertise:
+  <ul>
+    <li>Backend: C#, .NET, Node.js, REST APIs, Microservices</li>
+    <li>Frontend: Angular, TypeScript (developing familiarity with React), CSS, SCSS</li>
+    <li>Cloud & DevOps: AWS, Docker, CI/CD, Serverless, CloudFormation</li>
+    <li>Databases: SQL, NoSQL, PostgreSQL, DynamoDB</li>
+    <li>Identity & Security: OAuth, SAML, OpenID Connect, DevSecOps</li>
+    <li>Product & Delivery: Integration, Scoping, Solution Design, Delivery</li>
+  </ul>
 </section>
 
 <div>
@@ -88,29 +79,9 @@
   </div>
 
   @if (viewMode === 'resume') {
-    <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
+  <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
 
-    <section [class.no-print]="compactPrintMode">
-      <hr />
-
-    <h1>Leadership and Collaboration</h1>
-    <div class="attributes">
-      <div class="attribute-item">
-        <h3>Cross-Functional Leadership</h3>
-        <p>I align engineering, operations, IT, and stakeholder groups around clear priorities and practical execution.</p>
-      </div>
-
-      <div class="attribute-item">
-        <h3>Structured Problem Solving</h3>
-        <p>I break down ambiguous problems, evaluate tradeoffs, and guide teams toward decisions that balance user and business outcomes.</p>
-      </div>
-
-      <div class="attribute-item">
-        <h3>Communication and Team Enablement</h3>
-        <p>I communicate clearly across audiences, reduce delivery friction, and support teams through knowledge sharing and collaboration.</p>
-      </div>
-    </div>
-
+  <section [class.no-print]="compactPrintMode">
     <hr />
 
     <h1>Certifications</h1>
@@ -186,19 +157,14 @@
       2017 - 2020<br />
     </div>
 
-    <p><b>Diploma of Networking In Information Technology</b></p>
+    <p><b>Diploma and Certificate IV of Networking in Information Technology</b></p>
     <div>
-      Tafe NSW - Ourimbah campus <br />
-      2016
-    </div>
-
-    <p><b>Certificate IV of Networking In Information Technology</b></p>
-    <div>
-      Tafe NSW - Ourimbah campus <br />
+      TAFE NSW - Ourimbah campus <br />
       2016
     </div>
   </section>
   } @else {
-    <app-timeline [certs]="certs"></app-timeline>
+  <app-timeline [certs]="certs"></app-timeline>
   }
+
 </div>

@@ -104,8 +104,8 @@ export class HomeComponent {
     },
     {
       title: 'Volunteer App',
-      summary: 'Built and iterated a volunteer-focused application to make coordination, visibility, and day-to-day participation easier for community teams.',
-      outcome: 'Improved volunteer experience with clearer workflows and a practical digital home for ongoing engagement.',
+      summary: 'Built a volunteer operations platform to centralize coordination, improve visibility, and reduce day-to-day admin friction for community teams.',
+      outcome: 'Stronger volunteer engagement and more consistent delivery through clearer workflows and easier participation pathways.',
       route: '/products/volunteer-app'
     }
   ];

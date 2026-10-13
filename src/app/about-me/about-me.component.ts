@@ -40,12 +40,12 @@ export class AboutMeComponent {
   private printService = inject(PrintService);
   private cdr = inject(ChangeDetectorRef);
   compactPrintMode = false;
-  resumeMode: ResumeMode = 'technology';
+  resumeMode: ResumeMode = 'full';
   viewMode: ViewMode = 'resume';
 
   private resumeContentByMode: Record<ResumeMode, ResumeSectionContent> = {
     full: {
-      summary: 'Business-aligned product and delivery leader with a software engineering background. Experienced across product development, software delivery, and cross-functional stakeholder alignment. Identifies core business issues early and drives practical solutions that balance user needs, operational realities, and commercial outcomes.',
+      summary: 'Full-stack Software Engineer with a strong ownership mindset, shipping features from concept through production, validating solutions directly with customers, and improving reliability in mission-critical systems. Brings applied innovation training and practical AI-assisted engineering coaching into delivery teams.',
       focusSections: [
         {
           title: 'Product Development',
@@ -73,7 +73,7 @@ export class AboutMeComponent {
       ]
     },
     business: {
-      summary: 'Business analyst and delivery lead focused on business alignment and customer-first delivery for external and internal customers. Identifies root business issues, translates complex requirements into clear priorities, and leads aligned execution across technical and non-technical stakeholders.',
+      summary: 'Business Analyst and delivery lead aligning customer needs, operational constraints, and technical execution. Translates ambiguous requirements into prioritized backlog outcomes and drives cross-functional delivery.',
       focusSections: [
         {
           title: 'Business Analysis and Discovery',
@@ -105,13 +105,13 @@ export class AboutMeComponent {
       ]
     },
     technology: {
-      summary: 'Senior software engineer and technical delivery lead focused on solution implementation, platform delivery, and production reliability. Leads technical execution against business priorities while delivering dependable outcomes for external users and internal customers in modern web stacks and time-sensitive operational environments.',
+      summary: 'Software Engineer delivering customer-facing platforms across Angular, TypeScript, Node.js, .NET, and AWS, with strong ownership from discovery through production support, practical AI-assisted engineering patterns, and operational reliability.',
       focusSections: [
         {
           title: 'Solution Engineering and Delivery',
           bullets: [
-            'Led implementation of scalable features across frontend, backend, and integration layers for customer-facing workflows and internal operations.',
-            'Guided solution design decisions that balanced maintainability, delivery speed, and reliability.',
+            'Implemented scalable features across frontend, backend, and integration layers for customer-facing workflows and internal operations.',
+            'Delivered solution design decisions that balanced maintainability, delivery speed, and reliability.',
             'Established automated test coverage and CI/CD pipelines to reduce regressions and raise release confidence.',
             'Communicated technical decisions in plain language to keep non-technical stakeholders and internal customers aligned.'
           ]
@@ -136,7 +136,7 @@ export class AboutMeComponent {
       ]
     },
     hospitality: {
-      summary: 'Hard-working hospitality professional with experience in front-of-house operations, team coordination, and consistent service delivery under pressure. Known for high-effort execution, reliability across demanding shifts, and a strong team-first work ethic.',
+      summary: 'Hospitality professional with front-of-house and shift operations experience in high-volume venues. Known for reliable execution, calm issue resolution, and consistent guest service standards under pressure.',
       focusSections: [
         {
           title: 'Guest Experience and Service',
