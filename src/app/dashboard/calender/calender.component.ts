@@ -29,7 +29,7 @@ import {
   provideCalendar,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 interface EventColor { primary: string; secondary: string; }
 const colors: Record<string, EventColor> = {
