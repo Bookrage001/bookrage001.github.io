@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BigonotationComponent } from './bigonotation/bigonotation.component';
 
 @Component({
@@ -6,6 +6,7 @@ import { BigonotationComponent } from './bigonotation/bigonotation.component';
   templateUrl: './documentation.component.html',
   styleUrls: ['./documentation.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     BigonotationComponent
   ]
