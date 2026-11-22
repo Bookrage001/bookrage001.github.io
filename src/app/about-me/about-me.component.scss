@@ -148,6 +148,65 @@ img {
 }
 
 // ===========================================================================
+// View Mode Toggle
+// ===========================================================================
+
+.view-mode-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.75rem 0 0.5rem;
+}
+
+// ===========================================================================
+// Certifications
+// ===========================================================================
+
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1rem 0;
+}
+
+.cert-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid #dce6f0;
+  border-radius: 12px;
+  background: #fff;
+  max-width: 260px;
+
+  img {
+    max-width: 120px;
+    margin-top: 0.25rem;
+  }
+}
+
+.cert-meta {
+  margin: 0;
+  color: #425466;
+  font-size: 0.9rem;
+}
+
+.cert-units {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: #223648;
+
+  li {
+    margin-bottom: 0.3rem;
+  }
+}
+
+.cert-renew {
+  font-size: 0.8rem;
+  color: #657282;
+}
+
+// ===========================================================================
 // Attributes & Reference
 // ===========================================================================
 

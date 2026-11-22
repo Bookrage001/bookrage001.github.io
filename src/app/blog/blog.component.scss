@@ -1,6 +1,8 @@
 .content {
   display: flex;
-  width: 80vw;
+  // 80vw overflowed .page-content (already narrowed by the sidenav), pushing the blog off-centre.
+  width: min(100%, 80vw);
+  margin-inline: auto;
 }
 
 #blog {

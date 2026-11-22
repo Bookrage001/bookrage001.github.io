@@ -1,5 +1,7 @@
 # Project Guidelines
 
+> Coding standards (components, RxJS, typing, testing) and processes (branches, commits, PRs, pre-merge checks) live in [`CLAUDE.md`](../CLAUDE.md) at the repo root. This file covers architecture, build commands, and repo conventions — keep the two in sync rather than duplicating rules here.
+
 ## Code Style
 - Prefer Angular Material components and existing Material layout patterns for UI changes.
 - Follow the current Angular style in `src/app`: standalone components are the default for active app code, with SCSS styles and `app-` selectors.

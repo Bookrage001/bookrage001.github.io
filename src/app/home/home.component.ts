@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -31,6 +31,7 @@ interface HomeCaseStudy {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     RouterModule,
     MatButtonModule,
@@ -104,8 +105,8 @@ export class HomeComponent {
     },
     {
       title: 'Volunteer App',
-      summary: 'Built and iterated a volunteer-focused application to make coordination, visibility, and day-to-day participation easier for community teams.',
-      outcome: 'Improved volunteer experience with clearer workflows and a practical digital home for ongoing engagement.',
+      summary: 'Built a volunteer operations platform to centralize coordination, improve visibility, and reduce day-to-day admin friction for community teams.',
+      outcome: 'Stronger volunteer engagement and more consistent delivery through clearer workflows and easier participation pathways.',
       route: '/products/volunteer-app'
     }
   ];

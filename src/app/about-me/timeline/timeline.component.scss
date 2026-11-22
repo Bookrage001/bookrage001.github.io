@@ -1,0 +1,512 @@
+// ===========================================================================
+// Timeline Layout
+// ===========================================================================
+
+$card-max-width: 320px;
+
+.timeline {
+  --timeline-bg-top: #f6f9ff;
+  --timeline-bg-bottom: #eef6f2;
+  --timeline-ink: #1e2b38;
+  --timeline-muted: #5b6a7a;
+  --timeline-job: #0b63c9;
+  --timeline-job-soft: #d9eaff;
+  --timeline-cert: #1f8a4c;
+  --timeline-cert-soft: #dbf5e4;
+  --timeline-qualification: #3f51b5;
+  --timeline-qualification-soft: #e3e7fb;
+
+  margin: 1.5rem 0;
+  padding: clamp(0.9rem, 1.8vw, 1.35rem);
+  border: 1px solid #dce6f0;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top right, rgba(11, 99, 201, 0.08), transparent 55%),
+    radial-gradient(circle at bottom left, rgba(31, 138, 76, 0.08), transparent 58%),
+    linear-gradient(180deg, var(--timeline-bg-top) 0%, var(--timeline-bg-bottom) 100%);
+}
+
+.timeline__heading-wrap {
+  margin-bottom: 1rem;
+}
+
+.timeline__heading {
+  margin: 0;
+  font-size: clamp(1.02rem, 2vw, 1.24rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--timeline-ink);
+}
+
+.timeline__intro {
+  margin: 0.25rem 0 0;
+  font-size: 0.84rem;
+  color: var(--timeline-muted);
+}
+
+// ===========================================================================
+// Legend
+// ===========================================================================
+
+.timeline__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.timeline__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--timeline-muted);
+  padding: 0.18rem 0.6rem;
+  border: 1px solid #d5e3ee;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &--job::before { background: var(--timeline-job); }
+  &--volunteer::before { background: #b7791f; }
+  &--qualification::before { background: var(--timeline-qualification); }
+  &--cert::before { background: var(--timeline-cert); }
+}
+
+// ===========================================================================
+// Grid: job cards | job lanes | year axis | certifications
+// Column template is set inline from the number of lanes needed.
+// ===========================================================================
+
+$row-gap: 1.1rem;
+// Vertical point on each job card where its connector meets its lane bar.
+$card-anchor: 1.1rem;
+
+.timeline__grid {
+  display: grid;
+  column-gap: 0.6rem;
+  align-items: start;
+}
+
+.timeline__col-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--timeline-muted);
+  padding: 0.25rem 0;
+  margin-bottom: 0.6rem;
+
+  &--left  { text-align: right; }
+  &--right { text-align: left; }
+}
+
+// ===========================================================================
+// Year axis
+// ===========================================================================
+
+.timeline__axis {
+  align-self: stretch;
+  justify-self: center;
+  width: 2px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, #c6dcfa 0%, #c8e5d4 100%);
+}
+
+// Each year cell owns the bottom gap so bars and the axis run through it.
+.timeline__year,
+.timeline__side,
+.timeline__job-cell--last {
+  padding-bottom: $row-gap;
+}
+
+.timeline__year {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+
+  &--empty {
+    padding-bottom: 0.4rem;
+
+    .timeline__year-pill {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--timeline-muted);
+      box-shadow: none;
+    }
+  }
+}
+
+.timeline__year-pill {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--timeline-job);
+  background: #ffffff;
+  border: 1px solid #b8d0ec;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  box-shadow: 0 5px 12px rgba(18, 49, 84, 0.08);
+  white-space: nowrap;
+}
+
+// ===========================================================================
+// Milestones: a labelled line across the full width (e.g. moving country)
+// ===========================================================================
+
+.timeline__milestone {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2rem 0 calc(#{$row-gap} + 0.2rem);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 2px dashed #e0a24a;
+  }
+}
+
+.timeline__milestone-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #8a5300;
+  background: #fff4e2;
+  border: 1px solid #e0a24a;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  box-shadow: 0 4px 10px rgba(138, 83, 0, 0.12);
+
+  &::before {
+    content: '✈';
+    font-size: 0.85rem;
+  }
+}
+
+.timeline__milestone-date {
+  font-weight: 600;
+  text-transform: none;
+  color: #a46a14;
+}
+
+// ===========================================================================
+// Job lanes: a bar spanning the years a role ran, or a dot for a single year
+// ===========================================================================
+
+.timeline__bar {
+  --job-color: var(--timeline-job);
+
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  justify-self: center;
+  width: 6px;
+  // Runs from the top of the end-date slice down into its card's row, stopping at the connector.
+  margin: 0.55rem 0 calc(-1 * #{$card-anchor} - 3px);
+  border-radius: 99px;
+  background: var(--job-color);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 140ms ease, width 140ms ease;
+
+  &--dot {
+    align-self: start;
+    width: 12px;
+    height: 12px;
+    margin: calc(#{$card-anchor} - 8px) 0 0; // centre the 16px dot (incl. border) on the connector
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px var(--job-color);
+  }
+
+  &.is-active {
+    opacity: 1;
+    width: 8px;
+
+    &.timeline__bar--dot { width: 12px; }
+  }
+}
+
+// ===========================================================================
+// Side columns
+// ===========================================================================
+
+// Certification cards sit right of the axis; job cards hug it from the left
+// via .timeline__job-cell.
+.timeline__side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+
+  &--right {
+    align-items: flex-start;
+  }
+}
+
+// ===========================================================================
+// Cards
+// ===========================================================================
+
+.timeline-card {
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid #dce6f0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 16px rgba(19, 45, 74, 0.06);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  max-width: $card-max-width;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(17, 48, 82, 0.1);
+    border-color: #c6d8ea;
+  }
+}
+
+// Job cards hug the axis from the left; volunteering cards from the right.
+.timeline__job-cell {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+  padding-bottom: 0.5rem;
+
+  &--right {
+    justify-content: flex-start;
+  }
+}
+
+// --job-color and --lane-offset are set per card to match its lane bar.
+.timeline-card--job {
+  --job-color: var(--timeline-job);
+
+  border-left: 4px solid var(--job-color);
+  background:
+    linear-gradient(90deg, var(--timeline-job-soft) 0, var(--timeline-job-soft) 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
+    rgba(255, 255, 255, 0.94);
+
+  &.is-active {
+    border-color: var(--job-color);
+    box-shadow: 0 0 0 2px var(--job-color), 0 12px 20px rgba(17, 48, 82, 0.1);
+  }
+}
+
+.timeline-card--volunteer {
+  background:
+    linear-gradient(90deg, #fbeed7 0, #fbeed7 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
+    rgba(255, 255, 255, 0.94);
+}
+
+// Connector from the card's inner edge to the centre of its lane.
+// Width = column gap + the lanes in between (14px + gap each) + half a lane.
+.timeline__job-cell .timeline-card--job {
+  --lane-offset: 0;
+
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(#{$card-anchor} - 1px);
+    left: calc(100% + 1px);
+    width: calc(0.6rem + var(--lane-offset) * (14px + 0.6rem) + 7px);
+    height: 2px;
+    background: var(--job-color);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  // Volunteering sits right of the axis, so its connector leaves from the left
+  // edge, outside the 4px left border.
+  &.timeline-card--volunteer::after {
+    left: auto;
+    right: calc(100% + 4px);
+  }
+
+  &.is-active::after {
+    opacity: 1;
+  }
+}
+
+.timeline-card--cert {
+  border-left: 4px solid var(--timeline-cert);
+  background:
+    linear-gradient(90deg, var(--timeline-cert-soft) 0, var(--timeline-cert-soft) 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
+    rgba(255, 255, 255, 0.94);
+}
+
+// Certifications are one-off events: a dot on the year axis beside each card.
+// Offset = column gap + any volunteer lanes (14px + gap each) + half the axis
+// column + the card's left border + half the dot.
+.timeline__grid .timeline__side--right .timeline-card--cert {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(-0.6rem - var(--volunteer-lanes, 0) * (14px + 0.6rem) - 2.25rem - 4px - 6px);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--timeline-cert);
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px var(--timeline-cert);
+    box-sizing: border-box;
+    transform: translateY(-50%);
+  }
+
+  &.timeline-card--qualification::before {
+    background: var(--timeline-qualification);
+    box-shadow: 0 0 0 1px var(--timeline-qualification);
+  }
+}
+
+.timeline-card--qualification {
+  border-left-color: var(--timeline-qualification);
+  background:
+    linear-gradient(90deg, var(--timeline-qualification-soft) 0, var(--timeline-qualification-soft) 0.45rem, rgba(255, 255, 255, 0) 0.45rem),
+    rgba(255, 255, 255, 0.94);
+}
+
+.timeline-card__title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--timeline-ink);
+  line-height: 1.35;
+}
+
+.timeline-card__sub {
+  font-size: 0.8rem;
+  color: #36495d;
+  margin-top: 0.15rem;
+}
+
+.timeline-card__dates {
+  font-size: 0.75rem;
+  color: var(--timeline-muted);
+  margin-top: 0.2rem;
+}
+
+.timeline-card__notes {
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.75rem;
+  color: #36495d;
+
+  li { margin-bottom: 0.15rem; }
+}
+
+// ===========================================================================
+// Undated section
+// ===========================================================================
+
+.timeline__undated {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #cfdce8;
+}
+
+.timeline__undated-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--timeline-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.timeline__undated-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  .timeline-card { max-width: 260px; }
+}
+
+// ===========================================================================
+// Responsive: Mobile (≤ 600px)
+// ===========================================================================
+
+@media (max-width: 600px) {
+  .timeline {
+    padding: 0.85rem;
+    border-radius: 12px;
+  }
+
+  .timeline__heading-wrap {
+    margin-bottom: 0.8rem;
+  }
+
+  .timeline__intro {
+    font-size: 0.78rem;
+  }
+
+  // Stack in DOM order: each year's pill, then its jobs, then its certifications.
+  .timeline__grid {
+    display: block;
+  }
+
+  .timeline__col-label,
+  .timeline__axis,
+  .timeline__bar,
+  .timeline__year--empty {
+    display: none;
+  }
+
+  .timeline__year {
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+  }
+
+  .timeline__side--right {
+    align-items: stretch;
+
+    &:empty { display: none; }
+  }
+
+  .timeline__job-cell,
+  .timeline__job-cell--last {
+    display: block;
+    padding-bottom: 0.5rem;
+  }
+
+  .timeline__job-cell .timeline-card,
+  .timeline__side--right .timeline-card {
+    max-width: 100%;
+  }
+
+  .timeline__job-cell .timeline-card--job::after,
+  .timeline__grid .timeline__side--right .timeline-card--cert::before {
+    display: none;
+  }
+
+  .timeline__undated-list .timeline-card { max-width: 100%; }
+}
