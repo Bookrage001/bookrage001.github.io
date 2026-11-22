@@ -1,6 +1,6 @@
 
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   startOfDay,
@@ -29,7 +29,7 @@ import {
   provideCalendar,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 interface EventColor { primary: string; secondary: string; }
 const colors: Record<string, EventColor> = {
@@ -53,6 +53,7 @@ const colors: Record<string, EventColor> = {
   styleUrls: ['./calender.component.scss'],
   standalone: true,
   imports: [CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, FlexLayoutModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
 })
 export class CalenderComponent implements OnInit, AfterViewInit {

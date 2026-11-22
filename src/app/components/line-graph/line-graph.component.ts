@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import * as echarts from 'echarts';
 
 
@@ -6,6 +6,7 @@ import * as echarts from 'echarts';
   selector: 'app-line-graph',
   templateUrl: './line-graph.component.html',
   styleUrls: ['./line-graph.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true
 })
 export class LineGraphComponent implements AfterViewInit, OnChanges, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { LineGraphComponent } from '../../components/line-graph/line-graph.component';
 
 @Component({
@@ -6,6 +6,7 @@ import { LineGraphComponent } from '../../components/line-graph/line-graph.compo
   templateUrl: './bigonotation.component.html',
   styleUrls: ['./bigonotation.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     LineGraphComponent
   ]

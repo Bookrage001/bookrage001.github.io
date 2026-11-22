@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-tick-tack-toe',
   templateUrl: './tick-tack-toe.component.html',
   styleUrls: ['./tick-tack-toe.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true
 })
 export class TickTackToeComponent {

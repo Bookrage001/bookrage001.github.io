@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
 import { Observable, map, shareReplay } from 'rxjs';
@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent implements OnChanges {
