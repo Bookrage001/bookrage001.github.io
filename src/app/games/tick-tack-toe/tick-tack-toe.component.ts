@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+
+type Mark = '' | 'X' | 'O';
 
 @Component({
   selector: 'app-tick-tack-toe',
@@ -11,30 +13,28 @@ export class TickTackToeComponent {
 
   turn = 1;
 
-  constructor() { }
-  public select(location) {
-    const thisElement = document.getElementById(location);
-    if (thisElement.innerHTML != "O" && thisElement.innerHTML != "X") {
-      if (this.turn % 2 == 1) {
-        thisElement.innerHTML = "X";
-        this.turn += 1;
-      } else {
-        thisElement.innerHTML = "O";
-        this.turn += 1;
-      }
+  /** Board cells in row-major order (index 0 = row 1, column 1). */
+  readonly cells = signal<Mark[]>(Array<Mark>(9).fill(''));
+
+  rowOf(index: number): number {
+    return Math.floor(index / 3);
+  }
+
+  colOf(index: number): number {
+    return index % 3;
+  }
+
+  public select(index: number) {
+    if (this.cells()[index]) {
+      return;
     }
-    // thisElement.disabled = true;
+    const mark: Mark = this.turn % 2 == 1 ? 'X' : 'O';
+    this.cells.update(cells => cells.map((cell, i) => (i === index ? mark : cell)));
+    this.turn += 1;
   }
 
   public RESET() {
-    let i = 0;
-    do {
-      const x = document.getElementsByClassName("Nice");
-      x[i].innerHTML = " ";
-      // x[i].innerHTML.disabled = false;
-      i++;
-    } while (i < 9);
+    this.cells.set(Array<Mark>(9).fill(''));
   }
-
 
 }

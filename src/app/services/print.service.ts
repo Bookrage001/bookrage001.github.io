@@ -29,7 +29,7 @@ export class PrintService {
    * Load the last edited date from the jobs.json data
    */
   private loadLastEditedDate(): void {
-    this.http.get<any>('/src/app/services/jobs.json').subscribe((data) => {
+    this.http.get<{ lastEdited?: string }>('/src/app/services/jobs.json').subscribe((data) => {
       if (data && data.lastEdited) {
         this.lastEditedDate = data.lastEdited;
       }

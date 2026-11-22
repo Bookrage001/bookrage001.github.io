@@ -132,7 +132,9 @@
           </div>
         }
         <ul>
-          <li *ngFor="let description of getDescriptions(job)" [innerHTML]="highlightImportantWords(description)"></li>
+          @for (description of getDescriptions(job); track $index) {
+            <li [innerHTML]="highlightImportantWords(description)"></li>
+          }
         </ul>
       </div>
     </div>
@@ -164,7 +166,9 @@
             </div>
           }
           <ul>
-            <li *ngFor="let description of getDescriptions(job)" [innerHTML]="highlightImportantWords(description)"></li>
+            @for (description of getDescriptions(job); track $index) {
+              <li [innerHTML]="highlightImportantWords(description)"></li>
+            }
           </ul>
         </div>
       </div>
