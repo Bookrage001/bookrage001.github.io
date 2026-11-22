@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './bookrage-website.component.html',
   styleUrls: ['./bookrage-website.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule]
 })
 export class BookrageWebsiteComponent {

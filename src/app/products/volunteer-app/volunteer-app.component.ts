@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-volunteer-app',
   templateUrl: './volunteer-app.component.html',
   styleUrls: ['./volunteer-app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class VolunteerAppComponent {

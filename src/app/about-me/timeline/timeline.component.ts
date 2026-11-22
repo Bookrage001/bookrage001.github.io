@@ -77,7 +77,7 @@ const HEADER_ROWS = 1;
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule]
 })
 export class TimelineComponent {

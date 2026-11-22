@@ -1,31 +1,35 @@
-const { FlatCompat } = require('@eslint/eslintrc');
-const compat = new FlatCompat();
+// @ts-check
+const tseslint = require('typescript-eslint');
+const angular = require('angular-eslint');
 
-module.exports = [
+module.exports = tseslint.config(
   {
-    ignores: ['dist/**/*', 'out-tsc/**/*', 'node_modules/**/*', 'docs/**/*', 'e2e/**/*', 'eslint.config.js', '**/*.spec.ts', '**/*.test.ts'],
+    ignores: ['dist/**', 'out-tsc/**', 'node_modules/**', 'docs/**'],
   },
-  ...compat.extends('plugin:@angular-eslint/recommended'),
-  ...compat.extends('plugin:@typescript-eslint/recommended'),
   {
-    files: ['*.ts'],
-    languageOptions: {
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        sourceType: 'module',
-      },
+    files: ['**/*.ts'],
+    extends: [
+      ...tseslint.configs.recommended,
+      ...angular.configs.tsRecommended,
+    ],
+    processor: angular.processInlineTemplates,
+    rules: {
+      '@angular-eslint/component-selector': [
+        'error',
+        { type: 'element', prefix: 'app', style: 'kebab-case' },
+      ],
+      '@angular-eslint/directive-selector': [
+        'error',
+        { type: 'attribute', prefix: 'app', style: 'camelCase' },
+      ],
     },
-    plugins: {
-      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
-      '@angular-eslint': require('@angular-eslint/eslint-plugin'),
-    },
+  },
+  {
+    files: ['**/*.html'],
+    extends: [
+      ...angular.configs.templateRecommended,
+      ...angular.configs.templateAccessibility,
+    ],
     rules: {},
   },
-  {
-    files: ['*.html'],
-    plugins: {
-      '@angular-eslint/template': require('@angular-eslint/eslint-plugin-template'),
-    },
-    rules: {},
-  },
-];
+);

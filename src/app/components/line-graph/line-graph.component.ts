@@ -6,7 +6,7 @@ import * as echarts from 'echarts';
   selector: 'app-line-graph',
   templateUrl: './line-graph.component.html',
   styleUrls: ['./line-graph.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class LineGraphComponent implements AfterViewInit, OnChanges, OnDestroy {
@@ -21,7 +21,7 @@ export class LineGraphComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() highlightLabel = '';
   @ViewChild('chartHost', { static: true }) chartHost!: ElementRef<HTMLDivElement>;
 
-  private chart: any;
+  private chart?: echarts.ECharts;
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class LineGraphComponent implements AfterViewInit, OnChanges, OnDestroy {
       return;
     }
 
-    this.chart = (echarts as any).init(chartElement);
+    this.chart = echarts.init(chartElement);
     this.updateChart();
   }
 
@@ -69,7 +69,7 @@ export class LineGraphComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.xAxisLabels.includes(this.highlightStartLabel) &&
       this.xAxisLabels.includes(this.highlightEndLabel);
 
-    const chartSeries: any[] = [
+    const chartSeries: echarts.LineSeriesOption[] = [
       {
         name: this.seriesName,
         type: 'line',

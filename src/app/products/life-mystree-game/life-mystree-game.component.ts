@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-life-mystree-game',
   templateUrl: './life-mystree-game.component.html',
   styleUrls: ['./life-mystree-game.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class LifeMystreeGameComponent {

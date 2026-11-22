@@ -72,13 +72,13 @@
 
 <div>
   <div class="view-mode-toggle no-print">
-    <mat-button-toggle-group [value]="viewMode" (change)="onViewModeChange($event)" aria-label="View mode">
+    <mat-button-toggle-group [value]="viewMode()" (change)="onViewModeChange($event)" aria-label="View mode">
       <mat-button-toggle value="resume">Resume View</mat-button-toggle>
       <mat-button-toggle value="timeline">Timeline View</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
-  @if (viewMode === 'resume') {
+  @if (viewMode() === 'resume') {
   <app-jobs [roleFocus]="resumeMode" (roleFocusChange)="onRoleFocusChange($event)"></app-jobs>
 
   <section [class.no-print]="compactPrintMode">

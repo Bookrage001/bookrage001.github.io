@@ -1,6 +1,6 @@
 
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, inject, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   startOfDay,
@@ -53,7 +53,7 @@ const colors: Record<string, EventColor> = {
   styleUrls: ['./calender.component.scss'],
   standalone: true,
   imports: [CalendarMonthViewComponent, CalendarWeekViewComponent, CalendarDayViewComponent, FlexLayoutModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: provideCalendar({ provide: DateAdapter, useFactory: adapterFactory }),
 })
 export class CalenderComponent implements OnInit, AfterViewInit {
@@ -61,6 +61,7 @@ export class CalenderComponent implements OnInit, AfterViewInit {
 
   private readonly http = inject(HttpClient);
   private readonly hostElement = inject(ElementRef<HTMLElement>);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   private readonly calendarIcsUrls = this.getCalendarIcsUrls();
 
@@ -213,6 +214,8 @@ export class CalenderComponent implements OnInit, AfterViewInit {
         const parsedEvents = this.parseIcsEvents(icsText);
         if (parsedEvents.length > 0) {
           this.events = parsedEvents;
+          // Async HTTP result: tell OnPush to re-check so [events] reaches the calendar.
+          this.cdr.markForCheck();
           this.refresh.next();
           return;
         }

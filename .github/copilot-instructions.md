@@ -20,7 +20,6 @@
 - Build with `npm run build`; create the production output in `docs/` with `npm run build:prod`.
 - Run unit tests with `npm test`.
 - Run lint checks with `npm run lint`.
-- `npm run e2e` uses Protractor and should be treated as legacy unless the task is explicitly about e2e coverage.
 
 ## Minimal Changes (Cleanse Rule)
 - Only touch lines that are directly required for the task. Do not reformat, rename variables, switch quote styles, collapse multi-line objects, or remove comments in code you did not need to change.
@@ -30,6 +29,6 @@
 
 ## Conventions
 - Preserve Angular Material and `@angular/flex-layout` usage in touched areas unless you are intentionally migrating a feature.
-- Check both `eslint.config.js` and `tslint.json` before assuming lint rules. ESLint is active, but the repo still carries older TSLint conventions that reflect local style.
+- Lint rules live in `eslint.config.js` (angular-eslint flat config covering TypeScript, inline and external templates, and template accessibility). `npm run lint` runs it through `@angular-eslint/builder`.
 - The production build is deployed from `docs/`, and `.github/workflows/main.yml` publishes that directory to S3.
 - If the same implementation pattern appears 3 or more times, refactor it into a shared reusable place (for example shared SCSS class, utility, or component input pattern) rather than duplicating code.
