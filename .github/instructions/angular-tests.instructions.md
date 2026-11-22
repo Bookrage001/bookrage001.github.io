@@ -11,4 +11,3 @@ applyTo: "src/**/*.spec.ts"
 - Create the fixture after compilation, then call `fixture.detectChanges()` before assertions that depend on bindings or lifecycle hooks.
 - Mock router, Material, and service dependencies as lightly as possible so tests stay readable.
 - Do not copy older spec patterns blindly. Some legacy specs still use outdated declarations-first setup for standalone components.
-- Leave `e2e/` alone unless the task explicitly targets Protractor coverage.

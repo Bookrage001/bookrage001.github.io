@@ -20,7 +20,6 @@
 - Build with `npm run build`; create the production output in `docs/` with `npm run build:prod`.
 - Run unit tests with `npm test`.
 - Run lint checks with `npm run lint`.
-- `npm run e2e` uses Protractor and should be treated as legacy unless the task is explicitly about e2e coverage.
 
 ## Minimal Changes (Cleanse Rule)
 - Only touch lines that are directly required for the task. Do not reformat, rename variables, switch quote styles, collapse multi-line objects, or remove comments in code you did not need to change.
