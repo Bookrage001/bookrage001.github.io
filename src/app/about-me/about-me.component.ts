@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,7 +27,7 @@ interface ResumeSectionContent {
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     RouterModule,
@@ -43,7 +43,8 @@ export class AboutMeComponent {
   private cdr = inject(ChangeDetectorRef);
   compactPrintMode = false;
   resumeMode: ResumeMode = 'full';
-  viewMode: ViewMode = 'resume';
+  // Signal so the delayed restore in printResume() re-renders under OnPush.
+  readonly viewMode = signal<ViewMode>('resume');
 
   private resumeContentByMode: Record<ResumeMode, ResumeSectionContent> = {
     full: {
@@ -283,14 +284,14 @@ export class AboutMeComponent {
   }
 
   onViewModeChange(event: MatButtonToggleChange): void {
-    this.viewMode = event.value;
+    this.viewMode.set(event.value);
   }
 
   printResume(): void {
     // Always print the resume view, not the timeline
-    const previousViewMode = this.viewMode;
-    if (this.viewMode === 'timeline') {
-      this.viewMode = 'resume';
+    const previousViewMode = this.viewMode();
+    if (previousViewMode === 'timeline') {
+      this.viewMode.set('resume');
       this.cdr.detectChanges();
     }
 
@@ -307,7 +308,7 @@ export class AboutMeComponent {
 
     // Restore view mode after print dialog closes
     if (previousViewMode === 'timeline') {
-      setTimeout(() => { this.viewMode = 'timeline'; }, 300);
+      setTimeout(() => { this.viewMode.set('timeline'); }, 300);
     }
   }
 }

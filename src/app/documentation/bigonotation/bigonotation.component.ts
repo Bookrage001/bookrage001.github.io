@@ -6,7 +6,7 @@ import { LineGraphComponent } from '../../components/line-graph/line-graph.compo
   templateUrl: './bigonotation.component.html',
   styleUrls: ['./bigonotation.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     LineGraphComponent
   ]

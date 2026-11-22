@@ -6,7 +6,7 @@ import { BigonotationComponent } from './bigonotation/bigonotation.component';
   templateUrl: './documentation.component.html',
   styleUrls: ['./documentation.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     BigonotationComponent
   ]

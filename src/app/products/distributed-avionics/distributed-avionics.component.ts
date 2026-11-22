@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-distributed-avionics',
   templateUrl: './distributed-avionics.component.html',
   styleUrls: ['./distributed-avionics.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class DistributedAvionicsComponent {

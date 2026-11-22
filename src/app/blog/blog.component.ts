@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule
   ]

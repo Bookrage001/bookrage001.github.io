@@ -1,7 +1,9 @@
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatSidenav } from '@angular/material/sidenav';
+import { filter, map } from 'rxjs';
 
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,7 +19,7 @@ import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatToolbarModule,
     MatIconModule,
@@ -33,7 +35,6 @@ export class AppComponent implements OnDestroy {
 
   title = 'Bookrage001';
   mobileQuery: MediaQueryList;
-  currentUrl = '/';
 
   @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
 
@@ -43,26 +44,29 @@ export class AppComponent implements OnDestroy {
   private media = inject(MediaMatcher);
   private router = inject(Router);
 
+  // A signal (not a plain field) so OnPush re-renders when navigation ends;
+  // toSignal also unsubscribes from router.events on destroy.
+  readonly currentUrl = toSignal(
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map((event) => event.urlAfterRedirects)
+    ),
+    { initialValue: this.router.url }
+  );
+
   constructor() {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-
-    this.currentUrl = this.router.url;
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.currentUrl = event.urlAfterRedirects;
-      }
-    });
   }
 
   get showBackButton(): boolean {
-    const segments = this.currentUrl.split('?')[0].split('#')[0].split('/').filter(Boolean);
+    const segments = this.currentUrl().split('?')[0].split('#')[0].split('/').filter(Boolean);
     return segments.length > 0;
   }
 
   goBackOneLevel(): void {
-    const segments = this.currentUrl.split('?')[0].split('#')[0].split('/').filter(Boolean);
+    const segments = this.currentUrl().split('?')[0].split('#')[0].split('/').filter(Boolean);
 
     if (segments.length <= 1) {
       void this.router.navigateByUrl('/');

@@ -6,7 +6,7 @@ import * as echarts from 'echarts';
   selector: 'app-line-graph',
   templateUrl: './line-graph.component.html',
   styleUrls: ['./line-graph.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class LineGraphComponent implements AfterViewInit, OnChanges, OnDestroy {

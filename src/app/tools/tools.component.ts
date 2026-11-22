@@ -15,7 +15,7 @@ interface FuelPriceEntry {
   templateUrl: './tools.component.html',
   styleUrls: ['./tools.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     MatButtonModule,

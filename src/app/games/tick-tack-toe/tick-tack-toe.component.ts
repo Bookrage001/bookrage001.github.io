@@ -6,7 +6,7 @@ type Mark = '' | 'X' | 'O';
   selector: 'app-tick-tack-toe',
   templateUrl: './tick-tack-toe.component.html',
   styleUrls: ['./tick-tack-toe.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class TickTackToeComponent {

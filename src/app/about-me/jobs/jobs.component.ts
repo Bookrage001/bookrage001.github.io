@@ -12,7 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent implements OnChanges {
