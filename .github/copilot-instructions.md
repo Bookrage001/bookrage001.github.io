@@ -30,6 +30,6 @@
 
 ## Conventions
 - Preserve Angular Material and `@angular/flex-layout` usage in touched areas unless you are intentionally migrating a feature.
-- Check both `eslint.config.js` and `tslint.json` before assuming lint rules. ESLint is active, but the repo still carries older TSLint conventions that reflect local style.
+- Lint rules live in `eslint.config.js` (angular-eslint flat config covering TypeScript, inline and external templates, and template accessibility). `npm run lint` runs it through `@angular-eslint/builder`.
 - The production build is deployed from `docs/`, and `.github/workflows/main.yml` publishes that directory to S3.
 - If the same implementation pattern appears 3 or more times, refactor it into a shared reusable place (for example shared SCSS class, utility, or component input pattern) rather than duplicating code.
