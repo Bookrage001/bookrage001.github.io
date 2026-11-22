@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
-import { Observable, map } from 'rxjs';
+import { Observable, map, shareReplay } from 'rxjs';
 import { JobItem } from './job-item';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, MatChipsModule, MatButtonModule, MatCheckboxModule]
 })
 export class JobsComponent implements OnChanges {
@@ -40,6 +41,7 @@ export class JobsComponent implements OnChanges {
     'Docker',
     'Kubernetes',
     'CI/CD',
+    'DevOps',
     'Automation',
     'Testing (Unit, Integration, E2E)',
     'SQL',
@@ -51,6 +53,8 @@ export class JobsComponent implements OnChanges {
     'Real-time Systems',
     'WebSockets',
     'MQTT',
+    'Git',
+    'GitHub',
     'Networking',
     'Network Troubleshooting',
     ' LAN ',
@@ -58,7 +62,7 @@ export class JobsComponent implements OnChanges {
     'VPN',
     'Telecommunication',
     'PowerShell',
-    ' IT',
+    ' IT ',
     ' ICT ',
     ' MacOS ',
     ' Windows ',
@@ -69,6 +73,8 @@ export class JobsComponent implements OnChanges {
     'Sprint Planning',
     'Agile Delivery',
     'Scrum',
+    'Kanban',
+    'SDLC',
     'Stakeholder Engagement',
     'Cross-functional Collaboration',
     'Solution Design',
@@ -78,6 +84,7 @@ export class JobsComponent implements OnChanges {
     'Product Development',
     'Roadmapping',
     'Prioritisation',
+    'Project Management',
     'Technology Transformation',
     'Digital Transformation',
     'Business Analyst',
@@ -126,6 +133,7 @@ export class JobsComponent implements OnChanges {
     'Shift Management',
     'Front-of-House Operations',
     'POS Systems',
+    'Jira',
     'SME'
   ];
 
@@ -136,6 +144,8 @@ export class JobsComponent implements OnChanges {
     'Sprint Planning',
     'Agile Delivery',
     'Scrum',
+    'Kanban',
+    'SDLC',
     'Stakeholder Engagement',
     'Cross-functional Collaboration',
     'Solution Design',
@@ -145,6 +155,7 @@ export class JobsComponent implements OnChanges {
     'Product Development',
     'Roadmapping',
     'Prioritisation',
+    'Project Management',
     'Technology Transformation',
     'Digital Transformation',
     'Business Analyst',
@@ -159,6 +170,7 @@ export class JobsComponent implements OnChanges {
     'Process Improvement',
     'AI Integration',
     'Risk Management',
+    'Jira',
     'Communication',
     'Analytical Thinking',
     'Collaboration',
@@ -198,6 +210,7 @@ export class JobsComponent implements OnChanges {
     'Docker',
     'Kubernetes',
     'CI/CD',
+    'DevOps',
     'Automation',
     'Testing (Unit, Integration, E2E)',
     'SQL',
@@ -208,7 +221,12 @@ export class JobsComponent implements OnChanges {
     'Scalability',
     'Real-time Systems',
     'WebSockets',
+    'WebSocket',
     'MQTT',
+    'Git',
+    'GitHub',
+    'SDLC',
+    'Jira',
     'Networking',
     'VPN',
     'PowerShell',
@@ -285,7 +303,8 @@ export class JobsComponent implements OnChanges {
     'Roadmap Planning',
     'Risk Assessment',
     'Governance',
-    'Change Enablement'
+    'Change Enablement',
+    'Kanban'
   ];
 
   private readonly softwareSkillWords = [
@@ -300,7 +319,8 @@ export class JobsComponent implements OnChanges {
     'Monitoring',
     'Observability',
     'Reliability Engineering',
-    'Performance Tuning'
+    'Performance Tuning',
+    'Version Control'
   ];
 
   private readonly hospitalitySkillWords = [
@@ -351,6 +371,8 @@ export class JobsComponent implements OnChanges {
 
   allJobs$: Observable<JobItem[]>;
   jobs$: Observable<JobItem[]>;
+  professionalJobs$: Observable<JobItem[]>;
+  volunteerJobs$: Observable<JobItem[]>;
   tags$: Observable<string[]>;
   techTags$: Observable<string[]>;
   selectedTags: string[] = [];
@@ -364,8 +386,10 @@ export class JobsComponent implements OnChanges {
   private jobservice = inject(JobService);
 
   constructor() {
-    this.allJobs$ = this.jobservice.getAds();
+    this.allJobs$ = this.jobservice.getAds().pipe(shareReplay(1));
     this.jobs$ = this.allJobs$;
+    this.professionalJobs$ = this.allJobs$.pipe(map(jobs => jobs.filter(j => !j.data.isVolunteer)));
+    this.volunteerJobs$ = this.allJobs$.pipe(map(jobs => jobs.filter(j => j.data.isVolunteer)));
     this.tags$ = this.allJobs$.pipe(
       map((jobs) => {
         const uniqueTags = jobs.reduce((set, job) => {
@@ -535,7 +559,7 @@ export class JobsComponent implements OnChanges {
     fiveYearsCutoff.setFullYear(fiveYearsCutoff.getFullYear() - 5);
     fiveYearsCutoff.setHours(0, 0, 0, 0);
 
-    this.jobs$ = this.allJobs$.pipe(
+    const filtered$ = this.allJobs$.pipe(
       map((jobs) =>
         jobs.filter((job) => {
           const matchesLastFiveYears =
@@ -547,6 +571,10 @@ export class JobsComponent implements OnChanges {
         })
       )
     );
+
+    this.jobs$ = filtered$;
+    this.professionalJobs$ = filtered$.pipe(map(jobs => jobs.filter(j => !j.data.isVolunteer)));
+    this.volunteerJobs$ = filtered$.pipe(map(jobs => jobs.filter(j => j.data.isVolunteer)));
   }
 
   isTagSelected(tag: string): boolean {

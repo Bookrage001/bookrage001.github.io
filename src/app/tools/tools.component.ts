@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { LineGraphComponent } from '../components/line-graph/line-graph.component';
@@ -15,6 +15,7 @@ interface FuelPriceEntry {
   templateUrl: './tools.component.html',
   styleUrls: ['./tools.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     MatButtonModule,

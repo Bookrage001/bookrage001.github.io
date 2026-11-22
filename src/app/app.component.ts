@@ -1,6 +1,6 @@
 
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 
@@ -17,6 +17,7 @@ import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatToolbarModule,
     MatIconModule,
